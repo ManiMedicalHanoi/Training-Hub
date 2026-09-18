@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#003047">
+<title>MMH Training Hub — Mani Medical Hanoi</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --navy:#003047; --blue:#3A5CAA; --yellow:#FFE100; --lb:#CFE2F3; --pale:#F0F7FF;
+  --ink:#1A1A1A; --muted:#7387a0; --line:#e6edf6; --white:#fff; --bg:#f4f8fd;
+  --green:#2f9e5e; --red:#d64545; --orange:#e07b39; --cream:#FFF8E1;
+  --shadow-sm:0 1px 3px rgba(7,30,60,.05),0 6px 18px rgba(7,30,60,.06);
+  --shadow-md:0 4px 14px rgba(7,30,60,.08),0 18px 50px rgba(7,30,60,.13);
+  --shadow-xl:0 10px 40px rgba(7,30,60,.16),0 40px 90px rgba(7,30,60,.22);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --sbw:248px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Aptos','Inter','Lexend','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input,select,textarea{font-family:inherit;font-size:inherit}
+::selection{background:var(--yellow);color:var(--navy)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#c8d6e8;border-radius:8px;border:3px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:#a8bcd4}
+
+/* ============ LOGIN ============ */
+.login-wrap{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:22px;
+  background:radial-gradient(1100px 560px at 50% -12%,rgba(58,92,170,.22),transparent 60%),
+             radial-gradient(800px 460px at 85% 20%,rgba(255,225,0,.13),transparent 55%),
+             linear-gradient(180deg,#eaf2fc,#f4f8fd 60%)}
+.login-card{width:100%;max-width:436px;background:#fff;border-radius:22px;box-shadow:var(--shadow-xl);overflow:hidden;animation:pop .5s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.login-head{background:var(--navy);padding:30px 34px 26px;color:#fff;position:relative;overflow:hidden}
+.login-head::after{content:'';position:absolute;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(255,225,0,.2),transparent 70%);right:-60px;top:-70px}
+.login-head .mark{width:48px;height:48px;border-radius:13px;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:14px;letter-spacing:-.2px;margin-bottom:14px;overflow:hidden}
+.login-head h1{font-size:22px;font-weight:800;letter-spacing:-.3px}
+.login-head p{font-size:12.5px;color:var(--lb);margin-top:4px}
+.login-body{padding:28px 34px 32px}
+.fgroup{margin-bottom:15px}
+.fgroup label{display:block;font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px}
+.inp{width:100%;height:46px;border:1.5px solid var(--line);border-radius:11px;padding:0 14px;outline:0;transition:.2s;background:#fbfdff}
+.inp:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(58,92,170,.1)}
+textarea.inp{height:auto;padding:11px 14px;resize:vertical;min-height:84px;line-height:1.55}
+select.inp{cursor:pointer}
+.btn{height:46px;border:0;border-radius:11px;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;transition:.22s var(--ease);white-space:nowrap}
+.btn-primary{background:var(--navy);color:#fff;box-shadow:0 6px 20px rgba(0,48,71,.26)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,48,71,.34)}
+.btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-gold{background:var(--yellow);color:var(--navy)}
+.btn-gold:hover{filter:brightness(1.05)}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--blue);background:var(--pale)}
+.btn-danger{background:#fdeaea;color:var(--red);border:1.5px solid #f6cccc}
+.btn-danger:hover{background:#fbdada}
+.btn-sm{height:36px;padding:0 14px;font-size:13px;border-radius:9px}
+.btn-block{width:100%}
+.login-alt{text-align:center;margin-top:16px;font-size:13px;color:var(--muted)}
+.login-alt b{color:var(--blue);cursor:pointer;font-weight:700}
+.login-alt b:hover{text-decoration:underline}
+.msg{border-radius:10px;padding:11px 14px;font-size:13px;margin-bottom:14px;display:none;line-height:1.5}
+.msg.err{background:#fdeaea;color:#a83232;border-left:3px solid var(--red);display:block}
+.msg.ok{background:#e9f7ef;color:#1d6d41;border-left:3px solid var(--green);display:block}
+.msg.info{background:var(--pale);color:var(--blue);border-left:3px solid var(--blue);display:block}
+.otp-inp{letter-spacing:12px;font-size:22px;font-weight:800;text-align:center;color:var(--navy)}
+
+/* ============ SHELL ============ */
+.app{display:none;min-height:100vh}
+.app.on{display:block}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sbw);background:var(--navy);color:#fff;z-index:90;display:flex;flex-direction:column;transition:transform .3s var(--ease)}
+.sb-brand{padding:20px 20px 16px;display:flex;align-items:center;gap:11px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-brand .mark{width:40px;height:40px;border-radius:11px;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:11.5px;letter-spacing:-.2px;flex-shrink:0;overflow:hidden}
+.sb-brand b{font-size:14.5px;line-height:1.2;display:block}
+.sb-brand span{font-size:9.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--lb);display:block;margin-top:2px}
+.sb-nav{flex:1;overflow-y:auto;padding:14px 12px}
+.sb-nav::-webkit-scrollbar{width:0}
+.sb-sec{font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;color:rgba(207,226,243,.5);font-weight:700;padding:14px 12px 7px}
+.nv{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;font-size:13.8px;font-weight:600;color:rgba(255,255,255,.78);transition:.18s;margin-bottom:2px}
+.nv:hover{background:rgba(255,255,255,.09);color:#fff}
+.nv.on{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(58,92,170,.4)}
+.nv .ic{width:19px;height:19px;flex-shrink:0;stroke-width:1.9}
+.nv .badge{margin-left:auto;background:var(--yellow);color:var(--navy);font-size:10.5px;font-weight:800;padding:1px 7px;border-radius:20px}
+.sb-user{padding:14px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.sb-user .info{flex:1;min-width:0}
+.sb-user .info b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-user .info span{display:block;font-size:10.5px;color:var(--lb);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icon-btn{width:32px;height:32px;border-radius:9px;border:0;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.18s;flex-shrink:0}
+.icon-btn:hover{background:rgba(255,255,255,.22)}
+.icon-btn svg{width:16px;height:16px}
+
+.main{margin-left:var(--sbw);min-height:100vh}
+.topbar{position:sticky;top:0;z-index:60;height:64px;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 26px}
+.topbar h2{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.3px}
+.topbar .sub{font-size:12px;color:var(--muted);margin-top:-2px}
+.topbar .spacer{flex:1}
+.burger{display:none}
+.conn{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);background:var(--pale);border-radius:20px;padding:6px 12px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.dot.off{background:var(--red)} .dot.load{background:var(--orange);animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.3}}
+.view{padding:24px 26px 60px;display:none;animation:fade .3s var(--ease)}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ============ COMPONENTS ============ */
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm)}
+.card-h{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.card-h h3{font-size:15px;font-weight:800;color:var(--navy)}
+.card-h .spacer{flex:1}
+.card-b{padding:18px 20px}
+.grid{display:grid;gap:16px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:.25s var(--ease)}
+.kpi:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.kpi::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+.kpi.navy::before{background:var(--navy)} .kpi.gold::before{background:var(--yellow)}
+.kpi.green::before{background:var(--green)} .kpi.orange::before{background:var(--orange)}
+.kpi .lb{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue)}
+.kpi .vl{font-size:30px;font-weight:850;color:var(--navy);letter-spacing:-1.2px;line-height:1.15;margin-top:6px}
+.kpi .sub{font-size:11.5px;color:var(--muted);margin-top:3px}
+.chartbox{position:relative;height:250px}
+.chartbox.tall{height:300px}
+
+table.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+table.tbl th{background:var(--lb);color:var(--navy);font-weight:700;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;padding:10px 12px;text-align:left;white-space:nowrap;position:sticky;top:0;z-index:2}
+table.tbl td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.tbl tbody tr:hover{background:var(--pale)}
+.tbl-scroll{overflow:auto;max-height:520px;border-radius:12px;border:1px solid var(--line)}
+
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.tag.plan{background:var(--pale);color:var(--blue)}
+.tag.completed{background:#e9f7ef;color:var(--green)}
+.tag.cancel{background:#f1f3f5;color:#868e96}
+.tag.pass{background:#e9f7ef;color:var(--green)}
+.tag.fail{background:#fdeaea;color:var(--red)}
+.tag.gold{background:var(--cream);color:#8a6d00;border:1px solid var(--yellow)}
+.tag.product{background:#eaf1ff;color:var(--blue)}
+.tag.sop{background:#f3edff;color:#6d3fd4}
+.tag.compliance{background:#ffeee4;color:#c05a1c}
+.tag.skill{background:#e6f7f8;color:#0d7a86}
+.tag.admin{background:var(--navy);color:var(--yellow)}
+.tag.trainer{background:var(--blue);color:#fff}
+.tag.audience{background:#eef2f7;color:#5a6b80}
+
+.empty{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty svg{width:46px;height:46px;opacity:.3;margin:0 auto 12px;display:block}
+.empty b{display:block;color:var(--navy);font-size:15px;margin-bottom:5px}
+
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.pill{height:34px;padding:0 14px;border-radius:20px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-size:12.8px;font-weight:600;color:var(--muted);transition:.18s;display:inline-flex;align-items:center;gap:6px}
+.pill:hover{border-color:var(--blue);color:var(--blue)}
+.pill.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.pill .n{background:rgba(0,0,0,.09);border-radius:12px;padding:0 6px;font-size:11px}
+.pill.on .n{background:rgba(255,255,255,.22)}
+
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.search{position:relative;flex:1;min-width:200px;max-width:340px}
+.search input{width:100%;height:40px;border:1.5px solid var(--line);border-radius:20px;padding:0 16px 0 40px;outline:0;background:#fff;transition:.2s}
+.search input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(58,92,170,.09)}
+.search svg{position:absolute;left:14px;top:11px;width:17px;height:17px;color:var(--muted)}
+
+/* session cards */
+.s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.s-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);cursor:pointer;transition:.25s var(--ease);display:flex;flex-direction:column}
+.s-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--lb)}
+.s-card .top{padding:14px 17px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.s-card .bd{padding:11px 17px 15px;flex:1}
+.s-card h4{font-size:15px;font-weight:750;color:var(--navy);line-height:1.38;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.s-card .purpose{font-size:12.5px;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:11px}
+.s-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.s-meta span{display:inline-flex;align-items:center;gap:5px}
+.s-meta svg{width:13px;height:13px;flex-shrink:0}
+.s-card .ft{border-top:1px solid var(--line);padding:10px 17px;display:flex;align-items:center;gap:8px;background:#fcfdff}
+.prog{flex:1;height:6px;border-radius:4px;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:4px;transition:width .5s var(--ease)}
+.ft .pct{font-size:11.5px;font-weight:700;color:var(--navy)}
+
+/* modal / drawer */
+.ov{position:fixed;inset:0;background:rgba(7,25,45,.5);backdrop-filter:blur(3px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.ov.on{display:flex;animation:fade .2s}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:90vh;display:flex;flex-direction:column;box-shadow:var(--shadow-xl);animation:pop .3s var(--ease)}
+.modal.wide{max-width:1000px}
+.modal.xwide{max-width:1180px}
+.m-h{padding:19px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;flex-shrink:0}
+.m-h h3{font-size:17px;font-weight:800;color:var(--navy);flex:1}
+.m-h .sub{font-size:12px;color:var(--muted);font-weight:400;display:block;margin-top:1px}
+.m-b{padding:22px 24px;overflow-y:auto;flex:1}
+.m-f{padding:15px 24px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;flex-shrink:0;background:#fcfdff;border-radius:0 0 20px 20px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+.toast-wrap{position:fixed;bottom:24px;right:24px;z-index:900;display:flex;flex-direction:column;gap:10px;max-width:380px}
+.toast{background:var(--navy);color:#fff;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow-xl);font-size:13.5px;display:flex;gap:10px;align-items:flex-start;animation:slidein .3s var(--ease)}
+.toast.err{background:#a83232} .toast.ok{background:#1d6d41}
+.toast svg{width:17px;height:17px;flex-shrink:0;margin-top:2px}
+@keyframes slidein{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+
+.loading{position:fixed;inset:0;background:rgba(244,248,253,.82);backdrop-filter:blur(3px);z-index:800;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+.loading.on{display:flex}
+.spinner{width:42px;height:42px;border:3.5px solid var(--lb);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{font-size:13.5px;color:var(--navy);font-weight:600}
+
+/* calendar */
+.cal-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.cal-head h3{font-size:18px;font-weight:800;color:var(--navy);min-width:190px;text-align:center}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cal .dow{background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;padding:9px 6px;text-align:center}
+.cal .day{background:#fff;min-height:112px;padding:7px 8px;position:relative;transition:.15s}
+.cal .day.out{background:#fafbfd}
+.cal .day.today{background:var(--cream)}
+.cal .day .n{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.cal .day.today .n{color:var(--navy);background:var(--yellow);width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11.5px}
+.ev{font-size:10.8px;padding:3px 7px;border-radius:6px;margin-bottom:3px;cursor:pointer;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;border-left:3px solid}
+.ev.plan{background:var(--pale);color:var(--blue);border-color:var(--blue)}
+.ev.completed{background:#e9f7ef;color:#1d6d41;border-color:var(--green)}
+.ev.cancel{background:#f1f3f5;color:#868e96;border-color:#adb5bd;text-decoration:line-through}
+.ev:hover{filter:brightness(.95);transform:translateX(2px)}
+
+/* quiz */
+/* #quizShell là con trực tiếp của .modal nên phải tự dựng lại flex layout,
+   nếu không phần thân bài test sẽ tràn khỏi màn hình thay vì cuộn riêng. */
+#quizShell{display:flex;flex-direction:column;max-height:90vh;min-height:0}
+#quizShell .m-b{flex:1;min-height:0;overflow-y:auto}
+#quizShell .m-f,#quizShell .quiz-top,#quizShell .m-h{flex-shrink:0}
+.quiz-top{z-index:30;background:#fff;border-bottom:2px solid var(--line);padding:14px 22px;display:flex;align-items:center;gap:16px;border-radius:16px 16px 0 0}
+.timer{display:flex;align-items:center;gap:9px;background:var(--navy);color:#fff;border-radius:30px;padding:8px 18px;font-weight:800;font-size:17px;letter-spacing:.5px;font-variant-numeric:tabular-nums}
+.timer.warn{background:var(--orange);animation:pulse 1s infinite}
+.timer.danger{background:var(--red);animation:pulse .6s infinite}
+@keyframes pulse{50%{opacity:.75}}
+.qprog{flex:1;height:8px;border-radius:5px;background:var(--line);overflow:hidden}
+.qprog i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--navy));transition:width .3s}
+.q-item{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:14px;transition:.2s}
+.q-item.answered{border-color:var(--lb);background:#fcfdff}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--navy);color:#fff;font-size:12.5px;font-weight:800;margin-right:10px;flex-shrink:0}
+.q-text{font-size:15px;font-weight:650;color:var(--navy);line-height:1.5;margin-bottom:14px;display:flex}
+.opt{display:flex;align-items:flex-start;gap:11px;padding:12px 15px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:8px;cursor:pointer;transition:.16s;background:#fff}
+.opt:hover{border-color:var(--blue);background:var(--pale)}
+.opt.sel{border-color:var(--navy);background:var(--pale);box-shadow:0 0 0 3px rgba(0,48,71,.07)}
+.opt .k{width:25px;height:25px;border-radius:50%;border:1.8px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--muted);flex-shrink:0;transition:.16s}
+.opt.sel .k{background:var(--navy);border-color:var(--navy);color:#fff}
+.opt.correct{border-color:var(--green);background:#f0faf4}
+.opt.correct .k{background:var(--green);border-color:var(--green);color:#fff}
+.opt.wrong{border-color:var(--red);background:#fdf2f2}
+.opt.wrong .k{background:var(--red);border-color:var(--red);color:#fff}
+.opt .t{flex:1;font-size:14px;line-height:1.5}
+.explain{background:var(--cream);border-left:4px solid var(--yellow);padding:11px 15px;border-radius:0 9px 9px 0;font-size:13px;margin-top:10px;line-height:1.55}
+
+.result-hero{text-align:center;padding:34px 22px}
+.result-ring{width:150px;height:150px;margin:0 auto 20px;position:relative}
+.result-ring svg{transform:rotate(-90deg)}
+.result-ring .txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.result-ring .txt b{font-size:36px;font-weight:850;color:var(--navy);letter-spacing:-1.5px;line-height:1}
+.result-ring .txt span{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.8px;margin-top:2px}
+
+/* quiz builder */
+.qb-item{border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;background:#fcfdff}
+.qb-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.qb-head .n{width:26px;height:26px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:800}
+.qb-opt{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.qb-opt .key{width:30px;height:38px;border-radius:9px;background:var(--lb);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:12.5px;cursor:pointer;transition:.16s;flex-shrink:0;border:2px solid transparent}
+.qb-opt .key.on{background:var(--green);color:#fff;border-color:var(--green)}
+.qb-opt .inp{height:38px}
+
+/* file list */
+.file-row{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:#fff;transition:.18s}
+.file-row:hover{border-color:var(--lb);background:var(--pale)}
+.file-ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;font-size:10px;font-weight:800;color:#fff}
+.file-ic.pdf{background:#d64545} .file-ic.slide{background:#e07b39}
+.file-ic.doc{background:#3A5CAA} .file-ic.sheet{background:#2f9e5e}
+.file-ic.image{background:#7c3aed} .file-ic.video{background:#0d7a86}
+.file-ic.file{background:#7387a0}
+.file-row .nm{flex:1;min-width:0}
+.file-row .nm b{display:block;font-size:13.5px;font-weight:650;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-row .nm span{font-size:11.5px;color:var(--muted)}
+.dropzone{border:2px dashed var(--lb);border-radius:14px;padding:26px;text-align:center;color:var(--muted);cursor:pointer;transition:.2s;background:#fcfdff}
+.dropzone:hover,.dropzone.drag{border-color:var(--blue);background:var(--pale);color:var(--blue)}
+.dropzone svg{width:34px;height:34px;opacity:.5;margin:0 auto 9px;display:block}
+
+.viewer{width:100%;height:min(70vh,640px);border:1px solid var(--line);border-radius:12px;background:#f8fafc}
+
+/* chips multiselect */
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:9px;border:1.5px solid var(--line);border-radius:11px;min-height:46px;background:#fbfdff;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--pale);color:var(--blue);border:1px solid var(--lb);border-radius:20px;padding:3px 9px;font-size:12px;font-weight:600}
+.chip b{cursor:pointer;opacity:.6;font-size:14px;line-height:1}
+.chip b:hover{opacity:1;color:var(--red)}
+
+.hint{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5}
+.sep{height:1px;background:var(--line);margin:18px 0}
+.sec-title{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--line)}
+
+@media(max-width:1180px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%)} .sidebar.open{transform:none;box-shadow:var(--shadow-xl)}
+  .main{margin-left:0} .burger{display:grid}
+  .g4,.g3,.g2,.row2,.row3{grid-template-columns:1fr}
+  .view{padding:18px 16px 50px} .topbar{padding:0 16px}
+  .cal .day{min-height:78px;padding:5px} .cal .day .n{font-size:11px}
+  .ev{font-size:9.5px;padding:2px 5px}
+  .toast-wrap{left:16px;right:16px;bottom:16px;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <div class="login-head">
+      <div class="mark">MANI</div>
+      <h1 id="loginTitle">MMH Training Hub</h1>
+      <p>Hệ thống quản lý đào tạo — Mani Medical Hanoi</p>
+    </div>
+    <div class="login-body">
+      <div class="msg" id="loginMsg"></div>
+
+      <!-- Step 1: email + PIN -->
+      <div id="stepLogin">
+        <div class="fgroup">
+          <label>Email công ty</label>
+          <input class="inp" id="lgEmail" type="email" placeholder="ten.ban@mani.inc" autocomplete="username">
+        </div>
+        <div class="fgroup">
+          <label>Mã PIN</label>
+          <input class="inp" id="lgPin" type="password" placeholder="Nhập mã PIN" autocomplete="current-password">
+        </div>
+        <button class="btn btn-primary btn-block" id="btnLogin">Đăng nhập</button>
+        <div class="login-alt">Chưa có PIN hoặc quên PIN? <b id="goOtp">Gửi mã kích hoạt</b></div>
+      </div>
+
+      <!-- Step 2: OTP -->
+      <div id="stepOtp" style="display:none">
+        <div class="fgroup">
+          <label>Email công ty</label>
+          <input class="inp" id="otEmail" type="email" placeholder="ten.ban@mani.inc">
+        </div>
+        <button class="btn btn-ghost btn-block" id="btnSendOtp" style="margin-bottom:16px">Gửi mã kích hoạt qua email</button>
+        <div id="otpFields" style="display:none">
+          <div class="fgroup">
+            <label>Mã kích hoạt (6 số)</label>
+            <input class="inp otp-inp" id="otCode" maxlength="6" inputmode="numeric" placeholder="······">
+          </div>
+          <div class="fgroup">
+            <label>Đặt mã PIN mới (tối thiểu 6 ký tự)</label>
+            <input class="inp" id="otPin" type="password" placeholder="PIN mới">
+          </div>
+          <button class="btn btn-primary btn-block" id="btnVerify">Xác nhận &amp; đăng nhập</button>
+        </div>
+        <div class="login-alt">Đã có PIN? <b id="goLogin">Quay lại đăng nhập</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div class="app" id="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-brand">
+      <div class="mark">MANI</div>
+      <div><b id="sbTitle">Training Hub</b><span id="sbFY">MMH · FY67</span></div>
+    </div>
+    <nav class="sb-nav" id="sbNav">
+      <div class="sb-sec">Tổng quan</div>
+      <div class="nv on" data-v="dash">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Dashboard
+      </div>
+      <div class="nv" data-v="cal">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Lịch đào tạo
+      </div>
+      <div class="nv" data-v="sessions">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Bài đào tạo <span class="badge" id="bdgSessions"></span>
+      </div>
+
+      <div class="sb-sec">Của tôi</div>
+      <div class="nv" data-v="mytraining">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        Đào tạo của tôi <span class="badge" id="bdgTodo"></span>
+      </div>
+      <div class="nv" data-v="certs">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Chứng chỉ
+      </div>
+
+      <div id="navTrainer" style="display:none">
+        <div class="sb-sec">Trainer</div>
+        <div class="nv" data-v="manage">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
+          Quản lý đào tạo
+        </div>
+        <div class="nv" data-v="results">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg>
+          Kết quả đánh giá
+        </div>
+      </div>
+
+      <div id="navAdmin" style="display:none">
+        <div class="sb-sec">Quản trị</div>
+        <div class="nv" data-v="users">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          Người dùng
+        </div>
+        <div class="nv" data-v="settings">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6h.09A1.65 1.65 0 0010 3.09V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9v.09a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          Cấu hình
+        </div>
+      </div>
+    </nav>
+    <div class="sb-user">
+      <div class="avatar" id="uAvatar">?</div>
+      <div class="info"><b id="uName">—</b><span id="uRole">—</span></div>
+      <button class="icon-btn" id="btnLogout" title="Đăng xuất">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn burger" id="burger" style="background:var(--pale);color:var(--navy)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <div><h2 id="pgTitle">Dashboard</h2><div class="sub" id="pgSub">Tổng quan hoạt động đào tạo</div></div>
+      <div class="spacer"></div>
+      <div class="conn"><span class="dot" id="connDot"></span><span id="connText">Đang kết nối…</span></div>
+      <button class="icon-btn" id="btnRefresh" title="Làm mới" style="background:var(--pale);color:var(--navy)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+      </button>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section class="view on" id="v-dash">
+      <div class="grid g4" id="kpiRow" style="margin-bottom:18px"></div>
+      <div class="grid g2" style="margin-bottom:18px">
+        <div class="card"><div class="card-h"><h3>Tiến độ theo tháng</h3></div><div class="card-b"><div class="chartbox"><canvas id="chMonth"></canvas></div></div></div>
+        <div class="card"><div class="card-h"><h3>Theo nhóm chủ đề</h3></div><div class="card-b"><div class="chartbox"><canvas id="chCat"></canvas></div></div></div>
+      </div>
+      <div class="grid g2" style="margin-bottom:18px">
+        <div class="card"><div class="card-h"><h3>Theo Trainer</h3></div><div class="card-b"><div class="chartbox"><canvas id="chTrainer"></canvas></div></div></div>
+        <div class="card"><div class="card-h"><h3>Kết quả đánh giá</h3></div><div class="card-b"><div class="chartbox"><canvas id="chPass"></canvas></div></div></div>
+      </div>
+      <div class="grid g2">
+        <div class="card"><div class="card-h"><h3>Buổi đào tạo sắp tới</h3></div><div class="card-b" id="upcomingBox"></div></div>
+        <div class="card"><div class="card-h"><h3>Bảng xếp hạng học viên</h3></div><div class="card-b" style="padding:0"><div class="tbl-scroll" style="border:0;max-height:330px" id="leaderBox"></div></div></div>
+      </div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section class="view" id="v-cal">
+      <div class="cal-head">
+        <button class="btn btn-ghost btn-sm" id="calPrev">‹</button>
+        <h3 id="calLabel">—</h3>
+        <button class="btn btn-ghost btn-sm" id="calNext">›</button>
+        <button class="btn btn-ghost btn-sm" id="calToday">Hôm nay</button>
+        <div class="spacer" style="flex:1"></div>
+        <span class="tag plan">Kế hoạch</span><span class="tag completed">Hoàn thành</span><span class="tag cancel">Huỷ</span>
+      </div>
+      <div class="cal" id="calGrid"></div>
+      <div class="card" style="margin-top:18px">
+        <div class="card-h"><h3>Danh sách theo tháng</h3></div>
+        <div class="card-b" style="padding:0"><div class="tbl-scroll" style="border:0" id="calList"></div></div>
+      </div>
+    </section>
+
+    <!-- SESSIONS -->
+    <section class="view" id="v-sessions">
+      <div class="toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input id="sSearch" placeholder="Tìm chủ đề, trainer, đối tượng…">
+        </div>
+        <select class="inp" id="fCategory" style="width:auto;height:40px"><option value="">Tất cả nhóm chủ đề</option></select>
+        <select class="inp" id="fStatus" style="width:auto;height:40px"><option value="">Tất cả trạng thái</option><option>Plan</option><option>Completed</option><option>Cancel</option></select>
+        <select class="inp" id="fTrainer" style="width:auto;height:40px"><option value="">Tất cả trainer</option></select>
+        <div class="spacer" style="flex:1"></div>
+        <button class="btn btn-primary btn-sm" id="btnNewSession" style="display:none">+ Tạo buổi đào tạo</button>
+      </div>
+      <div class="pill-row" id="quickFilters"></div>
+      <div class="s-grid" id="sessionGrid"></div>
+    </section>
+
+    <!-- MY TRAINING -->
+    <section class="view" id="v-mytraining">
+      <div class="grid g4" id="myKpi" style="margin-bottom:18px"></div>
+      <div class="card"><div class="card-h"><h3>Bài đào tạo được phân công</h3><div class="spacer"></div><span class="hint" id="myHint"></span></div>
+        <div class="card-b" style="padding:0"><div class="tbl-scroll" style="border:0" id="myList"></div></div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section class="view" id="v-certs">
+      <div class="s-grid" id="certGrid"></div>
+    </section>
+
+    <!-- MANAGE (trainer) -->
+    <section class="view" id="v-manage">
+      <div class="toolbar">
+        <button class="btn btn-primary btn-sm" id="btnNewSession2">+ Tạo buổi đào tạo</button>
+        <a class="btn btn-ghost btn-sm" id="lnkParent" target="_blank">Folder đào tạo</a>
+        <a class="btn btn-ghost btn-sm" id="lnkQuizFile" target="_blank">Bộ câu hỏi khảo sát</a>
+        <a class="btn btn-ghost btn-sm" id="lnkCert" target="_blank">Folder chứng chỉ</a>
+        <div class="spacer" style="flex:1"></div>
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input id="mSearch" placeholder="Tìm buổi đào tạo…">
+        </div>
+      </div>
+      <div class="card"><div class="card-b" style="padding:0"><div class="tbl-scroll" style="border:0" id="manageList"></div></div></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="view" id="v-results">
+      <div class="toolbar">
+        <select class="inp" id="rSession" style="max-width:460px;height:40px"><option value="">Tất cả buổi đào tạo</option></select>
+        <div class="spacer" style="flex:1"></div>
+        <button class="btn btn-ghost btn-sm" id="btnExportResults">Xuất CSV</button>
+      </div>
+      <div class="grid g4" id="rKpi" style="margin-bottom:18px"></div>
+      <div class="card"><div class="card-b" style="padding:0"><div class="tbl-scroll" style="border:0" id="resultList"></div></div></div>
+    </section>
+
+    <!-- USERS (admin) -->
+    <section class="view" id="v-users">
+      <div class="toolbar">
+        <button class="btn btn-primary btn-sm" id="btnNewUser">+ Thêm người dùng</button>
+        <div class="spacer" style="flex:1"></div>
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input id="uSearch" placeholder="Tìm tên, email, phòng ban…">
+        </div>
+      </div>
+      <div class="card"><div class="card-b" style="padding:0"><div class="tbl-scroll" style="border:0" id="userList"></div></div></div>
+    </section>
+
+    <!-- SETTINGS (admin) -->
+    <section class="view" id="v-settings">
+      <div class="grid g2">
+        <div class="card">
+          <div class="card-h"><h3>Giao diện &amp; thương hiệu</h3></div>
+          <div class="card-b" id="cfgBrand"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>Quy tắc đánh giá &amp; chứng chỉ</h3></div>
+          <div class="card-b" id="cfgRules"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <div class="card-h"><h3>Nhật ký hệ thống</h3><div class="spacer"></div><button class="btn btn-ghost btn-sm" id="btnLoadLogs">Tải nhật ký</button></div>
+        <div class="card-b" style="padding:0"><div class="tbl-scroll" style="border:0;max-height:380px" id="logList"></div></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ================= MODALS ================= -->
+<div class="ov" id="ovSession"><div class="modal wide">
+  <div class="m-h"><h3 id="sesTitle">Tạo buổi đào tạo</h3><button class="icon-btn" data-close style="background:var(--pale);color:var(--navy)">✕</button></div>
+  <div class="m-b" id="sesBody"></div>
+  <div class="m-f"><button class="btn btn-ghost btn-sm" data-close>Đóng</button><button class="btn btn-primary btn-sm" id="btnSaveSession">Lưu buổi đào tạo</button></div>
+</div></div>
+
+<div class="ov" id="ovDetail"><div class="modal xwide">
+  <div class="m-h"><div style="flex:1"><h3 id="dtTitle">—</h3><span class="sub" id="dtSub"></span></div><button class="icon-btn" data-close style="background:var(--pale);color:var(--navy)">✕</button></div>
+  <div class="m-b" id="dtBody"></div>
+  <div class="m-f" id="dtFoot"></div>
+</div></div>
+
+<div class="ov" id="ovQuizBuilder"><div class="modal xwide">
+  <div class="m-h"><div style="flex:1"><h3>Bộ câu hỏi đánh giá</h3><span class="sub" id="qbSub"></span></div><button class="icon-btn" data-close style="background:var(--pale);color:var(--navy)">✕</button></div>
+  <div class="m-b" id="qbBody"></div>
+  <div class="m-f">
+    <button class="btn btn-ghost btn-sm" id="btnAddQ">+ Thêm câu hỏi</button>
+    <div style="flex:1"></div>
+    <button class="btn btn-ghost btn-sm" data-close>Đóng</button>
+    <button class="btn btn-primary btn-sm" id="btnSaveQuiz">Lưu &amp; phát hành</button>
+  </div>
+</div></div>
+
+<div class="ov" id="ovQuiz"><div class="modal xwide" style="max-width:860px">
+  <div id="quizShell"></div>
+</div></div>
+
+<div class="ov" id="ovEmail"><div class="modal">
+  <div class="m-h"><div style="flex:1"><h3>Gửi email thông báo</h3><span class="sub" id="emSub"></span></div><button class="icon-btn" data-close style="background:var(--pale);color:var(--navy)">✕</button></div>
+  <div class="m-b" id="emBody"></div>
+  <div class="m-f"><button class="btn btn-ghost btn-sm" data-close>Huỷ</button><button class="btn btn-primary btn-sm" id="btnSendEmail">Gửi email</button></div>
+</div></div>
+
+<div class="ov" id="ovUser"><div class="modal" style="max-width:540px">
+  <div class="m-h"><h3 id="usrTitle">Thêm người dùng</h3><button class="icon-btn" data-close style="background:var(--pale);color:var(--navy)">✕</button></div>
+  <div class="m-b" id="usrBody"></div>
+  <div class="m-f"><button class="btn btn-ghost btn-sm" data-close>Huỷ</button><button class="btn btn-primary btn-sm" id="btnSaveUser">Lưu</button></div>
+</div></div>
+
+<div class="ov" id="ovViewer"><div class="modal xwide">
+  <div class="m-h"><div style="flex:1"><h3 id="vwTitle">Xem tài liệu</h3></div>
+    <a class="btn btn-ghost btn-sm" id="vwOpen" target="_blank">Mở Drive</a>
+    <button class="icon-btn" data-close style="background:var(--pale);color:var(--navy)">✕</button></div>
+  <div class="m-b" style="padding:14px"><iframe class="viewer" id="vwFrame" allowfullscreen></iframe></div>
+</div></div>
+
+<div class="toast-wrap" id="toasts"></div>
+<div class="loading" id="loader"><div class="spinner"></div><p id="loadTxt">Đang xử lý…</p></div>
+
+<script>
+/* ==========================================================================
+   MMH TRAINING HUB — FRONTEND
+   ---------------------------------------------------------------------------
+   ★ VIỆC DUY NHẤT CẦN LÀM TRƯỚC KHI DÙNG:
+     Thay chuỗi bên dưới bằng URL Web App của Code.gs (Training Hub).
+     Lấy URL đó ở: Apps Script → Deploy → New deployment → Web app → Copy.
+     URL có dạng:  https://script.google.com/macros/s/AKfycb.........../exec
+
+   Lưu ý: đây là URL của dự án MỚI "MMH Training Hub Backend", KHÔNG phải
+   URL web app cũ của file Google Sheet.
+   ========================================================================== */
+
+const API_URL = "PASTE_WEB_APP_URL_HERE";
+
+/* ---------- STATE ---------- */
+const S = {
+  token: localStorage.getItem('mmh_hub_token') || '',
+  user: null, config: {}, meta: {}, sessions: [], users: [], groups: [],
+  stats: null, links: {}, quizFileUrl: '',
+  view: 'dash', calDate: new Date(),
+  filters: {q:'', cat:'', status:'', trainer:'', quick:'all'},
+  editing: null, qbQuestions: [], qbSid: '', attempt: null, timerId: null,
+  charts: {}
+};
+
+/* ---------- API ---------- */
+let _seq = 0;
+function jsonp(params){
+  return new Promise((resolve,reject)=>{
+    const cb = '__hub_cb_' + (_seq++);
+    const s = document.createElement('script');
+    const to = setTimeout(()=>{cleanup();reject(new Error('Hết thời gian chờ — kiểm tra quyền truy cập Web App'))}, 45000);
+    function cleanup(){clearTimeout(to);try{delete window[cb]}catch(e){window[cb]=undefined};s.remove()}
+    window[cb] = d => {cleanup();resolve(d)};
+    const qs = Object.entries(params).map(([k,v])=>k+'='+encodeURIComponent(v==null?'':v)).join('&');
+    s.src = API_URL + '?' + qs + '&callback=' + cb;
+    s.onerror = ()=>{cleanup();reject(new Error('Không gọi được Web App'))};
+    document.body.appendChild(s);
+  });
+}
+async function apiGet(action, params){
+  const p = Object.assign({action:action, token:S.token}, params||{});
+  const r = await jsonp(p);
+  if(r && r.code === 'AUTH'){ doLogout(true); throw new Error(r.error); }
+  if(!r || !r.ok) throw new Error((r && r.error) || 'Phản hồi không hợp lệ');
+  return r;
+}
+async function apiPost(action, payload){
+  const body = new URLSearchParams();
+  body.set('action', action);
+  body.set('token', S.token);
+  body.set('payload', JSON.stringify(Object.assign({action:action, token:S.token}, payload||{})));
+  const res = await fetch(API_URL, {method:'POST', body:body});
+  const r = await res.json();
+  if(r && r.code === 'AUTH'){ doLogout(true); throw new Error(r.error); }
+  if(!r || !r.ok) throw new Error((r && r.error) || 'Thao tác thất bại');
+  return r;
+}
+
+/* ---------- HELPERS ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const nnum = n => (n==null||n==='') ? 0 : Number(n);
+function toast(msg, type){
+  const d = document.createElement('div');
+  d.className = 'toast ' + (type||'');
+  d.innerHTML = '<span>'+esc(msg)+'</span>';
+  $('toasts').appendChild(d);
+  setTimeout(()=>{d.style.opacity='0';d.style.transform='translateX(30px)';d.style.transition='.3s';setTimeout(()=>d.remove(),320)}, 4200);
+}
+const ok  = m => toast(m,'ok');
+const err = m => toast(m,'err');
+function busy(on, txt){ $('loadTxt').textContent = txt||'Đang xử lý…'; $('loader').classList.toggle('on', !!on); }
+function catClass(c){
+  const k = (c||'').toLowerCase();
+  if(k.indexOf('product')>=0) return 'product';
+  if(k.indexOf('sop')>=0) return 'sop';
+  if(k.indexOf('compli')>=0) return 'compliance';
+  if(k.indexOf('skil')>=0) return 'skill';
+  return 'audience';
+}
+function statusClass(s){
+  const k = (s||'').toLowerCase();
+  if(k.indexOf('complet')>=0) return 'completed';
+  if(k.indexOf('cancel')>=0) return 'cancel';
+  return 'plan';
+}
+function statusText(s){
+  const k = (s||'').toLowerCase();
+  if(k.indexOf('complet')>=0) return 'Hoàn thành';
+  if(k.indexOf('cancel')>=0) return 'Đã huỷ';
+  return 'Kế hoạch';
+}
+function initials(n){
+  const p = String(n||'?').trim().split(/\s+/);
+  return (p.length>1 ? p[0][0]+p[p.length-1][0] : String(n||'?').substring(0,2)).toUpperCase();
+}
+function fmtSec(s){
+  s = Math.max(0, Math.floor(s));
+  const m = Math.floor(s/60), r = s%60;
+  return (m<10?'0':'')+m+':'+(r<10?'0':'')+r;
+}
+function dmy(iso){
+  if(!iso) return '';
+  const p = String(iso).split('-');
+  return p.length===3 ? p[2]+'/'+p[1]+'/'+p[0] : iso;
+}
+function setConn(state, text){
+  $('connDot').className = 'dot ' + (state||'');
+  $('connText').textContent = text;
+}
+function closeOv(el){ el.classList.remove('on'); }
+document.addEventListener('click', e=>{
+  if(e.target.hasAttribute && e.target.hasAttribute('data-close')) { closeAll(); }
+  if(e.target.classList && e.target.classList.contains('ov')) closeAll();
+});
+function closeAll(){
+  document.querySelectorAll('.ov.on').forEach(o=>{
+    if(o.id === 'ovQuiz' && S.attempt) return;  // không cho thoát khi đang làm bài
+    o.classList.remove('on');
+  });
+  if($('vwFrame')) $('vwFrame').src = 'about:blank';
+}
+
+/* ==========================================================================
+   AUTH
+   ========================================================================== */
+function showLoginMsg(text, type){
+  const m = $('loginMsg');
+  m.className = 'msg ' + (type||'info');
+  m.innerHTML = text;
+}
+$('goOtp').onclick = ()=>{
+  $('stepLogin').style.display='none'; $('stepOtp').style.display='';
+  $('otEmail').value = $('lgEmail').value; showLoginMsg('','');
+  $('loginMsg').className='msg';
+};
+$('goLogin').onclick = ()=>{
+  $('stepOtp').style.display='none'; $('stepLogin').style.display='';
+  $('loginMsg').className='msg';
+};
+$('btnLogin').onclick = async ()=>{
+  const email = $('lgEmail').value.trim(), pin = $('lgPin').value;
+  if(!email || !pin) return showLoginMsg('Vui lòng nhập email và PIN.','err');
+  $('btnLogin').disabled = true; showLoginMsg('Đang đăng nhập…','info');
+  try{
+    const r = await jsonp({action:'login', email:email, pin:pin});
+    if(!r.ok){
+      showLoginMsg(esc(r.error), 'err');
+      if(r.code === 'NEED_OTP'){ $('goOtp').click(); $('otEmail').value = email; }
+      return;
+    }
+    onLoggedIn(r);
+  }catch(e){ showLoginMsg('Lỗi kết nối: '+esc(e.message), 'err'); }
+  finally{ $('btnLogin').disabled = false; }
+};
+$('btnSendOtp').onclick = async ()=>{
+  const email = $('otEmail').value.trim();
+  if(!email) return showLoginMsg('Vui lòng nhập email công ty.','err');
+  $('btnSendOtp').disabled = true; showLoginMsg('Đang gửi mã…','info');
+  try{
+    const r = await jsonp({action:'requestOtp', email:email});
+    if(!r.ok) return showLoginMsg(esc(r.error),'err');
+    showLoginMsg('✓ ' + esc(r.message) + '. Mã có hiệu lực 10 phút.','ok');
+    $('otpFields').style.display=''; $('otCode').focus();
+  }catch(e){ showLoginMsg('Lỗi kết nối: '+esc(e.message),'err'); }
+  finally{ $('btnSendOtp').disabled = false; }
+};
+$('btnVerify').onclick = async ()=>{
+  const email = $('otEmail').value.trim(), code = $('otCode').value.trim(), pin = $('otPin').value;
+  if(!code || !pin) return showLoginMsg('Nhập mã kích hoạt và PIN mới.','err');
+  $('btnVerify').disabled = true; showLoginMsg('Đang xác thực…','info');
+  try{
+    const r = await jsonp({action:'verifyOtp', email:email, code:code, pin:pin});
+    if(!r.ok) return showLoginMsg(esc(r.error),'err');
+    onLoggedIn(r);
+  }catch(e){ showLoginMsg('Lỗi kết nối: '+esc(e.message),'err'); }
+  finally{ $('btnVerify').disabled = false; }
+};
+['lgPin','lgEmail'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')$('btnLogin').click()}));
+$('otPin').addEventListener('keydown',e=>{if(e.key==='Enter')$('btnVerify').click()});
+
+function onLoggedIn(r){
+  S.token = r.token; S.user = r.user;
+  localStorage.setItem('mmh_hub_token', r.token);
+  $('loginWrap').style.display='none';
+  $('app').classList.add('on');
+  boot();
+}
+function doLogout(silent){
+  if(!silent) apiGet('logout').catch(()=>{});
+  localStorage.removeItem('mmh_hub_token');
+  S.token=''; S.user=null;
+  $('app').classList.remove('on');
+  $('loginWrap').style.display='';
+  $('stepOtp').style.display='none'; $('stepLogin').style.display='';
+  $('loginMsg').className='msg'; $('lgPin').value='';
+  if(silent) showLoginMsg('Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.','err');
+}
+$('btnLogout').onclick = ()=>{ if(confirm('Đăng xuất khỏi Training Hub?')) doLogout(); };
+
+/* ==========================================================================
+   BOOT
+   ========================================================================== */
+async function boot(){
+  setConn('load','Đang tải dữ liệu…');
+  busy(true,'Đang tải dữ liệu đào tạo…');
+  try{
+    const r = await apiGet('bootstrap');
+    S.user = r.user; S.config = r.config||{}; S.meta = r.meta||{};
+    S.sessions = r.sessions||[]; S.users = r.users||[]; S.groups = r.groups||[];
+    S.stats = r.stats||null; S.quizFileUrl = r.quizFileUrl||'';
+    S.links = r.driveFolders||{};
+    applyBrand();
+    renderShell();
+    renderAll();
+    setConn('','Đã kết nối · ' + new Date().toLocaleTimeString('vi-VN'));
+  }catch(e){
+    setConn('off','Mất kết nối');
+    err('Không tải được dữ liệu: ' + e.message);
+  }finally{ busy(false); }
+}
+$('btnRefresh').onclick = ()=>boot();
+
+function applyBrand(){
+  const c = S.config;
+  if(c.COLOR_PRIMARY)   document.documentElement.style.setProperty('--navy', c.COLOR_PRIMARY);
+  if(c.COLOR_ACCENT)    document.documentElement.style.setProperty('--blue', c.COLOR_ACCENT);
+  if(c.COLOR_HIGHLIGHT) document.documentElement.style.setProperty('--yellow', c.COLOR_HIGHLIGHT);
+  if(c.APP_TITLE){ document.title = c.APP_TITLE + ' — Mani Medical Hanoi'; $('sbTitle').textContent = c.APP_TITLE.replace(/^MMH\s*/,''); }
+  if(c.FISCAL_YEAR) $('sbFY').textContent = 'MMH · ' + c.FISCAL_YEAR;
+  document.querySelectorAll('.mark').forEach(m=>{ if(c.LOGO_TEXT) m.textContent = c.LOGO_TEXT; });
+}
+
+function renderShell(){
+  const u = S.user;
+  $('uAvatar').textContent = initials(u.name);
+  $('uName').textContent = u.name;
+  $('uRole').textContent = (u.role==='admin'?'Admin':u.role==='trainer'?'Trainer':'Học viên') + (u.position? ' · '+u.position : '');
+  $('navTrainer').style.display = u.isTrainer ? '' : 'none';
+  $('navAdmin').style.display   = u.isAdmin ? '' : 'none';
+  $('btnNewSession').style.display = u.isTrainer ? '' : 'none';
+  $('lnkParent').href   = S.links.parent || '#';
+  $('lnkCert').href     = S.links.certificate || '#';
+  $('lnkQuizFile').href = S.quizFileUrl || '#';
+}
+
+/* ---------- NAV ---------- */
+const PAGE_META = {
+  dash:['Dashboard','Tổng quan hoạt động đào tạo'],
+  cal:['Lịch đào tạo','Xem lịch theo tháng'],
+  sessions:['Bài đào tạo','Toàn bộ chương trình đào tạo MMH'],
+  mytraining:['Đào tạo của tôi','Bài được phân công & kết quả'],
+  certs:['Chứng chỉ','Chứng chỉ bạn đã đạt được'],
+  manage:['Quản lý đào tạo','Tạo buổi, tải tài liệu, ra đề, gửi email'],
+  results:['Kết quả đánh giá','Điểm số & tỷ lệ đạt của học viên'],
+  users:['Người dùng','Phân quyền & quản lý tài khoản'],
+  settings:['Cấu hình','Tuỳ chỉnh giao diện & quy tắc']
+};
+document.querySelectorAll('.nv').forEach(n=>{
+  n.onclick = ()=>go(n.dataset.v);
+});
+function go(v){
+  S.view = v;
+  document.querySelectorAll('.nv').forEach(n=>n.classList.toggle('on', n.dataset.v===v));
+  document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on', s.id==='v-'+v));
+  const m = PAGE_META[v]||['',''];
+  $('pgTitle').textContent = m[0]; $('pgSub').textContent = m[1];
+  $('sidebar').classList.remove('open');
+  if(v==='cal') renderCalendar();
+  if(v==='results') renderResults();
+  if(v==='users') renderUsers();
+  if(v==='settings') renderSettings();
+  window.scrollTo(0,0);
+}
+$('burger').onclick = ()=>$('sidebar').classList.toggle('open');
+
+/** Chạy từng khối render độc lập — một khối lỗi không làm hỏng cả trang */
+function safeRun(name, fn){
+  try{ fn(); }
+  catch(e){ console.error('[render '+name+']', e); }
+}
+function renderAll(){
+  safeRun('dashboard', renderDashboard);
+  safeRun('sessions',  renderSessions);
+  safeRun('mytraining',renderMyTraining);
+  safeRun('certs',     renderCerts);
+  safeRun('manage',    renderManage);
+  safeRun('filters',   fillFilters);
+  const todo = S.sessions.filter(s=>s.hasQuiz && s.quizActive && s.myStatus!=='Completed' && isMine(s)).length;
+  $('bdgTodo').textContent = todo>0 ? todo : '';
+  $('bdgTodo').style.display = todo>0 ? '' : 'none';
+  $('bdgSessions').textContent = S.sessions.filter(s=>s.status!=='Cancel').length;
+}
+function isMine(s){
+  const e = (S.user.email||'').split('@')[0].toLowerCase();
+  return (s.audienceEmails||[]).some(x=>String(x).split('@')[0].toLowerCase()===e) || s.myStatus || s.myScore!=='';
+}
+
+/* ==========================================================================
+   DASHBOARD
+   ========================================================================== */
+function renderDashboard(){
+  const k = (S.stats && S.stats.kpi) || {};
+  $('kpiRow').innerHTML = [
+    kpiCard('navy','Tổng buổi đào tạo', k.totalSessions||0, (k.completedSessions||0)+' hoàn thành · '+(k.plannedSessions||0)+' kế hoạch'),
+    kpiCard('green','Tỷ lệ đạt', (k.passRate||0)+'%', (k.totalPass||0)+'/'+(k.totalDone||0)+' lượt đánh giá'),
+    kpiCard('gold','Điểm trung bình', (k.avgScore||0)+'%', 'Trên toàn bộ bài đánh giá'),
+    kpiCard('orange','Chứng chỉ đã cấp', k.totalCerts||0, (k.totalLearners||0)+' nhân sự tham gia')
+  ].join('');
+
+  const st = S.stats||{};
+  drawBar('chMonth', (st.byMonth||[]).map(m=>monthLabel(m.name)),
+    [{label:'Tổng buổi', data:(st.byMonth||[]).map(m=>m.total), color:'#CFE2F3'},
+     {label:'Hoàn thành', data:(st.byMonth||[]).map(m=>m.done), color:'#3A5CAA'}]);
+
+  drawDoughnut('chCat', (st.byCategory||[]).map(c=>c.name), (st.byCategory||[]).map(c=>c.total));
+
+  const tr = (st.byTrainer||[]).slice(0,8);
+  drawBarH('chTrainer', tr.map(t=>t.name), tr.map(t=>t.total), tr.map(t=>t.done));
+
+  const passed = k.totalPass||0, failed = Math.max(0,(k.totalDone||0)-passed), pending = Math.max(0,(k.totalEnroll||0)-(k.totalDone||0));
+  drawDoughnut('chPass', ['Đạt','Chưa đạt','Chưa làm bài'], [passed,failed,pending], ['#2f9e5e','#d64545','#CFE2F3']);
+
+  const up = st.upcoming||[];
+  $('upcomingBox').innerHTML = up.length ? up.map(s=>`
+    <div class="file-row" style="cursor:pointer" onclick="openDetail('${s.sid}')">
+      <div class="file-ic" style="background:var(--navy);flex-direction:column;line-height:1;gap:1px">
+        <span style="font-size:14px">${esc((s.dateText||'').split('/')[0]||'')}</span>
+        <span style="font-size:8px;opacity:.8">TH${esc((s.dateText||'').split('/')[1]||'')}</span>
+      </div>
+      <div class="nm"><b>${esc(s.topic)}</b><span>${esc(s.trainer)} · ${esc(s.audience)}</span></div>
+      <span class="tag ${catClass(s.category)}">${esc(s.category)}</span>
+    </div>`).join('') : emptyBox('Chưa có buổi đào tạo nào sắp tới');
+
+  const lead = (st.learners||[]).filter(l=>l.assigned>0).slice(0,25);
+  $('leaderBox').innerHTML = lead.length ? `<table class="tbl">
+    <thead><tr><th>#</th><th>Học viên</th><th>Được giao</th><th>Hoàn thành</th><th>Đạt</th><th>Điểm TB</th></tr></thead>
+    <tbody>${lead.map((l,i)=>`<tr>
+      <td><b style="color:var(--muted)">${i+1}</b></td>
+      <td><div style="display:flex;align-items:center;gap:9px"><div class="avatar" style="width:28px;height:28px;font-size:11px">${initials(l.name)}</div><div><b style="font-size:13px;color:var(--navy)">${esc(l.name)}</b><div style="font-size:11px;color:var(--muted)">${esc(l.dept||'')}</div></div></div></td>
+      <td>${l.assigned}</td><td>${l.completed}</td>
+      <td><span class="tag ${l.passed>0?'pass':'audience'}">${l.passed}</span></td>
+      <td><b style="color:var(--navy)">${l.avg}%</b></td>
+    </tr>`).join('')}</tbody></table>` : emptyBox('Chưa có dữ liệu học viên');
+}
+function kpiCard(cls,label,val,sub){
+  return `<div class="kpi ${cls}"><div class="lb">${esc(label)}</div><div class="vl">${esc(val)}</div><div class="sub">${esc(sub)}</div></div>`;
+}
+function emptyBox(t,sub){
+  return `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><b>${esc(t)}</b>${sub?'<div>'+esc(sub)+'</div>':''}</div>`;
+}
+function monthLabel(ym){
+  if(!ym) return '';
+  const p = String(ym).split('-');
+  return p.length===2 ? 'T'+Number(p[1])+'/'+p[0].substring(2) : ym;
+}
+const CHART_FONT = {family:"Aptos, Inter, Segoe UI, sans-serif", size:11};
+function destroyChart(id){ if(S.charts[id]){ try{S.charts[id].destroy()}catch(e){} delete S.charts[id]; } }
+/** Thư viện biểu đồ nạp từ CDN — nếu mạng công ty chặn thì hiện thông báo
+ *  thay vì làm hỏng toàn bộ trang. */
+function chartReady(id){
+  if(typeof Chart !== 'undefined') return true;
+  const el = $(id);
+  if(el && el.parentNode) el.parentNode.innerHTML =
+    '<div class="empty" style="padding:30px 16px"><b>Không tải được thư viện biểu đồ</b>'+
+    '<div style="font-size:12.5px">Số liệu vẫn đầy đủ ở các thẻ phía trên và trong bảng. '+
+    'Nếu mạng công ty chặn cdnjs.cloudflare.com, hãy báo IT mở hoặc dùng bản Chart.js nội bộ.</div></div>';
+  return false;
+}
+function drawBar(id, labels, series){
+  if(!chartReady(id)) return;
+  destroyChart(id); const el = $(id); if(!el) return;
+  S.charts[id] = new Chart(el, {type:'bar', data:{labels:labels, datasets:series.map(s=>({label:s.label,data:s.data,backgroundColor:s.color,borderRadius:5,maxBarThickness:34}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:CHART_FONT,boxWidth:11,boxHeight:11,padding:14}}},
+      scales:{x:{grid:{display:false},ticks:{font:CHART_FONT,color:'#7387a0'}},
+              y:{beginAtZero:true,grid:{color:'#eef3fa'},ticks:{font:CHART_FONT,color:'#7387a0',precision:0}}}}});
+}
+function drawBarH(id, labels, total, done){
+  if(!chartReady(id)) return;
+  destroyChart(id); const el = $(id); if(!el) return;
+  S.charts[id] = new Chart(el, {type:'bar',
+    data:{labels:labels, datasets:[
+      {label:'Tổng buổi',data:total,backgroundColor:'#CFE2F3',borderRadius:5},
+      {label:'Hoàn thành',data:done,backgroundColor:'#003047',borderRadius:5}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:CHART_FONT,boxWidth:11,boxHeight:11,padding:14}}},
+      scales:{x:{beginAtZero:true,grid:{color:'#eef3fa'},ticks:{font:CHART_FONT,color:'#7387a0',precision:0}},
+              y:{grid:{display:false},ticks:{font:CHART_FONT,color:'#003047'}}}}});
+}
+function drawDoughnut(id, labels, data, colors){
+  if(!chartReady(id)) return;
+  destroyChart(id); const el = $(id); if(!el) return;
+  const pal = colors || ['#003047','#3A5CAA','#FFE100','#CFE2F3','#2f9e5e','#e07b39','#7c3aed'];
+  S.charts[id] = new Chart(el, {type:'doughnut', data:{labels:labels, datasets:[{data:data,backgroundColor:pal,borderWidth:2,borderColor:'#fff'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+      plugins:{legend:{position:'bottom',labels:{font:CHART_FONT,boxWidth:11,boxHeight:11,padding:13}}}}});
+}
+
+/* ==========================================================================
+   CALENDAR
+   ========================================================================== */
+$('calPrev').onclick = ()=>{ S.calDate.setMonth(S.calDate.getMonth()-1); renderCalendar(); };
+$('calNext').onclick = ()=>{ S.calDate.setMonth(S.calDate.getMonth()+1); renderCalendar(); };
+$('calToday').onclick = ()=>{ S.calDate = new Date(); renderCalendar(); };
+
+function renderCalendar(){
+  const d = S.calDate, y = d.getFullYear(), m = d.getMonth();
+  $('calLabel').textContent = 'Tháng ' + (m+1) + ' / ' + y;
+  const first = new Date(y, m, 1);
+  let start = first.getDay(); start = start===0 ? 6 : start-1;   // tuần bắt đầu thứ Hai
+  const days = new Date(y, m+1, 0).getDate();
+  const prevDays = new Date(y, m, 0).getDate();
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  const byDate = {};
+  S.sessions.forEach(s=>{ if(s.date){ (byDate[s.date] = byDate[s.date]||[]).push(s); } });
+
+  let html = ['T2','T3','T4','T5','T6','T7','CN'].map(x=>`<div class="dow">${x}</div>`).join('');
+  const cells = Math.ceil((start+days)/7)*7;
+  for(let i=0;i<cells;i++){
+    const n = i - start + 1;
+    let cy=y, cm=m, cd=n, out=false;
+    if(n<1){ cd = prevDays+n; cm = m-1; out=true; if(cm<0){cm=11;cy--;} }
+    else if(n>days){ cd = n-days; cm = m+1; out=true; if(cm>11){cm=0;cy++;} }
+    const iso = cy+'-'+String(cm+1).padStart(2,'0')+'-'+String(cd).padStart(2,'0');
+    const isToday = !out && new Date(cy,cm,cd).getTime()===today.getTime();
+    const evs = byDate[iso]||[];
+    html += `<div class="day ${out?'out':''} ${isToday?'today':''}">
+      <div class="n">${cd}</div>
+      ${evs.slice(0,4).map(s=>`<div class="ev ${statusClass(s.status)}" onclick="openDetail('${s.sid}')" title="${esc(s.topic)}">${esc(s.topic)}</div>`).join('')}
+      ${evs.length>4?`<div style="font-size:10px;color:var(--muted);padding-left:4px">+${evs.length-4} buổi</div>`:''}
+    </div>`;
+  }
+  $('calGrid').innerHTML = html;
+
+  const ym = y+'-'+String(m+1).padStart(2,'0');
+  const list = S.sessions.filter(s=>s.date && s.date.indexOf(ym)===0).sort((a,b)=>a.date.localeCompare(b.date));
+  $('calList').innerHTML = list.length ? `<table class="tbl">
+    <thead><tr><th>Ngày</th><th>Chủ đề</th><th>Nhóm</th><th>Hình thức</th><th>Trainer</th><th>Đối tượng</th><th>Trạng thái</th></tr></thead>
+    <tbody>${list.map(s=>`<tr style="cursor:pointer" onclick="openDetail('${s.sid}')">
+      <td><b style="color:var(--navy)">${esc(s.dateText)}</b>${s.timeFrom?`<div style="font-size:11px;color:var(--muted)">${esc(s.timeFrom)}${s.timeTo?'–'+esc(s.timeTo):''}</div>`:''}</td>
+      <td style="max-width:320px"><b style="color:var(--navy)">${esc(s.topic)}</b></td>
+      <td><span class="tag ${catClass(s.category)}">${esc(s.category)}</span></td>
+      <td>${esc(s.type)}</td><td>${esc(s.trainer)}</td><td style="font-size:12.5px">${esc(s.audience)}</td>
+      <td><span class="tag ${statusClass(s.status)}">${statusText(s.status)}</span></td>
+    </tr>`).join('')}</tbody></table>` : emptyBox('Tháng này chưa có buổi đào tạo nào');
+}
+</script>
+
+<script>
+/* ==========================================================================
+   SESSIONS
+   ========================================================================== */
+function fillFilters(){
+  const cats = [...new Set(S.sessions.map(s=>s.category).filter(Boolean))];
+  const trs  = [...new Set(S.sessions.map(s=>s.trainer).filter(Boolean))];
+  $('fCategory').innerHTML = '<option value="">Tất cả nhóm chủ đề</option>' + cats.map(c=>`<option>${esc(c)}</option>`).join('');
+  $('fTrainer').innerHTML  = '<option value="">Tất cả trainer</option>' + trs.map(c=>`<option>${esc(c)}</option>`).join('');
+  $('rSession').innerHTML  = '<option value="">Tất cả buổi đào tạo</option>' +
+    S.sessions.filter(s=>s.hasQuiz).map(s=>`<option value="${s.sid}">${esc(s.dateText+' — '+s.topic)}</option>`).join('');
+
+  const counts = {
+    all: S.sessions.filter(s=>s.status!=='Cancel').length,
+    plan: S.sessions.filter(s=>s.status==='Plan').length,
+    done: S.sessions.filter(s=>s.status==='Completed').length,
+    quiz: S.sessions.filter(s=>s.hasQuiz && s.quizActive).length,
+    mine: S.sessions.filter(s=>s.canEdit).length
+  };
+  $('quickFilters').innerHTML = [
+    ['all','Tất cả',counts.all],['plan','Kế hoạch',counts.plan],['done','Hoàn thành',counts.done],
+    ['quiz','Có bài đánh giá',counts.quiz]
+  ].concat(S.user.isTrainer ? [['mine','Do tôi phụ trách',counts.mine]] : [])
+   .map(([k,l,n])=>`<button class="pill ${S.filters.quick===k?'on':''}" data-q="${k}">${l}<span class="n">${n}</span></button>`).join('');
+  document.querySelectorAll('#quickFilters .pill').forEach(p=>p.onclick=()=>{S.filters.quick=p.dataset.q;fillFilters();renderSessions()});
+}
+['sSearch','fCategory','fStatus','fTrainer'].forEach(id=>{
+  $(id).addEventListener('input', ()=>{
+    S.filters.q = $('sSearch').value.toLowerCase();
+    S.filters.cat = $('fCategory').value; S.filters.status = $('fStatus').value; S.filters.trainer = $('fTrainer').value;
+    renderSessions();
+  });
+});
+function filteredSessions(){
+  const f = S.filters;
+  return S.sessions.filter(s=>{
+    if(f.quick==='all' && s.status==='Cancel') return false;
+    if(f.quick==='plan' && s.status!=='Plan') return false;
+    if(f.quick==='done' && s.status!=='Completed') return false;
+    if(f.quick==='quiz' && !(s.hasQuiz && s.quizActive)) return false;
+    if(f.quick==='mine' && !s.canEdit) return false;
+    if(f.cat && s.category!==f.cat) return false;
+    if(f.status && s.status!==f.status) return false;
+    if(f.trainer && s.trainer!==f.trainer) return false;
+    if(f.q){
+      const hay = (s.topic+' '+s.trainer+' '+s.audience+' '+s.category+' '+s.purpose).toLowerCase();
+      if(hay.indexOf(f.q)<0) return false;
+    }
+    return true;
+  }).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+}
+function renderSessions(){
+  const list = filteredSessions();
+  $('sessionGrid').innerHTML = list.length ? list.map(sessionCard).join('')
+    : emptyBox('Không tìm thấy buổi đào tạo nào','Thử đổi bộ lọc hoặc từ khoá tìm kiếm');
+}
+function sessionCard(s){
+  const pct = s.enrolled ? Math.round(s.passed/s.enrolled*100) : 0;
+  return `<div class="s-card" onclick="openDetail('${s.sid}')">
+    <div class="top">
+      <span class="tag ${catClass(s.category)}">${esc(s.category||'—')}</span>
+      <span class="tag ${statusClass(s.status)}">${statusText(s.status)}</span>
+      ${s.hasQuiz ? `<span class="tag ${s.quizActive?'gold':'audience'}">${s.quizActive?'Đang mở test':'Test đóng'}</span>`:''}
+      ${s.myPass ? '<span class="tag pass">Bạn đã đạt</span>':''}
+    </div>
+    <div class="bd">
+      <h4>${esc(s.topic||'(Chưa có chủ đề)')}</h4>
+      <div class="purpose">${esc(s.purpose||'—')}</div>
+      <div class="s-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>${esc(s.dateText||'—')}</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>${esc(s.trainer||'—')}</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>${esc(s.audience||'—')}</span>
+      </div>
+    </div>
+    <div class="ft">
+      <div class="prog"><i style="width:${pct}%"></i></div>
+      <span class="pct">${s.passed||0}/${s.enrolled||0} đạt</span>
+    </div>
+  </div>`;
+}
+
+/* ---------- DETAIL ---------- */
+async function openDetail(sid){
+  const s = S.sessions.find(x=>x.sid===sid);
+  if(!s) return err('Không tìm thấy buổi đào tạo.');
+  $('dtTitle').textContent = s.topic || '(Chưa có chủ đề)';
+  $('dtSub').textContent = `${s.dateText||''} · ${s.category||''} · Trainer: ${s.trainer||''}`;
+  $('ovDetail').classList.add('on');
+  $('dtBody').innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div></div>';
+  $('dtFoot').innerHTML = '';
+
+  let full=null, mats={data:[]}, qz=null;
+  try{
+    full = await apiGet('getSession',{sid:sid});
+    mats = await apiGet('listMaterials',{sid:sid}).catch(()=>({data:[],folderUrl:''}));
+    qz   = await apiGet('myQuizStatus',{sid:sid}).catch(()=>null);
+  }catch(e){ $('dtBody').innerHTML = emptyBox('Không tải được chi tiết', e.message); return; }
+
+  const d = full.data, enroll = full.enrollment||[];
+  const pct = enroll.length ? Math.round(enroll.filter(e=>e.pass).length/enroll.length*100) : 0;
+
+  $('dtBody').innerHTML = `
+    <div class="grid g2" style="gap:20px">
+      <div>
+        <div class="sec-title">Thông tin buổi đào tạo</div>
+        <table class="tbl" style="font-size:13.5px">
+          ${infoRow('Mục tiêu', d.purpose)}
+          ${infoRow('Nhóm chủ đề', `<span class="tag ${catClass(d.category)}">${esc(d.category)}</span>`,1)}
+          ${infoRow('Hình thức', d.type)}
+          ${infoRow('Thời gian', (d.dateText||'') + (d.timeFrom ? ' · '+d.timeFrom+(d.timeTo?'–'+d.timeTo:'') : ''))}
+          ${infoRow('Trainer', d.trainer)}
+          ${infoRow('Đối tượng', d.audience)}
+          ${infoRow('Trạng thái', `<span class="tag ${statusClass(d.status)}">${statusText(d.status)}</span>`,1)}
+          ${d.meetingLink?infoRow('Link họp', `<a href="${esc(d.meetingLink)}" target="_blank" style="color:var(--blue)">Mở link</a>`,1):''}
+          ${d.recordLink?infoRow('Bản ghi', `<a href="${esc(d.recordLink)}" target="_blank" style="color:var(--blue)">Xem bản ghi</a>`,1):''}
+          ${d.summary?infoRow('Tổng kết', d.summary):''}
+        </table>
+
+        <div class="sec-title" style="margin-top:22px">Tiến độ hoàn thành</div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
+          <div class="prog" style="height:9px"><i style="width:${pct}%"></i></div>
+          <b style="color:var(--navy);white-space:nowrap">${enroll.filter(e=>e.pass).length}/${enroll.length} đạt</b>
+        </div>
+        <div class="tbl-scroll" style="max-height:230px">
+          ${enroll.length?`<table class="tbl"><thead><tr><th>Học viên</th><th>Trạng thái</th><th>Điểm</th><th>Chứng chỉ</th></tr></thead><tbody>
+            ${enroll.map(e=>`<tr>
+              <td><b style="font-size:13px;color:var(--navy)">${esc(e.name)}</b><div style="font-size:11px;color:var(--muted)">${esc(e.email)}</div></td>
+              <td><span class="tag ${e.status==='Completed'?'completed':'plan'}">${e.status==='Completed'?'Đã làm bài':'Chưa làm'}</span></td>
+              <td>${e.percent!==''?`<b style="color:${e.pass?'var(--green)':'var(--red)'}">${e.percent}%</b>`:'—'}</td>
+              <td>${e.certUrl?`<a href="${esc(e.certUrl)}" target="_blank" class="tag pass">Xem</a>`:'—'}</td>
+            </tr>`).join('')}</tbody></table>`:emptyBox('Chưa có danh sách tham dự')}
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title">Tài liệu đào tạo</div>
+        ${d.canEdit?`<div class="dropzone" id="dropZone" style="margin-bottom:12px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M17 8l-5-5-5 5M12 3v12"/></svg>
+          <b style="color:var(--navy);display:block;font-size:13.5px">Kéo thả hoặc bấm để tải tài liệu lên</b>
+          <span style="font-size:12px">PPT, PDF, Word, ảnh… (tối đa ~40MB/file)</span>
+          <input type="file" id="fileInput" multiple style="display:none">
+        </div>`:''}
+        <div id="matList">${renderMaterials(mats.data||[], d.canEdit)}</div>
+        ${mats.folderUrl?`<a href="${esc(mats.folderUrl)}" target="_blank" class="btn btn-ghost btn-sm btn-block" style="margin-top:10px">Mở thư mục trên Drive</a>`
+          :(d.canEdit?`<button class="btn btn-ghost btn-sm btn-block" style="margin-top:10px" onclick="createFolder('${d.sid}')">Tạo thư mục tài liệu</button>`:'')}
+
+        <div class="sec-title" style="margin-top:22px">Bài đánh giá sau đào tạo</div>
+        ${renderQuizBox(d, qz)}
+      </div>
+    </div>`;
+
+  const foot = [];
+  if(d.canEdit){
+    foot.push(`<button class="btn btn-ghost btn-sm" onclick="openSessionForm('${d.sid}')">Sửa thông tin</button>`);
+    foot.push(`<button class="btn btn-ghost btn-sm" onclick="openQuizBuilder('${d.sid}')">${d.hasQuiz?'Sửa bộ câu hỏi':'Tạo bộ câu hỏi'}</button>`);
+    foot.push(`<button class="btn btn-gold btn-sm" onclick="openEmail('${d.sid}')">Gửi email thông báo</button>`);
+  }
+  foot.push('<div style="flex:1"></div><button class="btn btn-ghost btn-sm" data-close>Đóng</button>');
+  $('dtFoot').innerHTML = foot.join('');
+
+  if(d.canEdit) bindUpload(d.sid);
+}
+function infoRow(k,v,raw){
+  return `<tr><td style="color:var(--muted);width:34%;vertical-align:top">${esc(k)}</td><td style="color:var(--navy);font-weight:600">${raw?v:esc(v||'—')}</td></tr>`;
+}
+function renderMaterials(files, canEdit){
+  if(!files.length) return emptyBox('Chưa có tài liệu','Tải tài liệu lên để học viên xem lại');
+  return files.map(f=>`<div class="file-row">
+    <div class="file-ic ${f.kind}">${f.kind==='slide'?'PPT':f.kind==='pdf'?'PDF':f.kind==='doc'?'DOC':f.kind==='sheet'?'XLS':f.kind==='image'?'IMG':f.kind==='video'?'VID':'FILE'}</div>
+    <div class="nm"><b>${esc(f.name)}</b><span>${esc(f.sizeText||'')} · ${esc(f.updated||'')}</span></div>
+    <button class="btn btn-ghost btn-sm" onclick="viewFile('${f.preview}','${esc(f.name).replace(/'/g,'')}','${f.url}')">Xem</button>
+    ${canEdit?`<button class="icon-btn" style="background:#fdeaea;color:var(--red)" onclick="delMaterial('${f.id}','${esc(f.name).replace(/'/g,'')}')">✕</button>`:''}
+  </div>`).join('');
+}
+function viewFile(preview,name,url){
+  $('vwTitle').textContent = name;
+  $('vwOpen').href = url;
+  $('vwFrame').src = preview;
+  $('ovViewer').classList.add('on');
+}
+async function delMaterial(id,name){
+  if(!confirm('Xoá tài liệu "'+name+'"?')) return;
+  busy(true,'Đang xoá…');
+  try{ const r = await apiPost('deleteMaterial',{fileId:id}); ok(r.message); closeAll(); }
+  catch(e){ err(e.message); } finally{ busy(false); }
+}
+async function createFolder(sid){
+  busy(true,'Đang tạo thư mục…');
+  try{ const r = await apiGet('createFolder',{sid:sid}); ok(r.message); await boot(); openDetail(sid); }
+  catch(e){ err(e.message); } finally{ busy(false); }
+}
+function bindUpload(sid){
+  const dz = $('dropZone'), fi = $('fileInput');
+  if(!dz) return;
+  dz.onclick = ()=>fi.click();
+  fi.onchange = ()=>handleFiles(sid, fi.files);
+  ['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('drag')}));
+  ['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('drag')}));
+  dz.addEventListener('drop', e=>handleFiles(sid, e.dataTransfer.files));
+}
+function fileToB64(f){
+  return new Promise((res,rej)=>{
+    const r = new FileReader();
+    r.onload = ()=>res(String(r.result).split(',')[1]);
+    r.onerror = ()=>rej(new Error('Không đọc được file'));
+    r.readAsDataURL(f);
+  });
+}
+async function handleFiles(sid, files){
+  if(!files || !files.length) return;
+  for(let i=0;i<files.length;i++){
+    const f = files[i];
+    if(f.size > 42*1024*1024){ err(`"${f.name}" vượt quá 40MB — hãy tải lên Drive rồi dán link.`); continue; }
+    busy(true, `Đang tải "${f.name}" (${i+1}/${files.length})…`);
+    try{
+      const b64 = await fileToB64(f);
+      const r = await apiPost('uploadMaterial',{sid:sid, filename:f.name, mime:f.type||'application/octet-stream', data:b64});
+      ok(r.message);
+    }catch(e){ err('Lỗi tải "'+f.name+'": '+e.message); }
+  }
+  busy(false);
+  try{ const m = await apiGet('listMaterials',{sid:sid}); $('matList').innerHTML = renderMaterials(m.data||[], true); }catch(e){}
+}
+
+/* ---------- QUIZ BOX in detail ---------- */
+function renderQuizBox(d, qz){
+  if(!d.hasQuiz){
+    return `<div class="card" style="box-shadow:none"><div class="card-b" style="text-align:center;padding:22px">
+      <div style="font-size:13px;color:var(--muted);margin-bottom:10px">Buổi đào tạo này chưa có bộ câu hỏi đánh giá.</div>
+      ${d.canEdit?`<button class="btn btn-primary btn-sm" onclick="openQuizBuilder('${d.sid}')">Tạo bộ câu hỏi</button>`:''}
+    </div></div>`;
+  }
+  const q = qz||{};
+  const done = q.best;
+  return `<div class="card" style="box-shadow:none"><div class="card-b">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:13px">
+      <span class="tag gold">${d.questionCount||q.totalQuestions||0} câu hỏi</span>
+      <span class="tag audience">${d.durationMin||q.durationMin||0} phút</span>
+      <span class="tag audience">Đạt từ ${d.passScore||q.passScore||0}%</span>
+      <span class="tag ${d.quizActive?'completed':'cancel'}">${d.quizActive?'Đang mở':'Đã đóng'}</span>
+    </div>
+    ${done?`<div style="background:${done.result==='Pass'?'#f0faf4':'#fdf2f2'};border-radius:11px;padding:13px 16px;margin-bottom:12px">
+      <div style="font-size:12px;color:var(--muted)">Kết quả tốt nhất của bạn</div>
+      <div style="font-size:24px;font-weight:850;color:${done.result==='Pass'?'var(--green)':'var(--red)'};letter-spacing:-1px">${done.percent}% <span style="font-size:13px;font-weight:600">(${done.score}/${done.maxScore})</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Nộp lúc ${esc(done.submittedAt)} · Lượt ${done.attempt}</div>
+    </div>`:''}
+    ${q.available
+      ? `<button class="btn btn-primary btn-sm btn-block" onclick="startQuiz('${d.sid}')">${done?'Làm lại bài đánh giá':'Bắt đầu làm bài'} (lượt ${(q.attempts||0)+1}/${q.maxAttempts})</button>`
+      : `<div class="hint" style="text-align:center">${esc(q.reason||'Bài đánh giá hiện không khả dụng.')}</div>`}
+    ${d.canEdit?`<div style="display:flex;gap:8px;margin-top:10px">
+      <button class="btn btn-ghost btn-sm" style="flex:1" onclick="openQuizBuilder('${d.sid}')">Sửa câu hỏi</button>
+      <button class="btn btn-ghost btn-sm" style="flex:1" onclick="togglePublish('${d.sid}',${d.quizActive?'false':'true'})">${d.quizActive?'Đóng bài test':'Mở bài test'}</button>
+    </div>`:''}
+  </div></div>`;
+}
+async function togglePublish(sid, active){
+  busy(true);
+  try{ const r = await apiPost('publishQuiz',{sid:sid, active:active}); ok(r.message); await boot(); openDetail(sid); }
+  catch(e){ err(e.message); } finally{ busy(false); }
+}
+
+/* ==========================================================================
+   SESSION FORM
+   ========================================================================== */
+$('btnNewSession').onclick = ()=>openSessionForm('');
+$('btnNewSession2').onclick = ()=>openSessionForm('');
+function openSessionForm(sid){
+  const s = sid ? S.sessions.find(x=>x.sid===sid) : null;
+  S.editing = s ? s.sid : '';
+  $('sesTitle').textContent = s ? 'Sửa buổi đào tạo' : 'Tạo buổi đào tạo mới';
+  const meta = S.meta||{};
+  const audienceOpts = [...new Set((meta.audiences||[]).concat(Object.keys({
+    'MMH - All member':1,'MMH - Sales team':1,'MMH - Marketing team':1,'MMH - Back office team':1,
+    'MMH - Sales Dental':1,'MMH - Sales Surgical':1,'MMH - Sales & MKT':1,'MMH - Leaders':1
+  })))];
+  $('sesBody').innerHTML = `
+    <div class="fgroup"><label>Chủ đề đào tạo *</label>
+      <input class="inp" id="f_topic" value="${esc(s?s.topic:'')}" placeholder="VD: Đặc tính & ứng dụng chỉ khâu nhãn khoa MANI"></div>
+    <div class="fgroup"><label>Mục tiêu đào tạo</label>
+      <textarea class="inp" id="f_purpose" placeholder="Mục tiêu học viên đạt được sau buổi đào tạo">${esc(s?s.purpose:'')}</textarea></div>
+    <div class="row3">
+      <div class="fgroup"><label>Ngày đào tạo *</label><input class="inp" id="f_date" type="date" value="${s?s.date:''}"></div>
+      <div class="fgroup"><label>Giờ bắt đầu</label><input class="inp" id="f_from" type="time" value="${esc(s?s.timeFrom:'')}"></div>
+      <div class="fgroup"><label>Giờ kết thúc</label><input class="inp" id="f_to" type="time" value="${esc(s?s.timeTo:'')}"></div>
+    </div>
+    <div class="row3">
+      <div class="fgroup"><label>Nhóm chủ đề *</label><select class="inp" id="f_cat">
+        ${(meta.categories||[]).map(c=>`<option ${s&&s.category.trim()===c.trim()?'selected':''}>${esc(c)}</option>`).join('')}</select></div>
+      <div class="fgroup"><label>Hình thức</label><select class="inp" id="f_type">
+        ${(meta.types||['Internal','External']).map(c=>`<option ${s&&s.type.trim()===c.trim()?'selected':''}>${esc(c)}</option>`).join('')}</select></div>
+      <div class="fgroup"><label>Trạng thái</label><select class="inp" id="f_status">
+        ${['Plan','Completed','Cancel'].map(c=>`<option ${s&&s.status===c?'selected':''}>${c}</option>`).join('')}</select></div>
+    </div>
+    <div class="row2">
+      <div class="fgroup"><label>Trainer *</label><select class="inp" id="f_trainer">
+        ${(meta.trainers||[]).map(t=>`<option ${s?(s.trainer.trim()===t.trim()?'selected':''):(t===S.user.name?'selected':'')}>${esc(t)}</option>`).join('')}</select></div>
+      <div class="fgroup"><label>Đối tượng tham dự *</label><select class="inp" id="f_aud">
+        ${audienceOpts.map(a=>`<option ${s&&s.audience.trim()===a.trim()?'selected':''}>${esc(a)}</option>`).join('')}</select>
+        <div class="hint">Hệ thống tự tạo danh sách học viên từ nhóm được chọn.</div></div>
+    </div>
+    <div class="row2">
+      <div class="fgroup"><label>Link họp (Teams/Meet)</label><input class="inp" id="f_meet" value="${esc(s?s.meetingLink:'')}" placeholder="https://…"></div>
+      <div class="fgroup"><label>Link bản ghi</label><input class="inp" id="f_rec" value="${esc(s?s.recordLink:'')}" placeholder="https://…"></div>
+    </div>
+    <div class="fgroup"><label>Tổng kết &amp; phản hồi</label><textarea class="inp" id="f_sum" placeholder="Ghi chú sau buổi đào tạo">${esc(s?s.summary:'')}</textarea></div>
+    ${!s?`<label style="display:flex;align-items:center;gap:9px;font-size:13.5px;cursor:pointer;background:var(--pale);padding:12px 14px;border-radius:11px">
+      <input type="checkbox" id="f_folder" checked style="width:17px;height:17px;accent-color:var(--navy)">
+      <span>Tự động tạo thư mục tài liệu trên Drive theo nhóm chủ đề</span></label>`:''}`;
+  $('ovSession').classList.add('on');
+}
+$('btnSaveSession').onclick = async ()=>{
+  const p = {
+    sid: S.editing||'', topic:$('f_topic').value.trim(), purpose:$('f_purpose').value.trim(),
+    date:$('f_date').value, timeFrom:$('f_from').value, timeTo:$('f_to').value,
+    category:$('f_cat').value, type:$('f_type').value, status:$('f_status').value,
+    trainer:$('f_trainer').value, audience:$('f_aud').value,
+    meetingLink:$('f_meet').value.trim(), recordLink:$('f_rec').value.trim(), summary:$('f_sum').value.trim(),
+    createFolder: $('f_folder') ? $('f_folder').checked : false
+  };
+  if(!p.topic) return err('Vui lòng nhập chủ đề đào tạo.');
+  if(!p.date)  return err('Vui lòng chọn ngày đào tạo.');
+  busy(true,'Đang lưu…');
+  try{
+    const r = await apiPost('saveSession', p);
+    ok(r.message); closeAll(); await boot();
+  }catch(e){ err(e.message); } finally{ busy(false); }
+};
+
+/* ==========================================================================
+   QUIZ BUILDER (trainer)
+   ========================================================================== */
+async function openQuizBuilder(sid){
+  S.qbSid = sid;
+  const s = S.sessions.find(x=>x.sid===sid);
+  $('qbSub').textContent = s ? s.topic : '';
+  $('ovQuizBuilder').classList.add('on');
+  $('qbBody').innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div></div>';
+  let cfg = null, qs = [];
+  try{ const r = await apiGet('getQuiz',{sid:sid}); cfg = r.config; qs = r.questions||[]; }catch(e){}
+  S.qbQuestions = qs.length ? qs.map(q=>({type:q.type,question:q.question,a:q.a,b:q.b,c:q.c,d:q.d,correct:q.correct,points:q.points,explanation:q.explanation}))
+                            : [blankQ()];
+  S.qbCfg = cfg || {
+    passScore: nnum(S.config.DEFAULT_PASS_SCORE)||70,
+    durationMin: nnum(S.config.DEFAULT_DURATION_MIN)||15,
+    maxAttempts: nnum(S.config.DEFAULT_MAX_ATTEMPTS)||2,
+    shuffle:true, showResult:true, active:true
+  };
+  renderQB();
+}
+function blankQ(){ return {type:'single',question:'',a:'',b:'',c:'',d:'',correct:'A',points:1,explanation:''}; }
+function renderQB(){
+  const c = S.qbCfg;
+  $('qbBody').innerHTML = `
+    <div class="card" style="box-shadow:none;margin-bottom:18px"><div class="card-b">
+      <div class="sec-title">Cấu hình bài đánh giá</div>
+      <div class="row3">
+        <div class="fgroup"><label>Điểm đạt (%)</label><input class="inp" id="q_pass" type="number" min="1" max="100" value="${c.passScore}"></div>
+        <div class="fgroup"><label>Thời gian làm bài (phút)</label><input class="inp" id="q_dur" type="number" min="1" max="180" value="${c.durationMin}"></div>
+        <div class="fgroup"><label>Số lượt được làm</label><input class="inp" id="q_att" type="number" min="1" max="10" value="${c.maxAttempts}"></div>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <label style="display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer"><input type="checkbox" id="q_shuffle" ${c.shuffle?'checked':''} style="width:17px;height:17px;accent-color:var(--navy)">Xáo trộn thứ tự câu hỏi</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer"><input type="checkbox" id="q_show" ${c.showResult!==false?'checked':''} style="width:17px;height:17px;accent-color:var(--navy)">Hiện đáp án sau khi nộp</label>
+        <label style="display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer"><input type="checkbox" id="q_active" ${c.active!==false?'checked':''} style="width:17px;height:17px;accent-color:var(--navy)">Phát hành ngay cho học viên</label>
+      </div>
+    </div></div>
+    <div class="sec-title">Câu hỏi (${S.qbQuestions.length})</div>
+    <div id="qbList">${S.qbQuestions.map(qbItem).join('')}</div>`;
+}
+function qbItem(q,i){
+  const isTF = q.type==='truefalse';
+  return `<div class="qb-item" data-i="${i}">
+    <div class="qb-head">
+      <span class="n">${i+1}</span>
+      <select class="inp" style="height:36px;width:auto" onchange="qbSet(${i},'type',this.value)">
+        <option value="single" ${!isTF?'selected':''}>Trắc nghiệm</option>
+        <option value="truefalse" ${isTF?'selected':''}>Đúng / Sai</option>
+      </select>
+      <input class="inp" style="height:36px;width:92px" type="number" min="1" value="${q.points||1}" onchange="qbSet(${i},'points',this.value)" title="Số điểm">
+      <div style="flex:1"></div>
+      <button class="icon-btn" style="background:#fdeaea;color:var(--red)" onclick="qbDel(${i})" title="Xoá câu">✕</button>
+    </div>
+    <div class="fgroup"><textarea class="inp" style="min-height:62px" placeholder="Nội dung câu hỏi…" onchange="qbSet(${i},'question',this.value)">${esc(q.question)}</textarea></div>
+    ${isTF
+      ? `<div style="display:flex;gap:9px">
+          <button class="btn btn-sm ${q.correct==='A'?'btn-primary':'btn-ghost'}" style="flex:1" onclick="qbSet(${i},'correct','A');renderQBList()">Đáp án: ĐÚNG</button>
+          <button class="btn btn-sm ${q.correct==='B'?'btn-primary':'btn-ghost'}" style="flex:1" onclick="qbSet(${i},'correct','B');renderQBList()">Đáp án: SAI</button>
+        </div>`
+      : ['a','b','c','d'].map(k=>`<div class="qb-opt">
+          <div class="key ${q.correct===k.toUpperCase()?'on':''}" onclick="qbSet(${i},'correct','${k.toUpperCase()}');renderQBList()" title="Chọn làm đáp án đúng">${k.toUpperCase()}</div>
+          <input class="inp" placeholder="Phương án ${k.toUpperCase()}${k==='c'||k==='d'?' (không bắt buộc)':''}" value="${esc(q[k])}" onchange="qbSet(${i},'${k}',this.value)">
+        </div>`).join('')}
+    <div class="fgroup" style="margin-top:9px;margin-bottom:0"><input class="inp" style="height:38px" placeholder="Giải thích đáp án (hiện sau khi nộp bài)" value="${esc(q.explanation)}" onchange="qbSet(${i},'explanation',this.value)"></div>
+  </div>`;
+}
+function renderQBList(){ $('qbList').innerHTML = S.qbQuestions.map(qbItem).join(''); }
+function qbSet(i,k,v){ S.qbQuestions[i][k] = (k==='points')? Number(v)||1 : v; if(k==='type') renderQBList(); }
+function qbDel(i){ if(S.qbQuestions.length<=1) return err('Cần ít nhất 1 câu hỏi.'); S.qbQuestions.splice(i,1); renderQB(); }
+$('btnAddQ').onclick = ()=>{
+  saveQBCfg(); S.qbQuestions.push(blankQ()); renderQB();
+  setTimeout(()=>{ const l=$('qbList'); if(l) l.lastElementChild.scrollIntoView({behavior:'smooth',block:'center'}); },60);
+};
+function saveQBCfg(){
+  if(!$('q_pass')) return;
+  S.qbCfg = {
+    passScore:Number($('q_pass').value)||70, durationMin:Number($('q_dur').value)||15,
+    maxAttempts:Number($('q_att').value)||2, shuffle:$('q_shuffle').checked,
+    showResult:$('q_show').checked, active:$('q_active').checked
+  };
+}
+$('btnSaveQuiz').onclick = async ()=>{
+  saveQBCfg();
+  const c = S.qbCfg;
+  busy(true,'Đang lưu bộ câu hỏi…');
+  try{
+    const r = await apiPost('saveQuiz', Object.assign({sid:S.qbSid, questions:S.qbQuestions}, c));
+    ok(r.message); closeAll(); await boot();
+  }catch(e){ err(e.message); } finally{ busy(false); }
+};
+</script>
+
+<script>
+/* ==========================================================================
+   LÀM BÀI ĐÁNH GIÁ (có đếm ngược)
+   ========================================================================== */
+async function startQuiz(sid){
+  busy(true,'Đang chuẩn bị đề…');
+  let r;
+  try{ r = await apiGet('quizStart',{sid:sid}); }
+  catch(e){ busy(false); return err(e.message); }
+  busy(false);
+  closeAll();
+  S.attempt = {
+    id:r.attemptId, sid:sid, questions:r.questions, answers:{},
+    endAt: Date.now() + r.durationSec*1000, passScore:r.passScore,
+    session:r.session, attemptNo:r.attemptNo, maxAttempts:r.maxAttempts, total:r.durationSec
+  };
+  renderQuiz();
+  $('ovQuiz').classList.add('on');
+  startTimer();
+}
+function renderQuiz(){
+  const a = S.attempt;
+  $('quizShell').innerHTML = `
+    <div class="quiz-top">
+      <div>
+        <div style="font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);font-weight:700">Bài đánh giá sau đào tạo</div>
+        <div style="font-size:15px;font-weight:800;color:var(--navy);max-width:420px;line-height:1.3">${esc(a.session.topic)}</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="text-align:right">
+        <div style="font-size:11px;color:var(--muted)">Lượt ${a.attemptNo}/${a.maxAttempts} · Đạt từ ${a.passScore}%</div>
+        <div style="font-size:12px;color:var(--navy);font-weight:700"><span id="qDone">0</span>/${a.questions.length} câu đã trả lời</div>
+      </div>
+      <div class="timer" id="qTimer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:17px;height:17px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span id="qClock">--:--</span>
+      </div>
+    </div>
+    <div style="padding:0 22px 6px"><div class="qprog"><i id="qBar" style="width:0%"></i></div></div>
+    <div class="m-b" style="padding:18px 22px" id="quizBody">
+      ${a.questions.map(q=>`
+        <div class="q-item" id="qi_${q.qid}">
+          <div class="q-text"><span class="q-num">${q.no}</span><span>${esc(q.question)}${q.points>1?` <span class="tag gold" style="margin-left:6px">${q.points} điểm</span>`:''}</span></div>
+          ${q.options.map(o=>`<div class="opt" onclick="pick('${q.qid}','${o.k}')" id="op_${q.qid}_${o.k}">
+            <div class="k">${o.k}</div><div class="t">${esc(o.t)}</div></div>`).join('')}
+        </div>`).join('')}
+    </div>
+    <div class="m-f">
+      <button class="btn btn-ghost btn-sm" onclick="abandonQuiz()">Thoát (huỷ bài)</button>
+      <div style="flex:1"></div>
+      <button class="btn btn-primary btn-sm" id="btnSubmitQuiz" onclick="submitQuiz(false)">Nộp bài</button>
+    </div>`;
+}
+function pick(qid,k){
+  const a = S.attempt; if(!a) return;
+  a.answers[qid] = k;
+  const item = $('qi_'+qid);
+  item.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  $('op_'+qid+'_'+k).classList.add('sel');
+  item.classList.add('answered');
+  const n = Object.keys(a.answers).length;
+  $('qDone').textContent = n;
+  $('qBar').style.width = Math.round(n/a.questions.length*100)+'%';
+}
+function startTimer(){
+  clearInterval(S.timerId);
+  S.timerId = setInterval(()=>{
+    const a = S.attempt; if(!a){ clearInterval(S.timerId); return; }
+    const left = Math.max(0, Math.round((a.endAt - Date.now())/1000));
+    const el = $('qClock'), box = $('qTimer');
+    if(el) el.textContent = fmtSec(left);
+    if(box){
+      box.className = 'timer' + (left<=30 ? ' danger' : left<=120 ? ' warn' : '');
+    }
+    if(left<=0){ clearInterval(S.timerId); toast('Hết giờ — hệ thống tự động nộp bài.','err'); submitQuiz(true); }
+  }, 250);
+}
+function abandonQuiz(){
+  if(!confirm('Thoát sẽ huỷ bài làm hiện tại và vẫn tính là 1 lượt. Tiếp tục?')) return;
+  clearInterval(S.timerId); S.attempt=null;
+  $('ovQuiz').classList.remove('on');
+}
+async function submitQuiz(auto){
+  const a = S.attempt; if(!a) return;
+  const unanswered = a.questions.length - Object.keys(a.answers).length;
+  if(!auto && unanswered>0 && !confirm(`Còn ${unanswered} câu chưa trả lời. Vẫn nộp bài?`)) return;
+  clearInterval(S.timerId);
+  const btn = $('btnSubmitQuiz'); if(btn){ btn.disabled = true; btn.textContent = 'Đang chấm…'; }
+  busy(true,'Đang chấm điểm & cấp chứng chỉ…');
+  try{
+    const r = await apiPost('quizSubmit',{attemptId:a.id, answers:a.answers});
+    S.attempt = null;
+    renderQuizResult(r, a);
+    await boot();
+  }catch(e){
+    err(e.message);
+    if(btn){ btn.disabled=false; btn.textContent='Nộp bài'; }
+  }finally{ busy(false); }
+}
+function renderQuizResult(r, a){
+  const pass = r.pass, pct = r.percent;
+  const C = 2*Math.PI*66;
+  $('quizShell').innerHTML = `
+    <div class="m-h"><h3>Kết quả bài đánh giá</h3><button class="icon-btn" data-close style="background:var(--pale);color:var(--navy)">✕</button></div>
+    <div class="m-b">
+      <div class="result-hero">
+        <div class="result-ring">
+          <svg width="150" height="150"><circle cx="75" cy="75" r="66" fill="none" stroke="#e6edf6" stroke-width="13"/>
+          <circle cx="75" cy="75" r="66" fill="none" stroke="${pass?'#2f9e5e':'#d64545'}" stroke-width="13" stroke-linecap="round"
+            stroke-dasharray="${C}" stroke-dashoffset="${C - C*Math.min(pct,100)/100}"/></svg>
+          <div class="txt"><b>${pct}%</b><span>${r.score}/${r.maxScore} ĐIỂM</span></div>
+        </div>
+        <div style="font-size:23px;font-weight:850;color:${pass?'var(--green)':'var(--red)'};letter-spacing:-.5px;margin-bottom:6px">
+          ${pass?'ĐẠT':'CHƯA ĐẠT'}</div>
+        <div style="color:var(--muted);font-size:13.5px;max-width:460px;margin:0 auto 4px">${esc(r.message)}</div>
+        <div style="color:var(--muted);font-size:12.5px">Điểm yêu cầu: ${r.passScore}% · Thời gian làm bài: ${fmtSec(r.durationSec)} · Lượt ${r.attemptNo}/${r.maxAttempts}</div>
+        ${r.certificate?`<div style="margin-top:20px">
+          <div style="background:var(--cream);border:1.5px solid var(--yellow);border-radius:13px;padding:16px 20px;max-width:460px;margin:0 auto">
+            <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8a6d00">Chứng chỉ đã được cấp</div>
+            <div style="font-size:13px;color:var(--navy);margin:5px 0 11px">Số ${esc(r.certificate.certNo)}${r.certificate.emailed?' · Đã gửi email cho bạn và quản lý trực tiếp':''}</div>
+            <a href="${esc(r.certificate.url)}" target="_blank" class="btn btn-primary btn-sm">Xem chứng chỉ PDF</a>
+          </div></div>`:''}
+      </div>
+      ${(r.detail&&r.detail.length)?`<div class="sec-title">Chi tiết đáp án</div>${r.detail.map(d=>`
+        <div class="q-item">
+          <div class="q-text"><span class="q-num" style="background:${d.isCorrect?'var(--green)':'var(--red)'}">${d.no}</span><span>${esc(d.question)}</span></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:13px;margin-bottom:${d.explanation?'8px':'0'}">
+            <span class="tag ${d.isCorrect?'pass':'fail'}">Bạn chọn: ${esc(d.given||'—')}</span>
+            ${!d.isCorrect?`<span class="tag pass">Đáp án đúng: ${esc(d.correct)}</span>`:''}
+          </div>
+          ${d.explanation?`<div class="explain">${esc(d.explanation)}</div>`:''}
+        </div>`).join('')}`:''}
+    </div>
+    <div class="m-f"><div style="flex:1"></div><button class="btn btn-primary btn-sm" data-close>Đóng</button></div>`;
+}
+
+/* ==========================================================================
+   ĐÀO TẠO CỦA TÔI
+   ========================================================================== */
+function renderMyTraining(){
+  const mine = S.sessions.filter(s=>s.status!=='Cancel' && (s.myStatus || s.myScore!=='' || s.hasQuiz));
+  const assigned = S.sessions.filter(s=>s.myStatus);
+  const done = assigned.filter(s=>s.myStatus==='Completed');
+  const passed = assigned.filter(s=>s.myPass);
+  const avg = done.length ? Math.round(done.reduce((a,s)=>a+nnum(s.myScore),0)/done.length) : 0;
+
+  $('myKpi').innerHTML = [
+    kpiCard('navy','Được phân công', assigned.length, 'Bài đào tạo'),
+    kpiCard('green','Đã hoàn thành', done.length, assigned.length?Math.round(done.length/assigned.length*100)+'% tiến độ':'—'),
+    kpiCard('gold','Đã đạt', passed.length, 'Có chứng chỉ'),
+    kpiCard('orange','Điểm trung bình', avg+'%', 'Trên các bài đã làm')
+  ].join('');
+
+  const todo = S.sessions.filter(s=>s.hasQuiz && s.quizActive && !s.myPass && s.status!=='Cancel');
+  $('myHint').textContent = todo.length ? todo.length+' bài đánh giá đang chờ bạn' : 'Bạn đã hoàn thành tất cả bài đánh giá đang mở';
+
+  const list = mine.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  $('myList').innerHTML = list.length ? `<table class="tbl">
+    <thead><tr><th>Ngày</th><th>Chủ đề</th><th>Nhóm</th><th>Trainer</th><th>Bài đánh giá</th><th>Kết quả</th><th></th></tr></thead>
+    <tbody>${list.map(s=>`<tr>
+      <td>${esc(s.dateText||'—')}</td>
+      <td style="max-width:330px"><b style="color:var(--navy)">${esc(s.topic)}</b></td>
+      <td><span class="tag ${catClass(s.category)}">${esc(s.category)}</span></td>
+      <td>${esc(s.trainer)}</td>
+      <td>${s.hasQuiz?`<span class="tag ${s.quizActive?'gold':'audience'}">${s.quizActive?'Đang mở':'Đã đóng'}</span>`:'<span style="color:var(--muted)">Không có</span>'}</td>
+      <td>${s.myScore!==''?`<span class="tag ${s.myPass?'pass':'fail'}">${s.myScore}% ${s.myPass?'Đạt':'Chưa đạt'}</span>`:'<span style="color:var(--muted)">Chưa làm</span>'}</td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-ghost btn-sm" onclick="openDetail('${s.sid}')">Chi tiết</button>
+        ${(s.hasQuiz&&s.quizActive)?`<button class="btn btn-primary btn-sm" onclick="startQuiz('${s.sid}')">${s.myScore!==''?'Làm lại':'Làm bài'}</button>`:''}
+      </td>
+    </tr>`).join('')}</tbody></table>` : emptyBox('Chưa có bài đào tạo nào được phân công');
+}
+
+/* ==========================================================================
+   CHỨNG CHỈ
+   ========================================================================== */
+async function renderCerts(){
+  try{
+    const r = await apiGet('myCertificates');
+    const list = r.data||[];
+    $('certGrid').innerHTML = list.length ? list.map(c=>`
+      <div class="s-card" style="cursor:default">
+        <div class="top"><span class="tag ${catClass(c.category)}">${esc(c.category||'—')}</span><span class="tag pass">${c.percent}% Đạt</span></div>
+        <div class="bd">
+          <h4>${esc(c.topic)}</h4>
+          <div class="s-meta">
+            <span>Trainer: ${esc(c.trainer||'—')}</span>
+            <span>Đào tạo: ${esc(c.dateText||'—')}</span>
+            ${c.issuedAt?`<span>Cấp ngày: ${esc(c.issuedAt)}</span>`:''}
+          </div>
+        </div>
+        <div class="ft"><a href="${esc(c.certUrl)}" target="_blank" class="btn btn-primary btn-sm btn-block">Xem chứng chỉ PDF</a></div>
+      </div>`).join('') : emptyBox('Bạn chưa có chứng chỉ nào','Hoàn thành bài đánh giá sau đào tạo để nhận chứng chỉ');
+  }catch(e){ $('certGrid').innerHTML = emptyBox('Không tải được chứng chỉ', e.message); }
+}
+
+/* ==========================================================================
+   QUẢN LÝ (trainer)
+   ========================================================================== */
+$('mSearch') && $('mSearch').addEventListener('input', renderManage);
+function renderManage(){
+  const q = ($('mSearch')?$('mSearch').value:'').toLowerCase();
+  let list = S.sessions.filter(s=>S.user.isAdmin || s.canEdit);
+  if(q) list = list.filter(s=>(s.topic+' '+s.trainer+' '+s.audience).toLowerCase().indexOf(q)>=0);
+  list.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  $('manageList').innerHTML = list.length ? `<table class="tbl">
+    <thead><tr><th>Ngày</th><th>Chủ đề</th><th>Nhóm</th><th>Đối tượng</th><th>Trạng thái</th><th>Tài liệu</th><th>Bài test</th><th>Tiến độ</th><th>Thao tác</th></tr></thead>
+    <tbody>${list.map(s=>`<tr>
+      <td style="white-space:nowrap">${esc(s.dateText||'—')}</td>
+      <td style="max-width:280px"><b style="color:var(--navy)">${esc(s.topic)}</b></td>
+      <td><span class="tag ${catClass(s.category)}">${esc(s.category)}</span></td>
+      <td style="font-size:12.5px;max-width:170px">${esc(s.audience)}</td>
+      <td><span class="tag ${statusClass(s.status)}">${statusText(s.status)}</span></td>
+      <td>${s.folderUrl?`<a href="${esc(s.folderUrl)}" target="_blank" class="tag product">Folder</a>`:'<span style="color:var(--muted)">—</span>'}</td>
+      <td>${s.hasQuiz?`<span class="tag ${s.quizActive?'completed':'cancel'}">${s.questionCount} câu</span>`:'<span style="color:var(--muted)">—</span>'}</td>
+      <td style="white-space:nowrap"><b style="color:var(--navy)">${s.passed||0}/${s.enrolled||0}</b></td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-ghost btn-sm" onclick="openDetail('${s.sid}')">Mở</button>
+        <button class="btn btn-ghost btn-sm" onclick="openQuizBuilder('${s.sid}')">Đề</button>
+        <button class="btn btn-gold btn-sm" onclick="openEmail('${s.sid}')">Email</button>
+      </td>
+    </tr>`).join('')}</tbody></table>` : emptyBox('Chưa có buổi đào tạo nào','Bấm "Tạo buổi đào tạo" để bắt đầu');
+}
+
+/* ==========================================================================
+   EMAIL
+   ========================================================================== */
+let EM = {sid:'', recipients:[], cc:[]};
+function openEmail(sid){
+  const s = S.sessions.find(x=>x.sid===sid); if(!s) return;
+  EM = {sid:sid, recipients:[], cc:[]};
+  $('emSub').textContent = s.topic;
+  const groupOpts = S.groups.map(g=>`<option value="${esc(g.name)}">${esc(g.name)} (${g.count} người)</option>`).join('');
+  const userOpts = S.users.filter(u=>u.active).map(u=>`<option value="${esc(u.email)}">${esc(u.name)} — ${esc(u.email)}</option>`).join('');
+  $('emBody').innerHTML = `
+    <div class="fgroup"><label>Loại email</label>
+      <select class="inp" id="em_kind">
+        <option value="pre">Thư mời trước đào tạo</option>
+        <option value="after">Thông báo sau đào tạo (tài liệu &amp; bài test)</option>
+      </select></div>
+    <div class="fgroup"><label>Chọn nhóm người nhận</label>
+      <select class="inp" id="em_group"><option value="">— Chọn nhóm —</option>${groupOpts}</select></div>
+    <div class="fgroup"><label>Hoặc chọn từng người</label>
+      <select class="inp" id="em_user"><option value="">— Chọn người —</option>${userOpts}</select></div>
+    <div class="fgroup"><label>Người nhận (TO)</label><div class="chips" id="em_to"></div>
+      <div class="hint">Mặc định lấy theo đối tượng "<b>${esc(s.audience)}</b>" nếu bạn không chọn thêm.</div></div>
+    <div class="fgroup"><label>CC</label><div class="chips" id="em_cc"></div>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" onclick="addCc('tt.tuyen@mani.inc')">+ HOD S&amp;M</button>
+        <button class="btn btn-ghost btn-sm" onclick="addCc('nt.ha@mani.inc')">+ Director</button>
+        <button class="btn btn-ghost btn-sm" onclick="addCc('mmh.product@mani.inc')">+ Product Team</button>
+      </div></div>
+    <div class="fgroup"><label>Ghi chú thêm (hiển thị trong email)</label>
+      <textarea class="inp" id="em_note" placeholder="VD: Anh/Chị vui lòng chuẩn bị máy tính và tài liệu sản phẩm trước buổi đào tạo."></textarea></div>`;
+  $('em_group').onchange = function(){
+    const g = S.groups.find(x=>x.name===this.value);
+    if(g){ g.emails.forEach(e=>{ if(EM.recipients.indexOf(e)<0) EM.recipients.push(e); }); drawChips(); }
+    this.value='';
+  };
+  $('em_user').onchange = function(){
+    if(this.value && EM.recipients.indexOf(this.value)<0){ EM.recipients.push(this.value); drawChips(); }
+    this.value='';
+  };
+  drawChips();
+  $('ovEmail').classList.add('on');
+}
+function addCc(e){ if(EM.cc.indexOf(e)<0){ EM.cc.push(e); drawChips(); } }
+function drawChips(){
+  $('em_to').innerHTML = EM.recipients.length
+    ? EM.recipients.map((e,i)=>`<span class="chip">${esc(e)}<b onclick="EM.recipients.splice(${i},1);drawChips()">×</b></span>`).join('')
+    : '<span style="color:var(--muted);font-size:12.5px">Chưa chọn — sẽ dùng danh sách mặc định của buổi đào tạo</span>';
+  $('em_cc').innerHTML = EM.cc.length
+    ? EM.cc.map((e,i)=>`<span class="chip">${esc(e)}<b onclick="EM.cc.splice(${i},1);drawChips()">×</b></span>`).join('')
+    : '<span style="color:var(--muted);font-size:12.5px">Không có CC</span>';
+}
+$('btnSendEmail').onclick = async ()=>{
+  busy(true,'Đang gửi email…');
+  try{
+    const r = await apiPost('sendInvite',{
+      sid:EM.sid, kind:$('em_kind').value, recipients:EM.recipients, cc:EM.cc,
+      note:$('em_note').value, appUrl:location.href.split('#')[0]
+    });
+    ok(r.message); closeAll(); await boot();
+  }catch(e){ err(e.message); } finally{ busy(false); }
+};
+
+/* ==========================================================================
+   KẾT QUẢ ĐÁNH GIÁ
+   ========================================================================== */
+$('rSession').addEventListener('change', renderResults);
+let RESULTS = [];
+async function renderResults(){
+  const sid = $('rSession').value;
+  $('resultList').innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div></div>';
+  try{
+    const r = await apiGet('quizResults', sid?{sid:sid}:{});
+    RESULTS = r.data||[];
+    const pass = RESULTS.filter(x=>x.result==='Pass').length;
+    const avg = RESULTS.length ? Math.round(RESULTS.reduce((a,x)=>a+x.percent,0)/RESULTS.length*10)/10 : 0;
+    const avgTime = RESULTS.length ? Math.round(RESULTS.reduce((a,x)=>a+x.durationSec,0)/RESULTS.length) : 0;
+    $('rKpi').innerHTML = [
+      kpiCard('navy','Lượt làm bài', RESULTS.length, sid?'Của buổi đã chọn':'Toàn hệ thống'),
+      kpiCard('green','Lượt đạt', pass, RESULTS.length?Math.round(pass/RESULTS.length*100)+'% tỷ lệ đạt':'—'),
+      kpiCard('gold','Điểm trung bình', avg+'%', 'Trên tổng số lượt'),
+      kpiCard('orange','Thời gian TB', fmtSec(avgTime), 'Mỗi lượt làm bài')
+    ].join('');
+    $('resultList').innerHTML = RESULTS.length ? `<table class="tbl">
+      <thead><tr><th>Học viên</th><th>Chủ đề</th><th>Lượt</th><th>Nộp lúc</th><th>Thời gian</th><th>Điểm</th><th>Kết quả</th><th>Chứng chỉ</th></tr></thead>
+      <tbody>${RESULTS.slice().reverse().map(x=>`<tr>
+        <td><b style="color:var(--navy)">${esc(x.name)}</b><div style="font-size:11px;color:var(--muted)">${esc(x.email)}</div></td>
+        <td style="max-width:250px;font-size:12.5px">${esc(x.topic)}</td>
+        <td>${x.attempt}</td><td style="white-space:nowrap;font-size:12.5px">${esc(x.submittedAt)}</td>
+        <td>${fmtSec(x.durationSec)}</td>
+        <td><b style="color:var(--navy)">${x.percent}%</b><div style="font-size:11px;color:var(--muted)">${x.score}/${x.maxScore}</div></td>
+        <td><span class="tag ${x.result==='Pass'?'pass':'fail'}">${x.result==='Pass'?'Đạt':'Chưa đạt'}</span></td>
+        <td>${x.certUrl?`<a href="${esc(x.certUrl)}" target="_blank" class="tag pass">Xem</a>`
+             :(x.result==='Pass'?`<button class="btn btn-ghost btn-sm" onclick="resendCert('${x.sid}','${esc(x.email)}')">Cấp lại</button>`:'—')}</td>
+      </tr>`).join('')}</tbody></table>` : emptyBox('Chưa có lượt làm bài nào');
+  }catch(e){ $('resultList').innerHTML = emptyBox('Không tải được kết quả', e.message); }
+}
+async function resendCert(sid,email){
+  busy(true,'Đang cấp chứng chỉ…');
+  try{ const r = await apiPost('resendCert',{sid:sid,email:email}); ok(r.message); renderResults(); }
+  catch(e){ err(e.message); } finally{ busy(false); }
+}
+$('btnExportResults').onclick = ()=>{
+  if(!RESULTS.length) return err('Chưa có dữ liệu để xuất.');
+  const head = ['Hoc vien','Email','Chu de','Luot','Nop luc','Thoi gian (giay)','Diem','Tong diem','Phan tram','Ket qua'];
+  const rows = RESULTS.map(x=>[x.name,x.email,x.topic,x.attempt,x.submittedAt,x.durationSec,x.score,x.maxScore,x.percent,x.result]);
+  const csv = '﻿' + [head].concat(rows).map(r=>r.map(c=>`"${String(c==null?'':c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  a.download = 'MMH_Training_Results_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+  ok('Đã xuất file CSV.');
+};
+
+/* ==========================================================================
+   NGƯỜI DÙNG (admin)
+   ========================================================================== */
+let USERS = [];
+$('uSearch') && $('uSearch').addEventListener('input', drawUsers);
+async function renderUsers(){
+  $('userList').innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div></div>';
+  try{ const r = await apiGet('listUsers'); USERS = r.data||[]; drawUsers(); }
+  catch(e){ $('userList').innerHTML = emptyBox('Không tải được danh sách', e.message); }
+}
+function drawUsers(){
+  const q = ($('uSearch')?$('uSearch').value:'').toLowerCase();
+  const list = USERS.filter(u=>!q || (u.name+' '+u.email+' '+(u.dept||'')+' '+(u.position||'')).toLowerCase().indexOf(q)>=0);
+  $('userList').innerHTML = list.length ? `<table class="tbl">
+    <thead><tr><th>Nhân sự</th><th>Phòng ban</th><th>Vị trí</th><th>Vai trò</th><th>Quản lý trực tiếp</th><th>Kích hoạt</th><th>Đăng nhập cuối</th><th>Thao tác</th></tr></thead>
+    <tbody>${list.map(u=>`<tr>
+      <td><div style="display:flex;align-items:center;gap:9px"><div class="avatar" style="width:30px;height:30px;font-size:11px">${initials(u.name)}</div>
+        <div><b style="font-size:13px;color:var(--navy)">${esc(u.name)}</b><div style="font-size:11px;color:var(--muted)">${esc(u.email)}</div></div></div></td>
+      <td style="font-size:12.5px">${esc(u.dept||'—')}</td>
+      <td style="font-size:12.5px">${esc(u.position||'—')}</td>
+      <td><span class="tag ${u.role}">${u.role==='admin'?'Admin':u.role==='trainer'?'Trainer':'Học viên'}</span></td>
+      <td style="font-size:12px;color:var(--muted)">${esc(u.manager||'—')}</td>
+      <td>${u.activated?'<span class="tag pass">Đã kích hoạt</span>':'<span class="tag cancel">Chưa</span>'}</td>
+      <td style="font-size:12px;color:var(--muted);white-space:nowrap">${esc(u.lastLogin||'—')}</td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-ghost btn-sm" onclick="openUserForm('${esc(u.email)}')">Sửa</button>
+        <button class="btn btn-ghost btn-sm" onclick="resetPin('${esc(u.email)}','${esc(u.name).replace(/'/g,'')}')">Reset PIN</button>
+        <button class="btn btn-danger btn-sm" onclick="delUser('${esc(u.email)}','${esc(u.name).replace(/'/g,'')}')">Xoá</button>
+      </td>
+    </tr>`).join('')}</tbody></table>` : emptyBox('Không tìm thấy người dùng');
+}
+$('btnNewUser').onclick = ()=>openUserForm('');
+function openUserForm(email){
+  const u = email ? USERS.find(x=>x.email===email) : null;
+  $('usrTitle').textContent = u ? 'Sửa người dùng' : 'Thêm người dùng';
+  $('usrBody').innerHTML = `
+    <div class="fgroup"><label>Họ tên *</label><input class="inp" id="u_name" value="${esc(u?u.name:'')}"></div>
+    <div class="fgroup"><label>Email công ty *</label><input class="inp" id="u_email" value="${esc(u?u.email:'')}" ${u?'readonly style="background:#f1f3f5"':''} placeholder="ten.ban@mani.inc"></div>
+    <div class="row2">
+      <div class="fgroup"><label>Phòng ban</label><input class="inp" id="u_dept" value="${esc(u?u.dept:'')}" placeholder="VD: Product Team"></div>
+      <div class="fgroup"><label>Vị trí</label><input class="inp" id="u_pos" value="${esc(u?u.position:'')}" placeholder="VD: Sales Rep — North"></div>
+    </div>
+    <div class="row2">
+      <div class="fgroup"><label>Vai trò *</label><select class="inp" id="u_role">
+        <option value="audience" ${u&&u.role==='audience'?'selected':''}>Học viên (Audience)</option>
+        <option value="trainer" ${u&&u.role==='trainer'?'selected':''}>Trainer (tạo lịch, ra đề, gửi email)</option>
+        <option value="admin" ${u&&u.role==='admin'?'selected':''}>Admin (toàn quyền)</option>
+      </select></div>
+      <div class="fgroup"><label>Quản lý trực tiếp</label><select class="inp" id="u_mgr">
+        <option value="">— Chọn —</option>
+        ${USERS.map(x=>`<option value="${esc(x.email)}" ${u&&u.manager===x.email?'selected':''}>${esc(x.name)} — ${esc(x.email)}</option>`).join('')}
+      </select><div class="hint">Người này sẽ được CC khi học viên nhận chứng chỉ.</div></div>
+    </div>
+    <label style="display:flex;align-items:center;gap:9px;font-size:13.5px;cursor:pointer;background:var(--pale);padding:12px 14px;border-radius:11px">
+      <input type="checkbox" id="u_active" ${!u||u.active?'checked':''} style="width:17px;height:17px;accent-color:var(--navy)">
+      <span>Tài khoản đang hoạt động</span></label>`;
+  $('ovUser').classList.add('on');
+}
+$('btnSaveUser').onclick = async ()=>{
+  const p = {name:$('u_name').value.trim(), email:$('u_email').value.trim(), dept:$('u_dept').value.trim(),
+             position:$('u_pos').value.trim(), role:$('u_role').value, manager:$('u_mgr').value, active:$('u_active').checked};
+  if(!p.name || !p.email) return err('Nhập đầy đủ họ tên và email.');
+  busy(true,'Đang lưu…');
+  try{ const r = await apiPost('saveUser', p); ok(r.message); closeAll(); renderUsers(); }
+  catch(e){ err(e.message); } finally{ busy(false); }
+};
+async function resetPin(email,name){
+  if(!confirm(`Xoá PIN của ${name}? Người dùng sẽ phải kích hoạt lại bằng mã OTP.`)) return;
+  busy(true);
+  try{ const r = await apiPost('resetPin',{email:email}); ok(r.message); renderUsers(); }
+  catch(e){ err(e.message); } finally{ busy(false); }
+}
+async function delUser(email,name){
+  if(!confirm(`Xoá tài khoản ${name}? Thao tác không thể hoàn tác.`)) return;
+  busy(true);
+  try{ const r = await apiPost('deleteUser',{email:email}); ok(r.message); renderUsers(); }
+  catch(e){ err(e.message); } finally{ busy(false); }
+}
+
+/* ==========================================================================
+   CẤU HÌNH (admin)
+   ========================================================================== */
+function renderSettings(){
+  const c = S.config;
+  const f = (k,label,type,hint)=>`<div class="fgroup"><label>${label}</label>
+    <input class="inp" data-cfg="${k}" type="${type||'text'}" value="${esc(c[k]||'')}">${hint?`<div class="hint">${hint}</div>`:''}</div>`;
+  $('cfgBrand').innerHTML =
+    f('APP_TITLE','Tên ứng dụng') + f('APP_SUBTITLE','Mô tả ngắn') + f('FISCAL_YEAR','Năm tài chính') +
+    f('LOGO_TEXT','Chữ trên logo','text','Tối đa 4–5 ký tự') +
+    `<div class="row3">${f('COLOR_PRIMARY','Màu chính','color')}${f('COLOR_ACCENT','Màu phụ','color')}${f('COLOR_HIGHLIGHT','Màu nhấn','color')}</div>` +
+    `<button class="btn btn-primary btn-sm btn-block" onclick="saveConfig()">Lưu cấu hình</button>`;
+  $('cfgRules').innerHTML =
+    f('DEFAULT_PASS_SCORE','Điểm đạt mặc định (%)','number') +
+    f('DEFAULT_DURATION_MIN','Thời gian làm bài mặc định (phút)','number') +
+    f('DEFAULT_MAX_ATTEMPTS','Số lượt làm bài mặc định','number') +
+    f('CERT_SIGNER_NAME','Người ký chứng chỉ') +
+    f('CERT_SIGNER_TITLE','Chức danh người ký') +
+    `<label style="display:flex;align-items:center;gap:9px;font-size:13.5px;cursor:pointer;background:var(--pale);padding:12px 14px;border-radius:11px;margin-bottom:14px">
+      <input type="checkbox" data-cfg="ENABLE_CERT_EMAIL" ${String(c.ENABLE_CERT_EMAIL)!=='false'?'checked':''} style="width:17px;height:17px;accent-color:var(--navy)">
+      <span>Tự động gửi email kèm chứng chỉ khi học viên đạt</span></label>
+    <button class="btn btn-primary btn-sm btn-block" onclick="saveConfig()">Lưu cấu hình</button>`;
+}
+async function saveConfig(){
+  const cfg = {};
+  document.querySelectorAll('[data-cfg]').forEach(el=>{
+    cfg[el.dataset.cfg] = (el.type==='checkbox') ? String(el.checked) : el.value;
+  });
+  busy(true,'Đang lưu cấu hình…');
+  try{
+    const r = await apiPost('saveConfig',{config:cfg});
+    S.config = r.config||cfg; applyBrand(); ok(r.message);
+  }catch(e){ err(e.message); } finally{ busy(false); }
+}
+$('btnLoadLogs').onclick = async ()=>{
+  $('logList').innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div></div>';
+  try{
+    const r = await apiGet('getLogs');
+    const list = r.data||[];
+    $('logList').innerHTML = list.length ? `<table class="tbl">
+      <thead><tr><th>Thời gian</th><th>Mức</th><th>Chức năng</th><th>Nội dung</th></tr></thead>
+      <tbody>${list.map(l=>`<tr>
+        <td style="white-space:nowrap;font-size:12px">${esc(l.time)}</td>
+        <td><span class="tag ${l.level==='ERROR'?'fail':l.level==='WARN'?'gold':'audience'}">${esc(l.level)}</span></td>
+        <td style="font-size:12.5px">${esc(l.action)}</td>
+        <td style="font-size:12.5px;color:var(--muted)">${esc(l.message)}</td>
+      </tr>`).join('')}</tbody></table>` : emptyBox('Chưa có nhật ký');
+  }catch(e){ $('logList').innerHTML = emptyBox('Không tải được nhật ký', e.message); }
+};
+
+/* ==========================================================================
+   INIT
+   ========================================================================== */
+window.addEventListener('beforeunload', e=>{ if(S.attempt){ e.preventDefault(); e.returnValue=''; } });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeAll(); });
+
+(async function init(){
+  if(!/^https:\/\/script\.google\.com\/macros\/s\//.test(API_URL)){
+    showLoginMsg('Chưa cấu hình API_URL trong file index.html. Hãy dán URL Web App (…/exec) của Code.gs.','err');
+    return;
+  }
+  if(S.token){
+    try{
+      const r = await jsonp({action:'me', token:S.token});
+      if(r && r.ok){
+        S.user = r.user;
+        $('loginWrap').style.display='none';
+        $('app').classList.add('on');
+        return boot();
+      }
+    }catch(e){}
+    localStorage.removeItem('mmh_hub_token'); S.token='';
+  }
+  $('lgEmail').focus();
+})();
+</script>
+</body>
+</html>
