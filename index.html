@@ -618,13 +618,11 @@ table.tbl tbody tr:hover{background:var(--pale)}
 /* ==========================================================================
    MMH TRAINING HUB — FRONTEND
    ---------------------------------------------------------------------------
-   ★ VIỆC DUY NHẤT CẦN LÀM TRƯỚC KHI DÙNG:
-     Thay chuỗi bên dưới bằng URL Web App của Code.gs (Training Hub).
-     Lấy URL đó ở: Apps Script → Deploy → New deployment → Web app → Copy.
-     URL có dạng:  https://script.google.com/macros/s/AKfycb.........../exec
+   API_URL đã được gắn sẵn — KHÔNG cần sửa gì, upload thẳng lên GitHub là chạy.
 
-   Lưu ý: đây là URL của dự án MỚI "MMH Training Hub Backend", KHÔNG phải
-   URL web app cũ của file Google Sheet.
+   Chỉ sửa dòng dưới khi bạn Deploy lại backend và tạo ra URL mới
+   (Apps Script → Deploy → Manage deployments → Edit → New version giữ nguyên
+   URL cũ, nên thường không phải đổi).
    ========================================================================== */
 
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
@@ -1959,11 +1957,30 @@ $('btnLoadLogs').onclick = async ()=>{
 window.addEventListener('beforeunload', e=>{ if(S.attempt){ e.preventDefault(); e.returnValue=''; } });
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeAll(); });
 
+/** Kiểm tra backend ngay khi mở trang — báo lỗi cụ thể thay vì để người dùng
+ *  loay hoay với thông báo "hết thời gian chờ". */
+async function checkBackend(){
+  try{
+    const r = await jsonp({action:'ping'});
+    if(r && r.ok) return true;
+  }catch(e){}
+  showLoginMsg(
+    '<b>Không kết nối được backend.</b><br>' +
+    'Thường do bản Deploy trên Apps Script chưa đúng. Kiểm tra:<br>' +
+    '1. Deploy → Manage deployments → loại phải là <b>Web app</b><br>' +
+    '2. <b>Who has access = Anyone</b><br>' +
+    '3. Bấm Edit (bút chì) → <b>Version: New version</b> → Deploy<br>' +
+    'Sau đó mở URL Web App trên trình duyệt, phải thấy chữ <code>"service":"MMH Training Hub"</code>.',
+    'err');
+  return false;
+}
+
 (async function init(){
   if(!/^https:\/\/script\.google\.com\/macros\/s\//.test(API_URL)){
     showLoginMsg('Chưa cấu hình API_URL trong file index.html. Hãy dán URL Web App (…/exec) của Code.gs.','err');
     return;
   }
+  checkBackend();
   if(S.token){
     try{
       const r = await jsonp({action:'me', token:S.token});
