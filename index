@@ -627,7 +627,7 @@ table.tbl tbody tr:hover{background:var(--pale)}
    URL web app cũ của file Google Sheet.
    ========================================================================== */
 
-const API_URL = "PASTE_WEB_APP_URL_HERE";
+const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
 
 /* ---------- STATE ---------- */
 const S = {
