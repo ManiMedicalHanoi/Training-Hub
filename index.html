@@ -84,6 +84,11 @@ select.inp{cursor:pointer}
 .nv.on{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(58,92,170,.4)}
 .nv .ic{width:19px;height:19px;flex-shrink:0;stroke-width:1.9}
 .nv .badge{margin-left:auto;background:var(--yellow);color:var(--navy);font-size:10.5px;font-weight:800;padding:1px 7px;border-radius:20px}
+.sb-viewas{padding:12px 14px 0;border-top:1px solid rgba(255,255,255,.08)}
+.sb-viewas label{display:block;font-size:9.5px;letter-spacing:1.3px;text-transform:uppercase;color:rgba(207,226,243,.6);font-weight:700;margin-bottom:6px}
+.sb-viewas select{width:100%;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);color:#fff;padding:0 9px;font-size:12.5px;font-weight:600;outline:0;cursor:pointer}
+.sb-viewas select option{background:#003047;color:#fff}
+.sb-viewas .hint-mini{display:block;font-size:10.5px;color:var(--yellow);margin-top:6px;line-height:1.4;min-height:14px}
 .sb-user{padding:14px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px}
 .avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
 .sb-user .info{flex:1;min-width:0}
@@ -417,6 +422,15 @@ table.tbl tbody tr:hover{background:var(--pale)}
         </div>
       </div>
     </nav>
+    <div class="sb-viewas" id="viewAsBox" style="display:none">
+      <label>Xem hệ thống với vai trò</label>
+      <select id="viewAsSel">
+        <option value="admin">Admin — toàn quyền</option>
+        <option value="trainer">Trainer — tổ chức đào tạo</option>
+        <option value="audience">Học viên — chỉ học &amp; làm bài</option>
+      </select>
+      <span class="hint-mini" id="viewAsHint"></span>
+    </div>
     <div class="sb-user">
       <div class="avatar" id="uAvatar">?</div>
       <div class="info"><b id="uName">—</b><span id="uRole">—</span></div>
@@ -632,7 +646,7 @@ const S = {
   token: localStorage.getItem('mmh_hub_token') || '',
   user: null, config: {}, meta: {}, sessions: [], users: [], groups: [],
   stats: null, links: {}, quizFileUrl: '',
-  view: 'dash', calDate: new Date(),
+  view: 'dash', calDate: new Date(), viewAs: 'admin',
   filters: {q:'', cat:'', status:'', trainer:'', quick:'all'},
   editing: null, qbQuestions: [], qbSid: '', attempt: null, timerId: null,
   charts: {}
@@ -847,18 +861,57 @@ function applyBrand(){
   document.querySelectorAll('.mark').forEach(m=>{ if(c.LOGO_TEXT) m.textContent = c.LOGO_TEXT; });
 }
 
+/* ---------- VAI TRÒ ----------
+   S.viewAs cho phép Admin xem hệ thống dưới con mắt Trainer / Học viên để test.
+   Đây chỉ là lớp hiển thị — quyền thật vẫn do backend quyết định, Admin luôn
+   giữ toàn quyền dù đang xem ở vai nào. */
+function effRole(){
+  if(!S.user) return 'audience';
+  return S.user.isAdmin ? (S.viewAs || 'admin') : S.user.role;
+}
+const isAdminView   = ()=> effRole()==='admin';
+const isTrainerView = ()=> effRole()==='admin' || effRole()==='trainer';
+/** Có được sửa buổi đào tạo này không (theo vai đang xem) */
+function canEditUI(s){
+  if(!isTrainerView()) return false;
+  if(isAdminView()) return true;
+  return !!s.canEdit;
+}
+
 function renderShell(){
   const u = S.user;
   $('uAvatar').textContent = initials(u.name);
   $('uName').textContent = u.name;
-  $('uRole').textContent = (u.role==='admin'?'Admin':u.role==='trainer'?'Trainer':'Học viên') + (u.position? ' · '+u.position : '');
-  $('navTrainer').style.display = u.isTrainer ? '' : 'none';
-  $('navAdmin').style.display   = u.isAdmin ? '' : 'none';
-  $('btnNewSession').style.display = u.isTrainer ? '' : 'none';
+  const roleLabel = r => r==='admin'?'Admin':r==='trainer'?'Trainer':'Học viên';
+  $('uRole').textContent = roleLabel(u.role) + (u.position? ' · '+u.position : '');
+
+  // Bộ chuyển vai trò — chỉ Admin thấy
+  $('viewAsBox').style.display = u.isAdmin ? '' : 'none';
+  if(u.isAdmin){
+    $('viewAsSel').value = S.viewAs || 'admin';
+    $('viewAsHint').textContent = (S.viewAs && S.viewAs!=='admin')
+      ? 'Đang xem thử như ' + roleLabel(S.viewAs) + ' — quyền thật không đổi'
+      : '';
+  }
+
+  $('navTrainer').style.display    = isTrainerView() ? '' : 'none';
+  $('navAdmin').style.display      = isAdminView()   ? '' : 'none';
+  $('btnNewSession').style.display = isTrainerView() ? '' : 'none';
   $('lnkParent').href   = S.links.parent || '#';
   $('lnkCert').href     = S.links.certificate || '#';
   $('lnkQuizFile').href = S.quizFileUrl || '#';
 }
+
+document.addEventListener('change', e=>{
+  if(e.target && e.target.id==='viewAsSel'){
+    S.viewAs = e.target.value;
+    // nếu đang ở màn hình không còn quyền xem thì quay về Dashboard
+    const blocked = {manage:!isTrainerView(), results:!isTrainerView(), users:!isAdminView(), settings:!isAdminView()};
+    if(blocked[S.view]) go('dash');
+    renderShell(); renderAll();
+    toast('Đang xem với vai trò: ' + (S.viewAs==='admin'?'Admin':S.viewAs==='trainer'?'Trainer':'Học viên'));
+  }
+});
 
 /* ---------- NAV ---------- */
 const PAGE_META = {
@@ -1086,7 +1139,7 @@ function fillFilters(){
   $('quickFilters').innerHTML = [
     ['all','Tất cả',counts.all],['plan','Kế hoạch',counts.plan],['done','Hoàn thành',counts.done],
     ['quiz','Có bài đánh giá',counts.quiz]
-  ].concat(S.user.isTrainer ? [['mine','Do tôi phụ trách',counts.mine]] : [])
+  ].concat(isTrainerView() ? [['mine','Do tôi phụ trách',counts.mine]] : [])
    .map(([k,l,n])=>`<button class="pill ${S.filters.quick===k?'on':''}" data-q="${k}">${l}<span class="n">${n}</span></button>`).join('');
   document.querySelectorAll('#quickFilters .pill').forEach(p=>p.onclick=()=>{S.filters.quick=p.dataset.q;fillFilters();renderSessions()});
 }
@@ -1163,6 +1216,7 @@ async function openDetail(sid){
   }catch(e){ $('dtBody').innerHTML = emptyBox('Không tải được chi tiết', e.message); return; }
 
   const d = full.data, enroll = full.enrollment||[];
+  d.canEdit = canEditUI(d);   // tôn trọng vai trò đang xem thử của Admin
   const pct = enroll.length ? Math.round(enroll.filter(e=>e.pass).length/enroll.length*100) : 0;
 
   $('dtBody').innerHTML = `
@@ -1687,7 +1741,7 @@ async function renderCerts(){
 $('mSearch') && $('mSearch').addEventListener('input', renderManage);
 function renderManage(){
   const q = ($('mSearch')?$('mSearch').value:'').toLowerCase();
-  let list = S.sessions.filter(s=>S.user.isAdmin || s.canEdit);
+  let list = S.sessions.filter(s=>canEditUI(s));
   if(q) list = list.filter(s=>(s.topic+' '+s.trainer+' '+s.audience).toLowerCase().indexOf(q)>=0);
   list.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   $('manageList').innerHTML = list.length ? `<table class="tbl">
