@@ -370,7 +370,8 @@ select.inp{cursor:pointer;padding-right:34px;-webkit-appearance:none;appearance:
 .best{display:flex;align-items:center;gap:14px}
 .ring{--p:0;--c:var(--blue);width:74px;height:74px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),var(--mist) 0);display:grid;place-items:center;flex-shrink:0}
 .ring::before{content:'';width:58px;height:58px;border-radius:50%;background:#fff;grid-area:1/1}
-.ring b{grid-area:1/1;position:relative;font-size:17px;font-weight:800;color:var(--navy)}
+.ring b{grid-area:1/1;position:relative;font-size:18px;font-weight:800;color:var(--navy);text-align:center;line-height:1}
+.ring b small{display:block;font-size:10px;font-weight:600;color:var(--muted);margin-top:2px}
 .hist{margin-top:18px}
 .info-grid{display:grid;grid-template-columns:180px 1fr;gap:0;font-size:14.5px}
 .info-grid div{padding:11px 0;border-bottom:1px solid var(--line)}
@@ -717,6 +718,91 @@ body.dnd .dnd-hint{transform:translate(-50%,0)}
 .lib-tbl .grow:hover td{background:var(--ice)}
 
 
+
+/* ---------- ★ v3.0 ---------- */
+.testbar{position:sticky;top:var(--top);z-index:29;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 28px 6px;padding:8px 12px;border-radius:14px;background:repeating-linear-gradient(135deg,#FFF7C2 0 14px,#FFF3AD 14px 28px);border:1.5px solid #EED64A;font-size:13.5px;color:#5C4800}
+.testbar .tb-t{display:inline-flex;align-items:center;gap:8px;margin-right:auto}
+.testbar .tb-t svg{width:18px;height:18px}
+.testbar .seg{width:auto;background:rgba(255,255,255,.7)}
+.testbar .seg button{display:inline-flex;align-items:center;gap:6px;flex:none}
+.testbar .seg svg{width:15px;height:15px}
+.testbar .btn-ghost{color:#5C4800}.testbar .btn-ghost:hover{background:rgba(255,255,255,.6)}
+.testguide{margin:6px 0 22px;border:1.5px dashed #EED64A}
+.testguide h3{display:flex;align-items:center;gap:8px}.testguide h3 svg{width:18px;height:18px;color:#C9A400}
+.tg-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.tg-row:last-child{border-bottom:0}
+.tg-row i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px;border:2px dashed #C3D1E2;color:var(--muted);flex-shrink:0}
+.tg-row i svg{width:14px;height:14px}
+.tg-row span{flex:1}.tg-row small{color:var(--faint)}
+.tg-row.done{color:var(--muted)}.tg-row.done i{border:2px solid var(--ok);background:var(--ok);color:#fff}.tg-row.done span{text-decoration:line-through;text-decoration-color:#B7C6D8}
+.rangebox{display:flex;align-items:center;gap:6px}
+.rangebox .inp{height:38px;width:auto;padding:0 8px}
+.perlbl{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
+.perlbl svg{width:16px;height:16px}
+@media (max-width:900px){.testbar{margin:0 10px 6px;top:var(--top)}.rangebox{width:100%}.rangebox .inp{flex:1}}
+
+.view.wide{max-width:none}
+.cal.big .dc{min-height:176px;padding:8px 8px 10px}
+.cal.big .dn{margin-bottom:6px}
+.ev2{display:block;background:color-mix(in srgb,var(--c,var(--c-other)) 9%,#fff);border:1px solid color-mix(in srgb,var(--c,var(--c-other)) 28%,#fff);border-left:4px solid var(--c,var(--c-other));border-radius:10px;padding:7px 9px;margin-bottom:6px;cursor:pointer;transition:box-shadow .15s,transform .15s;text-align:left}
+.ev2:hover{box-shadow:var(--sh1);transform:translateY(-1px)}
+.ev2 b{display:block;font-size:13px;color:var(--navy);font-weight:700;line-height:1.3;margin:3px 0 4px}
+.ev2.big b{font-size:14px}
+.ev2.cancel{opacity:.55}.ev2.cancel b{text-decoration:line-through}
+.ev2-h{display:flex;align-items:center;gap:6px;justify-content:space-between}
+.ev2-h .cat{font-size:11px}.ev2-h .cat::before{width:7px;height:7px}
+.ev2-t{font-size:11.5px;font-weight:800;color:var(--navy)}
+.ev2-m{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--muted);line-height:1.35;min-width:0}
+.ev2-m svg{width:12px;height:12px;flex-shrink:0;color:var(--faint)}
+.ev2-i{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;align-items:center}
+.evic{width:28px;height:28px;border-radius:8px;background:#fff;border:1px solid var(--line2);display:grid;place-items:center;color:#D9A400;transition:.12s}
+.evic svg{width:15px;height:15px}
+.evic:hover{border-color:var(--blue);transform:scale(1.06)}
+.evic.q{color:var(--blue)}.evic.q.todo{background:var(--yellow);border-color:var(--yellow);color:var(--navy)}.evic.ok,.evic.q.ok{color:var(--ok)}
+.clamp3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cal .more{width:100%;font-size:12px;font-weight:700;color:var(--blue);padding:4px;border-radius:7px}
+.cal .more:hover{background:var(--mist)}
+.calw{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.cw-col{background:#fff;border-radius:14px;box-shadow:var(--sh1);min-height:420px;display:flex;flex-direction:column}
+.cw-col.today{outline:2.5px solid var(--blue)}
+.cw-h{display:flex;justify-content:space-between;align-items:baseline;padding:10px 12px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted);font-weight:700}
+.cw-h b{font-size:16px;color:var(--navy)}
+.cw-col.today .cw-h{background:var(--mist)}
+.cw-b{padding:8px;flex:1}
+.cw-empty{color:#C9D6E6;text-align:center;padding-top:20px}
+.cl-day{font-size:13.5px;font-weight:750;color:var(--muted);padding:14px 0 6px}
+.cl-day.today{color:var(--blue)}
+.cl-row{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 12px 12px 14px;border-radius:12px;border-left:4px solid var(--c,var(--c-other));background:var(--ice);margin-bottom:8px;cursor:pointer}
+.cl-row:hover{background:var(--mist)}
+.cl-time{font-weight:800;color:var(--navy);font-size:15px;line-height:1.2}
+.cl-time small{font-size:12px;color:var(--muted);font-weight:600}
+.cl-main b{display:block;font-size:15px;color:var(--navy);margin:4px 0}
+.cl-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.cl-meta span{display:inline-flex;align-items:center;gap:5px}
+.cl-meta svg{width:14px;height:14px}
+@media (max-width:1100px){.calw{grid-template-columns:1fr}.cw-col{min-height:0}}
+@media (max-width:900px){.cal.big .dc{min-height:70px}.cal.big .ev2{font-size:0;padding:0;height:7px;border:0;background:var(--c);margin-bottom:3px}.cal.big .ev2 *{display:none}.cl-row{grid-template-columns:52px 1fr}.cl-row .ev2-i{grid-column:2}}
+
+.pend-list{display:grid;gap:12px}
+.pend{display:grid;grid-template-columns:minmax(0,1fr) 240px;background:#fff;border-radius:16px;box-shadow:var(--sh1);border-left:5px solid var(--c,var(--c-other));overflow:hidden}
+.pend.out{opacity:.8}
+.pend-b{padding:16px 20px}
+.pend-b h3{font-size:17px;font-weight:750;margin:4px 0 8px}
+.pend-b .facts{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+.pend-b .facts span{display:inline-flex;align-items:center;gap:5px}.pend-b .facts svg{width:15px;height:15px;color:var(--faint)}
+.pend-st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line2)}
+.pend-st b{display:block;font-size:13.5px;color:var(--navy);margin-top:2px}
+.pend-st small{display:block;font-size:12px;color:var(--muted)}
+.pend-a{display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:8px;padding:16px 18px;background:var(--ice);border-left:1.5px dashed var(--line2);text-align:center}
+@media (max-width:900px){.pend{grid-template-columns:1fr}.pend-a{border-left:0;border-top:1.5px dashed var(--line2)}.pend-st{grid-template-columns:1fr 1fr}}
+
+.panel-b.access{display:flex;gap:16px;align-items:flex-start}
+.panel-b.access>svg{width:34px;height:34px;color:var(--warn);flex-shrink:0;margin-top:2px}
+.panel-b.access b{color:var(--navy)}
+.panel-b.access p{font-size:14px;color:#3D5268;margin-top:6px}
+.chips.bad{border-color:var(--bad);box-shadow:0 0 0 3px rgba(198,40,40,.12)}
+.cal-head{flex-wrap:wrap}
+.cal-head .seg{flex-wrap:nowrap;width:auto}.cal-head .seg button{flex:none;padding:0 14px}
 /* ---------- ★ v2.6 ---------- */
 .rd-state>svg{width:46px;height:46px;color:#B7C6D8;margin:0 auto 12px;display:block}
 .rd-state .ruler{height:6px}
@@ -853,6 +939,7 @@ button.crs-st:hover{background:var(--ice)}
       <button class="ibtn" data-a="refresh" aria-label="Làm mới dữ liệu" title="Làm mới dữ liệu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-2.6-6.4M21 4v5h-5"/></svg></button>
       <button class="ibtn bell" data-a="noti" aria-label="Thông báo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg><span class="dotn hide" id="bellN"></span></button>
     </header>
+    <div id="testbar"></div>
     <main id="view" class="view"></main>
   </div>
   <nav class="tabbar" id="tabbar"></nav>
@@ -872,7 +959,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '2.6';
+const APP_VERSION = '3.0';
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -884,8 +971,9 @@ const S = {
   todo: [], recent: [], progress: {}, unread: 0, today: '',
   quizFileUrl: '', links: {}, stats: null, statsAt: 0,
   viewAs: sessionStorage.getItem('mmh_hub_viewas') || '',
-  full: {}, mats: {}, lib: Object.assign({q:'', cat:'', status:'', mine:false, trainer:'', group:'month', period:'', layout:'list'}, (() => { try { return JSON.parse(localStorage.getItem('mmh_hub_lib') || '{}'); } catch (e) { return {}; } })()),
-  mng: {group:'quarter', period:''},
+  full: {}, mats: {}, lib: Object.assign({q:'', cat:'', status:'', mine:false, trainer:'', range:'week', from:'', to:'', layout:'list'}, (() => { try { return JSON.parse(localStorage.getItem('mmh_hub_lib') || '{}'); } catch (e) { return {}; } })()),
+  mng: Object.assign({range:'week', from:'', to:''}, (() => { try { return JSON.parse(localStorage.getItem('mmh_hub_mng') || '{}'); } catch (e) { return {}; } })()),
+  test: sessionStorage.getItem('mmh_hub_test') === '1', testRole: sessionStorage.getItem('mmh_hub_testrole') || 'trainer', calView: localStorage.getItem('mmh_hub_calview') || 'month',
   cal: new Date(), manageF: 'all', lastSync: 0, route: {}, pendingHash: '', popupShown: false
 };
 
@@ -976,7 +1064,7 @@ const catTag = c => `<span class="cat ${catKey(c)}">${esc(catLabel(c))}</span>`;
 const statusChip = s => { const k = String(s||'').toLowerCase(); return k.startsWith('complet') ? '<span class="chip ok dot">Đã diễn ra</span>' : k.startsWith('cancel') ? '<span class="chip mute">Đã huỷ</span>' : '<span class="chip dot">Kế hoạch</span>'; };
 const ftypeLabel = k => ({slide:'PPT', pdf:'PDF', doc:'DOC', sheet:'XLS', image:'IMG', video:'VID', audio:'MP3'}[k] || 'FILE');
 const ftype = k => `<div class="ftype ${esc(k)}">${ftypeLabel(k)}</div>`;
-function ring(p, c){ return `<div class="ring" style="--p:${Math.max(0,Math.min(100,nnum(p)))};--c:${c||'var(--blue)'}"><b>${esc(p === '' ? '—' : Math.round(nnum(p)))}${p===''?'':'%'}</b></div>`; }
+function ring(p, c){ return `<div class="ring" style="--p:${Math.max(0,Math.min(100,nnum(p)))};--c:${c||'var(--blue)'}"><b>${esc(p === '' ? '—' : Math.round(nnum(p)))}${p === '' ? '' : '<small>điểm</small>'}</b></div>`; }
 /* Năm tài chính: FY = năm kết thúc − FY_BASE_YEAR; mặc định bắt đầu tháng 9 (T9/2025–T8/2026 = FY67) */
 const FY = {
   sm(){ const v = parseInt(S.cfg.FY_START_MONTH, 10); return v >= 1 && v <= 12 ? v : 9; },
@@ -994,20 +1082,44 @@ const FY = {
     return 'FY' + fy + ' (' + rng(0, 11) + ')';
   }
 };
-const PER_MODES = [['month', 'Tháng'], ['quarter', 'Quý'], ['half', 'Nửa năm'], ['fy', 'Năm tài chính']];
-function periodBar(stKey, sessions){
-  const st = S[stKey], mode = st.group;
-  const cur = FY.key(todayISO(), mode);
-  const keys = uniq(sessions.filter(s => s.date).map(s => FY.key(s.date, mode)).concat([cur]));
-  if (st.period && !keys.includes(st.period)) keys.push(st.period);
-  keys.sort().reverse();
-  return `<div class="perbar"><span class="lbl">Xem theo</span><div class="seg">${PER_MODES.map(([k, t]) => `<button type="button" class="${mode === k ? 'on' : ''}" data-a="perMode" data-s="${stKey}" data-m="${k}">${t}</button>`).join('')}</div>
-    <div class="pernav"><button class="ibtn sm" data-a="perStep" data-s="${stKey}" data-d="1" title="Kỳ trước">${ic('left')}</button>
-      <select class="inp" data-ch="perSet" data-s="${stKey}"><option value="">Tất cả các kỳ</option>${keys.map(k => `<option value="${k}" ${k === st.period ? 'selected' : ''}>${esc(FY.label(k, mode))}${k === cur ? ' — kỳ này' : ''}</option>`).join('')}</select>
-      <button class="ibtn sm" data-a="perStep" data-s="${stKey}" data-d="-1" title="Kỳ sau">${ic('right')}</button>
-      <button class="btn btn-ghost btn-sm" data-a="perNow" data-s="${stKey}">Kỳ này</button></div></div>`;
+/* ★ v3.0 — Chọn thời gian: Tuần này · Tháng này · Năm tài chính · Khoảng ngày */
+const RANGES = [['week', 'Tuần này'], ['month', 'Tháng này'], ['fy', 'Năm tài chính'], ['custom', 'Khoảng ngày']];
+function rangeOf(st){
+  const t = parseISO(todayISO());
+  if (st.range === 'custom' && st.from && st.to) return st.from <= st.to ? [st.from, st.to] : [st.to, st.from];
+  if (st.range === 'month') return [isoOf(new Date(t.getFullYear(), t.getMonth(), 1)), isoOf(new Date(t.getFullYear(), t.getMonth() + 1, 0))];
+  if (st.range === 'fy') { const f = FY.of(todayISO()); const a = FY.at(f.startYear, 0), b = FY.at(f.startYear, 11); return [isoOf(new Date(a.y, a.m - 1, 1)), isoOf(new Date(b.y, b.m, 0))]; }
+  const mon = new Date(t); mon.setDate(t.getDate() - ((t.getDay() + 6) % 7));
+  const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+  return [isoOf(mon), isoOf(sun)];
 }
-function inPeriod(st, s){ return !st.period || FY.key(s.date, st.group) === st.period; }
+function rangeLabel(st){
+  const [a, b] = rangeOf(st);
+  const pre = st.range === 'fy' ? 'FY' + FY.of(todayISO()).fy + ' · ' : st.range === 'week' ? 'Tuần này · ' : st.range === 'month' ? 'Tháng này · ' : '';
+  return pre + dmy(a) + ' – ' + dmy(b);
+}
+function periodBar(stKey){
+  const st = S[stKey], [a, b] = rangeOf(st);
+  return `<div class="perbar"><div class="seg">${RANGES.map(([k, t]) => `<button type="button" class="${st.range === k ? 'on' : ''}" data-a="perRange" data-s="${stKey}" data-r="${k}">${t}</button>`).join('')}</div>
+    <div class="rangebox"><span class="lbl">Từ</span><input class="inp" type="date" value="${a}" data-ch="perFrom" data-s="${stKey}"><span class="lbl">đến</span><input class="inp" type="date" value="${b}" data-ch="perTo" data-s="${stKey}"></div>
+    <span class="perlbl">${ic('cal')}${esc(rangeLabel(st))}</span></div>`;
+}
+function inPeriod(st, s){ const [a, b] = rangeOf(st); return !!s.date && s.date >= a && s.date <= b; }
+/** Nhóm danh sách theo ngày (tuần) / tuần (tháng) / tháng (năm, khoảng ngày) */
+function groupKey(st, iso){
+  if (!iso) return '~';
+  if (st.range === 'week') return iso;
+  if (st.range === 'month') { const d = parseISO(iso); const m = new Date(d); m.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return 'W' + isoOf(m); }
+  return iso.slice(0, 7);
+}
+function groupLabel(k){
+  if (k === '~') return 'Chưa có ngày';
+  if (k[0] === 'W') { const m = parseISO(k.slice(1)); const e = new Date(m); e.setDate(m.getDate() + 6); return 'Tuần ' + dmy(isoOf(m)).slice(0, 5) + ' – ' + dmy(isoOf(e)); }
+  if (k.length === 10) { const d = parseISO(k); return WD[d.getDay()] + ', ' + dmy(k) + (k === todayISO() ? ' · Hôm nay' : ''); }
+  const [y, m] = k.split('-'); return 'Tháng ' + (+m) + '/' + y;
+}
+/* Điểm: thang 100 */
+const pts = v => (v === '' || v == null) ? '—' : Math.round(nnum(v));
 function rawBtn(e){ const u = e && e.data && e.data.raw; return u ? `<a class="btn btn-line" href="${esc(u)}" target="_blank" rel="noopener" title="Mở phản hồi nguyên văn của máy chủ ở tab mới — chụp màn hình gửi Admin">${ic('ext')}Xem phản hồi gốc</a>` : ''; }
 function errBox(title, e, retry){
   return emptyBox('alert', title, esc(e && e.message || e), `<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px">${retry || ''}${rawBtn(e)}<button class="btn btn-line" data-a="netDiag">${ic('info')}Kiểm tra kết nối</button></div>`);
@@ -1165,9 +1277,15 @@ function netReport(action, e, secs){
   Net.lastLog = Date.now();
   setTimeout(() => { transport('clientLog', {act: action, msg: (e && e.code || 'ERR') + ' sau ' + secs + 's', detail: (e && e.message || '') + ' | ' + navigator.userAgent.slice(0, 120)}, true, 20000).catch(() => {}); }, 5000);
 }
+/** ★ v3.0 — Chế độ Test (Admin): mọi lượt gọi kèm test=1, vai học viên kèm asLearner=1 */
+function ctxParams(params){
+  if (!S.test) return params || {};
+  return Object.assign({test: 1}, S.testRole === 'learner' ? {asLearner: 1} : {}, params || {});
+}
 /** GET có đệm + gộp lượt trùng + xếp hàng */
 function get(action, params, opt){
   opt = opt || {};
+  params = ctxParams(params);
   const key = action + '?' + toQS(params || {});
   const ttl = opt.fresh ? 0 : (TTL[action] || 0);
   const c = Net.cache.get(key);
@@ -1181,9 +1299,10 @@ function get(action, params, opt){
   return pr;
 }
 /** Đọc dữ liệu đã đệm (dù cũ) để hiện ngay trong lúc tải lại */
-function cached(action, params){ const c = Net.cache.get(action + '?' + toQS(params || {})); return c ? c.data : null; }
+function cached(action, params){ const c = Net.cache.get(action + '?' + toQS(ctxParams(params))); return c ? c.data : null; }
 function post(action, params, opt){
   opt = opt || {};
+  params = ctxParams(params);
   const run = () => api(action, params, Object.assign({post: true}, opt)).then(r => { if (!NO_INVALIDATE[action]) netInvalidate(); return r; });
   return opt.direct ? run() : netRun(run, LANE[action] || 'light');
 }
@@ -1244,7 +1363,11 @@ function closeDrawer(){ $('drawer').classList.remove('on'); $('scrim').classList
 /* ==========================================================================
    VAI TRÒ (Admin có thể "xem với vai trò" để kiểm thử — quyền thật do máy chủ)
    ========================================================================== */
-function effRole(){ if (!S.user) return 'audience'; return S.user.isAdmin ? (S.viewAs || 'admin') : S.user.role; }
+function effRole(){
+  if (!S.user) return 'audience';
+  if (S.user.isAdmin && S.test) return S.testRole === 'learner' ? 'audience' : 'trainer';   // Chế độ Test: đóng vai
+  return S.user.isAdmin ? (S.viewAs || 'admin') : S.user.role;
+}
 const isAdminV = () => effRole() === 'admin';
 const isTrainerV = () => effRole() === 'admin' || effRole() === 'trainer';
 function isTrainerOf(trainerText){
@@ -1404,16 +1527,47 @@ function renderShell(){
   $('viewAsFlag').innerHTML = (u.isAdmin && S.viewAs && S.viewAs !== 'admin') ? `<div class="viewas-flag">${ic('eye')}Đang xem như ${roleLabel(S.viewAs)}</div>` : '';
   const tb = [['home','home','Trang chủ'],['library','book','Thư viện'],['calendar','cal','Lịch'],['noti','bell','Thông báo'],['more','menu','Thêm']];
   $('tabbar').innerHTML = tb.map(([id, i, t]) => `<button class="${cur === id ? 'on' : ''}" data-a="${id === 'noti' ? 'noti' : id === 'more' ? 'moreMenu' : 'go'}" data-h="#/${id}">${ic(i)}${t}${id === 'home' && todoN ? `<span class="dotn">${todoN}</span>` : ''}${id === 'noti' && S.unread ? `<span class="dotn">${S.unread}</span>` : ''}</button>`).join('');
+  renderTestBar();
   $('bellN').textContent = S.unread > 9 ? '9+' : S.unread;
   $('bellN').classList.toggle('hide', !S.unread);
 }
+/* ==========================================================================
+   ★ v3.0 — CHẾ ĐỘ TEST (Admin): dữ liệu riêng, email chỉ gửi cho chính mình
+   ========================================================================== */
+function renderTestBar(){
+  const el = $('testbar'); if (!el) return;
+  if (!(S.user && S.user.isAdmin && S.test)) { el.innerHTML = ''; el.className = ''; return; }
+  el.className = 'testbar';
+  el.innerHTML = `<span class="tb-t">${ic('sparkle')}<b>CHẾ ĐỘ TEST</b><span class="hide-m">— dữ liệu & file riêng (thư mục Test), email/thông báo chỉ gửi cho bạn</span></span>
+    <div class="seg"><button class="${S.testRole !== 'learner' ? 'on' : ''}" data-a="testRole" data-r="trainer">${ic('clip')}Vai Trainer</button><button class="${S.testRole === 'learner' ? 'on' : ''}" data-a="testRole" data-r="learner">${ic('user')}Vai Học viên</button></div>
+    <button class="btn btn-ghost btn-sm" data-a="testJob" data-k="day" title="Gửi thử email nhắc lịch 8:30 ngày đào tạo (tới hộp thư của bạn)">${ic('mail')}Thử nhắc lịch</button>
+    <button class="btn btn-ghost btn-sm" data-a="testJob" data-k="weekly" title="Gửi thử email nhắc bài kiểm tra thứ Hai (tới hộp thư của bạn)">${ic('bell')}Thử nhắc tuần</button>
+    <button class="btn btn-ghost btn-sm" data-a="testReset">${ic('trash')}Xoá dữ liệu test</button>
+    <button class="btn btn-line btn-sm" data-a="testToggle">Thoát Test</button>`;
+}
+function testGuideHtml(){
+  const ss = S.sessions.filter(s => s.status !== 'Cancel');
+  const steps = [
+    ['Tạo buổi đào tạo test', ss.length > 0, `<button class="btn btn-primary btn-sm" data-a="sessionForm">${ic('plus')}Tạo buổi</button>`, 'trainer'],
+    ['Tải tài liệu lên (kéo thả vào trang buổi)', sessionStorage.getItem('mmh_hub_test_up') === '1' || ss.some(s => s.hasFolder && S.progress[s.sid]), ss[0] ? `<button class="btn btn-soft btn-sm" data-a="go" data-h="#/s/${esc(ss[0].sid)}?tab=materials">Mở tab Tài liệu</button>` : '', 'trainer'],
+    ['Soạn & phát hành bài kiểm tra', ss.some(s => s.hasQuiz && s.quizActive), ss[0] ? `<button class="btn btn-soft btn-sm" data-a="quizBuilder" data-sid="${esc(ss[0].sid)}">Soạn bài</button>` : '', 'trainer'],
+    ['Gửi email mời — kiểm tra hộp thư của bạn', ss.some(s => s.preSent || s.afterSent), ss[0] ? `<button class="btn btn-soft btn-sm" data-a="compose" data-sid="${esc(ss[0].sid)}">Soạn email</button>` : '', 'trainer'],
+    ['Chuyển sang vai Học viên', S.testRole === 'learner', `<button class="btn btn-soft btn-sm" data-a="testRole" data-r="learner">Đổi vai</button>`, ''],
+    ['Tự học tài liệu & làm bài kiểm tra', ss.some(s => s.myAttempts > 0 || s.myStatus === 'Completed'), ss[0] ? `<button class="btn btn-go btn-sm" data-a="course" data-sid="${esc(ss[0].sid)}">Học & làm bài</button>` : '', 'learner'],
+    ['Nhận chứng chỉ (email + mục Chứng chỉ của tôi)', ss.some(s => s.myCert), `<button class="btn btn-soft btn-sm" data-a="go" data-h="#/certs">Xem chứng chỉ</button>`, 'learner']
+  ];
+  const doneN = steps.filter(x => x[1]).length;
+  return `<section class="panel testguide"><div class="panel-h"><h3>${ic('sparkle')}Kịch bản test trọn vòng · ${doneN}/${steps.length}</h3><div class="sp"></div><span class="xs muted">File sinh ra nằm trong thư mục Test · email gửi về ${esc(S.user.email)}</span></div>
+    <div class="panel-b">${steps.map(([t, d, btn, role], i) => `<div class="tg-row ${d ? 'done' : ''}"><i>${d ? ic('check') : i + 1}</i><span>${esc(t)}${role ? ` <small>(${role === 'trainer' ? 'vai Trainer' : 'vai Học viên'})</small>` : ''}</span>${d ? '' : btn}</div>`).join('')}</div></section>`;
+}
+
 function setCrumb(html){ $('crumb').innerHTML = html; }
 function setSync(state, txt){ $('sync').className = 'sync ' + (state || ''); $('syncTxt').textContent = txt; }
 
 /* ==========================================================================
    TẢI DỮ LIỆU — hiện ngay bản lưu trên máy, cập nhật nền từ máy chủ
    ========================================================================== */
-const bootKey = () => 'mmh_hub2_boot_' + pre(S.user ? S.user.email : localStorage.getItem('mmh_hub_email'));
+const bootKey = () => 'mmh_hub2_boot_' + pre(S.user ? S.user.email : localStorage.getItem('mmh_hub_email')) + (S.test ? ':test' : '');
 function applyBoot(r){
   S.user = r.user || S.user; S.cfg = r.config || {}; S.meta = r.meta || {};
   S.sessions = r.sessions || []; S.users = r.users || []; S.groups = r.groups || [];
@@ -1496,6 +1650,7 @@ function route(refresh){
   S.route = r;
   renderShell();
   const fn = VIEWS[r.name] || VIEWS.home;
+  $('view').classList.toggle('wide', r.name === 'calendar');
   if (!refresh || !same) { window.scrollTo(0, 0); }
   fn(r.id, r.q, refresh && same);
 }
@@ -1511,7 +1666,7 @@ function journeyOf(s){
   if (S.mats[s.sid] && S.mats[s.sid].files && S.mats[s.sid].files.length) { const c = Course.stats(s.sid); mat = c.passed ? 'done' : c.done || c.allDone ? 'now' : ''; matL = c.passed ? 'Đã học xong' : 'Tài liệu ' + c.done + '/' + c.total; }
   let qz = '', ql = 'Bài kiểm tra';
   if (!s.hasQuiz) { qz = ''; ql = 'Chưa có bài KT'; }
-  else if (s.myPass) { qz = 'done'; ql = s.myScore !== '' ? 'Đạt ' + Math.round(s.myScore) + '%' : 'Đã đạt'; }
+  else if (s.myPass) { qz = 'done'; ql = s.myScore !== '' ? 'Đạt ' + Math.round(s.myScore) + 'đ' : 'Đã đạt'; }
   else if (s.myAttempts >= s.maxAttempts && s.myAttempts > 0) { qz = 'fail'; ql = 'Chưa đạt'; }
   else if (s.quizActive) { qz = 'now'; ql = s.myAttempts ? 'Làm lại' : 'Cần làm bài'; }
   const ct = s.myCert ? 'done' : '';
@@ -1524,7 +1679,7 @@ function ticketHtml(t){
   const s = findS(t.sid) || {};
   return `<article class="ticket"><div class="spine"></div>
     <div class="body">${catTag(t.category)}<h3>${esc(t.topic)}</h3>
-      <div class="facts"><span>${ic('list')}${t.questionCount} câu hỏi</span><span>${ic('clock')}${t.durationMin} phút</span><span>${ic('target')}Đạt từ ${t.passScore}%</span><span>${ic('user')}${esc(t.trainer || '—')}</span>${t.myScore !== '' && t.myScore != null ? `<span>Lần trước: <b style="color:var(--bad)">${t.myScore}%</b></span>` : ''}</div></div>
+      <div class="facts"><span>${ic('list')}${t.questionCount} câu hỏi</span><span>${ic('clock')}${t.durationMin} phút</span><span>${ic('target')}Đạt từ ${t.passScore}/100 điểm</span><span>${ic('user')}${esc(t.trainer || '—')}</span>${t.myScore !== '' && t.myScore != null ? `<span>Lần trước: <b style="color:var(--bad)">${pts(t.myScore)} điểm</b></span>` : ''}</div></div>
     <div class="act">${t.deadline ? dueChip(t.deadline) : '<span class="due ok">' + ic('clock') + 'Không đặt hạn</span>'}
       <div style="display:flex;gap:8px">${t.requireMaterials ? `<button class="btn btn-go" data-a="course" data-sid="${esc(t.sid)}">${ic('book')}Học & làm bài</button>` : `<button class="btn btn-line btn-sm" data-a="course" data-sid="${esc(t.sid)}">Tự học</button><button class="btn btn-go" data-a="quiz" data-sid="${esc(t.sid)}">${ic('play')}Làm bài</button>`}</div>
       <span class="xs muted">${t.requireMaterials ? 'Học hết tài liệu → mở bài kiểm tra · ' : ''}Còn ${t.attemptsLeft} lượt</span></div>
@@ -1563,7 +1718,7 @@ VIEWS.home = function(id, q, isRefresh){
         <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-primary btn-sm" data-a="sessionForm">${ic('plus')}Tạo buổi đào tạo</button></div></div></div></section>`;
   }
 
-  $('view').innerHTML = `
+  $('view').innerHTML = (S.user.isAdmin && S.test ? testGuideHtml() : '') + `
     <section class="hello">
       <div class="h-xl"><div class="date">${longDate(now)}</div>${greet}, ${esc(u.name)}</div>
       <div class="strip"><div><b>${done.length}<small class="muted" style="font-size:14px">/${mine.length}</small></b>buổi hoàn thành</div><div><b>${avg == null ? '—' : avg + '%'}</b>điểm trung bình</div><div><b>${certs}</b>chứng chỉ</div></div>
@@ -1596,7 +1751,7 @@ function maybeTodoPopup(){
   if (sessionStorage.getItem(key)) return;
   S.popupShown = true; sessionStorage.setItem(key, '1');
   const m = Modal.open({title: `Bạn có ${S.todo.length} bài kiểm tra cần làm`, sub: 'Bài kiểm tra được trainer giao sau buổi đào tạo. Làm ngay hoặc xem lại tài liệu trước.',
-    body: S.todo.slice(0, 4).map(t => `<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)"><div style="flex:1;min-width:0">${catTag(t.category)}<div style="font-weight:700;color:var(--navy)" class="clamp2">${esc(t.topic)}</div><div class="xs muted">${t.questionCount} câu · ${t.durationMin} phút · đạt từ ${t.passScore}%</div></div>${dueChip(t.deadline)}<button class="btn btn-go btn-sm" data-a="${t.requireMaterials ? 'course' : 'quiz'}" data-sid="${esc(t.sid)}">${t.requireMaterials ? 'Học & làm bài' : 'Làm bài'}</button></div>`).join(''),
+    body: S.todo.slice(0, 4).map(t => `<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)"><div style="flex:1;min-width:0">${catTag(t.category)}<div style="font-weight:700;color:var(--navy)" class="clamp2">${esc(t.topic)}</div><div class="xs muted">${t.questionCount} câu · ${t.durationMin} phút · đạt từ ${t.passScore}/100 điểm</div></div>${dueChip(t.deadline)}<button class="btn btn-go btn-sm" data-a="${t.requireMaterials ? 'course' : 'quiz'}" data-sid="${esc(t.sid)}">${t.requireMaterials ? 'Học & làm bài' : 'Làm bài'}</button></div>`).join(''),
     foot: `<span class="xs muted">Có thể xem lại bất cứ lúc nào ở mục <b>Việc cần làm</b>.</span><div class="sp"></div><button class="btn btn-line" data-mclose>Để sau</button>`});
   m.el.querySelectorAll('[data-a="quiz"],[data-a="course"]').forEach(b => b.addEventListener('click', () => Modal.close(m)));
 }
@@ -1630,10 +1785,11 @@ VIEWS.library = function(){
     return true;
   };
   const draw = () => {
-    localStorage.setItem('mmh_hub_lib', JSON.stringify({group: S.lib.group, layout: S.lib.layout}));
+    localStorage.setItem('mmh_hub_lib', JSON.stringify({range: S.lib.range, from: S.lib.from, to: S.lib.to, layout: S.lib.layout}));
     const base = S.sessions.filter(baseFilter);
-    $('libPer').innerHTML = periodBar('lib', base) + `<div class="seg lay" style="width:auto">${[['list', 'Danh sách', 'list'], ['table', 'Bảng', 'grid']].map(([k, t, i]) => `<button type="button" class="${S.lib.layout === k ? 'on' : ''}" data-a="libLayout" data-l="${k}">${ic(i)}${t}</button>`).join('')}</div>`;
-    const inPer = base.filter(s => inPeriod(S.lib, s));
+    $('libPer').innerHTML = periodBar('lib') + `<div class="seg lay" style="width:auto">${[['list', 'Danh sách', 'list'], ['table', 'Bảng', 'grid']].map(([k, t, i]) => `<button type="button" class="${S.lib.layout === k ? 'on' : ''}" data-a="libLayout" data-l="${k}">${ic(i)}${t}</button>`).join('')}</div>`;
+    const searching = !!S.lib.q.trim();
+    const inPer = searching ? base : base.filter(s => inPeriod(S.lib, s));      // đang tìm → tìm trong mọi thời gian
     $('libPills').innerHTML = [`<button class="pill ${!S.lib.cat && !S.lib.mine ? 'on' : ''}" data-a="libCat" data-c="">Tất cả <span class="n">${inPer.length}</span></button>`,
       `<button class="pill ${S.lib.mine ? 'on' : ''}" data-a="libMine">${ic('user')}Được giao cho tôi <span class="n">${inPer.filter(s => s.assigned).length}</span></button>`]
       .concat(cats.map(c => `<button class="pill ${S.lib.cat === c ? 'on' : ''}" data-a="libCat" data-c="${esc(c)}" style="--c:var(--c-${catKey(c)})"><i></i>${esc(catLabel(c))} <span class="n">${inPer.filter(s => s.category === c).length}</span></button>`)).join('');
@@ -1641,19 +1797,26 @@ VIEWS.library = function(){
       .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     // tổng kết kỳ đang xem
     const done = list.filter(s => s.status === 'Completed'), withQ = done.filter(s => s.hasQuiz), mine = list.filter(s => s.assigned);
-    $('libSum').innerHTML = list.length ? `<div class="sumstrip"><b>${S.lib.period ? esc(FY.label(S.lib.period, S.lib.group)) : 'Tất cả các kỳ'}</b>
+    $('libSum').innerHTML = list.length ? `<div class="sumstrip"><b>${searching ? 'Kết quả tìm trong mọi thời gian' : esc(rangeLabel(S.lib))}</b>
       <span><b>${list.length}</b> buổi</span><span><b>${done.length}</b> đã diễn ra</span><span><b>${withQ.length}</b>/${done.length} có bài kiểm tra${done.length ? ' (' + Math.round(withQ.length / done.length * 100) + '%)' : ''}</span>
       ${mine.length ? `<span>Của tôi: <b>${mine.filter(s => s.myPass).length}</b>/${mine.length} đã đạt</span>` : ''}</div>` : '';
-    if (!list.length) { $('libList').innerHTML = `<div class="panel">${emptyBox('search', 'Không có buổi đào tạo phù hợp', S.lib.period ? 'Kỳ này chưa có buổi nào — thử kỳ khác hoặc chọn "Tất cả các kỳ".' : 'Thử bỏ bớt bộ lọc hoặc đổi từ khoá.')}</div>`; return; }
+    if (!list.length) {
+      const nx = S.sessions.filter(s => s.status === 'Plan' && s.date > rangeOf(S.lib)[1]).sort((a, b) => a.date.localeCompare(b.date))[0];
+      $('libList').innerHTML = `<div class="panel">${emptyBox('cal', searching ? 'Không tìm thấy buổi đào tạo phù hợp' : (S.lib.range === 'week' ? 'Tuần này chưa có buổi đào tạo nào' : 'Không có buổi đào tạo trong khoảng thời gian này'),
+        searching ? 'Thử đổi từ khoá hoặc bỏ bớt bộ lọc.' : (nx ? 'Buổi gần nhất sắp tới: <b>' + esc(nx.topic) + '</b> — ' + dmy(nx.date) : ''),
+        searching ? '' : `<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px">${S.lib.range !== 'month' ? '<button class="btn btn-soft" data-a="perRange" data-s="lib" data-r="month">Xem tháng này</button>' : ''}<button class="btn btn-soft" data-a="perRange" data-s="lib" data-r="fy">Xem cả năm tài chính</button>${nx ? `<button class="btn btn-line" data-a="go" data-h="#/s/${esc(nx.sid)}">Mở buổi sắp tới</button>` : ''}</div>`)}</div>`;
+      return;
+    }
     const todoSet = new Set(S.todo.map(t => t.sid));
     const groups = [];
-    list.forEach(s => { const k = FY.key(s.date, S.lib.group); let g = groups[groups.length - 1]; if (!g || g.k !== k) { g = {k, items: []}; groups.push(g); } g.items.push(s); });
+    const gst = searching ? {range: 'fy'} : S.lib;
+    list.forEach(s => { const k = groupKey(gst, s.date); let g = groups[groups.length - 1]; if (!g || g.k !== k) { g = {k, items: []}; groups.push(g); } g.items.push(s); });
     const gHead = g => { const d = g.items.filter(s => s.status === 'Completed'); const q = d.filter(s => s.hasQuiz).length;
-      return `<span class="gl">${esc(FY.label(g.k, S.lib.group))}</span><span class="gs">${g.items.length} buổi · ${d.length} đã diễn ra · ${q} có bài KT</span>`; };
+      return `<span class="gl">${esc(groupLabel(g.k))}</span><span class="gs">${g.items.length} buổi · ${d.length} đã diễn ra · ${q} có bài KT</span>`; };
     const badges = s => {
       const b = [];
       if (todoSet.has(s.sid)) b.push('<span class="chip todo">Cần làm bài</span>');
-      else if (s.myPass) b.push(`<span class="chip ok">${ic('check')}Đạt ${s.myScore !== '' ? Math.round(s.myScore) + '%' : ''}</span>`);
+      else if (s.myPass) b.push(`<span class="chip ok">${ic('check')}Đạt ${s.myScore !== '' ? Math.round(s.myScore) + ' điểm' : ''}</span>`);
       else if (s.hasQuiz && s.quizActive) b.push('<span class="chip">Bài KT đang mở</span>');
       if (s.status === 'Plan' || s.status === 'Cancel') b.push(statusChip(s.status));
       if (s.hasFolder) b.push(`<span class="chip line" title="Có tài liệu">${ic('folder')}Tài liệu</span>`);
@@ -1669,7 +1832,7 @@ VIEWS.library = function(){
           <td class="small">${esc(s.trainer)}</td><td class="small" style="max-width:200px">${esc(s.audience)}</td>
           <td>${statusChip(s.status)}</td>
           <td>${!s.hasQuiz ? '<span class="faint">—</span>' : s.quizActive ? `<span class="chip ok dot">Đang mở</span>` : '<span class="chip mute">Đã đóng</span>'}</td>
-          <td>${tr ? (s.enrolled ? `<span class="small"><b>${s.passed}</b>/${s.enrolled}</span>` : '<span class="faint">—</span>') : (todoSet.has(s.sid) ? '<span class="chip todo">Cần làm</span>' : s.myPass ? `<span class="chip ok">Đạt ${s.myScore !== '' ? Math.round(s.myScore) + '%' : ''}</span>` : s.myStatus === 'Completed' ? '<span class="chip bad">Chưa đạt</span>' : '<span class="faint">—</span>')}</td>
+          <td>${tr ? (s.enrolled ? `<span class="small"><b>${s.passed}</b>/${s.enrolled}</span>` : '<span class="faint">—</span>') : (todoSet.has(s.sid) ? '<span class="chip todo">Cần làm</span>' : s.myPass ? `<span class="chip ok">Đạt ${s.myScore !== '' ? Math.round(s.myScore) + ' điểm' : ''}</span>` : s.myStatus === 'Completed' ? '<span class="chip bad">Chưa đạt</span>' : '<span class="faint">—</span>')}</td>
           <td>${s.hasFolder ? ic('folder').replace('<svg', '<svg style="width:18px;height:18px;color:#D9A400"') : '<span class="faint">—</span>'}</td></tr>`).join('')).join('')}
       </tbody></table></div></div>`;
     } else {
@@ -1727,7 +1890,7 @@ async function ensureLearners(sid){
 function matsFrom(r){
   if (r.chunkSize) Uploader.CH = r.chunkSize;
   return {files: r.data || [], folders: r.folders || [], crumb: r.crumb || [], single: !!r.single, folderUrl: r.folderUrl, folderName: r.folderName,
-          message: r.message, myProgress: r.myProgress || [], maxMb: r.maxMb || 1024, truncated: !!r.truncated};
+          message: r.message, myProgress: r.myProgress || [], maxMb: r.maxMb || 1024, truncated: !!r.truncated, noAccess: !!r.noAccess, runner: r.runner || ''};
 }
 const SessionPage = {
   sid: '', tab: 'materials',
@@ -1843,6 +2006,14 @@ const SessionPage = {
           </div></div>
         <div class="drop" id="drop" data-a="upPick" data-p="[]">${ic('upload')} <b>Kéo thả file hoặc cả thư mục vào bất kỳ đâu trên trang</b> — thả vào đúng thư mục bên dưới để tải vào thư mục đó · tối đa ${m.maxMb || 1024}MB/file</div>`;
     }
+    if (m.noAccess) {
+      box.innerHTML = `<div class="panel"><div class="panel-b access">${ic('lock')}<div style="flex:1"><b>Hub chưa được quyền đọc thư mục tài liệu của buổi này</b>
+        <p>Hệ thống đọc Drive bằng tài khoản <b>${esc(m.runner || 'mmh.product@mani.inc')}</b>. Thư mục này chưa được chia sẻ cho tài khoản đó nên học viên không xem được tài liệu trong Hub.</p>
+        ${edit ? `<p><b>Cách sửa (chủ thư mục làm, 1 phút):</b> mở thư mục trên Drive → <b>Chia sẻ</b> → thêm <b>${esc(m.runner || 'mmh.product@mani.inc')}</b> với quyền <b>Người xem</b> (hoặc <b>Người chỉnh sửa</b> nếu muốn tải file lên từ Hub) → Gửi. Sau đó bấm <b>Kiểm tra lại</b>.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><a class="btn btn-primary btn-sm" href="${esc(m.folderUrl)}" target="_blank" rel="noopener">${ic('ext')}Mở thư mục trên Drive</a><button class="btn btn-line btn-sm" data-a="copyText" data-t="${esc(m.runner || 'mmh.product@mani.inc')}">${ic('copy')}Sao chép email tài khoản</button><button class="btn btn-soft btn-sm" data-a="matsRefresh" data-sid="${esc(s.sid)}">${ic('refresh')}Kiểm tra lại</button></div>`
+        : `<p>Vui lòng báo trainer <b>${esc(s.trainer || '')}</b> chia sẻ thư mục cho tài khoản trên. Trong lúc chờ, bạn có thể thử <a href="${esc(m.folderUrl)}" target="_blank" rel="noopener" style="color:var(--link)">mở thư mục trên Drive</a> nếu đã được chia sẻ trực tiếp.</p>`}</div></div></div>`;
+      return;
+    }
     if (m.error) { box.innerHTML = head + `<div class="panel">${errBox('Chưa tải được danh sách tài liệu', m.error, `<button class="btn btn-primary" data-a="matsRefresh" data-sid="${esc(s.sid)}">Thử lại</button>`)}</div>`; return; }
     if (m.truncated && edit) head += `<div class="netbar">${ic('alert')}<span>Thư mục của buổi này rất lớn — hệ thống chỉ đọc ${m.files.length} file / ${(m.folders || []).length} thư mục đầu tiên để tránh treo máy chủ. Kiểm tra lại ô <b>Training Folder</b> có trỏ đúng thư mục riêng của buổi không.</span></div>`;
     // nhóm theo thư mục (gồm cả thư mục trống)
@@ -1892,13 +2063,13 @@ const SessionPage = {
     box.innerHTML = `
       <div class="quiz-card"><div>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><h3 class="h-md">Bài kiểm tra sau đào tạo</h3>${q.active ? '<span class="chip ok dot">Đang mở</span>' : '<span class="chip mute">Đã đóng</span>'}${q.deadline ? dueChip(q.deadline) : ''}</div>
-        <div class="qfacts"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}%</b>điểm đạt</div><div><b>${left}/${q.maxAttempts}</b>lượt còn lại</div></div>
+        <div class="qfacts"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}</b>điểm đạt /100</div><div><b>${left}/${q.maxAttempts}</b>lượt còn lại</div></div>
         ${q.note ? `<div class="note-box" style="margin-top:14px">${ic('info')}<div>${esc(q.note)}</div></div>` : ''}
       </div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px">
         ${best ? `<div class="best"><div style="text-align:right"><div class="lbl">Điểm cao nhất</div><div class="xs muted">${esc(best.submittedAt)}</div></div>${ring(best.percent, best.result === 'Pass' ? 'var(--ok)' : 'var(--bad)')}</div>` : ''}
         ${btn}</div></div>
       ${q.history && q.history.length ? `<div class="sec"><div class="sec-h"><h2 style="font-size:16px">Lịch sử làm bài</h2></div><div class="panel"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Lượt</th><th>Nộp lúc</th><th>Thời gian</th><th>Điểm</th><th>Kết quả</th></tr></thead><tbody>
-        ${q.history.map(h => `<tr><td>${h.attempt}</td><td>${esc(h.submittedAt)}</td><td>${fmtSec(h.durationSec)}</td><td><b>${h.percent}%</b> <span class="muted small">(${h.score}/${h.maxScore})</span></td><td>${h.result === 'Pass' ? '<span class="chip ok">Đạt</span>' : '<span class="chip bad">Chưa đạt</span>'}${h.certUrl ? ` <a class="chip line" href="${esc(h.certUrl)}" target="_blank" rel="noopener">${ic('award')}Chứng chỉ</a>` : ''}</td></tr>`).join('')}</tbody></table></div></div></div>` : ''}
+        ${q.history.map(h => `<tr><td>${h.attempt}</td><td>${esc(h.submittedAt)}</td><td>${fmtSec(h.durationSec)}</td><td><b>${pts(h.percent)} điểm</b></td><td>${h.result === 'Pass' ? '<span class="chip ok">Đạt</span>' : '<span class="chip bad">Chưa đạt</span>'}${h.certUrl ? ` <a class="chip line" href="${esc(h.certUrl)}" target="_blank" rel="noopener">${ic('award')}Chứng chỉ</a>` : ''}</td></tr>`).join('')}</tbody></table></div></div></div>` : ''}
       ${edit ? `<div class="sec"><div class="sec-h"><h2 style="font-size:16px">Công cụ trainer</h2></div><div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-line" data-a="quizBuilder" data-sid="${esc(s.sid)}">${ic('edit')}Sửa câu hỏi</button>
         <button class="btn btn-line" data-a="togglePub" data-sid="${esc(s.sid)}" data-on="${q.active ? 0 : 1}">${ic(q.active ? 'lock' : 'play')}${q.active ? 'Đóng bài kiểm tra' : 'Mở bài kiểm tra'}</button>
@@ -1926,7 +2097,7 @@ const SessionPage = {
       ${L.length ? L.map(l => `<tr><td><div style="display:flex;gap:10px;align-items:center"><div class="avatar">${initials(l.name)}</div><div class="who"><b>${esc(l.name)}</b><span>${esc(l.dept || l.email)}</span></div></div></td>
         <td>${nFiles ? `<span class="small">${l.filesDone}/${nFiles}</span><div class="ruler thin" style="width:90px;margin-top:4px"><i style="width:${Math.round(l.filesDone / nFiles * 100)}%"></i></div>` : `<span class="faint small">${l.filesDone ? l.filesDone + ' file' : '—'}</span>`}${l.lastOpened ? `<div class="xs faint">${esc(l.lastOpened)}</div>` : ''}</td>
         <td>${l.pass ? '<span class="chip ok">Đạt</span>' : l.status === 'Completed' ? '<span class="chip bad">Chưa đạt</span>' : l.status === 'In progress' ? '<span class="chip warn">Đang làm</span>' : '<span class="chip mute">Chưa làm</span>'}</td>
-        <td>${l.percent !== '' && l.percent != null ? `<b>${l.percent}%</b>` : '—'}</td><td>${l.attempt || 0}</td>
+        <td>${l.percent !== '' && l.percent != null ? `<b>${pts(l.percent)} điểm</b>` : '—'}</td><td>${l.attempt || 0}</td>
         <td>${l.certUrl ? `<a class="chip line" href="${esc(l.certUrl)}" target="_blank" rel="noopener">${ic('award')}Xem</a>` : l.pass ? `<button class="btn btn-ghost btn-sm" data-a="resendCert" data-sid="${esc(s.sid)}" data-e="${esc(l.email)}">Cấp lại</button>` : '—'}</td>
         <td>${!l.pass && s.hasQuiz ? `<button class="btn btn-ghost btn-sm" data-a="compose" data-sid="${esc(s.sid)}" data-k="reminder" data-e="${esc(l.email)}">${ic('mail')}Nhắc</button>` : ''}</td></tr>`).join('') : `<tr><td colspan="7">${emptyBox('users', 'Chưa có học viên', 'Kiểm tra lại cột Đối tượng tham dự của buổi đào tạo.')}</td></tr>`}
       </tbody></table></div></div>`;
@@ -2057,6 +2228,7 @@ const Uploader = {
         this.render();
       }
       it.status = 'ok'; it.done = Date.now();
+      if (S.test) sessionStorage.setItem('mmh_hub_test_up', '1');
     } catch (e) {
       it.status = e.code === 'CANCEL' ? 'cancel' : 'err'; it.err = e.message;
       if (e.code === 'UPLOAD_EXPIRED') { it.uploadId = ''; it.sent = 0; }
@@ -2482,7 +2654,7 @@ const Course = {
         <div class="xs muted" style="margin-top:6px">Đã học ${st.done}/${st.total} tài liệu${st.all > st.total ? ' bắt buộc' : ''}</div></div>
       <div class="crs-list"><div class="crs-sec">1 · Học tài liệu</div>${items}
         <div class="crs-sec">2 · Bài kiểm tra</div>
-        <button class="crs-st quiz ${quizState}" data-a="crsQuiz" data-sid="${esc(sid)}"><i>${quizState === 'done' ? ic('check') : quizState === 'locked' ? ic('lock') : ic('clip')}</i><span><b>Bài kiểm tra sau đào tạo</b><small>${quizState === 'none' ? 'Buổi này chưa có bài kiểm tra' : quizState === 'done' ? 'Đã đạt ' + (q.best ? q.best.percent + '%' : '') : quizState === 'locked' ? 'Mở khi học xong tài liệu' : quizState === 'closed' ? 'Trainer chưa mở bài' : q.totalQuestions + ' câu · ' + q.durationMin + ' phút · đạt từ ' + q.passScore + '%'}</small></span></button>
+        <button class="crs-st quiz ${quizState}" data-a="crsQuiz" data-sid="${esc(sid)}"><i>${quizState === 'done' ? ic('check') : quizState === 'locked' ? ic('lock') : ic('clip')}</i><span><b>Bài kiểm tra sau đào tạo</b><small>${quizState === 'none' ? 'Buổi này chưa có bài kiểm tra' : quizState === 'done' ? 'Đã đạt ' + (q.best ? pts(q.best.percent) + ' điểm' : '') : quizState === 'locked' ? 'Mở khi học xong tài liệu' : quizState === 'closed' ? 'Trainer chưa mở bài' : q.totalQuestions + ' câu · ' + q.durationMin + ' phút · đạt từ ' + q.passScore + '/100 điểm'}</small></span></button>
         <div class="crs-sec">3 · Chứng chỉ</div>
         <div class="crs-st crt ${s.myCert || (q.best && q.best.certUrl) ? 'done' : ''}"><i>${ic('award')}</i><span><b>Chứng chỉ hoàn thành</b><small>${s.myCert ? 'Đã cấp — xem ở mục Chứng chỉ' : 'Tự cấp và gửi email khi đạt'}</small></span></div>
       </div>`;
@@ -2527,13 +2699,13 @@ const Course = {
     if (Reader.st) { Reader.st.onQuiz = true; }
     let body;
     if (!q.hasQuiz) body = `<div class="crs-card">${ic('check', 'big ok')}<h2 class="h-lg">Bạn đã học xong tài liệu</h2><p class="muted">Buổi đào tạo này chưa có bài kiểm tra. Khi trainer phát hành, bạn sẽ nhận thông báo 🔔 và email.</p><button class="btn btn-primary" data-a="rdClose">Về trang buổi đào tạo</button></div>`;
-    else if (q.passed) body = `<div class="crs-card">${ic('award', 'big ok')}<h2 class="h-lg">Bạn đã hoàn thành khoá học</h2><p class="muted">Điểm cao nhất ${q.best ? q.best.percent + '%' : ''}. Chứng chỉ đã được gửi vào email của bạn.</p>${s.myCert ? `<a class="btn btn-primary" href="${esc(s.myCert)}" target="_blank" rel="noopener">${ic('award')}Xem chứng chỉ</a>` : ''}</div>`;
+    else if (q.passed) body = `<div class="crs-card">${ic('award', 'big ok')}<h2 class="h-lg">Bạn đã hoàn thành khoá học</h2><p class="muted">Điểm cao nhất ${q.best ? pts(q.best.percent) + '/100 điểm' : ''}. Chứng chỉ đã được gửi vào email của bạn.</p>${s.myCert ? `<a class="btn btn-primary" href="${esc(s.myCert)}" target="_blank" rel="noopener">${ic('award')}Xem chứng chỉ</a>` : ''}</div>`;
     else if (!gateOk) body = `<div class="crs-card">${ic('lock', 'big')}<h2 class="h-lg">Còn ${st.total - st.done} tài liệu cần học</h2><p class="muted">Học xong toàn bộ tài liệu bắt buộc để mở bài kiểm tra.</p>
         <div class="crs-miss">${this.files(sid).filter(x => !this.optional(sid).has(x.id) && !this.done(sid, x.id)).map(x => `<button class="resume" data-a="crsGo" data-sid="${esc(sid)}" data-fid="${esc(x.id)}">${ftype(x.kind)}<div class="t"><b class="clamp1">${esc(x.name)}</b><span>${esc(x.path || 'Tài liệu chính')}</span></div>${ic('right')}</button>`).join('')}</div></div>`;
     else if (!q.active) body = `<div class="crs-card">${ic('clock', 'big')}<h2 class="h-lg">Bài kiểm tra chưa mở</h2><p class="muted">Bạn đã học xong tài liệu. Khi trainer mở bài, bạn sẽ nhận thông báo 🔔 và email.</p><button class="btn btn-line" data-a="rdClose">Đóng</button></div>`;
     else if (!q.available) body = `<div class="crs-card">${ic('info', 'big')}<h2 class="h-lg">Chưa làm được bài kiểm tra</h2><p class="muted">${esc(q.reason || '')}</p><button class="btn btn-line" data-a="rdClose">Đóng</button></div>`;
-    else body = `<div class="crs-card">${ic('check', 'big ok')}<h2 class="h-lg">Bạn đã học xong ${st.done}/${st.total} tài liệu</h2><p class="muted">Bước tiếp theo: bài kiểm tra ${q.totalQuestions} câu trong ${q.durationMin} phút, đạt từ ${q.passScore}% sẽ nhận chứng chỉ ngay.${q.deadline ? ' Hạn hoàn thành ' + dmy(q.deadline) + '.' : ''}</p>
-        <div class="qfacts" style="justify-content:center;margin:6px 0 22px"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}%</b>điểm đạt</div><div><b>${Math.max(0, q.maxAttempts - q.attempts)}</b>lượt còn lại</div></div>
+    else body = `<div class="crs-card">${ic('check', 'big ok')}<h2 class="h-lg">Bạn đã học xong ${st.done}/${st.total} tài liệu</h2><p class="muted">Bước tiếp theo: bài kiểm tra ${q.totalQuestions} câu trong ${q.durationMin} phút, đạt từ ${q.passScore}/100 điểm sẽ nhận chứng chỉ ngay.${q.deadline ? ' Hạn hoàn thành ' + dmy(q.deadline) + '.' : ''}</p>
+        <div class="qfacts" style="justify-content:center;margin:6px 0 22px"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}</b>điểm đạt /100</div><div><b>${Math.max(0, q.maxAttempts - q.attempts)}</b>lượt còn lại</div></div>
         <button class="btn btn-go btn-lg" data-a="crsStartQuiz" data-sid="${esc(sid)}">${ic('play')}${q.inProgress ? 'Tiếp tục bài kiểm tra' : 'Làm bài kiểm tra ngay'}</button></div>`;
     $('rdBody').innerHTML = `<div class="crs-final">${body}</div>`;
     $('rdPgn') && $('rdPgn').classList.add('hide'); $('rdZoom') && $('rdZoom').classList.add('hide');
@@ -2575,15 +2747,15 @@ const Quiz = {
     this.show(this.top(s.topic, 'Bài kiểm tra sau đào tạo') + `<div class="qz-main"><div class="qz-intro">
       ${catTag(s.category)}<h2 class="h-lg" style="margin:8px 0 4px">${esc(s.topic)}</h2>
       <div class="muted">Trainer: ${esc(s.trainer || '—')}${q.deadline ? ' · ' : ''}${q.deadline ? dueChip(q.deadline) : ''}</div>
-      <div class="rules"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}%</b>điểm đạt</div><div><b>${left}</b>lượt còn lại</div></div>
+      <div class="rules"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}</b>điểm đạt /100</div><div><b>${left}</b>lượt còn lại</div></div>
       ${q.note ? `<div class="note-box" style="margin-bottom:18px">${ic('info')}<div><b style="color:var(--navy)">Lưu ý từ trainer:</b> ${esc(q.note)}</div></div>` : ''}
       <ul>
         <li>${ic('check')}<span>Đồng hồ bắt đầu chạy khi bấm <b>Bắt đầu</b>. Hết giờ hệ thống tự nộp bài.</span></li>
         <li>${ic('check')}<span>Chuyển câu tự do, đánh dấu câu phân vân để xem lại trước khi nộp.</span></li>
         <li>${ic('check')}<span>Lỡ tải lại trang hoặc mất mạng: mở lại bài, đáp án đã chọn vẫn được giữ.</span></li>
-        <li>${ic('check')}<span>Đạt từ ${q.passScore}% sẽ nhận chứng chỉ PDF qua email ngay.</span></li>
+        <li>${ic('check')}<span>Đạt từ ${q.passScore}/100 điểm sẽ nhận chứng chỉ PDF qua email ngay.</span></li>
       </ul>
-      ${q.best ? `<div class="note-box" style="margin-bottom:18px">${ic('target')}<div>Điểm cao nhất của bạn: <b style="color:var(--navy)">${q.best.percent}%</b> (${q.best.result === 'Pass' ? 'Đạt' : 'Chưa đạt'})</div></div>` : ''}
+      ${q.best ? `<div class="note-box" style="margin-bottom:18px">${ic('target')}<div>Điểm cao nhất của bạn: <b style="color:var(--navy)">${pts(q.best.percent)}/100 điểm</b> (${q.best.result === 'Pass' ? 'Đạt' : 'Chưa đạt'})</div></div>` : ''}
       ${gateBox}
       ${gateBox ? `<button class="btn btn-go btn-lg btn-block" data-a="course" data-sid="${esc(sid)}">${ic('book')}${g.done ? 'Tiếp tục học' : 'Bắt đầu học'} · ${g.done}/${g.total} tài liệu</button>`
       : can ? `<button class="btn btn-go btn-lg btn-block" data-a="qzStart" data-sid="${esc(sid)}">${ic('play')}${q.inProgress ? `Tiếp tục bài đang làm (còn ${fmtSec(q.inProgress.remainingSec)})` : q.attempts ? 'Làm lại' : 'Bắt đầu làm bài'}</button>`
@@ -2629,11 +2801,11 @@ const Quiz = {
     const q = qs[A.idx];
     const sel = A.ans[q.qid] || '';
     const pct = Math.round(this.answered() / n * 100);
-    this.show(this.top(A.r.session.topic, `Lượt ${A.r.attemptNo}/${A.r.maxAttempts} · Đạt từ ${A.r.passScore}%`, `<div class="timer" id="qzTimer"><div class="tr"></div><span>--:--</span></div>`) +
+    this.show(this.top(A.r.session.topic, `Lượt ${A.r.attemptNo}/${A.r.maxAttempts} · Đạt từ ${A.r.passScore}/100 điểm`, `<div class="timer" id="qzTimer"><div class="tr"></div><span>--:--</span></div>`) +
       `<div class="qz-prog"><i style="width:${pct}%"></i></div>
       <div class="qz-strip">${qs.map((x, i) => `<button class="${A.ans[x.qid] ? 'ans' : ''} ${i === A.idx ? 'cur' : ''} ${A.flags[x.qid] ? 'flag' : ''}" data-a="qzJump" data-i="${i}">${i + 1}</button>`).join('')}<button class="go" data-a="qzReview">Nộp bài</button></div>
       <div class="qz-body"><div class="qz-main"><div class="qz-q">
-        <div class="qn">Câu ${A.idx + 1} / ${n}${q.points > 1 ? ` <span class="chip">${q.points} điểm</span>` : ''}${A.flags[q.qid] ? ' <span class="chip todo">Đã đánh dấu</span>' : ''}</div>
+        <div class="qn">Câu ${A.idx + 1} / ${n} <span class="chip">${Math.round(100 / n * 10) / 10} điểm</span>${A.flags[q.qid] ? ' <span class="chip todo">Đã đánh dấu</span>' : ''}</div>
         <h2>${esc(q.question)}</h2>
         <div class="hintx">${q.multi ? 'Chọn <b>tất cả</b> đáp án đúng.' : q.type === 'truefalse' ? 'Chọn Đúng hoặc Sai.' : 'Chọn 1 đáp án đúng.'}</div>
         <div class="opts">${q.options.map(o => `<button class="opt ${q.multi ? 'multi' : ''} ${sel.includes(o.k) ? 'sel' : ''}" data-a="qzPick" data-k="${o.k}"><span class="k">${q.multi && sel.includes(o.k) ? '✓' : o.k}</span><span class="tx">${esc(o.t)}</span></button>`).join('')}</div>
@@ -2713,8 +2885,8 @@ const Quiz = {
   gradeLocal(){
     const A = this.A; let score = 0, max = 0, c = 0;
     const detail = A.r.questions.map((q, i) => { max += q.points; const g = A.ans[q.qid] || ''; const ok = !!g && g === String(q._c || '').split('').sort().join(''); if (ok) { score += q.points; c++; } return {no: i + 1, question: q.question, options: q.options, given: g, correct: String(q._c || '').split('').sort().join(''), isCorrect: ok, explanation: q._e}; });
-    const percent = max ? Math.round(score / max * 1000) / 10 : 0;
-    return {score, maxScore: max, percent, correctCount: c, totalQuestions: detail.length, passScore: A.r.passScore, pass: percent >= A.r.passScore, durationSec: Math.round(A.total - Math.max(0, (A.endAt - Date.now()) / 1000)), attemptNo: 1, maxAttempts: 1, detail, preview: true, message: 'Chế độ xem thử — kết quả không được lưu.'};
+    const percent = Math.round(c * 100 / Math.max(1, detail.length));
+    return {score: percent, maxScore: 100, percent, correctCount: c, totalQuestions: detail.length, passScore: A.r.passScore, pass: percent >= A.r.passScore, durationSec: Math.round(A.total - Math.max(0, (A.endAt - Date.now()) / 1000)), attemptNo: 1, maxAttempts: 1, detail, preview: true, message: 'Chế độ xem thử — kết quả không được lưu.'};
   },
   result(r){
     const A = this.A; const sid = A.sid;
@@ -2723,10 +2895,10 @@ const Quiz = {
     const color = r.pass ? 'var(--ok)' : 'var(--bad)';
     this.show(this.top(A.r.session.topic, r.preview ? 'Xem thử — không lưu kết quả' : 'Kết quả bài kiểm tra') + `<div class="qz-main"><div class="result">
       <div class="res-hero">
-        <div class="gauge"><svg viewBox="0 0 170 170"><circle cx="85" cy="85" r="74" stroke="#EAF1FB" stroke-width="14" fill="none"/><circle id="gArc" cx="85" cy="85" r="74" stroke="${color}" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" style="transition:stroke-dashoffset 1.2s var(--ease)"/></svg><div class="v"><div><b id="gNum">0</b><span>điểm %</span></div></div></div>
+        <div class="gauge"><svg viewBox="0 0 170 170"><circle cx="85" cy="85" r="74" stroke="#EAF1FB" stroke-width="14" fill="none"/><circle id="gArc" cx="85" cy="85" r="74" stroke="${color}" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" style="transition:stroke-dashoffset 1.2s var(--ease)"/></svg><div class="v"><div><b id="gNum">0</b><span>/ 100 điểm</span></div></div></div>
         <div><div class="verdict ${r.pass ? 'ok' : 'bad'}">${r.pass ? 'Chúc mừng, bạn đã đạt!' : r.overtime ? 'Bài làm quá thời gian' : 'Chưa đạt lần này'}</div>
           <p class="muted" style="margin-top:4px">${esc(r.message || '')}</p>
-          <div class="res-stats"><div><b>${r.correctCount}/${r.totalQuestions}</b>câu đúng</div><div><b>${r.score}/${r.maxScore}</b>điểm</div><div><b>${fmtSec(r.durationSec)}</b>thời gian</div><div><b>${r.passScore}%</b>điểm đạt</div></div>
+          <div class="res-stats"><div><b>${r.correctCount}/${r.totalQuestions}</b>câu đúng</div><div><b>${Math.round(100 / Math.max(1, r.totalQuestions))}</b>điểm / câu</div><div><b>${fmtSec(r.durationSec)}</b>thời gian</div><div><b>${r.passScore}</b>điểm đạt</div></div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             ${r.canRetry ? `<button class="btn btn-go" data-a="quiz" data-sid="${esc(sid)}">${ic('refresh')}Làm lại (còn ${r.maxAttempts - r.attemptNo} lượt)</button>` : ''}
             ${!r.pass && sid ? `<button class="btn btn-soft" data-a="qzToMats" data-sid="${esc(sid)}">${ic('book')}Ôn lại tài liệu</button>` : ''}
@@ -2741,7 +2913,7 @@ const Quiz = {
     requestAnimationFrame(() => setTimeout(() => {
       const arc = $('gArc'); if (arc) arc.style.strokeDashoffset = C * (1 - pct / 100);
       const num = $('gNum'); const t0 = performance.now();
-      const step = t => { const k = Math.min(1, (t - t0) / 1100); if (num) num.textContent = Math.round(pct * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); else if (num) num.textContent = r.percent; };
+      const step = t => { const k = Math.min(1, (t - t0) / 1100); if (num) num.textContent = Math.round(pct * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); else if (num) num.textContent = Math.round(r.percent); };
       requestAnimationFrame(step);
       if (r.pass && !r.preview) confetti();
     }, 80));
@@ -2793,7 +2965,7 @@ function sessionForm(sid){
         <div class="field"><label>Trạng thái</label><select class="inp" id="sfStatus">${[['Plan', 'Kế hoạch'], ['Completed', 'Đã diễn ra'], ['Cancel', 'Đã huỷ']].map(([v, t]) => `<option value="${v}" ${v === (s.status || 'Plan') ? 'selected' : ''}>${t}</option>`).join('')}</select></div></div>
       <div class="note-box" style="margin:-4px 0 16px">${ic('folder')}<div id="sfFolderNote"></div></div>
       <div class="field"><label>Trainer</label><input class="inp" id="sfTrainer" list="dlTrainer" value="${esc(s.trainer || S.user.name)}"><datalist id="dlTrainer">${trainers.map(t => `<option value="${esc(t)}">`).join('')}</datalist><div class="hint">Nhiều trainer: phân cách bằng dấu phẩy. Chỉ trainer của buổi (và Admin) được sửa, tải tài liệu, soạn đề.</div></div>
-      <div class="field"><label>Đối tượng tham dự <span class="faint" id="sfAudN"></span></label><div class="chips" id="sfAud"></div>
+      <div class="field"><label>Đối tượng tham dự * <span class="faint" id="sfAudN"></span></label><div class="chips" id="sfAud"></div>
         <select class="inp" id="sfAudAdd" style="margin-top:8px"><option value="">+ Thêm nhóm hoặc người…</option><optgroup label="Nhóm">${o.groups.map(x => `<option value="${esc(x.v)}">${esc(x.t)}</option>`).join('')}</optgroup><optgroup label="Cá nhân">${o.people.map(x => `<option value="${esc(x.v)}">${esc(x.t)}</option>`).join('')}</optgroup></select></div>
       <div class="row2"><div class="field"><label>Link họp (Teams/Meet)</label><input class="inp" id="sfMeet" value="${esc(s.meetingLink || '')}" placeholder="https://"></div><div class="field"><label>Link bản ghi</label><input class="inp" id="sfRec" value="${esc(s.recordLink || '')}" placeholder="https://"></div></div>
       <div class="field"><label>Tổng kết sau buổi</label><textarea class="inp" id="sfSum" rows="2">${esc(s.summary || '')}</textarea></div>
@@ -2814,6 +2986,7 @@ function sessionForm(sid){
       meetingLink: $('sfMeet').value.trim(), recordLink: $('sfRec').value.trim(), summary: $('sfSum').value.trim(), createFolder: 1};
     if (!p.topic) return err('Vui lòng nhập chủ đề.');
     if (!p.date) return err('Vui lòng chọn ngày.');
+    if (!aud.length) { $('sfAud').classList.add('bad'); $('sfAudAdd').focus(); return err('Vui lòng chọn Đối tượng tham dự — nhóm hoặc từng thành viên (dùng để gửi email mời & nhắc lịch).'); }
     $('sfSave').disabled = true;
     try {
       const r = await post('saveSession', p, {timeout: 90000});
@@ -2858,7 +3031,7 @@ const QB = {
   drawSet(){
     const c = this.cfg;
     $('qbSet').innerHTML = `<h4 class="h-sm" style="margin-bottom:12px">Quy định làm bài</h4>
-      <div class="row3"><div class="field"><label>Điểm đạt %</label><input class="inp" type="number" id="qcPass" min="1" max="100" value="${c.passScore}"></div><div class="field"><label>Số phút</label><input class="inp" type="number" id="qcDur" min="1" max="240" value="${c.durationMin}"></div><div class="field"><label>Số lượt</label><input class="inp" type="number" id="qcAtt" min="1" max="20" value="${c.maxAttempts}"></div></div>
+      <div class="row3"><div class="field"><label>Điểm đạt /100</label><input class="inp" type="number" id="qcPass" min="1" max="100" value="${c.passScore}"></div><div class="field"><label>Số phút</label><input class="inp" type="number" id="qcDur" min="1" max="240" value="${c.durationMin}"></div><div class="field"><label>Số lượt</label><input class="inp" type="number" id="qcAtt" min="1" max="20" value="${c.maxAttempts}"></div></div>
       <div class="field"><label>Hạn hoàn thành</label><input class="inp" type="date" id="qcDl" value="${esc(c.deadline || '')}"><div class="hint">Hệ thống tự nhắc người chưa làm trước hạn.</div></div>
       <div class="field"><label>Lưu ý cho học viên</label><textarea class="inp" id="qcNote" rows="3" placeholder="VD: Ôn slide 5–12 trước khi làm">${esc(c.note)}</textarea></div>
       <label class="toggle-row"><span class="t">Trộn thứ tự câu hỏi<small>Mỗi người một thứ tự khác nhau</small></span><span class="switch"><input type="checkbox" id="qcShuf" ${c.shuffle ? 'checked' : ''}><i></i></span></label>
@@ -2873,13 +3046,13 @@ const QB = {
         : ['a', 'b', 'c', 'd'].map(k => `<div class="qo"><button type="button" class="key ${cor.includes(k.toUpperCase()) ? 'on' : ''}" data-k="${k.toUpperCase()}" title="Đánh dấu đáp án đúng">${k.toUpperCase()}</button><input class="inp" data-f="${k}" value="${esc(q[k] || '')}" placeholder="Phương án ${k.toUpperCase()}${k > 'b' ? ' (không bắt buộc)' : ''}"></div>`).join('');
       return `<div class="qi" data-i="${i}"><div class="qi-h"><span class="n">${i + 1}</span>
         <select class="inp" data-f="type"><option value="single" ${q.type === 'single' ? 'selected' : ''}>Một đáp án</option><option value="multi" ${q.type === 'multi' ? 'selected' : ''}>Nhiều đáp án</option><option value="truefalse" ${q.type === 'truefalse' ? 'selected' : ''}>Đúng / Sai</option></select>
-        <input class="inp" type="number" data-f="points" min="1" value="${q.points || 1}" style="width:74px" title="Điểm"><span class="xs muted">điểm</span><span class="sp"></span>
+        <span class="chip" title="Thang 100 điểm, mỗi câu bằng nhau">${Math.round(100 / this.qs.length * 10) / 10} điểm</span><span class="sp"></span>
         <button type="button" class="ibtn sm" data-mv="-1" title="Lên">${ic('left').replace('<svg', '<svg style="transform:rotate(90deg)"')}</button><button type="button" class="ibtn sm" data-mv="1" title="Xuống">${ic('left').replace('<svg', '<svg style="transform:rotate(-90deg)"')}</button><button type="button" class="ibtn sm" data-del title="Xoá câu">${ic('trash')}</button></div>
         <div class="field" style="margin-bottom:10px"><textarea class="inp" data-f="question" rows="2" placeholder="Nội dung câu hỏi">${esc(q.question)}</textarea></div>
         ${opts}<div class="xs muted" style="margin:4px 0 8px">${q.type === 'truefalse' ? 'Chọn đáp án đúng.' : 'Bấm vào chữ cái để đánh dấu đáp án đúng' + (q.type === 'multi' ? ' (chọn được nhiều).' : '.')}</div>
         <input class="inp" data-f="explanation" value="${esc(q.explanation || '')}" placeholder="Giải thích đáp án (hiện cho học viên sau khi nộp — không bắt buộc)" style="height:38px"></div>`;
     }).join('');
-    $('qbCount').textContent = this.qs.length + ' câu hỏi · ' + this.qs.reduce((a, q) => a + nnum(q.points || 1), 0) + ' điểm';
+    $('qbCount').textContent = this.qs.length + ' câu hỏi · thang 100 điểm · mỗi câu ' + (Math.round(100 / this.qs.length * 10) / 10) + ' điểm';
     $('qbFoot').textContent = 'Lưu vào file "Bộ câu hỏi khảo sát" trên Drive.';
     $('qbList').querySelectorAll('.qi').forEach(el => {
       const i = +el.dataset.i;
@@ -3084,7 +3257,7 @@ VIEWS.manage = function(){
   const cov = comp.length ? Math.round(withQ.length / comp.length * 100) : 0;
   $('view').innerHTML = `
     <div class="hello" style="margin-bottom:18px"><div class="h-lg" style="flex:1">Quản lý đào tạo</div><button class="btn btn-primary" data-a="sessionForm">${ic('plus')}Tạo buổi đào tạo</button></div>
-    ${periodBar('mng', ownAll)}
+    ${periodBar('mng')}
     <div class="kpis"><div class="kpi"><div class="l">Buổi ${isAdminV() ? 'trong hệ thống' : 'bạn phụ trách'}</div><div class="v">${own.length}</div><div class="s">${comp.length} đã diễn ra</div></div>
       <div class="kpi"><div class="l">Có bài kiểm tra</div><div class="v">${withQ.length}<small>/${comp.length}</small></div><div class="s ${cov >= 80 ? 'ok' : 'bad'}">${cov}% buổi đã diễn ra</div></div>
       <div class="kpi"><div class="l">Bài kiểm tra đang mở</div><div class="v">${open.length}</div><div class="s">${pendingL} lượt học viên chưa đạt</div></div>
@@ -3118,30 +3291,30 @@ VIEWS.results = async function(sid){
   catch (e) { if (e.code === 'SKIP' || S.route.name !== 'results') return; $('rsBody').innerHTML = `<div class="panel">${errBox('Không tải được kết quả', e, `<button class="btn btn-primary" data-a="go" data-h="#/results/${esc(sid)}">Thử lại</button>`)}</div>`; return; }
   if (S.route.name !== 'results') return;
   const k = r.kpi, maxH = Math.max(1, ...r.histogram.map(h => h.count));
-  $('rsCsv').onclick = () => downloadCSV('KetQua_' + sid + '.csv', [['Học viên', 'Email', 'Phòng ban', 'Trạng thái', 'Điểm tốt nhất (%)', 'Đạt', 'Số lượt', 'Tài liệu đã đọc', 'Nộp gần nhất', 'Chứng chỉ']].concat(r.learners.map(l => [l.name, l.email, l.dept, l.status, l.best, l.pass ? 'Đạt' : '', l.attempts, l.filesDone, l.lastSubmit, l.certUrl])));
+  $('rsCsv').onclick = () => downloadCSV('KetQua_' + sid + '.csv', [['Học viên', 'Email', 'Phòng ban', 'Trạng thái', 'Điểm tốt nhất (/100)', 'Đạt', 'Số lượt', 'Tài liệu đã đọc', 'Nộp gần nhất', 'Chứng chỉ']].concat(r.learners.map(l => [l.name, l.email, l.dept, l.status, l.best, l.pass ? 'Đạt' : '', l.attempts, l.filesDone, l.lastSubmit, l.certUrl])));
   const hard = r.items.filter(i => i.rate != null && i.rate < 50).length;
   $('rsBody').innerHTML = `
     <div style="display:flex;align-items:center;gap:10px;margin:6px 0 16px;flex-wrap:wrap">${catTag(r.session.category)}<a class="h-md" href="#/s/${esc(sid)}" style="color:var(--navy)">${esc(r.session.topic)}</a>${r.config && r.config.active ? '<span class="chip ok dot">Đang mở</span>' : '<span class="chip mute">Đã đóng</span>'}${r.config && r.config.deadline ? dueChip(r.config.deadline) : ''}</div>
     <div class="kpis"><div class="kpi"><div class="l">Đã làm bài</div><div class="v">${k.attempted}<small>/${k.enrolled}</small></div><div class="s">${k.notStarted} người chưa làm</div></div>
       <div class="kpi"><div class="l">Đạt</div><div class="v">${k.passed}</div><div class="s">${k.passRate}% người đã làm</div></div>
-      <div class="kpi"><div class="l">Điểm trung bình</div><div class="v">${k.avgScore}<small>%</small></div><div class="s ${k.avgScore >= k.target ? 'ok' : 'bad'}">Mục tiêu ≥ ${k.target}%</div></div>
+      <div class="kpi"><div class="l">Điểm trung bình</div><div class="v">${pts(k.avgScore)}<small> điểm</small></div><div class="s ${k.avgScore >= k.target ? 'ok' : 'bad'}">Mục tiêu ≥ ${k.target} điểm</div></div>
       <div class="kpi"><div class="l">Thời gian TB</div><div class="v">${fmtSec(k.avgTime)}</div><div class="s">${k.totalAttempts} lượt nộp</div></div></div>
     <div class="dash-grid">
       <div class="panel"><div class="panel-h"><h3>Phân bố điểm (điểm cao nhất mỗi người)</h3></div><div class="panel-b">${k.attempted ? '' : '<div class="xs muted">Chưa có học viên nộp bài.</div>'}<div class="bars single">${r.histogram.map(h => `<div class="b"><div class="col" style="height:${Math.max(4, h.count / maxH * 150)}px;background:${/^(80|90)/.test(h.label) ? 'var(--ok)' : /^(70)/.test(h.label) ? 'var(--sky)' : '#E8A3A3'}"><em>${h.count || ''}</em></div><span>${h.label}</span></div>`).join('')}</div></div></div>
       <div class="panel"><div class="panel-h"><h3>Tiến độ học viên</h3><div class="sp"></div>${k.enrolled > k.passed && r.config && r.config.active ? `<button class="btn btn-soft btn-sm" data-a="compose" data-sid="${esc(sid)}" data-k="reminder">${ic('mail')}Nhắc ${k.enrolled - k.passed} người</button>` : ''}</div><div class="panel-b">
         ${[['Đạt', k.passed, 'var(--ok)'], ['Chưa đạt', k.attempted - k.passed, 'var(--bad)'], ['Chưa làm', k.notStarted, '#C9D6E6']].map(([t, n, c]) => `<div class="hbars"><div class="r"><span class="n">${t}</span><div class="bar"><i style="width:${k.enrolled ? n / k.enrolled * 100 : 0}%;background:${c}"></i></div><span class="v">${n}</span></div></div>`).join('')}
-        <div class="gaugebar" style="margin-top:22px"><i style="width:${Math.min(100, k.avgScore)}%;background:${k.avgScore >= k.target ? 'var(--ok)' : 'var(--warn)'}"></i><u style="left:${k.target}%" data-l="Mục tiêu ${k.target}%"></u></div><div class="xs muted" style="margin-top:26px">Điểm trung bình ${k.avgScore}% so với mục tiêu ${k.target}% (cấu hình TARGET_AVG_SCORE).</div></div></div>
+        <div class="gaugebar" style="margin-top:22px"><i style="width:${Math.min(100, k.avgScore)}%;background:${k.avgScore >= k.target ? 'var(--ok)' : 'var(--warn)'}"></i><u style="left:${k.target}%" data-l="Mục tiêu ${k.target}đ"></u></div><div class="xs muted" style="margin-top:26px">Điểm trung bình ${pts(k.avgScore)}/100 so với mục tiêu ${k.target} điểm (cấu hình TARGET_AVG_SCORE).</div></div></div>
     </div>
     <section class="sec"><div class="sec-h"><h2>Phân tích từng câu hỏi</h2>${hard ? `<span class="chip bad">${hard} câu dưới 50% trả lời đúng</span>` : ''}<div class="sp"></div><button class="btn btn-line btn-sm" data-a="quizBuilder" data-sid="${esc(sid)}">${ic('edit')}Sửa câu hỏi</button></div>
       <div class="panel"><div class="panel-b" style="padding-top:6px">${r.items.map(it => { const lbl = o => (it.options || []).find(x => x.k === o); const tw = it.topWrong && lbl(it.topWrong[0]);
         return `<div class="item ${it.rate != null && it.rate < 50 ? 'hard' : ''}"><span class="no">${it.current ? it.no : '—'}</span><div class="q">${esc(it.question)}<small>Đáp án đúng: <b>${esc(it.correct)}</b>${it.topWrong && it.topWrong !== '—' ? ` · Hay chọn sai: <b>${esc(it.topWrong)}</b>${tw ? ' — ' + esc(tw.t) : ''}` : ''}${!it.current ? ' · (phiên bản câu cũ)' : ''}</small></div>
         <div class="rate">${it.rate == null ? '<span class="faint">Chưa có ai làm</span>' : `<b>${it.rate}%</b> trả lời đúng · ${it.attempts} lượt<div class="ruler thin ${it.rate >= 70 ? 'ok' : ''}" style="margin-top:5px"><i style="width:${it.rate}%;${it.rate < 50 ? 'background:var(--bad)' : ''}"></i></div>`}</div></div>`; }).join('')}</div></div></section>
     <section class="sec"><div class="sec-h"><h2>Học viên</h2></div><div class="panel"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Học viên</th><th>Tài liệu</th><th>Điểm tốt nhất</th><th>Kết quả</th><th>Lượt</th><th>Nộp gần nhất</th><th>Chứng chỉ</th></tr></thead><tbody>
-      ${r.learners.map(l => `<tr><td><div class="who"><b>${esc(l.name)}</b><span>${esc(l.dept || l.email)}</span></div></td><td>${l.filesDone ? l.filesDone + ' file' : '<span class="faint">—</span>'}</td><td>${l.best !== '' ? `<b>${l.best}%</b>` : '—'}</td>
+      ${r.learners.map(l => `<tr><td><div class="who"><b>${esc(l.name)}</b><span>${esc(l.dept || l.email)}</span></div></td><td>${l.filesDone ? l.filesDone + ' file' : '<span class="faint">—</span>'}</td><td>${l.best !== '' ? `<b>${pts(l.best)} điểm</b>` : '—'}</td>
         <td>${l.pass ? '<span class="chip ok">Đạt</span>' : l.attempts ? '<span class="chip bad">Chưa đạt</span>' : '<span class="chip mute">Chưa làm</span>'}</td><td>${l.attempts}</td><td class="small">${esc(l.lastSubmit || '—')}</td>
         <td>${l.certUrl ? `<a class="chip line" href="${esc(l.certUrl)}" target="_blank" rel="noopener">${ic('award')}Xem</a>` : '—'}</td></tr>`).join('')}</tbody></table></div></div></section>
     <section class="sec"><details><summary class="h-sm" style="cursor:pointer;margin-bottom:12px">Nhật ký ${r.responses.length} lượt nộp bài</summary><div class="panel"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Thời gian nộp</th><th>Học viên</th><th>Lượt</th><th>Điểm</th><th>Thời gian làm</th><th>Kết quả</th></tr></thead><tbody>
-      ${r.responses.map(x => `<tr><td class="small">${esc(x.submittedAt)}</td><td>${esc(x.name)}</td><td>${x.attempt}</td><td><b>${x.percent}%</b> <span class="xs muted">${x.score}/${x.maxScore}</span></td><td>${fmtSec(x.durationSec)}</td><td>${x.result === 'Pass' ? '<span class="chip ok">Đạt</span>' : '<span class="chip bad">Chưa đạt</span>'}</td></tr>`).join('')}</tbody></table></div></div></details></section>
+      ${r.responses.map(x => `<tr><td class="small">${esc(x.submittedAt)}</td><td>${esc(x.name)}</td><td>${x.attempt}</td><td><b>${pts(x.percent)} điểm</b></td><td>${fmtSec(x.durationSec)}</td><td>${x.result === 'Pass' ? '<span class="chip ok">Đạt</span>' : '<span class="chip bad">Chưa đạt</span>'}</td></tr>`).join('')}</tbody></table></div></div></details></section>
     <p class="xs muted" style="margin-top:14px"><a href="${esc(r.quizFileUrl)}" target="_blank" rel="noopener" style="color:var(--link)">Mở file "Bộ câu hỏi khảo sát" trên Drive ↗</a></p>`;
 };
 function downloadCSV(name, rows){
@@ -3168,19 +3341,19 @@ VIEWS.dashboard = async function(){
     <div class="hello" style="margin-bottom:18px"><div class="h-lg" style="flex:1">Tổng quan đào tạo ${esc(S.cfg.FISCAL_YEAR || '')}</div><button class="btn btn-line btn-sm" data-a="statsRefresh">${ic('refresh')}Cập nhật số liệu</button></div>
     <div class="kpis"><div class="kpi"><div class="l">Buổi đã diễn ra</div><div class="v">${k.completedSessions}<small>/${k.totalSessions}</small></div><div class="s">${k.plannedSessions} buổi kế hoạch</div></div>
       <div class="kpi"><div class="l">Buổi có bài kiểm tra</div><div class="v">${k.quizCoverage}<small>%</small></div><div class="s ${k.quizCoverage >= 80 ? 'ok' : 'bad'}">${k.sessionsWithQuiz}/${k.completedSessions} buổi đã diễn ra</div></div>
-      <div class="kpi"><div class="l">Điểm trung bình</div><div class="v">${k.avgScore}<small>%</small></div><div class="s ${k.avgScore >= k.targetAvg ? 'ok' : 'bad'}">Mục tiêu ≥ ${k.targetAvg}%</div></div>
+      <div class="kpi"><div class="l">Điểm trung bình</div><div class="v">${pts(k.avgScore)}<small> điểm</small></div><div class="s ${k.avgScore >= k.targetAvg ? 'ok' : 'bad'}">Mục tiêu ≥ ${k.targetAvg} điểm</div></div>
       <div class="kpi"><div class="l">Tỷ lệ đạt</div><div class="v">${k.passRate}<small>%</small></div><div class="s">${k.totalCerts} chứng chỉ đã cấp</div></div></div>
     <div class="dash-grid">
       <div class="panel"><div class="panel-h"><h3>Số buổi đào tạo theo tháng</h3><div class="sp"></div><div class="lgd"><span><i style="background:var(--blue)"></i>Đã diễn ra</span><span><i style="background:var(--lb)"></i>Kế hoạch</span></div></div><div class="panel-b"><div class="bars">${months.map(m => `<div class="b"><div class="col" style="height:${m.total / maxM * 150}px"><em>${m.total}</em><i style="height:${m.total ? m.done / m.total * 100 : 0}%"></i></div><span>T${+m.name.slice(5)}</span></div>`).join('') || '<div class="empty">Chưa có dữ liệu</div>'}</div></div></div>
       <div class="panel"><div class="panel-h"><h3>Điểm TB so với mục tiêu</h3></div><div class="panel-b">
-        <div class="gaugebar"><i style="width:${Math.min(100, k.avgScore)}%;background:${k.avgScore >= k.targetAvg ? 'var(--ok)' : 'var(--warn)'}"></i><u style="left:${k.targetAvg}%" data-l="Mục tiêu ${k.targetAvg}%"></u></div>
-        <div class="hbars" style="margin-top:34px">${st.byCategory.map(c => `<div class="r"><span class="n clamp1">${esc(catLabel(c.name))}</span><div class="bar"><i style="width:${c.avg || 0}%;background:var(--c-${catKey(c.name)})"></i></div><span class="v">${c.avg == null ? '—' : c.avg + '%'}</span></div>`).join('')}</div>
+        <div class="gaugebar"><i style="width:${Math.min(100, k.avgScore)}%;background:${k.avgScore >= k.targetAvg ? 'var(--ok)' : 'var(--warn)'}"></i><u style="left:${k.targetAvg}%" data-l="Mục tiêu ${k.targetAvg}đ"></u></div>
+        <div class="hbars" style="margin-top:34px">${st.byCategory.map(c => `<div class="r"><span class="n clamp1">${esc(catLabel(c.name))}</span><div class="bar"><i style="width:${c.avg || 0}%;background:var(--c-${catKey(c.name)})"></i></div><span class="v">${c.avg == null ? '—' : pts(c.avg) + 'đ'}</span></div>`).join('')}</div>
         <div class="xs muted" style="margin-top:8px">Điểm trung bình theo nhóm chủ đề (điểm tốt nhất của mỗi học viên).</div></div></div>
       <div class="panel"><div class="panel-h"><h3>Theo nhóm chủ đề</h3><div class="sp"></div><div class="lgd"><span><i style="background:var(--blue)"></i>Có bài KT</span><span><i style="background:var(--lb)"></i>Tổng số buổi</span></div></div><div class="panel-b hbars">${st.byCategory.map(c => `<div class="r"><span class="n clamp1">${esc(catLabel(c.name))}</span><div class="bar"><u style="width:${c.total / maxC * 100}%"></u><i style="width:${c.withQuiz / maxC * 100}%"></i></div><span class="v">${c.withQuiz}/${c.total}</span></div>`).join('')}</div></div>
       <div class="panel"><div class="panel-h"><h3>Theo trainer</h3></div><div class="panel-b hbars">${st.byTrainer.slice(0, 10).map(t => `<div class="r"><span class="n clamp1">${esc(t.name)}</span><div class="bar"><u style="width:${t.total / maxT * 100}%"></u><i style="width:${t.withQuiz / maxT * 100}%"></i></div><span class="v">${t.withQuiz}/${t.total}</span></div>`).join('')}</div></div>
     </div>
     <section class="sec"><div class="sec-h"><h2>Học viên</h2><div class="sp"></div><button class="more" data-a="csvStats">Xuất CSV</button></div><div class="panel"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Học viên</th><th>Được giao</th><th>Đã làm</th><th>Đạt</th><th>Điểm TB</th><th>Chứng chỉ</th><th>Tỷ lệ đạt</th></tr></thead><tbody>
-      ${st.learners.map(l => `<tr><td><div class="who"><b>${esc(l.name)}</b><span>${esc(l.dept || '')}</span></div></td><td>${l.assigned}</td><td>${l.completed}</td><td>${l.passed}</td><td>${l.avg ? `<b style="color:${l.avg >= k.targetAvg ? 'var(--ok)' : 'var(--navy)'}">${l.avg}%</b>` : '—'}</td><td>${l.certs}</td><td style="min-width:120px"><div class="ruler thin ${l.rate === 100 ? 'ok' : ''}"><i style="width:${l.rate}%"></i></div><span class="xs muted">${l.rate}%</span></td></tr>`).join('')}</tbody></table></div></div></section>`;
+      ${st.learners.map(l => `<tr><td><div class="who"><b>${esc(l.name)}</b><span>${esc(l.dept || '')}</span></div></td><td>${l.assigned}</td><td>${l.completed}</td><td>${l.passed}</td><td>${l.avg ? `<b style="color:${l.avg >= k.targetAvg ? 'var(--ok)' : 'var(--navy)'}">${pts(l.avg)} điểm</b>` : '—'}</td><td>${l.certs}</td><td style="min-width:120px"><div class="ruler thin ${l.rate === 100 ? 'ok' : ''}"><i style="width:${l.rate}%"></i></div><span class="xs muted">${l.rate}%</span></td></tr>`).join('')}</tbody></table></div></div></section>`;
 };
 
 /* ==========================================================================
@@ -3188,25 +3361,63 @@ VIEWS.dashboard = async function(){
    ========================================================================== */
 VIEWS.calendar = function(){
   setCrumb(TITLES.calendar);
-  const d0 = new Date(S.cal.getFullYear(), S.cal.getMonth(), 1);
-  const start = new Date(d0); start.setDate(1 - ((d0.getDay() + 6) % 7));
-  const today = todayISO();
+  const view = S.calView, today = todayISO(), ref = new Date(S.cal);
+  const todoSet = new Set(S.todo.map(t => t.sid));
   const by = {};
   S.sessions.forEach(s => { if (s.date) (by[s.date] = by[s.date] || []).push(s); });
-  let cells = '';
-  for (let i = 0; i < 42; i++) {
-    const d = new Date(start); d.setDate(start.getDate() + i);
-    const iso = isoOf(d), out = d.getMonth() !== d0.getMonth();
-    if (i === 35 && out) break;
-    cells += `<div class="dc ${out ? 'out' : ''} ${iso === today ? 'today' : ''}"><div class="dn">${d.getDate()}</div>${(by[iso] || []).map(s => `<button class="ev ${s.status === 'Cancel' ? 'cancel' : ''}" style="--c:var(--c-${catKey(s.category)})" data-a="go" data-h="#/s/${esc(s.sid)}" title="${esc(s.topic)}">${s.timeFrom ? esc(s.timeFrom) + ' ' : ''}${esc(s.topic)}</button>`).join('')}</div>`;
+  Object.values(by).forEach(a => a.sort((x, y) => String(x.timeFrom).localeCompare(String(y.timeFrom))));
+  const icons = s => {
+    const ed = canEdit(s), b = [];
+    if (s.hasFolder) b.push(`<button class="evic" data-a="go" data-h="#/s/${esc(s.sid)}?tab=materials" title="Tài liệu đào tạo">${ic('folder')}</button>`);
+    if (s.hasQuiz) b.push(`<button class="evic q ${todoSet.has(s.sid) ? 'todo' : s.myPass ? 'ok' : ''}" ${ed ? `data-a="go" data-h="#/results/${esc(s.sid)}"` : `data-a="quiz" data-sid="${esc(s.sid)}"`} title="${ed ? 'Kết quả bài kiểm tra' : todoSet.has(s.sid) ? 'Làm bài kiểm tra' : 'Bài kiểm tra'}">${ic('clip')}</button>`);
+    if (s.meetingLink && s.status === 'Plan') b.push(`<button class="evic" data-a="openUrl" data-u="${esc(s.meetingLink)}" title="Vào phòng họp">${ic('door')}</button>`);
+    if (s.myCert) b.push(`<button class="evic ok" data-a="openUrl" data-u="${esc(s.myCert)}" title="Chứng chỉ của tôi">${ic('award')}</button>`);
+    return b.join('');
+  };
+  const card = (s, big) => `<div class="ev2 ${s.status === 'Cancel' ? 'cancel' : ''} ${big ? 'big' : ''}" style="--c:var(--c-${catKey(s.category)})" data-a="go" data-h="#/s/${esc(s.sid)}" title="${esc(s.topic)}">
+      <div class="ev2-h"><span class="cat ${catKey(s.category)}">${esc(catLabel(s.category))}</span>${s.timeFrom ? `<span class="ev2-t">${esc(s.timeFrom)}${s.timeTo && big ? '–' + esc(s.timeTo) : ''}</span>` : ''}</div>
+      <b class="${big ? 'clamp3' : 'clamp2'}">${esc(s.topic)}</b>
+      <div class="ev2-m">${ic('user')}<span class="clamp1">${esc(s.trainer || '—')}</span></div>
+      <div class="ev2-m">${ic('users')}<span class="clamp1">${esc(s.audience || '—')}</span></div>
+      ${icons(s) ? `<div class="ev2-i">${icons(s)}${s.status === 'Cancel' ? '<span class="chip mute">Đã huỷ</span>' : ''}</div>` : ''}</div>`;
+  let title, body;
+  if (view === 'week') {
+    const mon = new Date(ref); mon.setDate(ref.getDate() - ((ref.getDay() + 6) % 7));
+    const days = Array.from({length: 7}, (_, i) => { const d = new Date(mon); d.setDate(mon.getDate() + i); return d; });
+    title = 'Tuần ' + dmy(isoOf(days[0])).slice(0, 5) + ' – ' + dmy(isoOf(days[6]));
+    body = `<div class="calw">${days.map(d => { const iso = isoOf(d), ev = by[iso] || [];
+      return `<div class="cw-col ${iso === today ? 'today' : ''}"><div class="cw-h"><span>${WDS[d.getDay()]}</span><b>${d.getDate()}/${d.getMonth() + 1}</b></div>
+        <div class="cw-b">${ev.length ? ev.map(s => card(s, true)).join('') : '<div class="cw-empty">—</div>'}</div></div>`; }).join('')}</div>`;
+  } else if (view === 'list') {
+    const y = ref.getFullYear(), m = ref.getMonth();
+    title = 'Tháng ' + (m + 1) + ', ' + y;
+    const list = S.sessions.filter(s => s.date && +s.date.slice(0, 4) === y && +s.date.slice(5, 7) === m + 1).sort((a, b) => a.date.localeCompare(b.date) || String(a.timeFrom).localeCompare(String(b.timeFrom)));
+    let last = '';
+    body = list.length ? `<div class="panel"><div class="panel-b">${list.map(s => { const d = parseISO(s.date); const head = s.date !== last ? `<div class="cl-day ${s.date === today ? 'today' : ''}">${WD[d.getDay()]}, ${dmy(s.date)}${s.date === today ? ' · Hôm nay' : ''}</div>` : ''; last = s.date;
+      return head + `<div class="cl-row" data-a="go" data-h="#/s/${esc(s.sid)}" style="--c:var(--c-${catKey(s.category)})"><div class="cl-time">${esc(s.timeFrom || '—')}${s.timeTo ? '<br><small>' + esc(s.timeTo) + '</small>' : ''}</div>
+        <div class="cl-main"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${catTag(s.category)}${statusChip(s.status)}${todoSet.has(s.sid) ? '<span class="chip todo">Cần làm bài</span>' : ''}</div><b>${esc(s.topic)}</b>
+          <div class="cl-meta"><span>${ic('user')}Trainer: <b>${esc(s.trainer || '—')}</b></span><span>${ic('users')}${esc(s.audience || '—')}</span></div></div>
+        <div class="ev2-i">${icons(s)}</div></div>`; }).join('')}</div></div>` : `<div class="panel">${emptyBox('cal', 'Không có buổi đào tạo trong tháng này', '')}</div>`;
+  } else {
+    const d0 = new Date(ref.getFullYear(), ref.getMonth(), 1);
+    const start = new Date(d0); start.setDate(1 - ((d0.getDay() + 6) % 7));
+    title = 'Tháng ' + (d0.getMonth() + 1) + ', ' + d0.getFullYear();
+    let cells = '';
+    for (let i = 0; i < 42; i++) {
+      const d = new Date(start); d.setDate(start.getDate() + i);
+      const iso = isoOf(d), out = d.getMonth() !== d0.getMonth();
+      if (i === 35 && out) break;
+      const ev = by[iso] || [];
+      cells += `<div class="dc ${out ? 'out' : ''} ${iso === today ? 'today' : ''}"><div class="dn">${d.getDate()}</div>${ev.slice(0, 2).map(s => card(s, false)).join('')}${ev.length > 2 ? `<button class="more" data-a="calDay" data-d="${iso}">+${ev.length - 2} buổi khác</button>` : ''}</div>`;
+    }
+    body = `<div class="cal big">${['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map(x => `<div class="dh">${x}</div>`).join('')}${cells}</div>`;
   }
-  const monthList = S.sessions.filter(s => s.date && s.date.slice(0, 7) === isoOf(d0).slice(0, 7)).sort((a, b) => a.date.localeCompare(b.date));
   $('view').innerHTML = `
-    <div class="cal-head"><h2>Tháng ${d0.getMonth() + 1}, ${d0.getFullYear()}</h2><button class="ibtn" data-a="calNav" data-d="-1">${ic('left')}</button><button class="ibtn" data-a="calNav" data-d="1">${ic('right')}</button><button class="btn btn-line btn-sm" data-a="calNav" data-d="0">Hôm nay</button><div class="sp" style="flex:1"></div>
-      <div class="lgd">${['Product', 'SOP', 'Compliance', 'Funtional skills'].map(c => `<span><i style="background:var(--c-${catKey(c)})"></i>${catLabel(c)}</span>`).join('')}</div></div>
-    <div class="cal">${['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map(x => `<div class="dh">${x}</div>`).join('')}${cells}</div>
-    <section class="sec"><div class="sec-h"><h2>Trong tháng (${monthList.length})</h2></div><div class="panel"><div class="panel-b agenda">${monthList.length ? monthList.map(s => { const d = parseISO(s.date);
-      return `<div class="it" data-a="go" data-h="#/s/${esc(s.sid)}"><div class="dblock ${s.date === today ? 'today' : ''}"><b>${d.getDate()}</b><span>${WDS[d.getDay()]}</span></div><div style="flex:1;min-width:0">${catTag(s.category)}<h4>${esc(s.topic)}</h4><div class="m">${s.timeFrom ? esc(s.timeFrom + (s.timeTo ? '–' + s.timeTo : '')) + ' · ' : ''}${esc(s.trainer)} · ${esc(s.audience)}</div></div>${statusChip(s.status)}</div>`; }).join('') : `<div class="empty" style="padding:24px">${ic('cal')}<b>Không có buổi đào tạo trong tháng</b></div>`}</div></div></section>`;
+    <div class="cal-head"><h2>${title}</h2><button class="ibtn" data-a="calNav" data-d="-1" title="Trước">${ic('left')}</button><button class="ibtn" data-a="calNav" data-d="1" title="Sau">${ic('right')}</button><button class="btn btn-line btn-sm" data-a="calNav" data-d="0">Hôm nay</button>
+      <div class="seg" style="width:auto;margin-left:8px">${[['month', 'Tháng'], ['week', 'Tuần'], ['list', 'Danh sách']].map(([k, t]) => `<button class="${view === k ? 'on' : ''}" data-a="calView" data-v="${k}">${t}</button>`).join('')}</div>
+      <div class="sp" style="flex:1"></div>
+      <div class="lgd">${['Product', 'SOP', 'Compliance', 'Funtional skills'].map(c => `<span><i style="background:var(--c-${catKey(c)})"></i>${catLabel(c)}</span>`).join('')}<span>${ic('folder').replace('<svg', '<svg style="width:14px;height:14px"')} Tài liệu</span><span>${ic('clip').replace('<svg', '<svg style="width:14px;height:14px"')} Bài kiểm tra</span></div></div>
+    ${body}`;
 };
 
 /* ==========================================================================
@@ -3214,12 +3425,52 @@ VIEWS.calendar = function(){
    ========================================================================== */
 VIEWS.certs = async function(){
   setCrumb(TITLES.certs);
-  $('view').innerHTML = `<div class="hello" style="margin-bottom:18px"><div class="h-lg">Chứng chỉ của tôi</div></div><div id="certBox">${skel(3)}</div>`;
+  const mine = S.sessions.filter(s => s.assigned && s.status !== 'Cancel');
+  const pending = mine.filter(s => s.hasQuiz && s.questionCount > 0 && s.quizActive && !s.myPass)
+    .sort((a, b) => (a.deadline || '9999').localeCompare(b.deadline || '9999'));
+  const scored = mine.filter(s => s.myScore !== '' && s.myScore != null);
+  const avg = scored.length ? Math.round(scored.reduce((a, s) => a + nnum(s.myScore), 0) / scored.length) : null;
+  const passedN = mine.filter(s => s.myPass).length;
+  const todoSet = new Set(S.todo.map(t => t.sid));
+  const pCard = s => {
+    const pg = S.progress[s.sid] || {opened: 0, done: 0};
+    const left = Math.max(0, (s.maxAttempts || 1) - (s.myAttempts || 0));
+    const out = left <= 0;
+    return `<article class="pend ${out ? 'out' : ''}" style="--c:var(--c-${catKey(s.category)})">
+      <div class="pend-b">${catTag(s.category)}<h3 class="clamp2">${esc(s.topic)}</h3>
+        <div class="facts"><span>${ic('user')}${esc(s.trainer || '—')}</span><span>${ic('cal')}${esc(s.dateText || '')}</span><span>${ic('list')}${s.questionCount} câu · ${s.durationMin} phút · đạt từ ${s.passScore}/100</span></div>
+        <div class="pend-st">
+          <div><span class="lbl">Tài liệu</span><b>${pg.done ? 'Đã học ' + pg.done + ' file' : pg.opened ? 'Đang học' : 'Chưa học'}</b>${s.requireMaterials ? '<small>Bắt buộc học trước</small>' : ''}</div>
+          <div><span class="lbl">Bài kiểm tra</span><b>${s.myAttempts ? 'Đã làm ' + s.myAttempts + '/' + s.maxAttempts + ' lượt' : 'Chưa làm'}</b>${s.myScore !== '' && s.myScore != null ? `<small>Lần gần nhất: ${pts(s.myScore)} điểm</small>` : ''}</div>
+          <div><span class="lbl">Hạn</span>${s.deadline ? dueChip(s.deadline) : '<b>Không đặt hạn</b>'}</div></div></div>
+      <div class="pend-a">${out ? `<span class="chip bad">Đã hết lượt làm bài</span><span class="xs muted">Liên hệ trainer ${esc(s.trainer || '')} để được mở thêm lượt.</span><button class="btn btn-line btn-sm" data-a="course" data-sid="${esc(s.sid)}">Xem lại nội dung</button>`
+        : `<button class="btn btn-go" data-a="${s.requireMaterials ? 'course' : 'quiz'}" data-sid="${esc(s.sid)}">${ic(s.requireMaterials ? 'book' : 'play')}${s.requireMaterials ? 'Học & làm bài' : 'Làm bài kiểm tra'}</button>
+           <button class="btn btn-line btn-sm" data-a="course" data-sid="${esc(s.sid)}">${ic('book')}Xem lại nội dung đào tạo</button>
+           <span class="xs muted">Còn ${left} lượt làm bài</span>`}</div></article>`;
+  };
+  $('view').innerHTML = `
+    <div class="hello" style="margin-bottom:16px"><div class="h-lg" style="flex:1">Chứng chỉ của tôi</div></div>
+    <div class="kpis"><div class="kpi"><div class="l">Chứng chỉ đã đạt</div><div class="v" id="ckN">${passedN}</div><div class="s">Tự cấp khi đạt bài kiểm tra</div></div>
+      <div class="kpi"><div class="l">Cần hoàn thành</div><div class="v" style="${pending.length ? 'color:var(--ydeep)' : ''}">${pending.length}</div><div class="s ${pending.length ? 'bad' : 'ok'}">${pending.length ? 'bài đào tạo chưa có chứng chỉ' : 'Đã hoàn thành tất cả'}</div></div>
+      <div class="kpi"><div class="l">Điểm trung bình</div><div class="v">${avg == null ? '—' : avg}<small>${avg == null ? '' : ' điểm'}</small></div><div class="s">thang 100 điểm · ${scored.length} bài</div></div>
+      <div class="kpi"><div class="l">Tỷ lệ hoàn thành</div><div class="v">${passedN + pending.length ? Math.round(passedN / (passedN + pending.length) * 100) : 100}<small>%</small></div><div class="s">${passedN}/${passedN + pending.length} bài có kiểm tra</div></div></div>
+    <section><div class="sec-h"><h2>Cần hoàn thành</h2>${pending.length ? `<span class="chip todo">${pending.length}</span>` : ''}<div class="sp"></div><span class="xs muted">Xem lại nội dung → làm bài kiểm tra → nhận chứng chỉ</span></div>
+      ${pending.length ? `<div class="pend-list">${pending.map(pCard).join('')}</div>` : `<div class="alldone"><div class="ic">${ic('check')}</div><div><b style="color:var(--navy);font-size:15.5px">Bạn không còn bài đào tạo nào cần hoàn thành.</b><div class="muted small">Bài mới sẽ hiện ở đây, kèm thông báo và email nhắc mỗi thứ Hai.</div></div></div>`}</section>
+    <div class="home-grid sec">
+      <section><div class="sec-h"><h2>Chứng chỉ đã đạt</h2></div><div id="certBox">${skel(2)}</div></section>
+      <section><div class="sec-h" style="margin-top:0"><h2>Thông báo</h2><div class="sp"></div><button class="more" data-a="noti">Tất cả →</button></div><div class="panel"><div id="certNoti" style="padding:4px 0">${skel(2)}</div></div></section>
+    </div>`;
+  get('notifications', {}).then(r => {
+    if (!$('certNoti')) return;
+    const L = r.items.filter(n => ['quiz', 'reminder', 'cert', 'session'].includes(n.type)).slice(0, 8);
+    $('certNoti').innerHTML = L.length ? L.map(n => `<div class="noti ${esc(n.type)} ${n.read ? '' : 'unread'}" data-a="notiOpen" data-id="${esc(n.id)}" data-sid="${esc(n.sid)}" data-t="${esc(n.type)}"><div class="ic">${ic(NICON[n.type] || 'bell')}</div><div class="t"><b>${esc(n.title)}</b>${n.message ? `<p>${esc(n.message)}</p>` : ''}<time>${relTime(n.at)}</time></div></div>`).join('')
+      : `<div class="empty" style="padding:22px">${ic('bell')}<b>Chưa có thông báo</b></div>`;
+  }).catch(() => { if ($('certNoti')) $('certNoti').innerHTML = `<div class="empty" style="padding:20px">Chưa tải được thông báo.</div>`; });
   try {
     const r = await get('myCertificates', {});
-    if (S.route.name !== 'certs') return;
-    $('certBox').innerHTML = r.data.length ? `<div class="certs">${r.data.map(c => `<a class="cert" href="${esc(c.certUrl)}" target="_blank" rel="noopener"><div class="top"><img src="${LOGO}" alt="MANI"><span>${esc(c.issuedAt || c.dateText)}</span></div><div class="lbl">Chứng nhận hoàn thành đào tạo</div><h4 class="clamp2">${esc(c.topic)}</h4><div class="yl"></div><div class="ft"><div>${catTag(c.category)}<div style="margin-top:6px">Trainer: ${esc(c.trainer || '—')}</div></div><div style="text-align:right"><b>${c.percent}%</b>điểm</div></div></a>`).join('')}</div>`
-      : `<div class="panel">${emptyBox('award', 'Bạn chưa có chứng chỉ nào', 'Hoàn thành và đạt bài kiểm tra sau đào tạo để nhận chứng chỉ PDF.', S.todo.length ? `<button class="btn btn-go" data-a="go" data-h="#/home">Xem bài cần làm</button>` : '')}</div>`;
+    if (S.route.name !== 'certs' || !$('certBox')) return;
+    $('certBox').innerHTML = r.data.length ? `<div class="certs">${r.data.map(c => `<a class="cert" href="${esc(c.certUrl)}" target="_blank" rel="noopener"><div class="top"><img src="${LOGO}" alt="MANI"><span>${esc(c.issuedAt || c.dateText)}</span></div><div class="lbl">Chứng nhận hoàn thành đào tạo</div><h4 class="clamp2">${esc(c.topic)}</h4><div class="yl"></div><div class="ft"><div>${catTag(c.category)}<div style="margin-top:6px">Trainer: ${esc(c.trainer || '—')}</div></div><div style="text-align:right"><b>${pts(c.percent)}</b>/ 100 điểm</div></div></a>`).join('')}</div>`
+      : `<div class="panel">${emptyBox('award', 'Bạn chưa có chứng chỉ nào', 'Hoàn thành và đạt bài kiểm tra sau đào tạo để nhận chứng chỉ PDF.')}</div>`;
   } catch (e) { if ($('certBox')) $('certBox').innerHTML = `<div class="panel">${errBox('Không tải được chứng chỉ', e, `<button class="btn btn-primary" data-a="go" data-h="#/certs">Thử lại</button>`)}</div>`; }
 };
 
@@ -3266,11 +3517,15 @@ VIEWS.settings = function(){
   const sw = (k, l, h) => `<label class="toggle-row"><span class="t">${l}<small>${h || ''}</small></span><span class="switch"><input type="checkbox" data-k="${k}" data-b="1" ${String(c[k]) === 'true' ? 'checked' : ''}><i></i></span></label>`;
   $('view').innerHTML = `<div class="hello" style="margin-bottom:18px"><div class="h-lg" style="flex:1">Cấu hình hệ thống</div><button class="btn btn-primary" data-a="saveCfg">${ic('check')}Lưu cấu hình</button></div>
     <div class="dash-grid" id="cfgBox">
-      <div class="panel"><div class="panel-h"><h3>Chung</h3></div><div class="panel-b">${f('APP_TITLE', 'Tên ứng dụng')}${f('APP_SUBTITLE', 'Mô tả')}${f('FISCAL_YEAR', 'Năm tài chính')}${f('TARGET_AVG_SCORE', 'Mục tiêu điểm trung bình (%)', 'number', 'Dùng cho bảng Tổng quan và Kết quả kiểm tra.')}<div class="row2">${f('FY_START_MONTH', 'Tháng bắt đầu năm tài chính', 'number', 'MANI: 9 (tháng 9 → tháng 8 năm sau).')}${f('FY_BASE_YEAR', 'Năm gốc đánh số FY', 'number', 'FY = năm kết thúc − số này. 1959 → T9/2025–T8/2026 = FY67.')}</div></div></div>
-      <div class="panel"><div class="panel-h"><h3>Bài kiểm tra mặc định</h3></div><div class="panel-b"><div class="row2">${f('DEFAULT_PASS_SCORE', 'Điểm đạt (%)', 'number')}${f('DEFAULT_DURATION_MIN', 'Thời gian (phút)', 'number')}</div><div class="row2">${f('DEFAULT_MAX_ATTEMPTS', 'Số lượt làm', 'number')}${f('DEFAULT_DEADLINE_DAYS', 'Hạn làm bài (ngày)', 'number')}</div></div></div>
-      <div class="panel"><div class="panel-h"><h3>Nhắc việc & email</h3></div><div class="panel-b">${sw('ENABLE_AUTO_REMINDER', 'Tự động nhắc làm bài trước hạn', 'Email + thông báo lúc 8:00 cho người chưa đạt')}${f('REMINDER_DAYS_BEFORE', 'Nhắc trước hạn (ngày)', 'number')}${sw('ENABLE_CERT_EMAIL', 'Gửi chứng chỉ qua email', 'CC quản lý trực tiếp và Admin')}</div></div>
+      <div class="panel"><div class="panel-h"><h3>Chung</h3></div><div class="panel-b">${f('APP_TITLE', 'Tên ứng dụng')}${f('APP_SUBTITLE', 'Mô tả')}${f('FISCAL_YEAR', 'Năm tài chính')}${f('TARGET_AVG_SCORE', 'Mục tiêu điểm trung bình (/100 điểm)', 'number', 'Dùng cho bảng Tổng quan và Kết quả kiểm tra.')}<div class="row2">${f('FY_START_MONTH', 'Tháng bắt đầu năm tài chính', 'number', 'MANI: 9 (tháng 9 → tháng 8 năm sau).')}${f('FY_BASE_YEAR', 'Năm gốc đánh số FY', 'number', 'FY = năm kết thúc − số này. 1959 → T9/2025–T8/2026 = FY67.')}</div></div></div>
+      <div class="panel"><div class="panel-h"><h3>Bài kiểm tra mặc định</h3></div><div class="panel-b"><div class="row2">${f('DEFAULT_PASS_SCORE', 'Điểm đạt (/100)', 'number')}${f('DEFAULT_DURATION_MIN', 'Thời gian (phút)', 'number')}</div><div class="row2">${f('DEFAULT_MAX_ATTEMPTS', 'Số lượt làm', 'number')}${f('DEFAULT_DEADLINE_DAYS', 'Hạn làm bài (ngày)', 'number')}</div></div></div>
+      <div class="panel"><div class="panel-h"><h3>Nhắc việc & email</h3></div><div class="panel-b">${sw('ENABLE_AUTO_REMINDER', 'Tự động nhắc làm bài trước hạn', 'Email + thông báo lúc 8:00 cho người chưa đạt')}${f('REMINDER_DAYS_BEFORE', 'Nhắc trước hạn (ngày)', 'number')}${sw('ENABLE_CERT_EMAIL', 'Gửi chứng chỉ qua email', 'CC quản lý trực tiếp và Admin')}${sw('ENABLE_DAY_REMINDER', 'Nhắc lịch 8:30 sáng ngày đào tạo', 'Gửi riêng từng học viên của buổi đã gửi thư mời')}${sw('ENABLE_WEEKLY_DIGEST', 'Nhắc bài kiểm tra chưa hoàn thành mỗi thứ Hai', 'Liệt kê các bài chưa có chứng chỉ, dẫn tới trang Chứng chỉ của tôi')}${f('APP_URL', 'Link hệ thống trong email', 'text')}</div></div>
       <div class="panel"><div class="panel-h"><h3>Chứng chỉ PDF</h3></div><div class="panel-b">${f('CERT_SIGNER_NAME', 'Người ký')}${f('CERT_SIGNER_TITLE', 'Chức danh người ký')}<div class="row3">${f('COLOR_PRIMARY', 'Màu chính', 'color')}${f('COLOR_ACCENT', 'Màu nhấn', 'color')}${f('COLOR_HIGHLIGHT', 'Màu điểm', 'color')}</div></div></div>
     </div>
+    <section class="sec"><div class="sec-h"><h2>Chế độ Test</h2></div><div class="panel"><div class="panel-b" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px" class="small muted">Đóng vai Trainer ↔ Học viên để thử trọn quy trình: tạo buổi, tải tài liệu, soạn bài, gửi email, tự học, làm bài, nhận chứng chỉ. Dữ liệu test tách riêng (sheet <b>HUB_TestSessions</b>, file trong thư mục Test); email & thông báo chỉ gửi cho bạn. Tài khoản chạy hệ thống cần quyền <b>Người chỉnh sửa</b> thư mục Test.</div>
+      <a class="btn btn-line" href="https://drive.google.com/drive/folders/1JZ0tmX04XpIazOYQp2SqQyzvlw2iFx_s" target="_blank" rel="noopener">${ic('folder')}Thư mục Test</a>
+      <button class="btn btn-go" data-a="testToggle">${ic('sparkle')}${S.test ? 'Thoát Chế độ Test' : 'Bật Chế độ Test'}</button></div></div></section>
     <section class="sec"><div class="sec-h"><h2>Hệ thống</h2></div><div class="panel"><div class="panel-b" style="display:flex;gap:10px;flex-wrap:wrap">
       <button class="btn btn-line" data-a="clearCache">${ic('refresh')}Làm mới bộ nhớ đệm máy chủ</button>
       <button class="btn btn-line" data-a="showLogs">${ic('list')}Nhật ký hệ thống</button>
@@ -3300,7 +3555,8 @@ async function openNoti(){
 function profileMenu(){
   const u = S.user;
   const m = Modal.open({title: esc(u.name), sub: esc(u.email) + ' · ' + roleLabel(u.role), body: `
-    ${u.isAdmin ? `<div class="field"><label>Xem giao diện với vai trò</label><div class="seg" id="pfRole">${['admin', 'trainer', 'audience'].map(r => `<button data-r="${r}" class="${effRole() === r ? 'on' : ''}">${roleLabel(r)}</button>`).join('')}</div><div class="hint">Chỉ đổi cách hiển thị để kiểm thử — quyền thật vẫn do máy chủ quyết định.</div></div>` : ''}
+    ${u.isAdmin && !S.test ? `<div class="field"><label>Xem giao diện với vai trò</label><div class="seg" id="pfRole">${['admin', 'trainer', 'audience'].map(r => `<button data-r="${r}" class="${effRole() === r ? 'on' : ''}">${roleLabel(r)}</button>`).join('')}</div><div class="hint">Chỉ đổi cách hiển thị để kiểm thử — quyền thật vẫn do máy chủ quyết định.</div></div>` : ''}
+    ${u.isAdmin ? `<button class="btn ${S.test ? 'btn-go' : 'btn-soft'} btn-block" data-a="testToggle" style="margin-bottom:10px">${ic('sparkle')}${S.test ? 'Thoát Chế độ Test' : 'Bật Chế độ Test (đóng vai Trainer ↔ Học viên)'}</button>` : ''}
     <div style="display:grid;gap:8px"><button class="btn btn-line" data-a="changePin">${ic('key')}Đổi mã PIN</button><button class="btn btn-line" data-a="refresh" data-f="1">${ic('refresh')}Tải lại toàn bộ dữ liệu</button><button class="btn btn-danger" data-a="logout">${ic('logout')}Đăng xuất</button></div>`});
   if ($('pfRole')) $('pfRole').querySelectorAll('button').forEach(b => b.onclick = () => { S.viewAs = b.dataset.r === 'admin' ? '' : b.dataset.r; sessionStorage.setItem('mmh_hub_viewas', S.viewAs); Modal.close(m); renderShell(); route(); });
   m.el.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => Modal.close(m)));
@@ -3370,15 +3626,26 @@ const A = {
   togglePub: async d => { try { busy(true); const r = await post('publishQuiz', {sid: d.sid, active: d.on}); busy(false); ok(r.message + (r.notified ? ` Đã tạo ${r.notified} thông báo.` : '')); delete S.full[d.sid]; await reload(); SessionPage.load(d.sid); if (r.newlyPublished && await confirmBox('Gửi email mời làm bài?', 'Gửi email kèm nút "Làm bài kiểm tra" tới học viên?', 'Soạn email')) Composer.open(d.sid, 'quiz'); } catch (e) { busy(false); err(e.message); } },
   mkFolder: async d => { busy(true, 'Đang tạo thư mục…'); try { const r = await post('createFolder', {sid: d.sid}); ok(r.message); delete S.mats[d.sid]; reload(); SessionPage.load(d.sid, true); } catch (e) { err(e.message); } busy(false); },
   shareMats: async d => { if (!await confirmBox('Mở quyền xem cho cả công ty?', 'Mọi file trong thư mục sẽ được đặt "Bất kỳ ai trong tổ chức có link đều xem được". Việc này giúp mở video và file trên Drive không bị báo "Cần quyền truy cập".', 'Mở quyền')) return; busy(true, 'Đang đổi quyền chia sẻ…'); try { const r = await post('shareMaterials', {sid: d.sid}, {timeout: 120000}); ok(r.message); } catch (e) { err(e.message); } busy(false); },
-  perMode: d => { const st = S[d.s]; if (st.period) { const ref = S.sessions.find(x => x.date && FY.key(x.date, st.group) === st.period); st.period = FY.key(ref ? ref.date : todayISO(), d.m); } st.group = d.m; redrawPer(d.s); },
-  perStep: d => { const st = S[d.s]; const src = d.s === 'lib' ? S.sessions.filter(x => x.status !== 'Cancel') : S.sessions.filter(x => canEdit(x) && x.status !== 'Cancel');
-    const cur = FY.key(todayISO(), st.group); const keys = uniq(src.filter(x => x.date).map(x => FY.key(x.date, st.group)).concat([cur])).sort().reverse();
-    const i = keys.indexOf(st.period || cur); const j = Math.max(0, Math.min(keys.length - 1, (i < 0 ? 0 : i) + (+d.d))); st.period = keys[j]; redrawPer(d.s); },
-  perNow: d => { const st = S[d.s]; st.period = FY.key(todayISO(), st.group); redrawPer(d.s); },
+  perRange: d => { const st = S[d.s]; if (d.r === 'custom') { const [a, b] = rangeOf(st); st.from = a; st.to = b; } st.range = d.r; redrawPer(d.s); },
   libLayout: d => { S.lib.layout = d.l; VIEWS.library.draw(); },
   sessRetry: () => { SessionPage.fails = 0; const b = $('netbar'); if (b) b.innerHTML = `<span class="spin" style="width:16px;height:16px"></span><span>Đang thử lại…</span>`; SessionPage.load(SessionPage.sid); },
   netDiag: () => netDiag(),
   course: d => Course.open(d.sid, d.fid),
+  testToggle: async () => {
+    if (!S.test && !await confirmBox('Bật Chế độ Test?', 'Bạn sẽ làm việc trên <b>dữ liệu test riêng</b>: buổi đào tạo test, file lưu trong thư mục Test, <b>mọi email & thông báo chỉ gửi tới ' + esc(S.user.email) + '</b>. Có thể đóng vai Trainer hoặc Học viên. Dữ liệu thật không bị ảnh hưởng.', 'Bật Chế độ Test')) return;
+    S.test = !S.test; S.testRole = 'trainer';
+    sessionStorage.setItem('mmh_hub_test', S.test ? '1' : ''); sessionStorage.setItem('mmh_hub_testrole', 'trainer');
+    S.full = {}; S.mats = {}; S.stats = null; Net.cache.clear(); S.sessions = []; S.todo = [];
+    location.hash = '#/home'; $('view').innerHTML = `<div style="padding-top:30px">${skel(4)}</div>`;
+    boot(false, true); ok(S.test ? 'Đã bật Chế độ Test.' : 'Đã thoát Chế độ Test.');
+  },
+  testRole: d => { S.testRole = d.r; sessionStorage.setItem('mmh_hub_testrole', d.r); S.full = {}; Net.cache.clear(); renderShell(); route(); reload(); toast(d.r === 'learner' ? 'Đang đóng vai Học viên — bị khoá bài kiểm tra tới khi học xong tài liệu như học viên thật.' : 'Đang đóng vai Trainer.'); },
+  testJob: async d => { busy(true, 'Đang gửi email thử…'); try { const r = await post('testJobs', {kind: d.k, sid: S.route.name === 's' ? SessionPage.sid : ''}, {timeout: 120000}); busy(false); ok(r.message); } catch (e) { busy(false); err(e.message); } },
+  testReset: () => {
+    const m = Modal.open({title: 'Xoá toàn bộ dữ liệu test?', body: `<p>Xoá các buổi đào tạo test, ghi danh, tiến độ học, thông báo, câu hỏi và bài làm test. Dữ liệu thật không bị ảnh hưởng.</p><label class="check" style="margin-top:10px"><input type="checkbox" id="trTrash"><span>Chuyển luôn các thư mục buổi test (trong thư mục Test) vào thùng rác Drive</span></label>`,
+      foot: `<div class="sp"></div><button class="btn btn-line" data-mclose>Huỷ</button><button class="btn btn-danger" id="trOk">Xoá dữ liệu test</button>`});
+    $('trOk').onclick = async () => { const trash = $('trTrash').checked ? 1 : ''; Modal.close(m); busy(true, 'Đang xoá dữ liệu test…'); try { const r = await post('testReset', {trash}, {timeout: 120000}); busy(false); ok(r.message); sessionStorage.removeItem('mmh_hub_test_up'); S.full = {}; S.mats = {}; Net.cache.clear(); boot(false, true); } catch (e) { busy(false); err(e.message); } };
+  },
   toggleReq: async d => { const f = S.full[d.sid]; try { const r = await post('setFileRequired', {sid: d.sid, fileId: d.fid, required: d.r}); if (f && f.quiz) { f.quiz.gate = f.quiz.gate || {}; f.quiz.gate.optional = r.optionalFiles; } ok(r.message); SessionPage.renderTab(); } catch (e) { err(e.message); } },
   crsGo: d => { if (Reader.st && Reader.st.f.id === d.fid && !Reader.st.onQuiz) return; Reader.open(d.sid, d.fid, {course: true}); },
   crsQuiz: d => Course.quizStep(d.sid),
@@ -3397,11 +3664,15 @@ const A = {
   delMat: async d => { if (!await confirmBox('Xoá tài liệu?', `Chuyển <b>${esc(d.n)}</b> vào thùng rác Drive.`, 'Xoá', true)) return; try { const r = await post('deleteMaterial', {sid: d.sid, fileId: d.fid}); ok(r.message); delete S.mats[d.sid]; SessionPage.load(d.sid, true); } catch (e) { err(e.message); } },
   resendCert: async d => { busy(true, 'Đang cấp lại chứng chỉ…'); try { const r = await post('resendCert', {sid: d.sid, email: d.e}, {timeout: 90000}); ok(r.message); delete S.full[d.sid]; SessionPage.load(d.sid); } catch (e) { err(e.message); } busy(false); },
   cancelSession: async d => { if (!await confirmBox('Huỷ buổi đào tạo?', 'Buổi đào tạo chuyển sang trạng thái Cancel (dòng dữ liệu vẫn giữ trên sheet).', 'Huỷ buổi', true)) return; try { const r = await post('deleteSession', {sid: d.sid}); ok(r.message); await reload(); go('#/library'); } catch (e) { err(e.message); } },
-  csvLearners: async d => { try { await ensureLearners(d.sid); } catch (e) { return err(e.message); } const f = S.full[d.sid]; if (!f || !f.learners) return; downloadCSV('HocVien_' + d.sid + '.csv', [['Họ tên', 'Email', 'Phòng ban', 'Trạng thái', 'Điểm (%)', 'Đạt', 'Lượt', 'Tài liệu đã đọc', 'Chứng chỉ']].concat(f.learners.map(l => [l.name, l.email, l.dept, l.status, l.percent, l.pass ? 'Đạt' : '', l.attempt, l.filesDone, l.certUrl]))); },
+  csvLearners: async d => { try { await ensureLearners(d.sid); } catch (e) { return err(e.message); } const f = S.full[d.sid]; if (!f || !f.learners) return; downloadCSV('HocVien_' + d.sid + '.csv', [['Họ tên', 'Email', 'Phòng ban', 'Trạng thái', 'Điểm (/100)', 'Đạt', 'Lượt', 'Tài liệu đã đọc', 'Chứng chỉ']].concat(f.learners.map(l => [l.name, l.email, l.dept, l.status, l.percent, l.pass ? 'Đạt' : '', l.attempt, l.filesDone, l.certUrl]))); },
   manageF: d => { S.manageF = d.f; VIEWS.manage(); },
   statsRefresh: () => { S.stats = null; VIEWS.dashboard(); },
-  csvStats: () => { if (!S.stats) return; downloadCSV('TongQuan_HocVien.csv', [['Học viên', 'Email', 'Phòng ban', 'Được giao', 'Đã làm', 'Đạt', 'Điểm TB', 'Chứng chỉ', 'Tỷ lệ đạt (%)']].concat(S.stats.learners.map(l => [l.name, l.email, l.dept, l.assigned, l.completed, l.passed, l.avg, l.certs, l.rate]))); },
-  calNav: d => { const n = +d.d; S.cal = n ? new Date(S.cal.getFullYear(), S.cal.getMonth() + n, 1) : new Date(); VIEWS.calendar(); },
+  csvStats: () => { if (!S.stats) return; downloadCSV('TongQuan_HocVien.csv', [['Học viên', 'Email', 'Phòng ban', 'Được giao', 'Đã làm', 'Đạt', 'Điểm TB (/100)', 'Chứng chỉ', 'Tỷ lệ đạt (%)']].concat(S.stats.learners.map(l => [l.name, l.email, l.dept, l.assigned, l.completed, l.passed, l.avg, l.certs, l.rate]))); },
+  calNav: d => { const n = +d.d; if (!n) S.cal = new Date(); else if (S.calView === 'week') { const x = new Date(S.cal); x.setDate(x.getDate() + 7 * n); S.cal = x; } else S.cal = new Date(S.cal.getFullYear(), S.cal.getMonth() + n, 1); VIEWS.calendar(); },
+  calView: d => { S.calView = d.v; localStorage.setItem('mmh_hub_calview', d.v); VIEWS.calendar(); },
+  calDay: d => { S.cal = parseISO(d.d); S.calView = 'week'; localStorage.setItem('mmh_hub_calview', 'week'); VIEWS.calendar(); },
+  openUrl: d => { window.open(d.u, '_blank', 'noopener'); },
+  copyText: d => { navigator.clipboard.writeText(d.t).then(() => ok('Đã sao chép: ' + d.t), () => err('Trình duyệt chặn sao chép.')); },
   userForm: d => userForm(d.e),
   resetPin: async d => { if (!await confirmBox('Xoá PIN?', `Người dùng <b>${esc(d.e)}</b> sẽ phải kích hoạt lại bằng mã gửi qua email.`, 'Xoá PIN', true)) return; try { ok((await post('resetPin', {email: d.e})).message); VIEWS.users(); } catch (e) { err(e.message); } },
   delUser: async d => { if (!await confirmBox('Xoá người dùng?', `Xoá <b>${esc(d.e)}</b> khỏi hệ thống. Kết quả đào tạo cũ vẫn được giữ.`, 'Xoá', true)) return; try { ok((await post('deleteUser', {email: d.e})).message); VIEWS.users(); } catch (e) { err(e.message); } },
@@ -3417,9 +3688,12 @@ document.addEventListener('click', e => {
   e.preventDefault();
   fn(el.dataset, el, e);
 });
-const CH = {perSet: el => { S[el.dataset.s].period = el.value; redrawPer(el.dataset.s); }};
+const CH = {
+  perFrom: el => { const st = S[el.dataset.s]; if (!el.value) return; const [a, b] = rangeOf(st); st.from = el.value; st.to = st.range === 'custom' ? (st.to || b) : b; st.range = 'custom'; redrawPer(el.dataset.s); },
+  perTo: el => { const st = S[el.dataset.s]; if (!el.value) return; const [a] = rangeOf(st); st.to = el.value; st.from = st.range === 'custom' ? (st.from || a) : a; st.range = 'custom'; redrawPer(el.dataset.s); }
+};
 document.addEventListener('change', e => { const el = e.target.closest && e.target.closest('[data-ch]'); if (el && CH[el.dataset.ch]) CH[el.dataset.ch](el); });
-function redrawPer(k){ if (k === 'lib') VIEWS.library.draw(); else VIEWS.manage(); }
+function redrawPer(k){ if (k === 'lib') VIEWS.library.draw(); else { localStorage.setItem('mmh_hub_mng', JSON.stringify({range: S.mng.range, from: S.mng.from, to: S.mng.to})); VIEWS.manage(); } }
 window.addEventListener('pagehide', () => { if (Reader.st) Reader.beacon(); });
 
 /** Kiểm tra kết nối: thử nhiều đường gọi + máy chủ tự chạy thử từng chức năng */
