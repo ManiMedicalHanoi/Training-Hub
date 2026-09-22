@@ -717,6 +717,9 @@ body.dnd .dnd-hint{transform:translate(-50%,0)}
 .lib-tbl .grow:hover td{background:var(--ice)}
 
 
+/* ---------- ★ v2.4 ---------- */
+.loadnote{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);margin:4px 0 12px}
+.loadnote .spin{width:16px;height:16px}
 /* ---------- ★ v2.3 tự học ---------- */
 .rdz{display:flex;gap:2px}
 @media (max-width:900px){.rd-top .ftype{display:none}.rd-top{gap:6px;padding:0 8px}.rd-top .pgn input{width:40px}.rd-top .pgn{gap:2px}}
@@ -866,7 +869,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '2.3';
+const APP_VERSION = '2.4';
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -1060,20 +1063,27 @@ function handleResp(r){
    • Gộp các lượt GET trùng nhau đang chạy, đệm kết quả đọc trong thời gian ngắn.
    • Lỗi mạng/giới hạn: tự thử lại tối đa 3 lần, giãn cách tăng dần, tạm dừng
      cả hàng đợi để máy chủ "thở". */
-const Net = {q: [], active: 0, MAX: 2, pause: 0, inflight: new Map(), cache: new Map(), fails: 0, lastLog: 0};
-const TTL = {sessionFull: 90e3, listMaterials: 120e3, myQuizStatus: 20e3, myCertificates: 300e3, getStats: 300e3, notifications: 25e3,
+const Net = {q: [], active: 0, MAX: 2, hq: [], hactive: 0, HMAX: 1, pause: 0, inflight: new Map(), cache: new Map(), fails: 0, lastLog: 0};
+const HEAVY = {listMaterials: 1, fileContent: 1, sessionResults: 1, getStats: 1, diag: 1, previewInvite: 1};
+const TTL = {sessionFull: 60e3, listMaterials: 300e3, myQuizStatus: 20e3, myCertificates: 300e3, getStats: 300e3, notifications: 25e3,
              sessionResults: 60e3, getQuiz: 30e3, listUsers: 120e3};
 const NO_INVALIDATE = {trackProgress: 1, markRead: 1, previewInvite: 1, clientLog: 1, uploadChunk: 1, uploadStatus: 1, logout: 1};
-function netRun(job){ return new Promise((res, rej) => { Net.q.push({job, res, rej}); netPump(); }); }
+/* 2 làn: làn nhẹ (tối đa 2 lượt song song) cho thông tin/điều hướng, làn nặng (1 lượt) cho
+   đọc Drive, tải file, thống kê — lượt nặng không bao giờ chặn thao tác thường. */
+function netRun(job, heavy){ return new Promise((res, rej) => { (heavy ? Net.hq : Net.q).push({job, res, rej}); netPump(); }); }
 function netPump(){
   const wait = Net.pause - Date.now();
   if (wait > 0) { clearTimeout(Net.pt); Net.pt = setTimeout(netPump, wait + 20); return; }
-  while (Net.active < Net.MAX && Net.q.length) {
-    const it = Net.q.shift();
-    if (it.job.cancelled && it.job.cancelled()) { it.rej(new ApiError('Đã bỏ qua', 'SKIP')); continue; }
-    Net.active++;
-    it.job().then(it.res, it.rej).finally(() => { Net.active--; netPump(); });
-  }
+  const lane = (q, key, max) => {
+    while (Net[key] < max && q.length) {
+      const it = q.shift();
+      if (it.job.cancelled && it.job.cancelled()) { it.rej(new ApiError('Đã bỏ qua', 'SKIP')); continue; }
+      Net[key]++;
+      it.job().then(it.res, it.rej).finally(() => { Net[key]--; netPump(); });
+    }
+  };
+  lane(Net.q, 'active', Net.MAX);
+  lane(Net.hq, 'hactive', Net.HMAX);
 }
 function netInvalidate(){ Net.cache.forEach(v => v.at = 0); }
 async function transport(action, params, isPost, ms){
@@ -1138,7 +1148,7 @@ function get(action, params, opt){
   if (!opt.fresh && Net.inflight.has(key)) return Net.inflight.get(key);
   const job = () => api(action, params, opt);
   if (opt.cancelled) job.cancelled = opt.cancelled;
-  const pr = netRun(job).then(r => { if (TTL[action]) Net.cache.set(key, {at: Date.now(), data: r}); return r; })
+  const pr = netRun(job, opt.heavy || HEAVY[action]).then(r => { if (TTL[action] && !r.pending) Net.cache.set(key, {at: Date.now(), data: r}); return r; })
     .finally(() => { if (Net.inflight.get(key) === pr) Net.inflight.delete(key); });
   Net.inflight.set(key, pr);
   return pr;
@@ -1148,7 +1158,17 @@ function cached(action, params){ const c = Net.cache.get(action + '?' + toQS(par
 function post(action, params, opt){
   opt = opt || {};
   const run = () => api(action, params, Object.assign({post: true}, opt)).then(r => { if (!NO_INVALIDATE[action]) netInvalidate(); return r; });
-  return opt.direct ? run() : netRun(run);
+  return opt.direct ? run() : netRun(run, HEAVY[action]);
+}
+/** Đảm bảo đã có danh sách tài liệu của buổi (chờ khi máy chủ đang đọc Drive, tối đa ~45 giây) */
+async function ensureMats(sid){
+  if (S.mats[sid] && !S.mats[sid].loading && !S.mats[sid].error) return S.mats[sid];
+  for (let i = 0; i < 6; i++) {
+    const r = await get('listMaterials', {sid}, {fresh: i > 0, timeout: 60000});
+    if (!r.pending) { S.mats[sid] = matsFrom(r); if (S.full[sid]) { S.full[sid].materials = r; Course.syncGate(sid); } return S.mats[sid]; }
+    await sleep([3, 5, 8, 10, 12, 15][i] * 1000);
+  }
+  throw new ApiError('Máy chủ đang đọc thư mục Drive của buổi này lâu hơn bình thường — vui lòng thử lại sau ít phút.', 'PENDING');
 }
 
 /* ==========================================================================
@@ -1655,42 +1675,61 @@ VIEWS.s = function(sid, q, isRefresh){
   st.render();
   if (!isRefresh || !S.full[sid]) st.load(sid);
 };
+const RETRY_WAIT = [8, 20, 45, 90];
 function sessionLoadError(sid, msg, n){
-  const has = !!S.full[sid];
-  const wait = Math.min(30, 6 * n);
-  if (has) {
-    let bar = $('netbar');
-    if (!bar) { $('view').insertAdjacentHTML('afterbegin', '<div class="netbar" id="netbar"></div>'); bar = $('netbar'); }
-    bar.innerHTML = `${ic('alert')}<span>Mất kết nối tạm thời — đang hiển thị dữ liệu lần trước. Tự thử lại sau ${wait} giây.</span><button class="btn btn-ghost btn-sm" data-a="sessRetry">Thử lại ngay</button><button class="btn btn-ghost btn-sm" data-a="netDiag">Kiểm tra kết nối</button>`;
-  } else {
-    $('view').innerHTML = `<div class="panel" style="margin-top:14px">${errBox('Chưa tải được buổi đào tạo', String(msg).replace(/\.\s*$/, '') + ' — tự thử lại sau ' + wait + ' giây.', `<button class="btn btn-primary" data-a="sessRetry">${ic('refresh')}Thử lại ngay</button>`)}</div>`;
-  }
+  const wait = RETRY_WAIT[Math.min(n, RETRY_WAIT.length) - 1];
+  if (!$('tabBody') && findS(sid)) SessionPage.render();          // luôn giữ khung trang (tiêu đề, thông tin cơ bản)
+  let bar = $('netbar');
+  if (!bar) { const v = $('view'); if (!v) return; v.insertAdjacentHTML('afterbegin', '<div class="netbar" id="netbar"></div>'); bar = $('netbar'); }
+  bar.innerHTML = `${ic('alert')}<span>${S.full[sid] ? 'Đang hiển thị dữ liệu lần trước — ' : ''}chưa kết nối được máy chủ. ${n <= RETRY_WAIT.length ? 'Tự thử lại sau ' + wait + ' giây.' : 'Bấm Thử lại khi mạng ổn định.'}</span><button class="btn btn-ghost btn-sm" data-a="sessRetry">Thử lại ngay</button><button class="btn btn-ghost btn-sm" data-a="netDiag">Kiểm tra kết nối</button>`;
+  if (!S.full[sid] && $('tabBody')) $('tabBody').innerHTML = `<div class="panel">${emptyBox('clock', 'Chưa tải được tài liệu và bài kiểm tra', 'Thông tin sẽ tự hiện khi máy chủ phản hồi.')}</div>`;
 }
 function matsFrom(r){
   if (r.chunkSize) Uploader.CH = r.chunkSize;
   return {files: r.data || [], folders: r.folders || [], crumb: r.crumb || [], single: !!r.single, folderUrl: r.folderUrl, folderName: r.folderName,
-          message: r.message, myProgress: r.myProgress || [], maxMb: r.maxMb || 1024};
+          message: r.message, myProgress: r.myProgress || [], maxMb: r.maxMb || 1024, truncated: !!r.truncated};
 }
 const SessionPage = {
   sid: '', tab: 'materials',
   tabFor(sid){ if (S.todo.some(t => t.sid === sid)) return 'quiz'; const s = findS(sid); return s && !s.hasFolder && s.hasQuiz ? 'quiz' : 'materials'; },
   /** 1 lượt gọi duy nhất (thông tin + tài liệu + bài KT). Có dữ liệu cũ thì hiện ngay rồi cập nhật ngầm. */
+  /** Lượt 1 (nhẹ, nhanh): thông tin buổi + bài KT + tiến độ. Tài liệu tải riêng nếu máy chủ chưa có sẵn. */
   async load(sid, fresh){
     clearTimeout(this.rt);
     const params = {sid};
-    if (!S.full[sid]) { const old = cached('sessionFull', params); if (old) { S.full[sid] = old; if (old.materials) S.mats[sid] = matsFrom(old.materials); if (this.sid === sid) this.render(); } }
+    if (!S.full[sid]) { const old = cached('sessionFull', params); if (old) { S.full[sid] = old; if (old.materials && !old.materials.pending) S.mats[sid] = matsFrom(old.materials); if (this.sid === sid) this.render(); } }
     try {
-      const r = await get('sessionFull', fresh ? {sid, fresh: 1} : params, {fresh: !!fresh, timeout: 90000, cancelled: () => this.sid !== sid});
-      if (fresh) Net.cache.set('sessionFull?' + toQS(params), {at: Date.now(), data: r});
+      const r = await get('sessionFull', params, {fresh: !!fresh, timeout: 45000, cancelled: () => this.sid !== sid});
       S.full[sid] = r;
-      if (r.materials) S.mats[sid] = matsFrom(r.materials);
+      if (r.materials && !r.materials.pending) S.mats[sid] = matsFrom(r.materials);
       this.fails = 0;
-      if (this.sid === sid && S.route.name === 's') { this.render(); }
+      if (this.sid === sid && S.route.name === 's') this.render();
+      if (fresh || !r.materials || r.materials.pending) this.loadMats(sid, fresh);
     } catch (e) {
       if (e.code === 'SKIP' || this.sid !== sid || S.route.name !== 's') return;
       this.fails = (this.fails || 0) + 1;
       sessionLoadError(sid, e.message, this.fails);
-      if (this.fails <= 4) this.rt = setTimeout(() => { if (this.sid === sid && S.route.name === 's') this.load(sid); }, Math.min(30, 6 * this.fails) * 1000);
+      if (this.fails <= RETRY_WAIT.length) this.rt = setTimeout(() => { if (this.sid === sid && S.route.name === 's') this.load(sid); }, RETRY_WAIT[this.fails - 1] * 1000);
+    }
+  },
+  /** Lượt 2 (nặng, làn riêng): danh sách tài liệu trên Drive — chỉ 1 lượt/buổi, có chờ khi máy chủ đang đọc */
+  async loadMats(sid, fresh, tries){
+    tries = tries || 0;
+    try {
+      const r = await get('listMaterials', fresh ? {sid, fresh: 1} : {sid}, {heavy: true, fresh: !!fresh, timeout: 60000, cancelled: () => this.sid !== sid});
+      if (r.pending) {
+        if (tries < 6) setTimeout(() => { if (this.sid === sid) this.loadMats(sid, false, tries + 1); }, [3, 5, 8, 12, 20, 30][tries] * 1000);
+        if (!S.mats[sid]) S.mats[sid] = {files: [], loading: true, note: 'Máy chủ đang đọc thư mục Drive của buổi này…'};
+      } else {
+        S.mats[sid] = matsFrom(r);
+        if (S.full[sid]) { const f = S.full[sid]; f.materials = r; if (f.quiz && f.quiz.gate && f.quiz.gate.pending) { delete f.quiz.gate.pending; Course.syncGate(sid); } }
+        if (fresh) Net.cache.set('listMaterials?' + toQS({sid}), {at: Date.now(), data: r});
+      }
+      if (this.sid === sid && S.route.name === 's') this.render();
+    } catch (e) {
+      if (e.code === 'SKIP') return;
+      if (!S.mats[sid] || S.mats[sid].loading) S.mats[sid] = {files: [], error: e.message};
+      if (this.sid === sid && S.route.name === 's') this.renderTab();
     }
   },
   data(){ const f = S.full[this.sid]; const base = findS(this.sid) || {}; return {s: Object.assign({}, base, f ? f.data : {}), f: f}; },
@@ -1743,7 +1782,7 @@ const SessionPage = {
   },
   tabMaterials(box, s){
     const m = S.mats[s.sid], edit = canEdit(s);
-    if (!m) { box.innerHTML = skel(4); return; }
+    if (!m || m.loading) { box.innerHTML = `<div class="loadnote"><span class="spin"></span>${esc((m && m.note) || 'Đang tải danh sách tài liệu…')}</div>` + skel(3); return; }
     const prog = {};
     (m.myProgress || []).forEach(p => prog[p.fileId] = p);
     const hasFolder = !!m.folderUrl && !m.single;
@@ -1763,7 +1802,8 @@ const SessionPage = {
           </div></div>
         <div class="drop" id="drop" data-a="upPick" data-p="[]">${ic('upload')} <b>Kéo thả file hoặc cả thư mục vào bất kỳ đâu trên trang</b> — thả vào đúng thư mục bên dưới để tải vào thư mục đó · tối đa ${m.maxMb || 1024}MB/file</div>`;
     }
-    if (m.error) { box.innerHTML = head + `<div class="panel">${emptyBox('alert', 'Không tải được danh sách tài liệu', esc(m.error), `<button class="btn btn-primary" data-a="matsRefresh" data-sid="${esc(s.sid)}">Thử lại</button>`)}</div>`; return; }
+    if (m.error) { box.innerHTML = head + `<div class="panel">${errBox('Chưa tải được danh sách tài liệu', m.error, `<button class="btn btn-primary" data-a="matsRefresh" data-sid="${esc(s.sid)}">Thử lại</button>`)}</div>`; return; }
+    if (m.truncated && edit) head += `<div class="netbar">${ic('alert')}<span>Thư mục của buổi này rất lớn — hệ thống chỉ đọc ${m.files.length} file / ${(m.folders || []).length} thư mục đầu tiên để tránh treo máy chủ. Kiểm tra lại ô <b>Training Folder</b> có trỏ đúng thư mục riêng của buổi không.</span></div>`;
     // nhóm theo thư mục (gồm cả thư mục trống)
     const secs = [{key: '', arr: [], name: 'Tài liệu chính', depth: 0, files: []}];
     (m.folders || []).forEach(f => secs.push({key: f.path, arr: f.pathArr || f.path.split(' / '), name: f.name, depth: (f.pathArr || []).length, url: f.url, files: []}));
@@ -2102,9 +2142,9 @@ const Reader = {
   async open(sid, fid, opts){
     const course = !!(opts && opts.course);
     let m = S.mats[sid];
-    if (!m || !m.files) {
+    if (!m || !m.files || m.loading || m.error) {
       busy(true, 'Đang mở tài liệu…');
-      try { const r = await get('listMaterials', {sid}); m = S.mats[sid] = matsFrom(r); }
+      try { m = await ensureMats(sid); }
       catch (e) { busy(false); return err(e.message); }
       busy(false);
     }
@@ -2315,10 +2355,13 @@ const Course = {
   nextTarget(sid){ const opt = this.optional(sid), fs = this.files(sid); return (fs.find(f => !opt.has(f.id) && !this.done(sid, f.id)) || fs.find(f => !this.done(sid, f.id)) || fs[0] || {}).id; },
   async open(sid, fid){
     let f = S.full[sid];
-    if (!f || !f.materials || !S.mats[sid]) {
+    if (!f || !S.mats[sid] || S.mats[sid].loading || S.mats[sid].error) {
       busy(true, 'Đang chuẩn bị lộ trình học…');
-      try { f = S.full[sid] = await get('sessionFull', {sid}, {timeout: 90000}); S.mats[sid] = matsFrom(f.materials || {}); }
-      catch (e) { busy(false); return err(e.message); }
+      try {
+        if (!f) f = S.full[sid] = await get('sessionFull', {sid}, {timeout: 45000});
+        await ensureMats(sid);
+        Course.syncGate(sid);
+      } catch (e) { busy(false); return err(e.message); }
       busy(false);
     }
     Modal.stack.slice().forEach(m => Modal.close(m));
@@ -2328,7 +2371,8 @@ const Course = {
   },
   /** Cập nhật điều kiện mở bài KT ngay trên máy sau khi học xong 1 tài liệu */
   syncGate(sid){
-    const f = S.full[sid]; if (!f || !f.quiz || !f.quiz.gate || !f.quiz.gate.required || f.quiz.gate.bypass) return;
+    const f = S.full[sid]; if (!f || !f.quiz || !f.quiz.gate || !f.quiz.gate.required || f.quiz.gate.bypass || !S.mats[sid] || !S.mats[sid].files) return;
+    delete f.quiz.gate.pending;
     const st = this.stats(sid), g = f.quiz.gate;
     g.total = st.total; g.done = st.done; g.passed = st.passed;
     g.missing = this.files(sid).filter(x => !this.optional(sid).has(x.id) && !this.done(sid, x.id)).map(x => ({id: x.id, name: x.name, path: x.path}));
@@ -2431,7 +2475,10 @@ const Quiz = {
     const s = findS(sid) || {topic: ''};
     this.show(this.top(s.topic, 'Bài kiểm tra sau đào tạo') + `<div class="qz-main"><div class="qz-intro">${skel(4)}</div></div>`);
     let q;
-    try { q = await get('myQuizStatus', {sid}, {fresh: true}); }
+    try {
+      q = await get('myQuizStatus', {sid}, {fresh: true});
+      if (q.gate && q.gate.pending) { await ensureMats(sid); q = await get('myQuizStatus', {sid}, {fresh: true}); }
+    }
     catch (e) { return this.show(this.top(s.topic, '') + `<div class="qz-main"><div class="qz-intro">${errBox('Chưa tải được bài kiểm tra', e, `<button class="btn btn-primary" data-a="quiz" data-sid="${esc(sid)}">Thử lại</button>`)}</div></div>`); }
     if (!q.hasQuiz) return this.show(this.top(s.topic, '') + `<div class="qz-main"><div class="qz-intro">${emptyBox('clip', 'Buổi đào tạo này chưa có bài kiểm tra', '')}</div></div>`);
     const left = Math.max(0, q.maxAttempts - q.attempts);
@@ -2465,7 +2512,13 @@ const Quiz = {
     let r;
     await Progress.flush(sid);
     try { r = await post('quizStart', {sid}, {retry: 1, timeout: 60000}); }
-    catch (e) { busy(false); if (e.code === 'NEED_MATERIALS') { toast(e.message); delete S.full[sid]; return Course.open(sid); } return err(e.message); }
+    catch (e) {
+      busy(false);
+      if (e.code === 'NEED_MATERIALS') { toast(e.message); delete S.full[sid]; return Course.open(sid); }
+      if (e.code === 'GATE_PENDING' && !this.retried) { this.retried = true; try { await ensureMats(sid); } catch (e2) {} return this.start(sid); }
+      return err(e.message);
+    }
+    this.retried = false;
     busy(false);
     let saved = {};
     try { saved = JSON.parse(localStorage.getItem('mmh_qz_' + r.attemptId) || '{}'); } catch (e) {}
@@ -3255,7 +3308,7 @@ const A = {
   upMin: () => { Uploader.min = !Uploader.min; Uploader.render(); },
   newFolder: async d => { const path = JSON.parse(d.p || '[]'); const n = await promptBox(path.length ? 'Thư mục con trong "' + path[path.length - 1] + '"' : 'Thư mục mới', 'Tên thư mục', '', 'Tạo thư mục'); if (!n) return; busy(true, 'Đang tạo thư mục…'); try { const r = await post('createSubfolder', {sid: d.sid, path, name: n}); ok(r.message); delete S.mats[d.sid]; await SessionPage.load(d.sid, true); const s = findS(d.sid); if (s && !s.hasFolder) reload(); } catch (e) { err(e.message); } busy(false); },
   renameMat: async d => { const n = await promptBox('Đổi tên tài liệu', 'Tên mới', d.n, 'Đổi tên'); if (!n || n === d.n) return; try { const r = await post('renameMaterial', {sid: d.sid, fileId: d.fid, name: n}); ok(r.message); delete S.mats[d.sid]; SessionPage.load(d.sid, true); } catch (e) { err(e.message); } },
-  matsRefresh: d => { delete S.mats[d.sid]; SessionPage.renderTab(); SessionPage.load(d.sid, true); },
+  matsRefresh: d => { delete S.mats[d.sid]; SessionPage.renderTab(); SessionPage.loadMats(d.sid, true); },
   delMat: async d => { if (!await confirmBox('Xoá tài liệu?', `Chuyển <b>${esc(d.n)}</b> vào thùng rác Drive.`, 'Xoá', true)) return; try { const r = await post('deleteMaterial', {sid: d.sid, fileId: d.fid}); ok(r.message); delete S.mats[d.sid]; SessionPage.load(d.sid, true); } catch (e) { err(e.message); } },
   resendCert: async d => { busy(true, 'Đang cấp lại chứng chỉ…'); try { const r = await post('resendCert', {sid: d.sid, email: d.e}, {timeout: 90000}); ok(r.message); delete S.full[d.sid]; SessionPage.load(d.sid); } catch (e) { err(e.message); } busy(false); },
   cancelSession: async d => { if (!await confirmBox('Huỷ buổi đào tạo?', 'Buổi đào tạo chuyển sang trạng thái Cancel (dòng dữ liệu vẫn giữ trên sheet).', 'Huỷ buổi', true)) return; try { const r = await post('deleteSession', {sid: d.sid}); ok(r.message); await reload(); go('#/library'); } catch (e) { err(e.message); } },
