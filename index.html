@@ -869,7 +869,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '2.4';
+const APP_VERSION = '2.5';
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -1005,8 +1005,9 @@ function periodBar(stKey, sessions){
       <button class="btn btn-ghost btn-sm" data-a="perNow" data-s="${stKey}">Kỳ này</button></div></div>`;
 }
 function inPeriod(st, s){ return !st.period || FY.key(s.date, st.group) === st.period; }
+function rawBtn(e){ const u = e && e.data && e.data.raw; return u ? `<a class="btn btn-line" href="${esc(u)}" target="_blank" rel="noopener" title="Mở phản hồi nguyên văn của máy chủ ở tab mới — chụp màn hình gửi Admin">${ic('ext')}Xem phản hồi gốc</a>` : ''; }
 function errBox(title, e, retry){
-  return emptyBox('alert', title, esc(e && e.message || e), `<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px">${retry || ''}<button class="btn btn-line" data-a="netDiag">${ic('info')}Kiểm tra kết nối</button></div>`);
+  return emptyBox('alert', title, esc(e && e.message || e), `<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px">${retry || ''}${rawBtn(e)}<button class="btn btn-line" data-a="netDiag">${ic('info')}Kiểm tra kết nối</button></div>`);
 }
 function emptyBox(icon, title, sub, btn){ return `<div class="empty">${ic(icon)}<b>${esc(title)}</b>${sub ? `<div>${sub}</div>` : ''}${btn || ''}</div>`; }
 function skel(lines){ return Array.from({length: lines||3}, (_, i) => `<div class="sk" style="height:${i ? 62 : 26}px;margin-bottom:12px;${i ? '' : 'width:40%'}"></div>`).join(''); }
@@ -1044,9 +1045,12 @@ function jsonp(params, ms){
   return new Promise((resolve, reject) => {
     const cb = '__hub' + (_cb++) + '_' + Date.now().toString(36);
     const s = document.createElement('script');
-    const to = setTimeout(() => { done(); reject(new ApiError('Máy chủ phản hồi quá lâu.', 'TIMEOUT')); }, ms);
+    let called = false;
+    const to = setTimeout(() => { done(); reject(new ApiError('Máy chủ phản hồi quá lâu.', 'TIMEOUT')); }, Math.min(ms, 30000));
     function done(){ clearTimeout(to); try { delete window[cb]; } catch (e) { window[cb] = undefined; } s.remove(); }
-    window[cb] = d => { done(); resolve(d); };
+    window[cb] = d => { called = true; done(); resolve(d); };
+    // tải xong mà không gọi callback = máy chủ trả trang lỗi (HTML) chứ không phải dữ liệu
+    s.onload = () => { if (!called) { done(); reject(new ApiError('Máy chủ trả trang lỗi thay vì dữ liệu.', 'SERVER_HTML')); } };
     s.src = API_URL + '?' + toQS(params) + '&callback=' + cb;
     s.onerror = () => { done(); reject(new ApiError('Không kết nối được máy chủ Training Hub. Kiểm tra mạng, hoặc nhờ Admin kiểm tra Deploy (Who has access = Anyone).', 'NET')); };
     document.body.appendChild(s);
@@ -1099,16 +1103,37 @@ async function transport(action, params, isPost, ms){
   }
   return handleResp(parseResp(res.txt, res.status));
 }
+/** Link xem nguyên văn phản hồi của máy chủ (mở tab mới — trình duyệt hiện đúng trang lỗi Google nếu có) */
+function rawUrl(action, params){ return API_URL + '?' + toQS(Object.assign({action: action, token: S.token}, params || {})); }
+/** Phân loại lỗi khi đã thử hết: máy chủ còn sống không? (kết quả nhớ 30 giây) */
+let _probe = {at: 0, kind: ''};
+async function probeServer(){
+  if (Date.now() - _probe.at < 30000) return _probe.kind;
+  let kind = 'NET';
+  try { await transport('ping', {}, false, 20000); kind = 'ACTION'; }
+  catch (e) {
+    try { await fetch(API_URL + '?action=ping', {mode: 'no-cors', cache: 'no-store'}); kind = 'PAGE'; } catch (e2) { kind = 'NET'; }
+  }
+  _probe = {at: Date.now(), kind};
+  return kind;
+}
+const FAIL_MSG = {
+  ACTION: 'Máy chủ vẫn hoạt động nhưng chức năng này không trả được dữ liệu (Google cắt lượt chạy hoặc tường lửa chặn nội dung).',
+  PAGE: 'Máy chủ Google đang trả trang lỗi thay vì dữ liệu — thường do cần cấp quyền lại sau khi cập nhật code, hoặc Deploy chưa đúng phiên bản.',
+  NET: 'Không kết nối được tới máy chủ Google (mạng / VPN / tường lửa công ty).'
+};
 async function api(action, params, opt){
   opt = opt || {};
   const isPost = !!opt.post, ms = opt.timeout || 60000;
-  const tries = opt.retry == null ? (isPost ? 1 : 4) : opt.retry + 1;
+  // Kế hoạch thử: GET → GET → POST (đường khác) → JSONP. Ghi dữ liệu: chỉ POST.
+  let plan = isPost ? ['post'] : ['get', 'get', 'post', 'jsonp'];
+  if (opt.retry != null) plan = plan.slice(0, opt.retry + 1);
   const base = Object.assign({action: action, token: S.token}, params || {});
   const t0 = Date.now();
   let last;
-  for (let i = 0; i < tries; i++) {
+  for (let i = 0; i < plan.length; i++) {
     try {
-      const r = await transport(action, params, isPost, ms);
+      const r = plan[i] === 'jsonp' ? handleResp(await jsonp(base, ms)) : await transport(action, params, plan[i] === 'post', ms);
       if (Net.fails && typeof setSync === 'function') setSync('', 'Đã kết nối lại');
       Net.fails = 0;
       return r;
@@ -1116,21 +1141,19 @@ async function api(action, params, opt){
       if (e instanceof ApiError && !['SERVER_HTML', 'NET', 'TIMEOUT'].includes(e.code)) throw e;   // lỗi nghiệp vụ: báo ngay
       last = e.name === 'AbortError' ? new ApiError('Máy chủ phản hồi quá lâu.', 'TIMEOUT') : (e instanceof ApiError ? e : new ApiError('Mất kết nối tới máy chủ.', 'NET'));
       Net.fails++;
-      const back = [1200, 3000, 6000, 9000][i] || 9000;
-      Net.pause = Math.max(Net.pause, Date.now() + Math.min(back, 4000));      // cho cả hàng đợi nghỉ
-      if (i === tries - 1) break;
+      if (i === plan.length - 1) break;
+      const back = [1200, 3000, 5000][i] || 5000;
+      Net.pause = Math.max(Net.pause, Date.now() + Math.min(back, 4000));
       await sleep(back);
-      if (i === tries - 2 && !isPost && e instanceof TypeError) {             // lượt cuối: thử đường JSONP
-        try { return handleResp(await jsonp(base, ms)); } catch (e2) { if (e2 instanceof ApiError && e2.code === 'AUTH') throw e2; last = e2; }
-        break;
-      }
     }
   }
   const secs = ((Date.now() - t0) / 1000).toFixed(1);
-  netReport(action, last, secs);
   if (typeof setSync === 'function') setSync('off', 'Mất kết nối');
-  if (last && last.code === 'TIMEOUT') throw new ApiError('Máy chủ phản hồi quá lâu (' + secs + ' giây). Vui lòng thử lại.', 'TIMEOUT');
-  throw new ApiError('Máy chủ đang quá tải hoặc mất kết nối (đã thử lại trong ' + secs + ' giây).', 'NET');
+  const allSlow = last && last.code === 'TIMEOUT' && Date.now() - t0 > ms;
+  const kind = allSlow ? 'TIMEOUT' : await probeServer();
+  netReport(action, new ApiError(kind + ': ' + (last && last.message), kind), secs);
+  const msg = kind === 'TIMEOUT' ? 'Máy chủ phản hồi quá lâu (' + secs + ' giây).' : FAIL_MSG[kind];
+  throw new ApiError(msg, kind === 'TIMEOUT' ? 'TIMEOUT' : 'NET', {kind, raw: rawUrl(action, params), action});
 }
 /** Báo lượt gọi thất bại về HUB_Log để Admin tra cứu (tối đa 1 lần / 30 giây) */
 function netReport(action, e, secs){
@@ -1676,13 +1699,21 @@ VIEWS.s = function(sid, q, isRefresh){
   if (!isRefresh || !S.full[sid]) st.load(sid);
 };
 const RETRY_WAIT = [8, 20, 45, 90];
-function sessionLoadError(sid, msg, n){
+function sessionLoadError(sid, msg, n, e){
   const wait = RETRY_WAIT[Math.min(n, RETRY_WAIT.length) - 1];
   if (!$('tabBody') && findS(sid)) SessionPage.render();          // luôn giữ khung trang (tiêu đề, thông tin cơ bản)
   let bar = $('netbar');
   if (!bar) { const v = $('view'); if (!v) return; v.insertAdjacentHTML('afterbegin', '<div class="netbar" id="netbar"></div>'); bar = $('netbar'); }
-  bar.innerHTML = `${ic('alert')}<span>${S.full[sid] ? 'Đang hiển thị dữ liệu lần trước — ' : ''}chưa kết nối được máy chủ. ${n <= RETRY_WAIT.length ? 'Tự thử lại sau ' + wait + ' giây.' : 'Bấm Thử lại khi mạng ổn định.'}</span><button class="btn btn-ghost btn-sm" data-a="sessRetry">Thử lại ngay</button><button class="btn btn-ghost btn-sm" data-a="netDiag">Kiểm tra kết nối</button>`;
+  bar.innerHTML = `${ic('alert')}<span>${S.full[sid] ? 'Đang hiển thị dữ liệu lần trước — ' : ''}${esc(String(msg || 'chưa kết nối được máy chủ.').replace(/\.?\s*$/, '.'))} ${n <= RETRY_WAIT.length ? 'Tự thử lại sau ' + wait + ' giây.' : 'Bấm Thử lại khi mạng ổn định.'}</span><button class="btn btn-ghost btn-sm" data-a="sessRetry">Thử lại ngay</button>${e && e.data && e.data.raw ? `<a class="btn btn-ghost btn-sm" href="${esc(e.data.raw)}" target="_blank" rel="noopener">Xem phản hồi gốc</a>` : ''}<button class="btn btn-ghost btn-sm" data-a="netDiag">Kiểm tra kết nối</button>`;
   if (!S.full[sid] && $('tabBody')) $('tabBody').innerHTML = `<div class="panel">${emptyBox('clock', 'Chưa tải được tài liệu và bài kiểm tra', 'Thông tin sẽ tự hiện khi máy chủ phản hồi.')}</div>`;
+}
+/** Danh sách học viên (chỉ trainer) — tải khi cần */
+async function ensureLearners(sid){
+  const f = S.full[sid];
+  if (f && f.learners) return f.learners;
+  const r = await get('sessionFull', {sid, learners: 1}, {timeout: 45000});
+  if (S.full[sid]) S.full[sid].learners = r.learners || []; else S.full[sid] = r;
+  return r.learners || [];
 }
 function matsFrom(r){
   if (r.chunkSize) Uploader.CH = r.chunkSize;
@@ -1708,7 +1739,7 @@ const SessionPage = {
     } catch (e) {
       if (e.code === 'SKIP' || this.sid !== sid || S.route.name !== 's') return;
       this.fails = (this.fails || 0) + 1;
-      sessionLoadError(sid, e.message, this.fails);
+      sessionLoadError(sid, e.message, this.fails, e);
       if (this.fails <= RETRY_WAIT.length) this.rt = setTimeout(() => { if (this.sid === sid && S.route.name === 's') this.load(sid); }, RETRY_WAIT[this.fails - 1] * 1000);
     }
   },
@@ -1867,6 +1898,12 @@ const SessionPage = {
   },
   tabLearners(box, s, f){
     if (!f) { box.innerHTML = skel(4); return; }
+    if (!f.learners) {
+      box.innerHTML = `<div class="loadnote"><span class="spin"></span>Đang tải danh sách học viên…</div>` + skel(3);
+      ensureLearners(s.sid).then(() => { if (this.sid === s.sid && this.tab === 'learners') this.renderTab(); })
+        .catch(e => { if (this.sid === s.sid && this.tab === 'learners' && $('tabBody')) $('tabBody').innerHTML = `<div class="panel">${errBox('Chưa tải được danh sách học viên', e, `<button class="btn btn-primary" data-a="stab" data-t="learners">Thử lại</button>`)}</div>`; });
+      return;
+    }
     const L = f.learners || [];
     const nFiles = S.mats[s.sid] && S.mats[s.sid].files ? Course.stats(s.sid).total : 0;
     const passed = L.filter(l => l.pass).length, doneN = L.filter(l => l.status === 'Completed').length;
@@ -2894,7 +2931,7 @@ const Composer = {
     let f = S.full[sid];
     if (!f || !f.learners) {
       busy(true, 'Đang chuẩn bị danh sách học viên…');
-      try { f = S.full[sid] = await get('sessionFull', {sid, noMats: 1}); } catch (e) { busy(false); return err(e.message); } busy(false);
+      try { if (!f) f = S.full[sid] = await get('sessionFull', {sid}); await ensureLearners(sid); f = S.full[sid]; } catch (e) { busy(false); return err(e.message); } busy(false);
     }
     const s = Object.assign({}, findS(sid), f.data);
     const L = f.learners || [];
@@ -3312,7 +3349,7 @@ const A = {
   delMat: async d => { if (!await confirmBox('Xoá tài liệu?', `Chuyển <b>${esc(d.n)}</b> vào thùng rác Drive.`, 'Xoá', true)) return; try { const r = await post('deleteMaterial', {sid: d.sid, fileId: d.fid}); ok(r.message); delete S.mats[d.sid]; SessionPage.load(d.sid, true); } catch (e) { err(e.message); } },
   resendCert: async d => { busy(true, 'Đang cấp lại chứng chỉ…'); try { const r = await post('resendCert', {sid: d.sid, email: d.e}, {timeout: 90000}); ok(r.message); delete S.full[d.sid]; SessionPage.load(d.sid); } catch (e) { err(e.message); } busy(false); },
   cancelSession: async d => { if (!await confirmBox('Huỷ buổi đào tạo?', 'Buổi đào tạo chuyển sang trạng thái Cancel (dòng dữ liệu vẫn giữ trên sheet).', 'Huỷ buổi', true)) return; try { const r = await post('deleteSession', {sid: d.sid}); ok(r.message); await reload(); go('#/library'); } catch (e) { err(e.message); } },
-  csvLearners: d => { const f = S.full[d.sid]; if (!f || !f.learners) return; downloadCSV('HocVien_' + d.sid + '.csv', [['Họ tên', 'Email', 'Phòng ban', 'Trạng thái', 'Điểm (%)', 'Đạt', 'Lượt', 'Tài liệu đã đọc', 'Chứng chỉ']].concat(f.learners.map(l => [l.name, l.email, l.dept, l.status, l.percent, l.pass ? 'Đạt' : '', l.attempt, l.filesDone, l.certUrl]))); },
+  csvLearners: async d => { try { await ensureLearners(d.sid); } catch (e) { return err(e.message); } const f = S.full[d.sid]; if (!f || !f.learners) return; downloadCSV('HocVien_' + d.sid + '.csv', [['Họ tên', 'Email', 'Phòng ban', 'Trạng thái', 'Điểm (%)', 'Đạt', 'Lượt', 'Tài liệu đã đọc', 'Chứng chỉ']].concat(f.learners.map(l => [l.name, l.email, l.dept, l.status, l.percent, l.pass ? 'Đạt' : '', l.attempt, l.filesDone, l.certUrl]))); },
   manageF: d => { S.manageF = d.f; VIEWS.manage(); },
   statsRefresh: () => { S.stats = null; VIEWS.dashboard(); },
   csvStats: () => { if (!S.stats) return; downloadCSV('TongQuan_HocVien.csv', [['Học viên', 'Email', 'Phòng ban', 'Được giao', 'Đã làm', 'Đạt', 'Điểm TB', 'Chứng chỉ', 'Tỷ lệ đạt (%)']].concat(S.stats.learners.map(l => [l.name, l.email, l.dept, l.assigned, l.completed, l.passed, l.avg, l.certs, l.rate]))); },
@@ -3337,29 +3374,51 @@ document.addEventListener('change', e => { const el = e.target.closest && e.targ
 function redrawPer(k){ if (k === 'lib') VIEWS.library.draw(); else VIEWS.manage(); }
 window.addEventListener('pagehide', () => { if (Reader.st) Reader.beacon(); });
 
-/** Kiểm tra kết nối: thử 2 đường gọi + (Admin) đo tốc độ từng phần máy chủ */
+/** Kiểm tra kết nối: thử nhiều đường gọi + máy chủ tự chạy thử từng chức năng */
 async function netDiag(){
-  const m = Modal.open({size: 'mid', title: 'Kiểm tra kết nối máy chủ', sub: 'Đang chạy thử — khoảng 5–20 giây…', body: `<div id="ndBox">${skel(3)}</div>`,
-    foot: `<button class="btn btn-line" id="ndCopy">${ic('copy')}Sao chép kết quả</button><div class="sp"></div><button class="btn btn-primary" data-mclose>Đóng</button>`});
-  const rows = [], add = (t, okk, note) => { rows.push({t, ok: okk, note}); draw(); };
-  const draw = () => { if ($('ndBox')) $('ndBox').innerHTML = rows.map(r => `<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start"><span class="chip ${r.ok === null ? 'mute' : r.ok ? 'ok' : 'bad'}" style="min-width:74px;justify-content:center">${r.ok === null ? '…' : r.ok ? 'Tốt' : 'Lỗi'}</span><div style="flex:1"><b style="color:var(--navy)">${esc(r.t)}</b><div class="small muted">${esc(r.note)}</div></div></div>`).join('') + (rows.verdict ? `<div class="msg ${rows.verdictOk ? 'ok' : 'info'}" style="margin-top:14px">${rows.verdict}</div>` : ''); };
-  const t1 = Date.now(); let fOk = false, jOk = false;
-  try { const r = await transport('ping', {}, false, 30000); fOk = true; add('Gọi trực tiếp (fetch)', true, (Date.now() - t1) + ' ms · máy chủ v' + r.version); } catch (e) { add('Gọi trực tiếp (fetch)', false, e.message + ' · ' + (Date.now() - t1) + ' ms'); }
-  const t2 = Date.now();
-  try { const r = await jsonp({action: 'ping'}, 30000); jOk = true; add('Gọi dự phòng (JSONP)', true, (Date.now() - t2) + ' ms · máy chủ v' + r.version); } catch (e) { add('Gọi dự phòng (JSONP)', false, e.message); }
-  const t3 = Date.now();
-  try { await transport('me', {}, false, 30000); add('Phiên đăng nhập', true, (Date.now() - t3) + ' ms'); } catch (e) { add('Phiên đăng nhập', false, e.message); }
-  if (S.user && S.user.isAdmin && fOk) {
-    try { const d = await transport('diag', {sid: SessionPage.sid || ''}, false, 120000); d.steps.forEach(x => add('Máy chủ: ' + x.step, x.ok && x.ms < 8000, x.ms + ' ms · ' + x.note)); }
-    catch (e) { add('Máy chủ: đo tốc độ', false, e.message); }
+  const sid = S.route.name === 's' ? SessionPage.sid : '';
+  const m = Modal.open({size: 'mid', title: 'Kiểm tra kết nối máy chủ', sub: 'Đang chạy thử — khoảng 10–40 giây…', body: `<div id="ndBox">${skel(3)}</div>`,
+    foot: `<a class="btn btn-line" href="${esc(rawUrl('ping'))}" target="_blank" rel="noopener">${ic('ext')}Phản hồi gốc: ping</a>${sid ? `<a class="btn btn-line" href="${esc(rawUrl('sessionFull', {sid}))}" target="_blank" rel="noopener">${ic('ext')}Phản hồi gốc: buổi này</a>` : ''}<button class="btn btn-line" id="ndCopy">${ic('copy')}Sao chép</button><div class="sp"></div><button class="btn btn-primary" data-mclose>Đóng</button>`});
+  const rows = [];
+  const add = (t, okk, note) => { rows.push({t, ok: okk, note}); draw(); };
+  const draw = () => { if ($('ndBox')) $('ndBox').innerHTML = rows.map(r => `<div style="display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);align-items:flex-start"><span class="chip ${r.ok === null ? 'mute' : r.ok ? 'ok' : 'bad'}" style="min-width:64px;justify-content:center">${r.ok === null ? '—' : r.ok ? 'Tốt' : 'Lỗi'}</span><div style="flex:1;min-width:0"><b style="color:var(--navy)">${esc(r.t)}</b><div class="small muted" style="word-break:break-word">${esc(r.note)}</div></div></div>`).join('') + (rows.verdict ? `<div class="msg ${rows.verdictOk ? 'ok' : 'err'}" style="margin-top:14px">${rows.verdict}</div>` : ''); };
+  const timed = async (fn) => { const t = Date.now(); try { const r = await fn(); return {ok: true, r, ms: Date.now() - t}; } catch (e) { return {ok: false, e, ms: Date.now() - t}; } };
+  const a = await timed(() => transport('ping', {}, false, 25000));
+  add('Gọi máy chủ (GET)', a.ok, a.ok ? a.ms + ' ms · máy chủ v' + a.r.version : (a.e.message || 'lỗi') + ' · ' + a.ms + ' ms');
+  const b = await timed(() => transport('ping', {}, true, 25000));
+  add('Gọi máy chủ (POST)', b.ok, b.ok ? b.ms + ' ms' : (b.e.message || 'lỗi'));
+  const c = await timed(() => jsonp({action: 'ping'}, 25000));
+  add('Gọi máy chủ (JSONP)', c.ok, c.ok ? c.ms + ' ms' : (c.e.message || 'lỗi'));
+  let page = false;
+  if (!a.ok) { const d = await timed(() => fetch(API_URL + '?action=ping', {mode: 'no-cors', cache: 'no-store'})); page = d.ok; add('Máy chủ có phản hồi (không đọc nội dung)', d.ok, d.ok ? 'Có — nhưng là trang lỗi, không phải dữ liệu' : 'Không — chưa tới được máy chủ'); }
+  const live = a.ok || b.ok || c.ok;
+  let st = null, br = null;
+  if (live) {
+    const me = await timed(() => transport('me', {}, !a.ok && b.ok, 25000));
+    add('Phiên đăng nhập', me.ok, me.ok ? me.ms + ' ms · ' + me.r.user.email : me.e.message);
+    const t = await timed(() => transport('selfTest', {sid}, !a.ok && b.ok, 120000));
+    if (t.ok) {
+      st = t.r;
+      st.results.forEach(x => add('Máy chủ tự chạy: ' + x.name, x.ok && x.ms < 20000, x.ms + ' ms · ' + (x.size / 1024).toFixed(1) + ' KB' + (x.oddChars ? ' · ' + x.oddChars + ' ký tự lạ' : '') + (x.error ? ' · LỖI: ' + x.error : '')));
+      if (st.running && st.running.length) add('Lượt đang chạy dở trên máy chủ', !st.running.some(r => r.sec > 30), st.running.slice(0, 6).map(r => r.action + ' ' + r.sec + 's').join(' · '));
+      add('Bộ nhớ Script Properties', st.properties.kb < 400, st.properties.count + ' khoá · ' + st.properties.kb + ' KB / 500 KB');
+    } else add('Máy chủ tự chạy thử', false, t.e.message);
+    if (sid) {
+      br = await timed(() => transport('sessionFull', {sid}, false, 60000));
+      add('Trình duyệt nhận "buổi đào tạo này" (GET)', br.ok, br.ok ? br.ms + ' ms' : (br.e.message || 'lỗi') + ' · ' + br.ms + ' ms');
+      if (!br.ok) { const bp = await timed(() => transport('sessionFull', {sid}, true, 60000)); add('Trình duyệt nhận "buổi đào tạo này" (POST)', bp.ok, bp.ok ? bp.ms + ' ms' : (bp.e.message || 'lỗi')); if (bp.ok) br = bp; }
+    }
   }
-  rows.verdictOk = fOk;
-  rows.verdict = fOk ? 'Kết nối bình thường. Nếu vừa gặp lỗi, nhiều khả năng máy chủ Google tạm giới hạn khi có nhiều lượt gọi dồn dập — ứng dụng đã tự giảm tải và thử lại. Nếu lỗi lặp lại, Admin mở Apps Script → <b>Executions</b> để xem lượt nào "Failed/Timed out".'
-    : jOk ? 'Đường gọi trực tiếp bị chặn nhưng JSONP chạy được → Deploy đang không để <b>Who has access = Anyone</b>. Admin vào Deploy → Manage deployments → Edit → Anyone → Deploy.'
-    : 'Không vào được máy chủ bằng cả 2 đường → kiểm tra mạng / VPN / tường lửa công ty có chặn <b>script.google.com</b> và <b>script.googleusercontent.com</b> không, rồi thử lại.';
-  m.el.querySelector('p') && (m.el.querySelector('p').textContent = 'Hoàn tất');
+  const sf = st && st.results.find(x => x.name.includes('sessionFull'));
+  rows.verdictOk = live && (!sid || (br && br.ok));
+  if (!live && page) rows.verdict = '<b>Google đang trả trang lỗi cho mọi yêu cầu.</b> Bấm <b>Phản hồi gốc: ping</b> để xem nguyên văn. Thường gặp: (1) cần cấp quyền lại — Admin mở Apps Script, chạy hàm <b>kiemTraQuyen</b>, bấm Allow; (2) Deploy chưa tạo <b>New version</b> hoặc link /exec khác với link trong index.html; (3) code dán thiếu/lỗi cú pháp.';
+  else if (!live) rows.verdict = '<b>Không tới được máy chủ Google.</b> Kiểm tra mạng / VPN / tường lửa công ty có chặn <b>script.google.com</b> và <b>script.googleusercontent.com</b>.';
+  else if (sid && br && !br.ok && sf && sf.ok) rows.verdict = '<b>Máy chủ xử lý "buổi đào tạo này" bình thường (' + sf.ms + ' ms) nhưng trình duyệt không nhận được.</b> Lỗi nằm trên đường truyền: tường lửa/proxy công ty chặn nội dung, hoặc Google giới hạn tài khoản chạy script. Bấm <b>Phản hồi gốc: buổi này</b> để xem nguyên văn.';
+  else if (sf && !sf.ok) rows.verdict = '<b>Máy chủ gặp lỗi khi xử lý buổi đào tạo này:</b> ' + esc(sf.error || 'quá chậm') + '. Chụp màn hình này gửi người phát triển.';
+  else rows.verdict = 'Kết nối bình thường. Nếu vừa gặp lỗi, có thể Google tạm giới hạn khi tài khoản chạy script (mmh.product) đang bận với nhiều webapp khác — ứng dụng tự thử lại. Admin xem thêm ở Apps Script → <b>Executions</b>.';
+  const sub = m.el.querySelector('.modal-h p'); if (sub) sub.textContent = 'Hoàn tất — ' + new Date().toLocaleTimeString('vi-VN');
   draw();
-  $('ndCopy').onclick = () => { const t = 'MMH Training Hub v' + APP_VERSION + ' — kiểm tra kết nối ' + new Date().toLocaleString('vi-VN') + '\n' + rows.map(r => (r.ok ? '[OK] ' : '[LỖI] ') + r.t + ': ' + r.note).join('\n') + '\n' + navigator.userAgent; navigator.clipboard.writeText(t).then(() => ok('Đã sao chép.'), () => err('Trình duyệt chặn sao chép.')); };
+  $('ndCopy').onclick = () => { const t = 'MMH Training Hub v' + APP_VERSION + ' — kiểm tra kết nối ' + new Date().toLocaleString('vi-VN') + (sid ? ' — buổi ' + sid : '') + '\n' + rows.map(r => (r.ok === null ? '[—] ' : r.ok ? '[OK] ' : '[LỖI] ') + r.t + ': ' + r.note).join('\n') + '\n' + navigator.userAgent; navigator.clipboard.writeText(t).then(() => ok('Đã sao chép.'), () => err('Trình duyệt chặn sao chép.')); };
 }
 
 document.addEventListener('keydown', e => {
