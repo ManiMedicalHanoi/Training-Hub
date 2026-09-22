@@ -803,6 +803,8 @@ body.dnd .dnd-hint{transform:translate(-50%,0)}
 .chips.bad{border-color:var(--bad);box-shadow:0 0 0 3px rgba(198,40,40,.12)}
 .cal-head{flex-wrap:wrap}
 .cal-head .seg{flex-wrap:nowrap;width:auto}.cal-head .seg button{flex:none;padding:0 14px}
+.rd-page.slide{width:min(100%,1100px);height:auto;background:#fff}
+.rd-page.slide img{display:block;width:100%;height:100%;object-fit:contain}
 /* ---------- ★ v2.6 ---------- */
 .rd-state>svg{width:46px;height:46px;color:#B7C6D8;margin:0 auto 12px;display:block}
 .rd-state .ruler{height:6px}
@@ -959,7 +961,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '3.0';
+const APP_VERSION = '3.1';
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -2242,7 +2244,8 @@ const Uploader = {
     const bySid = {};
     this.items.filter(i => i.status === 'ok' && !i.counted).forEach(i => { i.counted = true; bySid[i.sid] = (bySid[i.sid] || 0) + 1; });
     this.items.filter(i => i.status === 'ok' && i.res && (i.res.view === 'office' || i.res.view === 'gdoc') && !i.warmed).forEach(i => {
-      i.warmed = true; get('fileMeta', {sid: i.sid, fileId: i.res.id}, {timeout: 240000, retry: 0}).catch(() => {});   // chuyển PDF sẵn cho học viên
+      i.warmed = true;
+      (async () => { for (let k = 0; k < 3; k++) { const c = await post('fileConvert', {sid: i.sid, fileId: i.res.id}, {timeout: 120000, retry: 0}); if (c.stage === 'ready' || c.stage === 'images') break; } })().catch(() => {});   // chuyển sẵn cho học viên
     });
     Object.keys(bySid).forEach(sid => {
       delete S.mats[sid];
@@ -2394,6 +2397,7 @@ const Reader = {
     try {
       const blob = await this.fetchBlob(sid, f, p => { if (this.st && this.st.f === f) this.progress(p); });
       if (!this.st || this.st.f !== f) return;
+      if (blob && blob.images) return this.showSlides(sid, f);
       if (course) { const fs = Course.files(sid), k = fs.findIndex(x => x.id === f.id); if (k >= 0 && fs[k + 1]) setTimeout(() => this.prefetch(sid, fs[k + 1]), 1500); }
       if (f.view === 'image' || /^image\//.test(blob.type)) return this.showImage(blob);
       await this.showPdf(blob);
@@ -2401,8 +2405,9 @@ const Reader = {
       if (!this.st || this.st.f !== f) return;
       const d = e.data || {};
       if (d.code === 'NO_PREVIEW' || f.kind === 'video') return this.showFrame(f);
+      const kind = d.kind || (e.data && e.data.kind);
       if (this.st.course) { this.st.manual = true; Course.refresh(); }
-      $('rdBody').innerHTML = `<div class="rd-state">${ic('alert')}<b>${d.code === 'TOO_LARGE' ? 'Tài liệu quá lớn để mở trong Hub' : 'Chưa mở được tài liệu trong Hub'}</b><p>${esc(e.message)}</p>
+      $('rdBody').innerHTML = `<div class="rd-state">${ic('alert')}<b>${d.code === 'TOO_LARGE' ? 'Tài liệu quá lớn để mở trong Hub' : d.code === 'CONVERT_FAILED' ? 'Google chưa chuyển đổi được tài liệu này' : 'Chưa mở được tài liệu trong Hub'}</b><p>${esc(e.message)}</p>${e.data && e.data.raw ? `<p class="xs"><a href="${esc(e.data.raw)}" target="_blank" rel="noopener" style="color:var(--link)">Xem phản hồi gốc của máy chủ</a></p>` : ''}
         <div style="display:flex;gap:8px;justify-content:center;margin-top:16px"><a class="btn btn-primary" href="${esc(f.url)}" target="_blank" rel="noopener">${ic('ext')}Mở trên Google Drive</a><button class="btn btn-line" data-a="read" data-sid="${esc(sid)}" data-fid="${esc(f.id)}">Thử lại</button></div>
         <p class="xs" style="margin-top:14px">Nếu Drive báo "Cần quyền truy cập": đăng nhập đúng tài khoản công ty trên trình duyệt, hoặc nhờ trainer bấm "Mở quyền xem cho cả công ty".</p></div>`;
     }
@@ -2415,7 +2420,16 @@ const Reader = {
     if (Reader.inflight[f.id]) return Reader.inflight[f.id];
     const job = (async () => {
       onProg && onProg({stage: 'prep', view: f.view});
-      const meta = await get('fileMeta', {sid, fileId: f.id}, {timeout: 240000, retry: 1});
+      let meta = await get('fileMeta', {sid, fileId: f.id}, {timeout: 60000, retry: 1});
+      // ★ v3.1 — chuyển đổi từng bước ngắn (PPTX/DOCX → Google → PDF)
+      for (let step = 0; meta.pending && step < 8; step++) {
+        onProg && onProg({stage: 'convert', text: meta.message, step});
+        const c = await post('fileConvert', {sid, fileId: f.id}, {timeout: 120000, retry: 1});
+        if (c.stage === 'busy') await sleep(5000);
+        meta = await get('fileMeta', {sid, fileId: f.id}, {fresh: true, timeout: 60000, retry: 1});
+      }
+      if (meta.pending) throw new ApiError('Chuyển đổi tài liệu lâu hơn bình thường — vui lòng thử lại sau ít phút.', 'PENDING');
+      if (meta.mode === 'images') return {images: true, meta};
       const parts = new Array(meta.parts); let got = 0, bytes = 0;
       onProg && onProg({stage: 'load', got, total: meta.parts, bytes, size: meta.size});
       let next = 0;
@@ -2447,7 +2461,8 @@ const Reader = {
   progress(p){
     const box = document.querySelector('#rdBody .rd-state'); if (!box) return;
     const b = box.querySelector('b'), t = box.querySelector('p');
-    if (p.stage === 'prep') { if (b) b.textContent = p.view === 'office' || p.view === 'gdoc' ? 'Đang chuẩn bị bản xem (chuyển sang PDF)…' : 'Đang chuẩn bị tài liệu…'; return; }
+    if (p.stage === 'prep') { if (b) b.textContent = 'Đang chuẩn bị tài liệu…'; return; }
+    if (p.stage === 'convert') { if (b) b.textContent = p.text || 'Đang chuyển đổi tài liệu…'; if (t) t.textContent = 'Chỉ lần đầu mở tài liệu này (thường 10–60 giây). Các lần sau và người khác mở ngay.'; return; }
     const pct = p.size ? Math.round(p.bytes / p.size * 100) : Math.round(p.got / p.total * 100);
     if (b) b.textContent = 'Đang tải tài liệu… ' + pct + '%';
     if (t) t.innerHTML = `<span class="ruler" style="display:block;width:260px;margin:10px auto 8px"><i style="width:${pct}%"></i></span>${sizeText(p.bytes)} / ${sizeText(p.size)} — lần sau mở ngay, không cần tải lại`;
@@ -2464,6 +2479,33 @@ const Reader = {
     }
     this.track({open: 1, page: 1, total: 1, done: 1}); this.st.done = true;
     toast('Video/định dạng này dùng trình xem của Google Drive — nếu không hiện, bấm biểu tượng ↗ để mở trên Drive.');
+  },
+  /** ★ v3.1 — Xem bài slide lớn dạng ảnh từng slide (tải dần khi cuộn) */
+  async showSlides(sid, f){
+    const st = this.st;
+    const r = await get('slidePages', {sid, fileId: f.id}, {timeout: 60000});
+    if (this.st !== st) return;
+    st.total = r.pages.length; st.slides = r.pages; st.loaded = {};
+    $('rdPgn').classList.remove('hide'); $('rdTotal').textContent = '/ ' + st.total;
+    $('rdZoom').classList.add('hide');
+    const body = $('rdBody');
+    body.innerHTML = `<div class="rd-pages" id="rdPages"><div class="xs muted" style="text-align:center">Bài slide lớn — hiển thị dạng ảnh từng slide</div>${r.pages.map((pid, i) => `<div class="rd-page slide" data-p="${i + 1}" data-pid="${esc(pid)}" style="aspect-ratio:${1 / (r.ratio || 0.5625)}"><div class="ph">Slide ${i + 1}</div></div>`).join('')}</div>`;
+    const box = $('rdPages');
+    const want = new Set();
+    const flush = debounce(async () => {
+      const ids = [...want].filter(id => !st.loaded[id]).slice(0, 6); want.clear();
+      if (!ids.length || this.st !== st) return;
+      ids.forEach(id => st.loaded[id] = 1);
+      try {
+        const t = await get('slideThumbs', {sid, fileId: f.id, pageIds: ids}, {timeout: 60000});
+        Object.entries(t.urls).forEach(([pid, url]) => { const el = box.querySelector(`.rd-page[data-pid="${CSS.escape(pid)}"]`); if (el) el.innerHTML = `<img src="${esc(url)}" alt="" loading="lazy">`; });
+      } catch (e) { ids.forEach(id => delete st.loaded[id]); err(e.message); }
+    }, 150);
+    st.io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { want.add(en.target.dataset.pid); flush(); } }), {root: box, rootMargin: '900px 0px'});
+    st.vo = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) this.setPage(+en.target.dataset.p); }), {root: box, threshold: 0.55});
+    box.querySelectorAll('.rd-page').forEach(d => { st.io.observe(d); st.vo.observe(d); });
+    $('rdPage').onchange = e => this.goto(parseInt(e.target.value, 10) || 1);
+    if (st.course) { if (Course.done(st.sid, st.f.id)) { st.completed = true; st.done = true; } Course.refresh(); }
   },
   showImage(blob){
     const url = URL.createObjectURL(blob); this.st.url = url;
