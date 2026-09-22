@@ -716,6 +716,56 @@ body.dnd .dnd-hint{transform:translate(-50%,0)}
 .lib-tbl .grow .gs{color:var(--faint);font-size:12.5px;font-weight:600}
 .lib-tbl .grow:hover td{background:var(--ice)}
 
+
+/* ---------- ★ v2.3 tự học ---------- */
+.rdz{display:flex;gap:2px}
+@media (max-width:900px){.rd-top .ftype{display:none}.rd-top{gap:6px;padding:0 8px}.rd-top .pgn input{width:40px}.rd-top .pgn{gap:2px}}
+.show-m{display:none}
+@media (max-width:900px){.show-m{display:inline-grid}}
+.reader.course .rd-top{height:64px}
+.crs-wrap{flex:1;display:flex;min-height:0}
+.crs-side{width:300px;flex-shrink:0;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.crs-h{padding:16px 18px 14px;border-bottom:1px solid var(--line)}
+.crs-h b{display:block;color:var(--navy);font-size:15px;margin-top:3px;line-height:1.35}
+.crs-list{overflow-y:auto;flex:1;padding:8px 10px 16px}
+.crs-sec{font-size:12px;font-weight:700;color:var(--faint);padding:12px 8px 6px}
+.crs-fold{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:650;color:var(--muted);padding:8px 10px 4px}
+.crs-fold svg{width:14px;height:14px;color:#D9A400}
+.crs-st{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;padding:9px 10px;border-radius:11px;transition:.12s}
+button.crs-st:hover{background:var(--ice)}
+.crs-st i{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;color:var(--muted);border:2px dashed #C3D1E2;background:#fff}
+.crs-st i svg{width:14px;height:14px}
+.crs-st span{min-width:0;flex:1}
+.crs-st b{display:block;font-size:13.5px;color:var(--navy);font-weight:600;line-height:1.35}
+.crs-st small{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+.crs-st.done i{border:2px solid var(--ok);background:var(--ok);color:#fff}
+.crs-st.cur{background:var(--mist)}
+.crs-st.cur i{border:2px solid var(--blue);color:var(--blue)}
+.crs-st.quiz.open i{border:2px solid var(--yellow);background:var(--ysoft);color:var(--ydeep)}
+.crs-st.quiz.locked{opacity:.7}.crs-st.quiz.locked i{border-style:solid;background:#EEF2F7}
+.crs-st.quiz.done i,.crs-st.crt.done i,.crs-st.done.cur i{border:2px solid var(--ok);background:var(--ok);color:#fff}
+.crs-foot{display:flex;align-items:center;gap:10px;padding:10px 16px calc(10px + var(--safe-b));background:#fff;border-top:1px solid var(--line)}
+.crs-msg{flex:1;font-size:13.5px;color:var(--muted);min-width:0}
+.crs-ok{display:inline-flex;align-items:center;gap:6px;color:var(--ok);font-weight:700}
+.crs-ok svg{width:18px;height:18px}
+.crs-final{flex:1;overflow-y:auto;display:flex;align-items:center;justify-content:center;padding:30px 20px}
+.crs-card{max-width:560px;width:100%;background:#fff;border-radius:22px;box-shadow:var(--sh2);padding:34px 32px;text-align:center}
+.crs-card .big{width:54px;height:54px;color:var(--blue);margin:0 auto 12px;display:block}
+.crs-card .big.ok{color:var(--ok)}
+.crs-card p{margin:8px 0 20px}
+.crs-miss{text-align:left;margin-top:8px}
+.crs-miss .resume{width:100%;text-align:left}
+.crs-miss .resume>svg{width:18px;height:18px;color:var(--faint)}
+.gatebox{display:flex;gap:12px;background:var(--cream);border:1.5px solid #F3DC79;border-radius:14px;padding:14px 16px;margin-bottom:18px;color:#5C4800;font-size:14px}
+.gatebox>svg{width:22px;height:22px;flex-shrink:0;color:var(--ydeep)}
+.gatebox b{color:var(--navy)}
+@media (max-width:900px){
+  .crs-side{display:none}
+  .reader.showside .crs-side{display:flex;position:absolute;top:64px;bottom:0;left:0;width:88%;max-width:340px;z-index:5;box-shadow:var(--sh3)}
+  .crs-wrap{position:relative}
+  .crs-foot{flex-wrap:wrap}.crs-msg{width:100%;flex:none}.crs-foot .btn{flex:1;padding:0 10px}
+}
+
 @media (max-width:1100px){
   .home-grid,.dash-grid{grid-template-columns:1fr}
   .kpis{grid-template-columns:repeat(2,1fr)}
@@ -816,7 +866,7 @@ body.dnd .dnd-hint{transform:translate(-50%,0)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '2.2';
+const APP_VERSION = '2.3';
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -1405,14 +1455,16 @@ function route(refresh){
 function mySessions(){ return S.sessions.filter(s => s.assigned && s.status !== 'Cancel'); }
 function journeyOf(s){
   const pg = S.progress[s.sid] || {opened: 0, done: 0};
-  const mat = pg.done > 0 ? 'done' : pg.opened > 0 ? 'now' : '';
+  let mat = pg.done > 0 ? 'done' : pg.opened > 0 ? 'now' : '';
+  let matL = 'Tài liệu';
+  if (S.mats[s.sid] && S.mats[s.sid].files && S.mats[s.sid].files.length) { const c = Course.stats(s.sid); mat = c.passed ? 'done' : c.done || c.allDone ? 'now' : ''; matL = c.passed ? 'Đã học xong' : 'Tài liệu ' + c.done + '/' + c.total; }
   let qz = '', ql = 'Bài kiểm tra';
   if (!s.hasQuiz) { qz = ''; ql = 'Chưa có bài KT'; }
   else if (s.myPass) { qz = 'done'; ql = s.myScore !== '' ? 'Đạt ' + Math.round(s.myScore) + '%' : 'Đã đạt'; }
   else if (s.myAttempts >= s.maxAttempts && s.myAttempts > 0) { qz = 'fail'; ql = 'Chưa đạt'; }
   else if (s.quizActive) { qz = 'now'; ql = s.myAttempts ? 'Làm lại' : 'Cần làm bài'; }
   const ct = s.myCert ? 'done' : '';
-  return [[mat, 'Tài liệu', 'book'], [qz, ql, 'clip'], [ct, 'Chứng chỉ', 'award']];
+  return [[mat, matL, 'book'], [qz, ql, 'clip'], [ct, 'Chứng chỉ', 'award']];
 }
 function pathHtml(steps){
   return `<div class="path">${steps.map((st, i) => `${i ? `<div class="stitch ${steps[i - 1][0] === 'done' ? 'done' : ''}"></div>` : ''}<div class="node ${st[0]}"><i>${st[0] === 'done' ? ic('check') : st[0] === 'fail' ? ic('x') : ic(st[2])}</i>${esc(st[1])}</div>`).join('')}</div>`;
@@ -1423,8 +1475,8 @@ function ticketHtml(t){
     <div class="body">${catTag(t.category)}<h3>${esc(t.topic)}</h3>
       <div class="facts"><span>${ic('list')}${t.questionCount} câu hỏi</span><span>${ic('clock')}${t.durationMin} phút</span><span>${ic('target')}Đạt từ ${t.passScore}%</span><span>${ic('user')}${esc(t.trainer || '—')}</span>${t.myScore !== '' && t.myScore != null ? `<span>Lần trước: <b style="color:var(--bad)">${t.myScore}%</b></span>` : ''}</div></div>
     <div class="act">${t.deadline ? dueChip(t.deadline) : '<span class="due ok">' + ic('clock') + 'Không đặt hạn</span>'}
-      <div style="display:flex;gap:8px"><button class="btn btn-line btn-sm" data-a="go" data-h="#/s/${esc(t.sid)}?tab=materials">Tài liệu</button><button class="btn btn-go" data-a="quiz" data-sid="${esc(t.sid)}">${ic('play')}Làm bài</button></div>
-      <span class="xs muted">Còn ${t.attemptsLeft} lượt làm bài</span></div>
+      <div style="display:flex;gap:8px">${t.requireMaterials ? `<button class="btn btn-go" data-a="course" data-sid="${esc(t.sid)}">${ic('book')}Học & làm bài</button>` : `<button class="btn btn-line btn-sm" data-a="course" data-sid="${esc(t.sid)}">Tự học</button><button class="btn btn-go" data-a="quiz" data-sid="${esc(t.sid)}">${ic('play')}Làm bài</button>`}</div>
+      <span class="xs muted">${t.requireMaterials ? 'Học hết tài liệu → mở bài kiểm tra · ' : ''}Còn ${t.attemptsLeft} lượt</span></div>
   </article>`;
 }
 VIEWS.home = function(){
@@ -1492,9 +1544,9 @@ function maybeTodoPopup(){
   if (sessionStorage.getItem(key)) return;
   S.popupShown = true; sessionStorage.setItem(key, '1');
   const m = Modal.open({title: `Bạn có ${S.todo.length} bài kiểm tra cần làm`, sub: 'Bài kiểm tra được trainer giao sau buổi đào tạo. Làm ngay hoặc xem lại tài liệu trước.',
-    body: S.todo.slice(0, 4).map(t => `<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)"><div style="flex:1;min-width:0">${catTag(t.category)}<div style="font-weight:700;color:var(--navy)" class="clamp2">${esc(t.topic)}</div><div class="xs muted">${t.questionCount} câu · ${t.durationMin} phút · đạt từ ${t.passScore}%</div></div>${dueChip(t.deadline)}<button class="btn btn-go btn-sm" data-a="quiz" data-sid="${esc(t.sid)}">Làm bài</button></div>`).join(''),
+    body: S.todo.slice(0, 4).map(t => `<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)"><div style="flex:1;min-width:0">${catTag(t.category)}<div style="font-weight:700;color:var(--navy)" class="clamp2">${esc(t.topic)}</div><div class="xs muted">${t.questionCount} câu · ${t.durationMin} phút · đạt từ ${t.passScore}%</div></div>${dueChip(t.deadline)}<button class="btn btn-go btn-sm" data-a="${t.requireMaterials ? 'course' : 'quiz'}" data-sid="${esc(t.sid)}">${t.requireMaterials ? 'Học & làm bài' : 'Làm bài'}</button></div>`).join(''),
     foot: `<span class="xs muted">Có thể xem lại bất cứ lúc nào ở mục <b>Việc cần làm</b>.</span><div class="sp"></div><button class="btn btn-line" data-mclose>Để sau</button>`});
-  m.el.querySelectorAll('[data-a="quiz"]').forEach(b => b.addEventListener('click', () => Modal.close(m)));
+  m.el.querySelectorAll('[data-a="quiz"],[data-a="course"]').forEach(b => b.addEventListener('click', () => Modal.close(m)));
 }
 
 /* ==========================================================================
@@ -1650,12 +1702,18 @@ const SessionPage = {
     const d = parseISO(s.date);
     const quiz = f && f.quiz;
     const cta = [];
-    if (todo || (quiz && quiz.available && !quiz.passed)) cta.push(`<button class="btn btn-go btn-lg" data-a="quiz" data-sid="${esc(s.sid)}">${ic('play')}${quiz && quiz.inProgress ? 'Tiếp tục bài kiểm tra' : 'Làm bài kiểm tra'}</button>`);
+    const mats = S.mats[s.sid];
+    const nMat = mats && mats.files ? mats.files.length : 0;
+    const cst = nMat ? Course.stats(s.sid) : null;
+    const gated = quiz && quiz.gate && quiz.gate.required && !quiz.gate.bypass && !Course.stats(s.sid).passed;
+    const wantQuiz = todo || (quiz && quiz.available && !quiz.passed);
+    if (!edit && nMat && (gated && wantQuiz)) cta.push(`<button class="btn btn-go btn-lg" data-a="course" data-sid="${esc(s.sid)}">${ic('book')}${cst.done ? 'Tiếp tục học' : 'Bắt đầu học'} · ${cst.done}/${cst.total} tài liệu</button><span class="xs muted" style="max-width:220px">Học xong tài liệu để mở bài kiểm tra & nhận chứng chỉ</span>`);
+    else if (wantQuiz) cta.push(`<button class="btn btn-go btn-lg" data-a="quiz" data-sid="${esc(s.sid)}">${ic('play')}${quiz && quiz.inProgress ? 'Tiếp tục bài kiểm tra' : 'Làm bài kiểm tra'}</button>`);
+    if (!edit && nMat && !(gated && wantQuiz)) cta.push(`<button class="btn ${wantQuiz ? 'btn-line' : 'btn-primary'}" data-a="course" data-sid="${esc(s.sid)}">${ic('book')}${cst.allDone >= cst.all ? 'Ôn lại tài liệu' : cst.allDone ? 'Tiếp tục tự học · ' + cst.allDone + '/' + cst.all : 'Tự học tài liệu'}</button>`);
     if (s.meetingLink && s.status === 'Plan') cta.push(`<a class="btn btn-primary" href="${esc(s.meetingLink)}" target="_blank" rel="noopener">${ic('door')}Vào phòng họp</a>`);
     if (s.recordLink) cta.push(`<a class="btn btn-line" href="${esc(s.recordLink)}" target="_blank" rel="noopener">${ic('rec')}Xem bản ghi</a>`);
     if (s.myCert) cta.push(`<a class="btn btn-line" href="${esc(s.myCert)}" target="_blank" rel="noopener">${ic('award')}Chứng chỉ của tôi</a>`);
     if (edit) cta.push(`<button class="btn btn-soft" data-a="compose" data-sid="${esc(s.sid)}">${ic('mail')}Thông báo học viên</button><button class="btn btn-ghost" data-a="sessionForm" data-sid="${esc(s.sid)}">${ic('edit')}Sửa</button>`);
-    const mats = S.mats[s.sid];
     const nFiles = mats && mats.files ? mats.files.length : null;
     const tabs = [['materials', 'Tài liệu', nFiles], ['quiz', 'Bài kiểm tra', s.hasQuiz ? (s.questionCount || '') : null]];
     if (edit) tabs.push(['learners', 'Học viên', f && f.learners ? f.learners.length : null]);
@@ -1689,6 +1747,7 @@ const SessionPage = {
     const prog = {};
     (m.myProgress || []).forEach(p => prog[p.fileId] = p);
     const hasFolder = !!m.folderUrl && !m.single;
+    const reqOn = Course.required(s.sid), opt = Course.optional(s.sid);
     let head = '';
     if (edit) {
       const crumb = (m.crumb && m.crumb.length) ? m.crumb : [];
@@ -1724,9 +1783,9 @@ const SessionPage = {
         const p = prog[fl.id];
         const inApp = fl.view !== 'drive';
         html += `<div class="mat">${ftype(fl.kind)}
-          <div class="nm" data-a="read" data-sid="${esc(s.sid)}" data-fid="${esc(fl.id)}"><b class="clamp1">${esc(fl.name)}</b><span>${esc([fl.sizeText, fl.updated].filter(Boolean).join(' · '))}${fl.view === 'office' ? ' · tự chuyển sang PDF để xem' : ''}</span></div>
+          <div class="nm" data-a="${edit ? 'read' : 'course'}" data-sid="${esc(s.sid)}" data-fid="${esc(fl.id)}"><b class="clamp1">${esc(fl.name)}</b><span>${esc([fl.sizeText, fl.updated].filter(Boolean).join(' · '))}${fl.view === 'office' ? ' · tự chuyển sang PDF để xem' : ''}${reqOn && !edit ? (opt.has(fl.id) ? ' · <i>Không bắt buộc</i>' : ' · <b style="color:var(--blue)">Bắt buộc</b>') : ''}</span></div>
           <div class="pg">${p ? (p.completed ? `<span class="chip ok">${ic('check')}Đã đọc xong</span>` : `Đã đọc ${p.percent}%<div class="ruler thin"><i style="width:${p.percent}%"></i></div>`) : '<span class="faint">Chưa mở</span>'}</div>
-          <div class="acts"><button class="btn btn-soft btn-sm" data-a="read" data-sid="${esc(s.sid)}" data-fid="${esc(fl.id)}">${inApp ? ic('eye') + 'Đọc' : ic('play') + 'Xem'}</button>
+          <div class="acts">${edit && reqOn ? `<button class="chip ${opt.has(fl.id) ? 'mute' : ''}" style="cursor:pointer;border:0" data-a="toggleReq" data-sid="${esc(s.sid)}" data-fid="${esc(fl.id)}" data-r="${opt.has(fl.id) ? 1 : 0}" title="Bấm để đổi">${opt.has(fl.id) ? 'Không bắt buộc' : ic('check') + 'Bắt buộc'}</button>` : ''}<button class="btn btn-soft btn-sm" data-a="${edit ? 'read' : 'course'}" data-sid="${esc(s.sid)}" data-fid="${esc(fl.id)}">${inApp ? ic('eye') + 'Đọc' : ic('play') + 'Xem'}</button>
             <a class="ibtn sm" href="${esc(fl.url)}" target="_blank" rel="noopener" title="Mở trên Google Drive">${ic('ext')}</a>
             ${edit ? `<button class="ibtn sm" data-a="renameMat" data-sid="${esc(s.sid)}" data-fid="${esc(fl.id)}" data-n="${esc(fl.name)}" title="Đổi tên">${ic('edit')}</button><button class="ibtn sm" data-a="delMat" data-sid="${esc(s.sid)}" data-fid="${esc(fl.id)}" data-n="${esc(fl.name)}" title="Xoá tài liệu">${ic('trash')}</button>` : ''}</div></div>`;
       });
@@ -1769,7 +1828,7 @@ const SessionPage = {
   tabLearners(box, s, f){
     if (!f) { box.innerHTML = skel(4); return; }
     const L = f.learners || [];
-    const nFiles = S.mats[s.sid] && S.mats[s.sid].files ? S.mats[s.sid].files.length : 0;
+    const nFiles = S.mats[s.sid] && S.mats[s.sid].files ? Course.stats(s.sid).total : 0;
     const passed = L.filter(l => l.pass).length, doneN = L.filter(l => l.status === 'Completed').length;
     box.innerHTML = `
       <div class="kpis" style="grid-template-columns:repeat(3,1fr)"><div class="kpi"><div class="l">Học viên</div><div class="v">${L.length}</div><div class="s">theo "${esc(s.audience)}"</div></div>
@@ -2029,9 +2088,19 @@ DnD.init();
    TRÌNH ĐỌC TÀI LIỆU — nội dung lấy qua máy chủ (không cần quyền Drive),
    PDF hiển thị bằng PDF.js, lưu tạm trên máy để lần sau mở ngay.
    ========================================================================== */
+/** Tiến độ "đã học xong" chưa gửi được → giữ trên máy, gửi lại trước khi mở bài kiểm tra */
+const Progress = {
+  K: 'mmh_hub_pending_prog',
+  list(){ try { return JSON.parse(localStorage.getItem(this.K) || '[]'); } catch (e) { return []; } },
+  save(l){ try { localStorage.setItem(this.K, JSON.stringify(l.slice(-50))); } catch (e) {} },
+  add(p){ const l = this.list().filter(x => !(x.sid === p.sid && x.fileId === p.fileId)); l.push(p); this.save(l); },
+  remove(p){ this.save(this.list().filter(x => !(x.sid === p.sid && x.fileId === p.fileId))); },
+  async flush(sid){ const l = this.list().filter(x => !sid || x.sid === sid); for (const p of l) { try { await post('trackProgress', p, {retry: 1}); this.remove(p); } catch (e) {} } }
+};
 const Reader = {
   st: null,
-  async open(sid, fid){
+  async open(sid, fid, opts){
+    const course = !!(opts && opts.course);
     let m = S.mats[sid];
     if (!m || !m.files) {
       busy(true, 'Đang mở tài liệu…');
@@ -2043,17 +2112,20 @@ const Reader = {
     if (!f) return err('Không tìm thấy tài liệu (có thể đã bị xoá).');
     this.close(true);
     const el = $('reader');
-    this.st = {sid, f, page: 1, total: 0, maxPage: 1, scale: 0, pdf: null, sent: 0};
+    this.st = {sid, f, page: 1, total: 0, maxPage: 1, scale: 0, pdf: null, sent: 0, course, wait: 0};
+    const fs = course ? Course.files(sid) : [], idx = fs.findIndex(x => x.id === f.id);
+    el.classList.toggle('course', course); el.classList.remove('showside');
     el.innerHTML = `<div class="rd-top">
-        <button class="ibtn" data-a="rdClose" aria-label="Đóng">${ic('left')}</button>
-        ${ftype(f.kind)}
-        <div class="t"><b class="clamp1">${esc(f.name)}</b><span class="clamp1">${esc((findS(sid) || {}).topic || '')}</span></div>
+        <button class="ibtn" data-a="rdClose" aria-label="Đóng">${course ? ic('x') : ic('left')}</button>
+        ${course ? `<span class="chip todo hide-m">${ic('book')}Tự học</span><button class="ibtn show-m" data-a="crsSide" title="Lộ trình">${ic('list')}</button>` : ''}${ftype(f.kind)}
+        <div class="t"><b class="clamp1">${esc(f.name)}</b><span class="clamp1">${course ? 'Bước 1 · Tài liệu ' + (idx + 1) + '/' + fs.length : esc((findS(sid) || {}).topic || '')}</span></div>
         <div class="pgn hide" id="rdPgn"><button class="ibtn sm" data-a="rdPrev">${ic('left')}</button><input id="rdPage" value="1" inputmode="numeric"><span id="rdTotal">/ —</span><button class="ibtn sm" data-a="rdNext">${ic('right')}</button></div>
-        <div class="hide-m" style="display:flex;gap:2px" id="rdZoom"><button class="ibtn sm" data-a="rdZoom" data-z="-1" title="Thu nhỏ">${ic('zout')}</button><button class="ibtn sm" data-a="rdZoom" data-z="1" title="Phóng to">${ic('zin')}</button><button class="ibtn sm" data-a="rdFull" title="Toàn màn hình">${ic('max')}</button></div>
+        <div class="hide-m rdz" id="rdZoom"><button class="ibtn sm" data-a="rdZoom" data-z="-1" title="Thu nhỏ">${ic('zout')}</button><button class="ibtn sm" data-a="rdZoom" data-z="1" title="Phóng to">${ic('zin')}</button><button class="ibtn sm" data-a="rdFull" title="Toàn màn hình">${ic('max')}</button></div>
         <a class="ibtn" href="${esc(f.url)}" target="_blank" rel="noopener" title="Mở trên Google Drive">${ic('ext')}</a>
       </div>
-      <div class="rd-body" id="rdBody"><div class="rd-state"><span class="spin"></span><b>Đang tải tài liệu…</b><p>${f.view === 'office' || f.view === 'gdoc' ? 'Lần mở đầu tiên hệ thống cần chuyển tài liệu sang PDF (10–30 giây). Các lần sau sẽ mở ngay.' : 'Tài liệu lớn có thể mất vài giây.'}</p></div></div>
-      <div class="rd-foot"><i id="rdBar"></i></div>`;
+      ${course ? '<div class="rd-body crs-wrap"><aside class="crs-side" id="crsSide"></aside>' : ''}<div class="rd-body" id="rdBody"><div class="rd-state"><span class="spin"></span><b>Đang tải tài liệu…</b><p>${f.view === 'office' || f.view === 'gdoc' ? 'Lần mở đầu tiên hệ thống cần chuyển tài liệu sang PDF (10–30 giây). Các lần sau sẽ mở ngay.' : 'Tài liệu lớn có thể mất vài giây.'}</p></div></div>${course ? '</div>' : ''}
+      <div class="rd-foot"><i id="rdBar"></i></div>${course ? '<div class="crs-foot" id="crsFoot"></div>' : ''}`;
+    if (course) Course.refresh();
     el.classList.add('on');
     document.body.style.overflow = 'hidden';
     if (f.view === 'drive') return this.showFrame(f);
@@ -2066,6 +2138,7 @@ const Reader = {
       if (!this.st || this.st.f !== f) return;
       const d = e.data || {};
       if (d.code === 'NO_PREVIEW' || f.kind === 'video') return this.showFrame(f);
+      if (this.st.course) { this.st.manual = true; Course.refresh(); }
       $('rdBody').innerHTML = `<div class="rd-state">${ic('alert')}<b>${d.code === 'TOO_LARGE' ? 'Tài liệu quá lớn để mở trong Hub' : 'Chưa mở được tài liệu trong Hub'}</b><p>${esc(e.message)}</p>
         <div style="display:flex;gap:8px;justify-content:center;margin-top:16px"><a class="btn btn-primary" href="${esc(f.url)}" target="_blank" rel="noopener">${ic('ext')}Mở trên Google Drive</a><button class="btn btn-line" data-a="read" data-sid="${esc(sid)}" data-fid="${esc(f.id)}">Thử lại</button></div>
         <p class="xs" style="margin-top:14px">Nếu Drive báo "Cần quyền truy cập": đăng nhập đúng tài khoản công ty trên trình duyệt, hoặc nhờ trainer bấm "Mở quyền xem cho cả công ty".</p></div>`;
@@ -2086,6 +2159,12 @@ const Reader = {
     $('rdBody').innerHTML = `<iframe class="rd-frame" src="${esc(f.preview)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
     $('rdZoom').classList.add('hide');
     this.st.total = 1; this.st.maxPage = 1; this.bar(100);
+    if (this.st.course) {
+      if (Course.done(this.st.sid, f.id)) { this.st.completed = true; this.st.done = true; Course.refresh(); return; }
+      const st = this.st; st.wait = 20; Course.refresh();
+      st.timer = setInterval(() => { if (this.st !== st) return clearInterval(st.timer); st.wait--; Course.refresh(); if (st.wait <= 0) clearInterval(st.timer); }, 1000);
+      return;
+    }
     this.track({open: 1, page: 1, total: 1, done: 1}); this.st.done = true;
     toast('Video/định dạng này dùng trình xem của Google Drive — nếu không hiện, bấm biểu tượng ↗ để mở trên Drive.');
   },
@@ -2093,7 +2172,9 @@ const Reader = {
     const url = URL.createObjectURL(blob); this.st.url = url;
     $('rdBody').innerHTML = `<div class="rd-pages"><img class="rd-img" src="${url}" alt=""></div>`;
     $('rdZoom').classList.add('hide');
-    this.bar(100); this.track({open: 1, page: 1, total: 1, done: 1}); this.st.done = true;
+    this.bar(100);
+    if (this.st.course) { this.st.total = 1; this.st.maxPage = 1; Course.complete(); return; }
+    this.track({open: 1, page: 1, total: 1, done: 1}); this.st.done = true;
   },
   async loadPdfJs(){
     if (window.pdfjsLib) return window.pdfjsLib;
@@ -2111,13 +2192,14 @@ const Reader = {
     const vp1 = first.getViewport({scale: 1});
     st.ratio = vp1.height / vp1.width;
     const body = $('rdBody');
-    const wide = window.innerWidth > 900 && pdf.numPages > 1;
+    const wide = window.innerWidth > 900 && pdf.numPages > 1 && !st.course;
     body.innerHTML = (wide ? `<div class="rd-thumbs" id="rdThumbs">${Array.from({length: pdf.numPages}, (_, i) => `<div class="th" data-a="rdGo" data-p="${i + 1}" id="th${i + 1}"><canvas width="120" height="${Math.round(120 * st.ratio)}"></canvas>${i + 1}</div>`).join('')}</div>` : '') + `<div class="rd-pages" id="rdPages"></div>`;
     $('rdPgn').classList.remove('hide');
     $('rdTotal').textContent = '/ ' + pdf.numPages;
     const avail = $('rdPages').clientWidth - 40;
-    st.scale = st.scale || Math.min(1.6, Math.max(0.5, avail / vp1.width));
+    st.scale = st.scale || Math.min(1.6, Math.max(0.2, avail / vp1.width));
     this.layout();
+    if (st.course) { if (Course.done(st.sid, st.f.id)) { st.completed = true; st.done = true; } if (pdf.numPages === 1 && !st.completed) Course.complete(); else Course.refresh(); }
     $('rdPage').onchange = e => this.goto(parseInt(e.target.value, 10) || 1);
     if (wide) {
       const tio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { const n = +en.target.dataset.p; tio.unobserve(en.target); this.renderThumb(n); } }), {root: $('rdThumbs'), rootMargin: '300px'});
@@ -2172,6 +2254,7 @@ const Reader = {
     document.querySelectorAll('#rdThumbs .th').forEach(t => t.classList.toggle('on', +t.dataset.p === n));
     const th = $('th' + n); if (th && $('rdThumbs')) { const T = $('rdThumbs'); if (th.offsetTop < T.scrollTop || th.offsetTop > T.scrollTop + T.clientHeight - 80) T.scrollTop = th.offsetTop - 40; }
     if (n > st.maxPage) st.maxPage = n;
+    if (st.course && !st.completed) { if (st.maxPage >= st.total) Course.complete(); else { const ft = $('crsFoot'); if (ft) ft.innerHTML = Course.foot(st.sid); } }
     this.bar(Math.round(st.maxPage / st.total * 100));
   },
   goto(n, instant){
@@ -2185,9 +2268,11 @@ const Reader = {
   track(o){
     const st = this.st; if (!st) return;
     if (o.page) st.sent = Math.max(st.sent, o.page);
-    post('trackProgress', Object.assign({sid: st.sid, fileId: st.f.id, fileName: st.f.name}, o), {retry: 0, timeout: 30000})
-      .then(r => { const m = S.mats[st.sid]; if (m) { m.myProgress = (m.myProgress || []).filter(x => x.fileId !== st.f.id).concat([{fileId: st.f.id, percent: r.percent, completed: r.completed}]); } })
-      .catch(() => {});
+    const payload = Object.assign({sid: st.sid, fileId: st.f.id, fileName: st.f.name}, o);
+    if (o.done) Progress.add(payload);
+    post('trackProgress', payload, {retry: o.done ? 2 : 0, timeout: 30000})
+      .then(r => { if (o.done) Progress.remove(payload); const m = S.mats[st.sid]; if (m) { m.myProgress = (m.myProgress || []).filter(x => x.fileId !== st.f.id).concat([{fileId: st.f.id, percent: r.percent, completed: r.completed || !!o.done}]); } })
+      .catch(() => { if (o.done) toast('Chưa lưu được tiến độ học lên máy chủ — hệ thống sẽ tự gửi lại.'); });
   },
   beacon(){
     const st = this.st; if (!st || !st.total || st.done) return;
@@ -2199,12 +2284,135 @@ const Reader = {
     if (st && st.io) st.io.disconnect();
     if (st && st.vo) st.vo.disconnect();
     if (st && st.url) URL.revokeObjectURL(st.url);
+    if (st && st.timer) clearInterval(st.timer);
+    const wasCourse = st && st.course;
+    $('reader').classList.remove('course');
     if (st && st.pdf) try { st.pdf.destroy(); } catch (e) {}
     this.st = null;
     $('reader').classList.remove('on'); $('reader').innerHTML = '';
     if (!$('qz').classList.contains('on')) document.body.style.overflow = '';
-    if (!silent && S.route.name === 's') { SessionPage.renderTab(); }
+    if (!silent && S.route.name === 's') { if (wasCourse) SessionPage.render(); else SessionPage.renderTab(); }
 
+  }
+};
+
+/* ==========================================================================
+   ★ v2.3 — TỰ HỌC CÓ LỘ TRÌNH: Học tài liệu → Làm bài kiểm tra → Chứng chỉ
+   Tài liệu PDF/Slide/Word: hoàn thành khi đọc tới trang cuối.
+   Ảnh: hoàn thành khi mở. Video/định dạng Drive: bấm "Đã xem xong" sau 20 giây.
+   ========================================================================== */
+const Course = {
+  files(sid){ const m = S.mats[sid]; return m && m.files ? m.files : []; },
+  optional(sid){ const f = S.full[sid]; const g = f && f.quiz && f.quiz.gate; return new Set((g && g.optional) || []); },
+  required(sid){ const f = S.full[sid]; return !!(f && f.quiz && f.quiz.requireMaterials); },
+  done(sid, fid){ const m = S.mats[sid]; return !!(m && (m.myProgress || []).some(p => p.fileId === fid && p.completed)); },
+  stats(sid){
+    const opt = this.optional(sid), fs = this.files(sid);
+    const req = fs.filter(f => !opt.has(f.id));
+    const d = req.filter(f => this.done(sid, f.id)).length;
+    return {total: req.length, done: d, all: fs.length, allDone: fs.filter(f => this.done(sid, f.id)).length, passed: d >= req.length};
+  },
+  nextTarget(sid){ const opt = this.optional(sid), fs = this.files(sid); return (fs.find(f => !opt.has(f.id) && !this.done(sid, f.id)) || fs.find(f => !this.done(sid, f.id)) || fs[0] || {}).id; },
+  async open(sid, fid){
+    let f = S.full[sid];
+    if (!f || !f.materials || !S.mats[sid]) {
+      busy(true, 'Đang chuẩn bị lộ trình học…');
+      try { f = S.full[sid] = await get('sessionFull', {sid}, {timeout: 90000}); S.mats[sid] = matsFrom(f.materials || {}); }
+      catch (e) { busy(false); return err(e.message); }
+      busy(false);
+    }
+    Modal.stack.slice().forEach(m => Modal.close(m));
+    if (Quiz.A == null) Quiz.hide();
+    if (!this.files(sid).length) return Quiz.intro(sid);
+    Reader.open(sid, fid || this.nextTarget(sid), {course: true});
+  },
+  /** Cập nhật điều kiện mở bài KT ngay trên máy sau khi học xong 1 tài liệu */
+  syncGate(sid){
+    const f = S.full[sid]; if (!f || !f.quiz || !f.quiz.gate || !f.quiz.gate.required || f.quiz.gate.bypass) return;
+    const st = this.stats(sid), g = f.quiz.gate;
+    g.total = st.total; g.done = st.done; g.passed = st.passed;
+    g.missing = this.files(sid).filter(x => !this.optional(sid).has(x.id) && !this.done(sid, x.id)).map(x => ({id: x.id, name: x.name, path: x.path}));
+    const q = f.quiz;
+    if (g.passed && q.active && q.totalQuestions > 0 && (q.attempts < q.maxAttempts || q.inProgress)) { q.available = true; q.reason = ''; }
+  },
+  side(sid, curId){
+    const fs = this.files(sid), opt = this.optional(sid), st = this.stats(sid), f = S.full[sid] || {}, q = f.quiz || {};
+    const s = findS(sid) || (f.data || {});
+    const gateOk = !this.required(sid) || st.passed;
+    const quizState = !q.hasQuiz ? 'none' : q.passed ? 'done' : (q.active ? (gateOk ? 'open' : 'locked') : 'closed');
+    let lastPath = null;
+    const items = fs.map((x, i) => {
+      const d = this.done(sid, x.id), o = opt.has(x.id);
+      let head = '';
+      if (x.path !== lastPath) { lastPath = x.path; if (x.path) head = `<div class="crs-fold">${ic('folder')}${esc(x.path)}</div>`; }
+      return head + `<button class="crs-st ${d ? 'done' : ''} ${x.id === curId ? 'cur' : ''}" data-a="crsGo" data-sid="${esc(sid)}" data-fid="${esc(x.id)}">
+        <i>${d ? ic('check') : i + 1}</i><span><b class="clamp2">${esc(x.name)}</b><small>${ftypeLabel(x.kind)}${o ? ' · Không bắt buộc' : ''}${!d && x.id === curId ? ' · Đang học' : ''}</small></span></button>`;
+    }).join('');
+    return `<div class="crs-h"><div class="lbl">Lộ trình tự học</div><b class="clamp2">${esc(s.topic || '')}</b>
+        <div class="ruler ${st.passed ? 'ok' : ''}" style="margin-top:10px"><i style="width:${st.total ? Math.round(st.done / st.total * 100) : 100}%"></i></div>
+        <div class="xs muted" style="margin-top:6px">Đã học ${st.done}/${st.total} tài liệu${st.all > st.total ? ' bắt buộc' : ''}</div></div>
+      <div class="crs-list"><div class="crs-sec">1 · Học tài liệu</div>${items}
+        <div class="crs-sec">2 · Bài kiểm tra</div>
+        <button class="crs-st quiz ${quizState}" data-a="crsQuiz" data-sid="${esc(sid)}"><i>${quizState === 'done' ? ic('check') : quizState === 'locked' ? ic('lock') : ic('clip')}</i><span><b>Bài kiểm tra sau đào tạo</b><small>${quizState === 'none' ? 'Buổi này chưa có bài kiểm tra' : quizState === 'done' ? 'Đã đạt ' + (q.best ? q.best.percent + '%' : '') : quizState === 'locked' ? 'Mở khi học xong tài liệu' : quizState === 'closed' ? 'Trainer chưa mở bài' : q.totalQuestions + ' câu · ' + q.durationMin + ' phút · đạt từ ' + q.passScore + '%'}</small></span></button>
+        <div class="crs-sec">3 · Chứng chỉ</div>
+        <div class="crs-st crt ${s.myCert || (q.best && q.best.certUrl) ? 'done' : ''}"><i>${ic('award')}</i><span><b>Chứng chỉ hoàn thành</b><small>${s.myCert ? 'Đã cấp — xem ở mục Chứng chỉ' : 'Tự cấp và gửi email khi đạt'}</small></span></div>
+      </div>`;
+  },
+  foot(sid){
+    const st = Reader.st; if (!st) return '';
+    const fs = this.files(sid), i = fs.findIndex(x => x.id === st.f.id);
+    const d = this.done(sid, st.f.id) || st.completed, o = this.optional(sid).has(st.f.id);
+    const last = i === fs.length - 1;
+    const msg = d ? `<span class="crs-ok">${ic('check')}Đã hoàn thành tài liệu này</span>`
+      : st.f.view === 'drive' ? `<span>Xem hết nội dung rồi bấm <b>Đã xem xong</b>${st.wait > 0 ? ` (mở sau ${st.wait} giây)` : ''}.</span>`
+      : st.manual ? '<span>Xem xong trên Drive rồi bấm <b>Đã xem xong</b>.</span>'
+      : st.total > 1 ? `<span>Đọc tới trang cuối để hoàn thành — đang ở trang ${st.maxPage}/${st.total}.</span>` : '<span>Đang mở tài liệu…</span>';
+    const manualBtn = !d && (st.f.view === 'drive' || st.manual) ? `<button class="btn btn-soft" data-a="crsMark" ${st.wait > 0 ? 'disabled' : ''}>${ic('check')}Đã xem xong</button>` : '';
+    return `<div class="crs-msg">${msg}</div>
+      <button class="btn btn-line" data-a="crsPrev" ${i <= 0 ? 'disabled' : ''}>${ic('left')}Trước</button>
+      ${manualBtn}
+      <button class="btn ${last && d ? 'btn-go' : 'btn-primary'}" data-a="crsNext" ${d || o ? '' : 'disabled'}>${last ? 'Sang bài kiểm tra' : (!d && o ? 'Bỏ qua (không bắt buộc)' : 'Tiếp tục')}${ic('right')}</button>`;
+  },
+  refresh(){ const st = Reader.st; if (!st || !st.course) return; const sd = $('crsSide'), ft = $('crsFoot'); if (sd) sd.innerHTML = this.side(st.sid, st.f.id); if (ft) ft.innerHTML = this.foot(st.sid); },
+  complete(){
+    const st = Reader.st; if (!st || st.completed) return;
+    st.completed = true; st.done = true;
+    const m = S.mats[st.sid];
+    if (m) m.myProgress = (m.myProgress || []).filter(x => x.fileId !== st.f.id).concat([{fileId: st.f.id, percent: 100, completed: true}]);
+    this.syncGate(st.sid);
+    Reader.track({open: 1, page: st.total || 1, total: st.total || 1, done: 1});
+    const s = this.stats(st.sid);
+    if (s.passed && this.required(st.sid)) toast('Bạn đã học xong tài liệu — bài kiểm tra đã mở!', 'ok');
+    this.refresh();
+  },
+  step(dir){
+    const st = Reader.st; if (!st) return;
+    const fs = this.files(st.sid), i = fs.findIndex(x => x.id === st.f.id), j = i + dir;
+    if (j >= fs.length) return this.quizStep(st.sid);
+    if (j < 0) return;
+    Reader.open(st.sid, fs[j].id, {course: true});
+  },
+  quizStep(sid){
+    const f = S.full[sid] || {}, q = f.quiz || {}, st = this.stats(sid), s = findS(sid) || f.data || {};
+    const gateOk = !this.required(sid) || st.passed;
+    if (Reader.st) { Reader.st.onQuiz = true; }
+    let body;
+    if (!q.hasQuiz) body = `<div class="crs-card">${ic('check', 'big ok')}<h2 class="h-lg">Bạn đã học xong tài liệu</h2><p class="muted">Buổi đào tạo này chưa có bài kiểm tra. Khi trainer phát hành, bạn sẽ nhận thông báo 🔔 và email.</p><button class="btn btn-primary" data-a="rdClose">Về trang buổi đào tạo</button></div>`;
+    else if (q.passed) body = `<div class="crs-card">${ic('award', 'big ok')}<h2 class="h-lg">Bạn đã hoàn thành khoá học</h2><p class="muted">Điểm cao nhất ${q.best ? q.best.percent + '%' : ''}. Chứng chỉ đã được gửi vào email của bạn.</p>${s.myCert ? `<a class="btn btn-primary" href="${esc(s.myCert)}" target="_blank" rel="noopener">${ic('award')}Xem chứng chỉ</a>` : ''}</div>`;
+    else if (!gateOk) body = `<div class="crs-card">${ic('lock', 'big')}<h2 class="h-lg">Còn ${st.total - st.done} tài liệu cần học</h2><p class="muted">Học xong toàn bộ tài liệu bắt buộc để mở bài kiểm tra.</p>
+        <div class="crs-miss">${this.files(sid).filter(x => !this.optional(sid).has(x.id) && !this.done(sid, x.id)).map(x => `<button class="resume" data-a="crsGo" data-sid="${esc(sid)}" data-fid="${esc(x.id)}">${ftype(x.kind)}<div class="t"><b class="clamp1">${esc(x.name)}</b><span>${esc(x.path || 'Tài liệu chính')}</span></div>${ic('right')}</button>`).join('')}</div></div>`;
+    else if (!q.active) body = `<div class="crs-card">${ic('clock', 'big')}<h2 class="h-lg">Bài kiểm tra chưa mở</h2><p class="muted">Bạn đã học xong tài liệu. Khi trainer mở bài, bạn sẽ nhận thông báo 🔔 và email.</p><button class="btn btn-line" data-a="rdClose">Đóng</button></div>`;
+    else if (!q.available) body = `<div class="crs-card">${ic('info', 'big')}<h2 class="h-lg">Chưa làm được bài kiểm tra</h2><p class="muted">${esc(q.reason || '')}</p><button class="btn btn-line" data-a="rdClose">Đóng</button></div>`;
+    else body = `<div class="crs-card">${ic('check', 'big ok')}<h2 class="h-lg">Bạn đã học xong ${st.done}/${st.total} tài liệu</h2><p class="muted">Bước tiếp theo: bài kiểm tra ${q.totalQuestions} câu trong ${q.durationMin} phút, đạt từ ${q.passScore}% sẽ nhận chứng chỉ ngay.${q.deadline ? ' Hạn hoàn thành ' + dmy(q.deadline) + '.' : ''}</p>
+        <div class="qfacts" style="justify-content:center;margin:6px 0 22px"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}%</b>điểm đạt</div><div><b>${Math.max(0, q.maxAttempts - q.attempts)}</b>lượt còn lại</div></div>
+        <button class="btn btn-go btn-lg" data-a="crsStartQuiz" data-sid="${esc(sid)}">${ic('play')}${q.inProgress ? 'Tiếp tục bài kiểm tra' : 'Làm bài kiểm tra ngay'}</button></div>`;
+    $('rdBody').innerHTML = `<div class="crs-final">${body}</div>`;
+    $('rdPgn') && $('rdPgn').classList.add('hide'); $('rdZoom') && $('rdZoom').classList.add('hide');
+    const sd = $('crsSide'); if (sd) { sd.innerHTML = this.side(sid, ''); const qb = sd.querySelector('.crs-st.quiz'); if (qb) qb.classList.add('cur'); }
+    const ft = $('crsFoot'); if (ft) ft.innerHTML = `<div class="crs-msg"></div><button class="btn btn-line" data-a="crsBack">${ic('left')}Quay lại tài liệu</button>`;
+    const t = document.querySelector('#reader .rd-top .t span'); if (t) t.textContent = 'Bước 2 · Bài kiểm tra';
+    const tb = document.querySelector('#reader .rd-top .t b'); if (tb) tb.textContent = s.topic || 'Bài kiểm tra';
+    const ft2 = document.querySelector('#reader .rd-top .ftype'); if (ft2) ft2.style.display = 'none';
   }
 };
 
@@ -2219,7 +2427,7 @@ const Quiz = {
   hide(){ clearInterval(this.timer); this.el().classList.remove('on'); this.el().innerHTML = ''; this.A = null; if (!$('reader').classList.contains('on')) document.body.style.overflow = ''; },
   top(title, sub, right){ return `<div class="qz-top"><button class="ibtn" data-a="qzExit" aria-label="Thoát">${ic('x')}</button><div class="t"><b class="clamp1">${esc(title)}</b><span class="clamp1">${esc(sub || '')}</span></div>${right || ''}</div>`; },
 
-  async intro(sid){
+  async intro(sid, fromCourse){
     const s = findS(sid) || {topic: ''};
     this.show(this.top(s.topic, 'Bài kiểm tra sau đào tạo') + `<div class="qz-main"><div class="qz-intro">${skel(4)}</div></div>`);
     let q;
@@ -2228,6 +2436,10 @@ const Quiz = {
     if (!q.hasQuiz) return this.show(this.top(s.topic, '') + `<div class="qz-main"><div class="qz-intro">${emptyBox('clip', 'Buổi đào tạo này chưa có bài kiểm tra', '')}</div></div>`);
     const left = Math.max(0, q.maxAttempts - q.attempts);
     const can = q.available;
+    const g = q.gate || {};
+    const gateBox = g.required && !g.passed && !q.inProgress ? `<div class="gatebox">${ic('lock')}<div style="flex:1"><b>Hoàn thành tài liệu trước khi làm bài · ${g.done}/${g.total}</b>
+        <div class="ruler" style="margin:8px 0 10px"><i style="width:${g.total ? Math.round(g.done / g.total * 100) : 0}%"></i></div>
+        ${(g.missing || []).slice(0, 5).map(m => `<div class="xs" style="margin-top:3px">○ ${esc(m.name)}</div>`).join('')}${(g.missing || []).length > 5 ? `<div class="xs muted">… và ${g.missing.length - 5} tài liệu khác</div>` : ''}</div></div>` : '';
     this.show(this.top(s.topic, 'Bài kiểm tra sau đào tạo') + `<div class="qz-main"><div class="qz-intro">
       ${catTag(s.category)}<h2 class="h-lg" style="margin:8px 0 4px">${esc(s.topic)}</h2>
       <div class="muted">Trainer: ${esc(s.trainer || '—')}${q.deadline ? ' · ' : ''}${q.deadline ? dueChip(q.deadline) : ''}</div>
@@ -2240,7 +2452,9 @@ const Quiz = {
         <li>${ic('check')}<span>Đạt từ ${q.passScore}% sẽ nhận chứng chỉ PDF qua email ngay.</span></li>
       </ul>
       ${q.best ? `<div class="note-box" style="margin-bottom:18px">${ic('target')}<div>Điểm cao nhất của bạn: <b style="color:var(--navy)">${q.best.percent}%</b> (${q.best.result === 'Pass' ? 'Đạt' : 'Chưa đạt'})</div></div>` : ''}
-      ${can ? `<button class="btn btn-go btn-lg btn-block" data-a="qzStart" data-sid="${esc(sid)}">${ic('play')}${q.inProgress ? `Tiếp tục bài đang làm (còn ${fmtSec(q.inProgress.remainingSec)})` : q.attempts ? 'Làm lại' : 'Bắt đầu làm bài'}</button>`
+      ${gateBox}
+      ${gateBox ? `<button class="btn btn-go btn-lg btn-block" data-a="course" data-sid="${esc(sid)}">${ic('book')}${g.done ? 'Tiếp tục học' : 'Bắt đầu học'} · ${g.done}/${g.total} tài liệu</button>`
+      : can ? `<button class="btn btn-go btn-lg btn-block" data-a="qzStart" data-sid="${esc(sid)}">${ic('play')}${q.inProgress ? `Tiếp tục bài đang làm (còn ${fmtSec(q.inProgress.remainingSec)})` : q.attempts ? 'Làm lại' : 'Bắt đầu làm bài'}</button>`
         : `<div class="msg ${q.passed ? 'ok' : 'info'}">${q.passed ? 'Bạn đã đạt bài kiểm tra này.' : esc(q.reason || 'Bài kiểm tra hiện không khả dụng.')}</div><button class="btn btn-line btn-block" data-a="qzExit">Đóng</button>`}
       <div class="kbd-hint">Phím tắt: <kbd>A</kbd>–<kbd>D</kbd> chọn đáp án · <kbd>←</kbd> <kbd>→</kbd> chuyển câu · <kbd>F</kbd> đánh dấu</div>
     </div></div>`);
@@ -2249,8 +2463,9 @@ const Quiz = {
   async start(sid){
     busy(true, 'Đang chuẩn bị đề…');
     let r;
+    await Progress.flush(sid);
     try { r = await post('quizStart', {sid}, {retry: 1, timeout: 60000}); }
-    catch (e) { busy(false); return err(e.message); }
+    catch (e) { busy(false); if (e.code === 'NEED_MATERIALS') { toast(e.message); delete S.full[sid]; return Course.open(sid); } return err(e.message); }
     busy(false);
     let saved = {};
     try { saved = JSON.parse(localStorage.getItem('mmh_qz_' + r.attemptId) || '{}'); } catch (e) {}
@@ -2488,7 +2703,8 @@ const QB = {
     this.qs = (data.questions && data.questions.length) ? data.questions.map(q => Object.assign({}, q)) : [this.blank()];
     this.cfg = {passScore: c.passScore || nnum(S.cfg.DEFAULT_PASS_SCORE) || 70, durationMin: c.durationMin || nnum(S.cfg.DEFAULT_DURATION_MIN) || 15, maxAttempts: c.maxAttempts || nnum(S.cfg.DEFAULT_MAX_ATTEMPTS) || 2,
       shuffle: c.shuffle !== undefined ? c.shuffle : true, showResult: c.showResult !== undefined ? c.showResult : true, active: c.active !== undefined ? c.active : true,
-      deadline: c.deadline !== undefined ? c.deadline : dflDl, note: c.note || '', existed: !!data.config};
+      deadline: c.deadline !== undefined ? c.deadline : dflDl, note: c.note || '', existed: !!data.config,
+      requireMaterials: c.requireMaterials !== undefined ? c.requireMaterials : true};
     this.m = Modal.open({size: 'wide', title: (this.cfg.existed ? 'Sửa' : 'Soạn') + ' bài kiểm tra', sub: esc(s.topic), bodyStyle: 'padding:0;display:flex;flex-direction:column',
       body: `<div class="qb"><div class="qb-set" id="qbSet"></div><div class="qb-list"><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center"><b style="color:var(--navy)" id="qbCount"></b><div style="flex:1"></div>
         <button class="btn btn-line btn-sm" id="qbPaste">${ic('paste')}Dán nhanh từ Word</button><button class="btn btn-line btn-sm" id="qbPrev">${ic('eye')}Xem thử</button></div><div id="qbList"></div>
@@ -2509,6 +2725,7 @@ const QB = {
       <div class="field"><label>Lưu ý cho học viên</label><textarea class="inp" id="qcNote" rows="3" placeholder="VD: Ôn slide 5–12 trước khi làm">${esc(c.note)}</textarea></div>
       <label class="toggle-row"><span class="t">Trộn thứ tự câu hỏi<small>Mỗi người một thứ tự khác nhau</small></span><span class="switch"><input type="checkbox" id="qcShuf" ${c.shuffle ? 'checked' : ''}><i></i></span></label>
       <label class="toggle-row"><span class="t">Cho xem đáp án sau khi nộp<small>Kèm giải thích từng câu</small></span><span class="switch"><input type="checkbox" id="qcShow" ${c.showResult ? 'checked' : ''}><i></i></span></label>
+      <label class="toggle-row"><span class="t">Bắt buộc học hết tài liệu trước<small>Học viên đi theo lộ trình: học xong tài liệu → mới mở được bài → nhận chứng chỉ. Đánh dấu file không bắt buộc ở tab Tài liệu.</small></span><span class="switch"><input type="checkbox" id="qcReq" ${c.requireMaterials ? 'checked' : ''}><i></i></span></label>
       <label class="toggle-row"><span class="t">Phát hành ngay<small>Học viên nhận thông báo và thấy bài ở mục Việc cần làm</small></span><span class="switch"><input type="checkbox" id="qcAct" ${c.active ? 'checked' : ''}><i></i></span></label>`;
   },
   drawList(){
@@ -2540,7 +2757,7 @@ const QB = {
       const q = this.qs[+el.dataset.i];
       el.querySelectorAll('[data-f]').forEach(inp => { if (inp.dataset.f !== 'type') q[inp.dataset.f] = inp.dataset.f === 'points' ? Math.max(1, nnum(inp.value) || 1) : inp.value.trim(); });
     });
-    if ($('qcPass')) Object.assign(this.cfg, {passScore: nnum($('qcPass').value), durationMin: nnum($('qcDur').value), maxAttempts: nnum($('qcAtt').value), deadline: $('qcDl').value, note: $('qcNote').value.trim(), shuffle: $('qcShuf').checked, showResult: $('qcShow').checked, active: $('qcAct').checked});
+    if ($('qcPass')) Object.assign(this.cfg, {passScore: nnum($('qcPass').value), durationMin: nnum($('qcDur').value), maxAttempts: nnum($('qcAtt').value), deadline: $('qcDl').value, note: $('qcNote').value.trim(), shuffle: $('qcShuf').checked, showResult: $('qcShow').checked, active: $('qcAct').checked, requireMaterials: $('qcReq').checked});
   },
   validate(){
     for (let i = 0; i < this.qs.length; i++) {
@@ -3023,6 +3240,15 @@ const A = {
   libLayout: d => { S.lib.layout = d.l; VIEWS.library.draw(); },
   sessRetry: () => { SessionPage.fails = 0; const b = $('netbar'); if (b) b.innerHTML = `<span class="spin" style="width:16px;height:16px"></span><span>Đang thử lại…</span>`; SessionPage.load(SessionPage.sid); },
   netDiag: () => netDiag(),
+  course: d => Course.open(d.sid, d.fid),
+  toggleReq: async d => { const f = S.full[d.sid]; try { const r = await post('setFileRequired', {sid: d.sid, fileId: d.fid, required: d.r}); if (f && f.quiz) { f.quiz.gate = f.quiz.gate || {}; f.quiz.gate.optional = r.optionalFiles; } ok(r.message); SessionPage.renderTab(); } catch (e) { err(e.message); } },
+  crsGo: d => { if (Reader.st && Reader.st.f.id === d.fid && !Reader.st.onQuiz) return; Reader.open(d.sid, d.fid, {course: true}); },
+  crsQuiz: d => Course.quizStep(d.sid),
+  crsNext: () => Course.step(1), crsPrev: () => Course.step(-1),
+  crsBack: () => { const st = Reader.st; if (st) Reader.open(st.sid, st.f.id, {course: true}); },
+  crsMark: () => Course.complete(),
+  crsSide: () => $('reader').classList.toggle('showside'),
+  crsStartQuiz: async d => { await Progress.flush(d.sid); Reader.close(); Quiz.intro(d.sid, true); },
   upPick: d => pickUpload(JSON.parse(d.p || '[]'), false),
   upPickDir: d => pickUpload(JSON.parse(d.p || '[]'), true),
   upRetry: d => Uploader.retry(d.id), upCancel: d => Uploader.cancel(d.id), upClose: () => Uploader.close(), upNotify: () => Uploader.notify(),
