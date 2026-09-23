@@ -805,6 +805,14 @@ body.dnd .dnd-hint{transform:translate(-50%,0)}
 .cal-head .seg{flex-wrap:nowrap;width:auto}.cal-head .seg button{flex:none;padding:0 14px}
 .rd-page.slide{width:min(100%,1100px);height:auto;background:#fff}
 .rd-page.slide img{display:block;width:100%;height:100%;object-fit:contain}
+.seg.rdm{width:auto;margin-left:6px}
+.seg.rdm button{flex:none;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;padding:0 10px}
+.seg.rdm svg{width:14px;height:14px}
+.gview{flex:1;display:flex;flex-direction:column;min-height:0}
+.gview .rd-frame{flex:1}
+.gv-hint{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:var(--cream);border-top:1px solid #F3DC79;font-size:13px;color:#5C4800}
+.gv-hint>svg{width:17px;height:17px;flex-shrink:0}
+.gv-hint span{flex:1;min-width:200px}
 /* ---------- ★ v2.6 ---------- */
 .rd-state>svg{width:46px;height:46px;color:#B7C6D8;margin:0 auto 12px;display:block}
 .rd-state .ruler{height:6px}
@@ -961,7 +969,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '3.1';
+const APP_VERSION = '3.2';
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -1000,7 +1008,7 @@ const ICON = {
   upload:'<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',
   ext:'<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>',
   play:'<circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z" fill="currentColor"/>',
-  flag:'<path d="M4 21V4M4 4h13l-2 4 2 4H4"/>', eye:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>',
+  flag:'<path d="M4 21V4M4 4h13l-2 4 2 4H4"/>', zap:'<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',eye:'<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>',
   mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', send:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>',
   copy:'<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/>',
   plus:'<path d="M12 5v14M5 12h14"/>', trash:'<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>',
@@ -2377,13 +2385,17 @@ const Reader = {
     if (!f) return err('Không tìm thấy tài liệu (có thể đã bị xoá).');
     this.close(true);
     const el = $('reader');
-    this.st = {sid, f, page: 1, total: 0, maxPage: 1, scale: 0, pdf: null, sent: 0, course, wait: 0};
+    const canG = f.view === 'office' || f.view === 'gdoc';
+    const pref = localStorage.getItem('mmh_hub_viewpref') || '';
+    const mode = (opts && opts.mode) || (canG ? (pref || (f.linkShared ? 'google' : 'hub')) : 'hub');
+    this.st = {sid, f, page: 1, total: 0, maxPage: 1, scale: 0, pdf: null, sent: 0, course, wait: 0, mode, canG};
     const fs = course ? Course.files(sid) : [], idx = fs.findIndex(x => x.id === f.id);
     el.classList.toggle('course', course); el.classList.remove('showside');
     el.innerHTML = `<div class="rd-top">
         <button class="ibtn" data-a="rdClose" aria-label="Đóng">${course ? ic('x') : ic('left')}</button>
         ${course ? `<span class="chip todo hide-m">${ic('book')}Tự học</span><button class="ibtn show-m" data-a="crsSide" title="Lộ trình">${ic('list')}</button>` : ''}${ftype(f.kind)}
         <div class="t"><b class="clamp1">${esc(f.name)}</b><span class="clamp1">${course ? 'Bước 1 · Tài liệu ' + (idx + 1) + '/' + fs.length : esc((findS(sid) || {}).topic || '')}</span></div>
+        ${canG ? `<div class="seg rdm hide-m"><button class="${mode === 'google' ? 'on' : ''}" data-a="rdMode" data-m="google" title="Dùng trình xem của Google — mở ngay, cần tài khoản công ty có quyền xem file">${ic('zap')}Xem nhanh</button><button class="${mode === 'hub' ? 'on' : ''}" data-a="rdMode" data-m="hub" title="Máy chủ đọc hộ — không cần quyền Drive, có theo dõi tiến độ đọc">${ic('shield')}Qua Hub</button></div>` : ''}
         <div class="pgn hide" id="rdPgn"><button class="ibtn sm" data-a="rdPrev">${ic('left')}</button><input id="rdPage" value="1" inputmode="numeric"><span id="rdTotal">/ —</span><button class="ibtn sm" data-a="rdNext">${ic('right')}</button></div>
         <div class="hide-m rdz" id="rdZoom"><button class="ibtn sm" data-a="rdZoom" data-z="-1" title="Thu nhỏ">${ic('zout')}</button><button class="ibtn sm" data-a="rdZoom" data-z="1" title="Phóng to">${ic('zin')}</button><button class="ibtn sm" data-a="rdFull" title="Toàn màn hình">${ic('max')}</button></div>
         <a class="ibtn" href="${esc(f.url)}" target="_blank" rel="noopener" title="Mở trên Google Drive">${ic('ext')}</a>
@@ -2394,6 +2406,7 @@ const Reader = {
     el.classList.add('on');
     document.body.style.overflow = 'hidden';
     if (f.view === 'drive') return this.showFrame(f);
+    if (mode === 'google') return this.showGoogle(f);
     try {
       const blob = await this.fetchBlob(sid, f, p => { if (this.st && this.st.f === f) this.progress(p); });
       if (!this.st || this.st.f !== f) return;
@@ -2479,6 +2492,29 @@ const Reader = {
     }
     this.track({open: 1, page: 1, total: 1, done: 1}); this.st.done = true;
     toast('Video/định dạng này dùng trình xem của Google Drive — nếu không hiện, bấm biểu tượng ↗ để mở trên Drive.');
+  },
+  /** ★ v3.2 — Mở nhanh bằng trình xem của Google (không chuyển đổi; cần người xem có quyền trên Drive) */
+  gUrl(f){
+    const m = f.mime || '';
+    if (m === 'application/vnd.google-apps.presentation') return 'https://docs.google.com/presentation/d/' + f.id + '/embed?rm=minimal';
+    if (m === 'application/vnd.google-apps.document') return 'https://docs.google.com/document/d/' + f.id + '/preview';
+    if (m === 'application/vnd.google-apps.spreadsheet') return 'https://docs.google.com/spreadsheets/d/' + f.id + '/preview';
+    return 'https://drive.google.com/file/d/' + f.id + '/preview';
+  },
+  showGoogle(f){
+    const st = this.st, ed = canEdit(findS(st.sid) || {});
+    $('rdBody').innerHTML = `<div class="gview"><iframe class="rd-frame" src="${esc(this.gUrl(f))}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="gv-hint">${ic('info')}<span>Đang dùng <b>trình xem của Google</b>${f.linkShared ? '' : ' — file này chưa chia sẻ bằng link'}. Nếu thấy "Bạn cần quyền truy cập" hoặc trang trắng, bấm <b>Qua Hub</b>.${ed ? ' Trainer: bấm <b>Mở quyền xem cho cả công ty</b> ở tab Tài liệu để mọi người xem nhanh được.' : ''}</span>
+        <button class="btn btn-soft btn-sm" data-a="rdMode" data-m="hub">${ic('shield')}Xem qua Hub</button></div></div>`;
+    $('rdZoom').classList.add('hide'); $('rdPgn').classList.add('hide');
+    st.total = 1; st.maxPage = 1; this.bar(100);
+    if (st.course) {
+      if (Course.done(st.sid, f.id)) { st.completed = true; st.done = true; Course.refresh(); return; }
+      st.wait = 30; Course.refresh();
+      st.timer = setInterval(() => { if (this.st !== st) return clearInterval(st.timer); st.wait--; Course.refresh(); if (st.wait <= 0) clearInterval(st.timer); }, 1000);
+      return;
+    }
+    this.track({open: 1, page: 1, total: 1, done: 1}); st.done = true;
   },
   /** ★ v3.1 — Xem bài slide lớn dạng ảnh từng slide (tải dần khi cuộn) */
   async showSlides(sid, f){
@@ -2707,10 +2743,10 @@ const Course = {
     const d = this.done(sid, st.f.id) || st.completed, o = this.optional(sid).has(st.f.id);
     const last = i === fs.length - 1;
     const msg = d ? `<span class="crs-ok">${ic('check')}Đã hoàn thành tài liệu này</span>`
-      : st.f.view === 'drive' ? `<span>Xem hết nội dung rồi bấm <b>Đã xem xong</b>${st.wait > 0 ? ` (mở sau ${st.wait} giây)` : ''}.</span>`
+      : (st.f.view === 'drive' || st.mode === 'google') ? `<span>Xem hết nội dung rồi bấm <b>Đã xem xong</b>${st.wait > 0 ? ` (mở sau ${st.wait} giây)` : ''}.</span>`
       : st.manual ? '<span>Xem xong trên Drive rồi bấm <b>Đã xem xong</b>.</span>'
       : st.total > 1 ? `<span>Đọc tới trang cuối để hoàn thành — đang ở trang ${st.maxPage}/${st.total}.</span>` : '<span>Đang mở tài liệu…</span>';
-    const manualBtn = !d && (st.f.view === 'drive' || st.manual) ? `<button class="btn btn-soft" data-a="crsMark" ${st.wait > 0 ? 'disabled' : ''}>${ic('check')}Đã xem xong</button>` : '';
+    const manualBtn = !d && (st.f.view === 'drive' || st.mode === 'google' || st.manual) ? `<button class="btn btn-soft" data-a="crsMark" ${st.wait > 0 ? 'disabled' : ''}>${ic('check')}Đã xem xong</button>` : '';
     return `<div class="crs-msg">${msg}</div>
       <button class="btn btn-line" data-a="crsPrev" ${i <= 0 ? 'disabled' : ''}>${ic('left')}Trước</button>
       ${manualBtn}
@@ -3695,6 +3731,7 @@ const A = {
   crsBack: () => { const st = Reader.st; if (st) Reader.open(st.sid, st.f.id, {course: true}); },
   crsMark: () => Course.complete(),
   crsSide: () => $('reader').classList.toggle('showside'),
+  rdMode: d => { const st = Reader.st; if (!st) return; localStorage.setItem('mmh_hub_viewpref', d.m); Reader.open(st.sid, st.f.id, {course: st.course, mode: d.m}); },
   crsStartQuiz: async d => { await Progress.flush(d.sid); Reader.close(); Quiz.intro(d.sid, true); },
   upPick: d => pickUpload(JSON.parse(d.p || '[]'), false),
   upPickDir: d => pickUpload(JSON.parse(d.p || '[]'), true),
