@@ -970,8 +970,8 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '4.1';
-window.MIN_SERVER = '3.21';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
+const APP_VERSION = '4.3';
+window.MIN_SERVER = '3.23';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -5102,6 +5102,297 @@ body.v4 .crs-side{font-family:var(--h-font)}
       return _ro.call(this, sid, fid, Object.assign({}, opts, {mode: 'google', noAuto: 1}));
     }
   };
+})();
+</script>
+
+<style id="v42-css">
+/* ★ v4.2 — video phát ngay trên khung xanh (trang chủ + trang khoá học) */
+.v4-stage .vscreen{position:absolute;left:50%;top:50%;width:min(560px,100%);aspect-ratio:16/9;transform:translate(-50%,-50%) perspective(1200px) rotateY(-10deg) rotateX(4deg);border-radius:18px;overflow:hidden;background:#000 center/cover;box-shadow:0 40px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12);transition:transform .45s cubic-bezier(.2,.7,.2,1);cursor:pointer;z-index:1}
+.v4-stage .vscreen:hover,.v4-stage .vscreen.on{transform:translate(-50%,-50%) perspective(1200px) rotateY(0) rotateX(0)}
+.vscreen .pl{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s}
+.vscreen:hover .pl{transform:scale(1.07)}
+.vscreen .pl svg{width:28px;height:28px;color:#003047}
+.vscreen .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 14px;background:linear-gradient(transparent,rgba(0,20,32,.85));color:#fff;font-size:14px;font-weight:600;line-height:1.35}
+.vscreen .cap small{display:block;font-weight:400;color:#CFE2F3;font-size:12px;margin-top:2px}
+.v4-iv{position:absolute;inset:0;width:100%;height:100%;background:#000;object-fit:contain;outline:none}
+.v4-ivbar{position:absolute;left:12px;right:12px;top:10px;display:flex;align-items:center;gap:10px;font-size:12px;color:#fff;z-index:2;pointer-events:none}
+.v4-ivbar div{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.25);overflow:hidden}.v4-ivbar i{display:block;height:100%;width:0;background:#FFE100;transition:width .4s}
+.v4-ivbar span{background:rgba(0,0,0,.55);padding:2px 8px;border-radius:999px;white-space:nowrap}
+.v4-player.playing{cursor:default}
+.v4-player.playing::before{display:none}
+.v4-cont .th .doc{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:12px;background:rgba(255,255,255,.95);display:grid;place-items:center}
+.v4-cont .th .doc svg{width:22px;height:22px;color:#003047}
+.v4-boot .sk{background:linear-gradient(90deg,#E9EEF5,#F4F7FB,#E9EEF5);background-size:200% 100%;animation:v4sk 1.2s linear infinite;border-radius:20px}
+@keyframes v4sk{to{background-position:-200% 0}}
+@media (max-width:900px){.v4-stage .vscreen{width:100%;transform:translate(-50%,-50%)}}
+</style>
+<script id="v42-js">
+/* ==========================================================================
+   ★ v4.2 (15/10/2026)
+   1) Video phát NGAY trên khung xanh: trang chủ (khoá có video ⇒ màn hình video thay mũi khoan 3D) và khung lớn
+      của trang khoá học — không mở màn học riêng. Vẫn đếm giây đã xem, không tua vượt, tối đa 2x, ≥ 70% ⇒ xong
+      (cùng bộ nhớ "đã xem" với trình phát trong màn học: localStorage mmh_vw_…).
+   2) % tiến độ: không còn "95%" ước lượng — chỉ hiện % khi biết số bài (danh sách bài đã tải / nhớ trên máy).
+      Học xong 100% mà chưa có chứng chỉ (bài học cũ trước v3.21) ⇒ tự gửi lại 1 lần để máy chủ cấp chứng chỉ.
+   3) Thẻ "Tiếp tục học" không có video ⇒ biểu tượng tài liệu (không còn nút phát).
+   4) Mở trang lần đầu (chưa có dữ liệu lưu): hiện ngay khung trang chủ thay cho ô xám.
+   ========================================================================== */
+(function(){
+  const PASS = 70;
+  const isVid = f => !!(f && f.src && (f.isVideo || f.player === 'html5'));
+  try { if (S.user && S.user.name) localStorage.setItem('mmh_hub_name', S.user.name); } catch (e) {}
+  const _ab = applyBoot;
+  applyBoot = function(r){ _ab(r); try { if (r && r.user) localStorage.setItem('mmh_hub_name', r.user.name || ''); } catch (e) {} };
+
+  /* ---------- 4) khung trang chủ ngay khi chưa có dữ liệu ---------- */
+  if (!S.user && S.token && $('view')) {
+    const nm = (() => { try { return localStorage.getItem('mmh_hub_name') || ''; } catch (e) { return ''; } })();
+    $('view').innerHTML = `<section class="v4-hero"><div class="in"><div class="txt"><span class="tag">MMH Training Academy · FY68</span><h1 class="h-h1">Hiểu sản phẩm MANI<br>tới từng chi tiết.</h1>
+      <p>${nm ? 'Xin chào ' + esc(nm) + ' — ' : ''}đang tải khoá học của bạn…</p></div><div class="v4-stage"><div class="glow"></div><div class="orbits"><i><b></b></i><i></i></div></div></div></section>
+      <div class="v4-wrap v4-boot"><div class="sk" style="height:140px;margin-top:-32px;position:relative"></div><div class="v4-grid">${'<div class="sk" style="height:300px"></div>'.repeat(4)}</div></div>`;
+  }
+
+  /* ---------- 2) % tiến độ thật ---------- */
+  const filesOf = sid => { const m = S.mats[sid] || (window.MC && MC.get(sid)); return m && m.files && m.files.length ? m : null; };
+  function realPct(s){
+    if (s.myCert || s.myStatus === 'Completed') return 100;
+    const m = filesOf(s.sid); if (!m) return null;
+    const d = (m.myProgress || []).filter(p => p.completed && m.files.some(f => f.id === p.fileId)).length;
+    return Math.round(d / m.files.length * 100);
+  }
+  const certAsked = new Set();
+  function backfillCert(s){
+    const m = filesOf(s.sid);
+    if (!m || s.myCert || certAsked.has(s.sid) || realPct(s) !== 100 || canEdit(s)) return;
+    certAsked.add(s.sid);
+    const f = m.files[m.files.length - 1];
+    post('trackProgress', {sid: s.sid, fileId: f.id, fileName: f.name, open: 1, page: 100, total: 100, done: 1}, {timeout: 90000, retry: 1})
+      .then(r => { if (r.sessionDone) { s.myStatus = 'Completed'; s.myPass = true; if (r.certUrl) s.myCert = r.certUrl; V4.celebrate(s.sid, r); reload(); } }).catch(() => {});
+  }
+  /* sửa chữ % trên thẻ sau khi vẽ (thẻ khoá học, "Tiếp tục học") */
+  function fixPct(root){
+    (root || document).querySelectorAll('.v4-cc[data-h^="#/s/"]').forEach(c => {
+      const s = findS(c.dataset.h.slice(4).split('?')[0]); if (!s) return;
+      const p = realPct(s), sp = c.querySelector('.pr span'), bar = c.querySelector('.pr i');
+      if (p === null) { if (sp && /%$/.test(sp.textContent)) { sp.textContent = 'Đang học'; if (bar) bar.style.width = '35%'; } }
+      else { if (sp) sp.textContent = p >= 100 ? (s.myCert ? 'Hoàn thành' : '100% · chờ cấp chứng chỉ') : p + '%'; if (bar) bar.style.width = p + '%'; backfillCert(s); }
+    });
+    const cont = (root || document).querySelector('.v4-cont[data-sid]');
+    if (cont) {
+      const s = findS(cont.dataset.sid), p = s ? realPct(s) : null;
+      const sp = cont.querySelector('.pr span'), bar = cont.querySelector('.pr i');
+      if (p === null) { if (sp) sp.textContent = ''; if (bar) bar.style.width = '35%'; } else { if (sp) sp.textContent = p + '%'; if (bar) bar.style.width = p + '%'; }
+      const th = cont.querySelector('.th');
+      if (s && th && !S.videos[s.sid]) { th.querySelector('.pl') && th.querySelector('.pl').remove(); if (!th.querySelector('.doc')) th.insertAdjacentHTML('beforeend', `<span class="doc">${ic('file')}</span>`); }
+      const fl = document.querySelector('.v4-fl.a .bar i'); if (fl && p !== null) fl.style.width = Math.max(6, p) + '%';
+    }
+  }
+
+  /* ---------- 1) trình phát tại chỗ ---------- */
+  function inlinePlay(box, sid, f, opts){
+    opts = opts || {};
+    const key = VP.key(sid, f);
+    let sv = {}; try { sv = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) {}
+    const m = filesOf(sid);
+    const done0 = !!(m && (m.myProgress || []).some(p => p.fileId === f.id && p.completed));
+    const p = {seen: [], n: 0, reach: nnum(sv.m), pos: nnum(sv.p), last: null, done: done0, opened: false, b: String(sv.b || ''), warned: 0, lastSave: 0};
+    box.classList.add('playing', 'on');
+    box.innerHTML = `<video class="v4-iv" controls autoplay playsinline controlslist="nodownload" disablepictureinpicture ${f.poster ? `poster="${esc(f.poster)}"` : ''} src="${esc(f.src)}"></video>
+      <div class="v4-ivbar"><div><i></i></div><span>${done0 ? 'Đã hoàn thành' : 'Đã xem 0%'}</span></div>`;
+    const v = box.querySelector('video'), bar = box.querySelector('.v4-ivbar i'), txt = box.querySelector('.v4-ivbar span');
+    const pct = () => { if (!p.n) return 0; let c = 0; for (let i = 0; i < p.n; i++) if (p.seen[i]) c++; return Math.min(100, Math.round(c / p.n * 100)); };
+    const save = () => { try { localStorage.setItem(key, JSON.stringify({b: p.seen.join(''), p: Math.floor(v.currentTime), m: Math.floor(p.reach), d: p.n})); } catch (e) {} };
+    const paint = () => { const q = p.done ? 100 : pct(); bar.style.width = q + '%'; txt.textContent = p.done ? 'Đã hoàn thành · xem lại tự do' : `Đã xem ${q}% · cần ${PASS}%`; };
+    const send = o => post('trackProgress', Object.assign({sid, fileId: f.id, fileName: f.name}, o), {retry: o.done ? 2 : 0, timeout: 90000});
+    v.addEventListener('loadedmetadata', () => {
+      p.n = Math.max(1, Math.ceil(v.duration || f.duration || 1)); p.seen = new Array(p.n).fill(0);
+      for (let i = 0; i < Math.min(p.n, p.b.length); i++) p.seen[i] = p.b.charAt(i) === '1' ? 1 : 0;
+      if (p.pos > 3 && p.pos < p.n - 5) v.currentTime = p.pos;
+      paint();
+    });
+    v.addEventListener('play', () => { if (!p.opened) { p.opened = true; if (!p.done) send({open: 1, page: pct(), total: 100}).catch(() => {}); } });
+    v.addEventListener('ratechange', () => { if (!p.done && v.playbackRate > 2) { v.playbackRate = 2; toast('Tốc độ xem tối đa 2x cho tới khi hoàn thành video.'); } });
+    v.addEventListener('seeking', () => {
+      if (p.done || p.fix) return;
+      if (v.currentTime > p.reach + 3) { p.fix = true; v.currentTime = p.reach; setTimeout(() => p.fix = false, 300); if (Date.now() - p.warned > 6000) { p.warned = Date.now(); toast('Chưa tua qua được phần chưa xem — hãy xem lần lượt để hoàn thành bài học.'); } }
+      p.last = null;
+    });
+    v.addEventListener('timeupdate', () => {
+      if (!p.n) return;
+      const t = v.currentTime;
+      if (!v.paused && !v.seeking && p.last != null && t >= p.last && t - p.last < 2.5) { for (let s = Math.floor(p.last); s <= Math.min(p.n - 1, Math.floor(t)); s++) p.seen[s] = 1; if (t > p.reach) p.reach = t; }
+      p.last = t;
+      if (Date.now() - p.lastSave > 5000) { p.lastSave = Date.now(); save(); }
+      if (!p.done && pct() >= PASS) {
+        p.done = true; save();
+        const pl = {sid, fileId: f.id, fileName: f.name, open: 1, page: 100, total: 100, done: 1};
+        Progress.add(pl);
+        const mm = S.mats[sid]; if (mm) { mm.myProgress = (mm.myProgress || []).filter(x => x.fileId !== f.id).concat([{fileId: f.id, percent: 100, completed: true}]); if (window.MC) MC.save(sid); }
+        const pg = S.progress[sid] || (S.progress[sid] = {opened: 0, done: 0}); pg.opened++; pg.done++;
+        ok('Bạn đã hoàn thành video "' + (f.name || '') + '".');
+        send(pl).then(r => {
+          Progress.remove(pl);
+          if (r.sessionDone) { const s0 = findS(sid); if (s0) { s0.myStatus = 'Completed'; s0.myPass = true; if (r.certUrl) s0.myCert = r.certUrl; } V4.celebrate(sid, r); reload(); }
+          else if (opts.onDone) opts.onDone(r);
+        }).catch(() => toast('Chưa lưu được tiến độ — hệ thống sẽ tự gửi lại.'));
+      }
+      paint();
+    });
+    v.addEventListener('pause', save);
+    v.addEventListener('ended', () => { save(); if (opts.onEnded) opts.onEnded(); });
+    const pp = v.play(); if (pp && pp.catch) pp.catch(() => { v.muted = true; v.play().then(() => toast('Video đang tắt tiếng — bấm biểu tượng loa để bật tiếng.')).catch(() => {}); });
+    v.addEventListener('error', () => { txt.textContent = 'Không phát được video'; });
+    return v;
+  }
+  window.inlinePlay = inlinePlay;
+
+  /* trang chủ: khoá có video ⇒ màn hình video trên khung xanh */
+  const _home = VIEWS.home;
+  VIEWS.home = function(){
+    const r = _home.apply(this, arguments);
+    try {
+      const cont = document.querySelector('.v4-cont[data-sid]');
+      const prefer = cont && S.videos[cont.dataset.sid] && S.videos[cont.dataset.sid].v1 ? cont.dataset.sid : null;
+      const sid = prefer || (V4.courses().filter(s => S.videos[s.sid] && S.videos[s.sid].v1).sort((a, b) => (V4.stateOf(a) === 'done') - (V4.stateOf(b) === 'done') || String(b.date).localeCompare(String(a.date)))[0] || {}).sid;
+      const stage = document.querySelector('.v4-hero .v4-stage');
+      if (sid && stage) {
+        const v1 = S.videos[sid].v1, s = findS(sid);
+        const f = {id: v1.id, name: v1.title, src: v1.src, poster: v1.poster, duration: v1.duration, isVideo: true};
+        const model = stage.querySelector('.model'); if (model) model.remove();
+        stage.querySelector('.v4-fl.b') && stage.querySelector('.v4-fl.b').remove();
+        stage.insertAdjacentHTML('beforeend', `<div class="vscreen" id="v4vs" style="${v1.poster ? `background-image:url('${esc(v1.poster)}')` : ''}"><span class="pl">${ic('play')}</span><div class="cap">${esc(v1.title || '')}<small>${esc(s ? s.topic : '')} · ${fmtSec(v1.duration || 0)} · bấm để xem ngay</small></div></div>`);
+        const fl = stage.querySelector('.v4-fl.a .k'); if (fl) fl.textContent = 'Video bài giảng';
+        $('v4vs').addEventListener('click', function once(){ this.removeEventListener('click', once); inlinePlay(this, sid, f, {onEnded: () => { toast('Xong video — mở khoá học để học tiếp.'); setTimeout(() => { if (S.route.name === 'home') go('#/s/' + sid); }, 2000); }}); stage.querySelectorAll('.v4-fl').forEach(x => x.style.display = 'none'); });
+      }
+    } catch (e) {}
+    fixPct();
+    return r;
+  };
+
+  /* trang khoá học: khung lớn phát video tại chỗ */
+  const rcWrap = function(sid){
+    const box = document.querySelector('.v4-player[data-fid]'); if (!box) return;
+    const m = filesOf(sid); if (!m) return;
+    const f = m.files.find(x => x.id === box.dataset.fid);
+    if (!isVid(f)) return;
+    box.removeAttribute('data-a');
+    const start = (el, file) => inlinePlay(el, sid, file, {onDone: () => {}, onEnded: () => {
+      const mm = filesOf(sid) || m, i = mm.files.findIndex(x => x.id === file.id);
+      const nx = mm.files.slice(i + 1).find(x => !(mm.myProgress || []).some(p => p.fileId === x.id && p.completed)) || mm.files[i + 1];
+      if (!nx) return toast('Bạn đã xem hết các bài của khoá.');
+      toast('Tự chuyển sang bài tiếp theo: ' + nx.name);
+      setTimeout(() => {
+        if (S.route.name !== 's' || SessionPage.sid !== sid) return;
+        if (isVid(nx)) start(box, nx);
+        else Course.open(sid, nx.id);
+      }, 2000);
+    }});
+    box.addEventListener('click', function once(e){ this.removeEventListener('click', once); start(this, f); });
+    // ★ vào trang là tự chạy (1 lần / lượt mở trang)
+    if (rcWrap.auto !== sid) { rcWrap.auto = sid; setTimeout(() => { if (document.body.contains(box) && !box.classList.contains('playing')) box.click(); }, 400); }
+    const pl = box.querySelector('.tt span'); if (pl) pl.textContent = 'Video ' + fmtSec(f.duration || 0) + ' · bấm để xem ngay tại đây';
+  };
+  const _spR = SessionPage.render, _spT = SessionPage.renderTab;
+  SessionPage.render = function(){
+    const playing = document.querySelector('.v4-player.playing video');
+    if (playing && !playing.paused && S.route.name === 's' && !(S.route.q && S.route.q.adv)) return;   // đang xem ⇒ không vẽ lại (giữ video)
+    const r = _spR.apply(this, arguments);
+    if (S.route.name === 's' && !(S.route.q && S.route.q.adv) && document.querySelector('.v4-lbody')) { rcWrap(this.sid); const s = findS(this.sid); if (s) backfillCert(s); }
+    return r;
+  };
+  SessionPage.renderTab = function(){ return (S.route.q && S.route.q.adv) ? _spT.apply(this, arguments) : SessionPage.render.apply(this, arguments); };
+
+  /* lộ trình / thư viện: sửa % sau khi vẽ */
+  const _learn = VIEWS.learn;
+  VIEWS.learn = function(){ const r = _learn.apply(this, arguments); fixPct(); const L = $('v4list'); if (L) new MutationObserver(() => fixPct(L)).observe(L, {childList: true}); return r; };
+  document.addEventListener('click', e => { if (e.target.closest && e.target.closest('#v4seg')) setTimeout(() => fixPct(), 0); });
+
+  try { if (S.user) route(); } catch (e) {}
+})();
+</script>
+
+<style id="v43-css">
+#rdAuto{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:10px;background:#F0F7FF;color:#003047;font-weight:600;font-size:13px;white-space:nowrap}
+#rdAuto svg{width:15px;height:15px}
+#rdAuto.on{background:#003047;color:#fff}
+.rd-next{position:absolute;right:20px;bottom:20px;z-index:5;display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:#003047;color:#fff;font-size:14px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.rd-next b{font-weight:600}.rd-next button{height:32px;padding:0 12px;border-radius:9px;background:rgba(255,255,255,.14);color:#fff;font-weight:600}
+.rd-next button.go{background:#FFE100;color:#1A1A1A}
+</style>
+<script id="v43-js">
+/* ==========================================================================
+   ★ v4.3 (15/10/2026) — HỌC TỰ CHẠY (người dùng yêu cầu)
+   - Mở bài: video tự phát; PDF / slide tự lật trang mỗi AUTO_SEC giây (nút "Tự lật trang" để tạm dừng / chạy tiếp,
+     người học tự cuộn / chạm ⇒ tạm nghỉ 15 giây). Trạng thái bật/tắt nhớ ở localStorage mmh_hub_autoflip.
+   - Học xong 1 bài (video phát hết / tài liệu tới trang cuối) ⇒ hộp "Bài tiếp theo sau 3 giây" ⇒ tự mở bài kế
+     (bài cuối ⇒ màn kết quả / chứng chỉ). Bấm "Ở lại" để huỷ.
+   ========================================================================== */
+(function(){
+  const AUTO_SEC = 8;
+  let flip = {t: null, on: (() => { try { return localStorage.getItem('mmh_hub_autoflip') !== '0'; } catch (e) { return true; } })(), pause: 0};
+  const stop = () => { clearInterval(flip.t); flip.t = null; };
+  function btn(){
+    const st = Reader.st, top = document.querySelector('#reader .rd-top'); if (!st || !top) return;
+    let b = $('rdAuto');
+    if (!b) { const ext = top.querySelector('a.ibtn[target="_blank"]'); (ext || top.lastElementChild).insertAdjacentHTML('beforebegin', '<button id="rdAuto" type="button"></button>'); b = $('rdAuto'); b.onclick = () => { flip.on = !flip.on; try { localStorage.setItem('mmh_hub_autoflip', flip.on ? '1' : '0'); } catch (e) {} paint(); if (flip.on) start(); else stop(); }; }
+    paint();
+  }
+  function paint(){ const b = $('rdAuto'); if (!b) return; b.classList.toggle('on', flip.on); b.textContent = flip.on ? '⏸ Tự lật trang · ' + AUTO_SEC + 's' : '▶ Tự lật trang'; b.title = flip.on ? 'Đang tự lật trang — bấm để dừng' : 'Bấm để tự lật trang'; }
+  function start(){
+    stop();
+    const st = Reader.st; if (!st || !(st.total > 1) || !$('rdPages')) return;
+    btn();
+    if (!flip.on) return;
+    const box = $('rdPages');
+    if (!box.dataset.v43) { box.dataset.v43 = 1; ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(ev => box.addEventListener(ev, () => { flip.pause = Date.now() + 15000; }, {passive: true})); }
+    flip.t = setInterval(() => {
+      const s = Reader.st; if (!s || s !== st || !$('rdPages')) return stop();
+      if (document.hidden || Date.now() < flip.pause) return;
+      if (s.page >= s.total) return stop();
+      Reader.goto(s.page + 1);
+    }, AUTO_SEC * 1000);
+  }
+  /* hộp "bài tiếp theo" */
+  function next(sid, fid){
+    const st = Reader.st; if (!st || !st.course || st.sid !== sid || st.f.id !== fid) return;
+    const fs = Course.files(sid), i = fs.findIndex(x => x.id === fid), nx = fs[i + 1];
+    document.querySelectorAll('.rd-next').forEach(x => x.remove());
+    const body = $('rdBody'); if (!body) return;
+    body.style.position = 'relative';
+    body.insertAdjacentHTML('beforeend', `<div class="rd-next"><span>${nx ? 'Bài tiếp theo: <b>' + esc(nx.name) + '</b>' : '<b>Bạn đã học hết các bài</b>'} · <span id="rdNextN">3</span>s</span><button type="button" data-stay>Ở lại</button><button type="button" class="go" data-go>${nx ? 'Sang ngay' : 'Xem kết quả'}</button></div>`);
+    const el = body.querySelector('.rd-next');
+    let n = 3;
+    const go = () => { clearInterval(t); el.remove(); const s = Reader.st; if (!s || s.sid !== sid || s.f.id !== fid) return; if (nx) Reader.open(sid, nx.id, {course: true}); else Course.quizStep(sid); };
+    const t = setInterval(() => { n--; const c = $('rdNextN'); if (c) c.textContent = n; if (n <= 0) go(); if (!document.body.contains(el)) clearInterval(t); }, 1000);
+    el.querySelector('[data-stay]').onclick = () => { clearInterval(t); el.remove(); };
+    el.querySelector('[data-go]').onclick = go;
+  }
+
+  /* mở bài ⇒ tự chạy */
+  const _ro = Reader.open;
+  Reader.open = async function(sid, fid, opts){
+    stop();
+    const r = await _ro.apply(this, arguments);
+    const st = this.st;
+    if (st && st.f && st.f.id === fid) {
+      if (st.vp && st.vp.v) {
+        const v = st.vp.v;
+        const pp = v.play(); if (pp && pp.catch) pp.catch(() => { v.muted = true; v.play().then(() => toast('Video đang tắt tiếng — bấm biểu tượng loa để bật tiếng.')).catch(() => {}); });
+        v.addEventListener('ended', () => { if (st.course && (st.vp.done || st.completed)) setTimeout(() => next(sid, fid), 600); });
+      } else if ($('rdPages')) start();
+    }
+    return r;
+  };
+  /* tài liệu tới trang cuối ⇒ sang bài tiếp (video thì chờ phát hết) */
+  const _cc = Course.complete;
+  Course.complete = function(){
+    const st = Reader.st;
+    const r = _cc.apply(this, arguments);
+    if (st && st.course && !st.vp) { stop(); const sid = st.sid, fid = st.f.id; setTimeout(() => next(sid, fid), 2500); }
+    return r;
+  };
+  const _rc = Reader.close;
+  Reader.close = function(){ stop(); document.querySelectorAll('.rd-next').forEach(x => x.remove()); return _rc.apply(this, arguments); };
 })();
 </script>
 
