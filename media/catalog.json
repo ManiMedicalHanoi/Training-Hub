@@ -7,15 +7,27 @@
       "title": "Eye Surgery Explained — Nhãn khoa trực quan",
       "category": "Product",
       "videos": [
-        {"id": "ese-ep01", "ep": 1, "title": "EP01 · Giải phẫu bán phần trước của mắt", "duration": 229.4,
-         "src": "media/eye-surgery-explained/ep01-ban-phan-truoc.mp4",
-         "poster": "media/eye-surgery-explained/ep01-ban-phan-truoc.jpg",
-         "transcript": "media/eye-surgery-explained/ep01-ban-phan-truoc.vtt"},
-        {"id": "ese-ep02", "ep": 2, "title": "EP02 · Giải phẫu bán phần sau của mắt", "duration": 164.8,
-         "src": "media/eye-surgery-explained/ep02-ban-phan-sau.mp4",
-         "poster": "media/eye-surgery-explained/ep02-ban-phan-sau.jpg",
-         "transcript": "media/eye-surgery-explained/ep02-ban-phan-sau.vtt"}
+        {
+          "id": "ese-ep01",
+          "ep": 1,
+          "title": "EP01 · Giải phẫu bán phần trước của mắt",
+          "duration": 229.4,
+          "src": "media/eye-surgery-explained/ep01-ban-phan-truoc.mp4",
+          "poster": "media/eye-surgery-explained/ep01-ban-phan-truoc.jpg",
+          "transcript": "media/eye-surgery-explained/ep01-ban-phan-truoc.vtt"
+        },
+        {
+          "id": "ese-ep02",
+          "ep": 2,
+          "title": "EP02 · Giải phẫu bán phần sau của mắt",
+          "duration": 164.8,
+          "src": "media/eye-surgery-explained/ep02-ban-phan-sau.mp4",
+          "poster": "media/eye-surgery-explained/ep02-ban-phan-sau.jpg",
+          "transcript": "media/eye-surgery-explained/ep02-ban-phan-sau.vtt"
+        }
       ]
     }
-  ]
+  ],
+  "ui": {},
+  "_ui_note": "Ảnh bìa tuỳ chọn theo chuyên khoa: \"cover-nha\" | \"cover-nhan\" | \"cover-ngoai\" | \"cover-kn\" → đường dẫn media/ui/*.jpg (prompt: docs/Prompt_anh_giao_dien.md)"
 }
