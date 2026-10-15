@@ -970,8 +970,8 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '4.4';
-window.MIN_SERVER = '3.24';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
+const APP_VERSION = '4.5';
+window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -4612,7 +4612,8 @@ body.v4 .crs-side{font-family:var(--h-font)}
      khung video lớn + tuyến bài bên phải. Bảng cũ nhiều tab: #/s/<sid>?adv=1.
    - Hoàn thành = xem ≥ 70% mọi video + đọc hết trang mọi tài liệu ⇒ backend (v3.21) tự cấp chứng chỉ.
      Bài kiểm tra chỉ còn để ôn tập (không bắt buộc, không cấp chứng chỉ).
-   - Chuyên khoa (bộ lọc Nha khoa / Nhãn khoa / Ngoại khoa) suy ra từ tên khoá học (SPEC).
+   - Nhóm khoá học (v4.5): Nhóm chủ đề lúc tạo (Product / SOP / Compliance…) + Nhóm sản phẩm do TRAINER chọn (S.smeta[sid].line) —
+     không tự đoán theo tên nữa. specOf chỉ còn dùng chọn hình vẽ / màu nền.
    ========================================================================== */
 (function(){
   document.body.classList.add('v4');
@@ -4624,8 +4625,20 @@ body.v4 .crs-side{font-family:var(--h-font)}
     ['nhan', 'Nhãn khoa', /nhan khoa|eye|mat\b|ophthal|keratome|mvr|crescent|giac mac|thuy tinh|cataract|glaucoma|eyeless/],
     ['ngoai', 'Ngoại khoa', /ngoai khoa|surgical|manipler|ghim da|stapler|chi khau|suture|trocar/]
   ];
-  const specOf = s => { const t = deacc([s.topic, s.purpose, s.category].join(' ')); const h = SPEC.find(x => x[2].test(t)); return h ? h[0] : (catKey(s.category) === 'product' ? 'nha' : 'kn'); };
-  const specName = k => (SPEC.find(x => x[0] === k) || [0, 'Kỹ năng & quy trình'])[1];
+  /* ★ v4.5 — nhóm do trainer chọn: S.smeta[sid].line (Nha khoa / Nhãn khoa / Ngoại khoa / tự gõ) */
+  const lineOf = s => (((S.smeta || {})[s.sid] || {}).line || '').trim();
+  const isProd = s => catKey(s.category) === 'product';
+  const specOf = s => { const t = deacc(lineOf(s)); const h = t && SPEC.find(x => x[2].test(t)); return h ? h[0] : (isProd(s) ? 'nha' : 'kn'); };
+  const grpKey = s => isProd(s) && lineOf(s) ? 'L:' + lineOf(s) : 'C:' + (catKey(s.category) || 'other');
+  const grpName = s => isProd(s) && lineOf(s) ? lineOf(s) : isProd(s) ? 'Sản phẩm' : (catLabel(s.category) || 'Khác');
+  const specName = grpName;
+  /* thanh lọc nhóm: Tất cả · các nhóm sản phẩm · Sản phẩm (chưa chọn nhóm) · SOP · Compliance · … (chỉ nhóm đang có khoá học) */
+  function grpSeg(list, cur){
+    const m = new Map();
+    list.forEach(s => { const k = grpKey(s); if (!m.has(k)) m.set(k, grpName(s)); });
+    const keys = [...m.keys()].sort((a, b) => (a[0] === 'L' ? 0 : a === 'C:product' ? 1 : 2) - (b[0] === 'L' ? 0 : b === 'C:product' ? 1 : 2) || m.get(a).localeCompare(m.get(b), 'vi'));
+    return [['', 'Tất cả']].concat(keys.map(k => [k, m.get(k)])).map(([k, t]) => `<button class="${cur === k ? 'on' : ''}" data-k="${esc(k)}">${esc(t)}</button>`).join('');
+  }
   const COVER = {nha: 'radial-gradient(circle at 70% 30%,#5A86D6,#2F4E96 55%,#003047)', nhan: 'radial-gradient(circle at 30% 30%,#7FD0F0,#2C6FA8 55%,#003047)', ngoai: 'radial-gradient(circle at 65% 25%,#B9CDEB,#6F8FC9 50%,#3A5CAA)', kn: 'radial-gradient(circle at 70% 30%,#CFE2F3,#7D97CE 55%,#3A5CAA)'};
 
   /* hình vẽ 3D (SVG) cho từng chuyên khoa */
@@ -4640,9 +4653,12 @@ body.v4 .crs-side{font-family:var(--h-font)}
   /* ảnh bìa theo chuyên khoa (tuỳ chọn): media/catalog.json ▸ "ui": {"cover-nha": "media/ui/cover-nha.jpg", …} — chưa có ⇒ nền gradient + hình vẽ */
   let UI = {};
   fetch('media/catalog.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.json()).then(j => { UI = (j && j.ui) || {}; if (Object.keys(UI).length && S.user) route(); }).catch(() => {});
-  const uiImg = k => UI['cover-' + k] ? `url('${esc(UI['cover-' + k])}') center/cover,` : '';
-  const coverStyle = s => { const p = posterOf(s); return p ? `background-image:linear-gradient(180deg,rgba(0,20,32,0),rgba(0,20,32,.15)),url('${esc(p)}')` : `background:${uiImg(specOf(s))}${COVER[specOf(s)]}`; };
-  const hasUi = s => !posterOf(s) && !!UI['cover-' + specOf(s)];
+  /* ★ v4.5 — ảnh bìa: ảnh riêng của khoá (trainer tải lên) > ảnh video > ảnh nhóm (Admin chỉnh trên app) > catalog.json ▸ ui > hình vẽ */
+  const ownCover = s => ((S.smeta || {})[s.sid] || {}).cover || '';
+  const grpCover = s => { const c = (S.ui && S.ui.covers) || {}; return c[grpKey(s)] || UI['cover-' + specOf(s)] || ''; };
+  const uiImg = s => grpCover(s) ? `url('${esc(grpCover(s))}') center/cover,` : '';
+  const coverStyle = s => { const p = ownCover(s) || posterOf(s); return p ? `background-image:linear-gradient(180deg,rgba(0,20,32,0),rgba(0,20,32,.15)),url('${esc(p)}')` : `background:${uiImg(s)}${COVER[specOf(s)]}`; };
+  const hasUi = s => !posterOf(s) && !!(ownCover(s) || grpCover(s));
 
   /* ---------- dữ liệu ---------- */
   const isCourse = s => s && s.status !== 'Cancel' && (S.videos[s.sid] || s.hasFolder);
@@ -4660,7 +4676,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
   function card(s){
     const v = S.videos[s.sid], sp = specOf(s), st = stateOf(s), p = pctOf(s), n = lessonsOf(s);
     return `<article class="v4-cc hub-card" data-a="go" data-h="#/s/${esc(s.sid)}">
-      <div class="cv" style="${coverStyle(s)}"><span class="h-pill l">${esc(specName(sp))}</span>${v ? `<span class="h-pill navy r">${ic('play')}Video</span>` : ''}${posterOf(s) || hasUi(s) ? '' : `<div class="art">${ART[sp]}</div>`}</div>
+      <div class="cv" style="${coverStyle(s)}"><span class="h-pill l">${esc(grpName(s))}</span>${v ? `<span class="h-pill navy r">${ic('play')}Video</span>` : ''}${posterOf(s) || hasUi(s) ? '' : `<div class="art">${ART[sp]}</div>`}</div>
       <div class="bd"><div class="ti">${esc(s.topic || '(Chưa đặt tên)')}</div>${s.purpose ? `<div class="de">${esc(s.purpose)}</div>` : ''}
         <div class="mt">${n ? `<span>${n} bài</span>` : ''}${v ? `<span>${v.n} video · ${mins(v.sec)}</span>` : ''}${s.hasFolder ? '<span>Tài liệu</span>' : ''}<span>${esc(s.trainer || '')}</span></div>
         <div class="pr ${st === 'done' ? 'ok' : ''}"><div><i style="width:${p}%"></i></div><span>${st === 'done' ? 'Hoàn thành' : st === 'run' ? p + '%' : 'Chưa học'}</span></div></div></article>`;
@@ -4717,11 +4733,12 @@ body.v4 .crs-side{font-family:var(--h-font)}
     const myCerts = S.sessions.filter(s => s.myCert).slice(0, 4);
     const nVid = all.filter(s => S.videos[s.sid]).reduce((a, s) => a + S.videos[s.sid].n, 0);
     const rp = resume ? pctOf(resume) : 0;
+    const UIV = S.ui || {};
     $('view').innerHTML = `
-      <section class="v4-hero"><div class="in">
-        <div class="txt"><span class="tag">MMH Training Academy · FY68</span>
-          <h1 class="h-h1">Hiểu sản phẩm MANI<br>tới từng chi tiết.</h1>
-          <p>Video ngắn và tài liệu sản phẩm — học trên điện thoại ngay giữa hai lần thăm khách hàng. Học xong toàn bộ bài, chứng chỉ tự gửi vào email.</p>
+      <section class="v4-hero" ${UIV.heroImg ? `style="background:linear-gradient(90deg,rgba(0,48,71,.92),rgba(0,48,71,.55) 60%,rgba(0,48,71,.25)),url('${esc(UIV.heroImg)}') center/cover"` : ''}><div class="in">
+        <div class="txt"><span class="tag">${esc(UIV.heroTag || 'MMH Training Academy · FY68')}</span>
+          <h1 class="h-h1">${UIV.heroTitle ? esc(UIV.heroTitle).replace(/\n|\|/g, '<br>') : 'Hiểu sản phẩm MANI<br>tới từng chi tiết.'}</h1>
+          <p>${esc(UIV.heroText || 'Video ngắn và tài liệu sản phẩm — học trên điện thoại ngay giữa hai lần thăm khách hàng. Học xong toàn bộ bài, chứng chỉ tự gửi vào email.')}</p>
           <div class="acts">${resume ? `<button class="h-btn white" data-a="course" data-sid="${esc(resume.sid)}">${ic('play')}${stateOf(resume) === 'run' ? 'Tiếp tục bài học' : 'Bắt đầu học'}</button>` : ''}<button class="h-btn outline" data-a="go" data-h="#/learn">${ic('book')}Khám phá lộ trình</button></div>
           <div class="v4-stats"><div><b>${running.length}</b><span>Khoá đang học</span></div><div><b>${done.length}</b><span>Khoá hoàn thành</span></div><div><b style="color:var(--h-y)">${certs}</b><span>Chứng chỉ</span></div></div>
         </div>
@@ -4733,11 +4750,11 @@ body.v4 .crs-side{font-family:var(--h-font)}
         </div></div></section>
       <div class="v4-wrap">
         ${resume ? `<div class="v4-cont hub-card" data-a="course" data-sid="${esc(resume.sid)}"><div class="th" style="${posterOf(resume) ? `background-image:url('${esc(posterOf(resume))}')` : ''}"><span class="pl">${ic('play')}</span>${S.videos[resume.sid] ? `<small>${S.videos[resume.sid].n} video · ${mins(S.videos[resume.sid].sec)}</small>` : ''}</div>
-          <div class="x"><div class="h-kick">${stateOf(resume) === 'run' ? 'Tiếp tục học' : 'Bắt đầu học'} · ${esc(specName(specOf(resume)))}</div><b>${esc(resume.topic)}</b><div class="pr"><div><i style="width:${rp}%"></i></div><span>${rp}%</span></div></div>
+          <div class="x"><div class="h-kick">${stateOf(resume) === 'run' ? 'Tiếp tục học' : 'Bắt đầu học'} · ${esc(grpName(resume))}</div><b>${esc(resume.topic)}</b><div class="pr"><div><i style="width:${rp}%"></i></div><span>${rp}%</span></div></div>
           <span class="h-btn navy sm">${stateOf(resume) === 'run' ? 'Học tiếp' : 'Vào học'}</span></div>` : ''}
         <section id="paths" style="margin-top:48px"><div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
             <div><h2 class="h-h2">Lộ trình sản phẩm</h2><p class="h-sub">${all.length} khoá học · ${nVid} video bài giảng</p></div>
-            <div class="h-seg" id="v4seg">${[['', 'Tất cả'], ['nha', 'Nha khoa'], ['nhan', 'Nhãn khoa'], ['ngoai', 'Ngoại khoa'], ['kn', 'Kỹ năng']].map(([k, t]) => `<button class="${H.spec === k ? 'on' : ''}" data-k="${k}">${t}</button>`).join('')}</div></div>
+            <div class="h-seg" id="v4seg">${grpSeg(all, H.spec)}</div></div>
           <div id="v4homeGrid"></div></section>
         <section class="v4-bottom">
           <div class="h-box"><h3 class="h-h3">Chứng chỉ của tôi</h3><p class="h-sub" style="margin:4px 0 14px">Học xong toàn bộ bài của khoá ⇒ chứng chỉ tự gửi email</p>
@@ -4755,7 +4772,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
         </section></div>
       <footer class="v4-foot"><div><span>MANI Medical Hanoi · Training Hub · nội bộ</span><span>Dữ liệu: Google Sheet · Video: GitHub</span></div></footer>`;
     const draw = () => {
-      const list = all.filter(s => !H.spec || specOf(s) === H.spec).sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date))).slice(0, 12);
+      const list = all.filter(s => !H.spec || grpKey(s) === H.spec).sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date))).slice(0, 12);
       $('v4homeGrid').innerHTML = list.length ? `<div class="v4-grid">${list.map(card).join('')}</div>` : `<div class="v4-empty">${ic('book')}<b>Chưa có khoá học ở nhóm này</b>${isTrainerV() ? 'Bấm "Tạo khoá học mới" ở Thư viện nhanh.' : 'Trainer sẽ sớm cập nhật.'}</div>`;
     };
     $('v4seg').querySelectorAll('button').forEach(b => b.onclick = () => { H.spec = b.dataset.k; $('v4seg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); draw(); });
@@ -4787,12 +4804,12 @@ body.v4 .crs-side{font-family:var(--h-font)}
         ${isTrainerV() ? `<button class="h-btn navy sm" data-a="sessionForm">${ic('plus')}Tạo khoá học mới</button>` : ''}</div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px">
         <label style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--h-line2);border-radius:12px;padding:0 14px;height:46px;flex:1 1 280px">${ic('search').replace('<svg', '<svg style="width:18px;height:18px;color:#666"')}<input id="v4q" placeholder="Tìm sản phẩm, bài học, trainer…" value="${esc(F4.q)}" style="border:0;outline:0;flex:1;font:inherit;background:transparent"></label>
-        <div class="h-seg" id="v4seg">${[['', 'Tất cả'], ['nha', 'Nha khoa'], ['nhan', 'Nhãn khoa'], ['ngoai', 'Ngoại khoa'], ['kn', 'Kỹ năng']].map(([k, t]) => `<button class="${F4.spec === k ? 'on' : ''}" data-k="${k}">${t}</button>`).join('')}</div>
+        <div class="h-seg" id="v4seg">${grpSeg(all, F4.spec)}</div>
         <div class="h-seg" id="v4st">${[['', 'Mọi trạng thái'], ['new', 'Chưa học'], ['run', 'Đang học'], ['done', 'Hoàn thành']].map(([k, t]) => `<button class="${F4.st === k ? 'on' : ''}" data-k="${k}">${t}</button>`).join('')}</div></div>
       <div id="v4list"></div></div>`;
     const draw = () => {
       const qq = deacc(F4.q);
-      const list = all.filter(s => (!F4.spec || specOf(s) === F4.spec) && (!F4.st || stateOf(s) === F4.st) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose].join(' ')).includes(qq)))
+      const list = all.filter(s => (!F4.spec || grpKey(s) === F4.spec) && (!F4.st || stateOf(s) === F4.st) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose].join(' ')).includes(qq)))
         .sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date)));
       $('v4list').innerHTML = list.length ? `<div class="v4-grid">${list.map(card).join('')}</div>` : `<div class="v4-empty">${ic('search')}<b>Không có khoá học phù hợp</b>Thử đổi nhóm hoặc bỏ bớt bộ lọc.</div>`;
     };
@@ -4814,7 +4831,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
   function renderCourse(sid){
     const {s, f} = SessionPage.data();
     if (!s.sid) return;
-    const v = S.videos[sid], m = S.mats[sid], edit = canEdit(s), sp = specOf(s);
+    const v = S.videos[sid], m = S.mats[sid], edit = canEdit(s), sp = specOf(s), spName = grpName(s);
     const files = m && m.files ? m.files : [];
     const prog = {}; ((m && m.myProgress) || []).forEach(p => prog[p.fileId] = p);
     const doneN = files.filter(x => prog[x.id] && prog[x.id].completed).length;
@@ -4831,16 +4848,16 @@ body.v4 .crs-side{font-family:var(--h-font)}
           return `<div class="v4-li ${d ? 'done' : ''} ${i === nextI && !d ? 'cur' : ''}" data-a="course" data-sid="${esc(sid)}" data-fid="${esc(x.id)}"><span class="n">${d ? ic('check') : i + 1}</span><span class="t">${esc(x.name)}<small>${isVid(x) ? 'Video · xem ≥ 70%' : 'Tài liệu · đọc hết trang'}${p && !d ? ' · đang ' + (p.percent || 0) + '%' : ''}</small></span><span class="d">${dur(x)}</span></div>`; }).join('')
         + `<div class="v4-li ce ${s.myCert ? 'done' : ''}"><span class="n">${ic('award')}</span><span class="t">Chứng chỉ hoàn thành<small>${s.myCert ? 'Đã cấp · đã gửi email' : 'Tự cấp khi học xong ' + files.length + '/' + files.length + ' bài'}</small></span>${s.myCert ? `<a class="h-btn xs yellow" href="${esc(s.myCert)}" target="_blank" rel="noopener">Xem</a>` : `<span class="d">${doneN}/${files.length}</span>`}</div>`;
     const nx = next || {};
-    const playerBg = isVid(nx) && nx.poster ? `background-image:url('${esc(nx.poster)}')` : posterOf(s) ? `background-image:url('${esc(posterOf(s))}')` : `background:${COVER[sp]}`;
+    const playerBg = isVid(nx) && nx.poster ? `background-image:url('${esc(nx.poster)}')` : ownCover(s) || posterOf(s) ? `background-image:url('${esc(ownCover(s) || posterOf(s))}')` : `background:${uiImg(s)}${COVER[sp]}`;
     const points = String(s.purpose || '').split(/\n|;|•|•|(?:\.\s+)/).map(x => x.trim()).filter(x => x.length > 3).slice(0, 5);
     $('view').innerHTML = `
       <div class="v4-lhead"><div class="in"><span class="back" data-a="go" data-h="#/learn">${ic('left')}Lộ trình</span>
-        <div class="x"><span>${esc(specName(sp))}${files.length ? ' · ' + files.length + ' bài' : ''}${v ? ' · ' + v.n + ' video' : ''} · Trainer ${esc(s.trainer || '—')}</span><b>${esc(s.topic || '(Chưa đặt tên)')}</b></div>
+        <div class="x"><span>${esc(spName)}${files.length ? ' · ' + files.length + ' bài' : ''}${v ? ' · ' + v.n + ' video' : ''} · Trainer ${esc(s.trainer || '—')}</span><b>${esc(s.topic || '(Chưa đặt tên)')}</b></div>
         <div class="pg"><div><i style="width:${pct}%"></i></div><span>${pct}% khoá</span></div></div></div>
       <div class="v4-lbody"><div>
           ${files.length ? `<div class="v4-player" data-a="course" data-sid="${esc(sid)}" ${next ? `data-fid="${esc(next.id)}"` : ''} style="${playerBg}">
             <span class="kk">${st === 'done' ? 'Đã hoàn thành · ôn lại' : (doneN ? 'Học tiếp' : 'Bắt đầu') + ' · Bài ' + (nextI + 1) + '/' + files.length}</span>
-            ${isVid(nx) && nx.poster ? '' : `<div class="art">${ART[sp]}</div>`}<span class="pl">${ic('play')}</span>
+            ${(isVid(nx) && nx.poster) || hasUi(s) ? '' : `<div class="art">${ART[sp]}</div>`}<span class="pl">${ic('play')}</span>
             <div class="tt"><b>${esc(nx.name || '')}</b><span>${isVid(nx) ? 'Video ' + fmtSec(nx.duration || 0) : nx.kind ? ftypeLabel(nx.kind) + ' — đọc trong app' : ''}</span></div></div>`
           : `<div class="v4-player" style="background:${COVER[sp]};cursor:default"><div class="art">${ART[sp]}</div><div class="tt"><b>Khoá học chưa có bài</b><span>${edit ? 'Thêm video hoặc tài liệu ở khung bên phải' : 'Trainer đang chuẩn bị nội dung'}</span></div></div>`}
           <div class="h-box v4-key"><h3>${points.length ? 'Điểm chính của khoá' : 'Cách hoàn thành khoá học'}</h3><ul style="margin:0;padding:0">
@@ -4926,7 +4943,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
     el.addEventListener('click', e => { if (e.target === el || e.target.closest('[data-v4close]')) el.remove(); });
     try { confetti(); } catch (e) {}
   }
-  window.V4 = {celebrate, renderCourse, courses, stateOf, specOf};
+  window.V4 = {celebrate, renderCourse, courses, stateOf, specOf, grpKey, grpName, lineOf, coverStyle, COVER, ART};
 
   /* bỏ thông báo cũ "bài kiểm tra đã mở" (bài KT không còn là bước bắt buộc) */
   const _toast = toast;
@@ -4969,8 +4986,8 @@ body.v4 .crs-side{font-family:var(--h-font)}
     const own = S.sessions.filter(s => canEdit(s) && s.status !== 'Cancel').sort((a, b) => String(b.date).localeCompare(String(a.date)));
     const crs = own.filter(isCourse), live = own.filter(s => !isCourse(s));
     const row = s => { const v = S.videos[s.sid], sp = specOf(s);
-      return `<div class="v4-mrow"><div class="th" style="${coverStyle(s)}">${posterOf(s) ? '' : `<div class="art">${ART[sp]}</div>`}</div>
-        <div class="t" data-a="go" data-h="#/s/${esc(s.sid)}"><b>${esc(s.topic || '(Chưa đặt tên)')}</b><span>${esc(specName(sp))} · ${v ? v.n + ' video · ' : ''}${s.hasFolder ? 'có tài liệu · ' : ''}${s.enrolled ? (s.passed || 0) + '/' + s.enrolled + ' học viên hoàn thành' : esc(s.dateText || '')}</span></div>
+      return `<div class="v4-mrow"><div class="th" style="${coverStyle(s)}">${posterOf(s) || hasUi(s) ? '' : `<div class="art">${ART[sp]}</div>`}</div>
+        <div class="t" data-a="go" data-h="#/s/${esc(s.sid)}"><b>${esc(s.topic || '(Chưa đặt tên)')}</b><span>${esc(grpName(s))} · ${v ? v.n + ' video · ' : ''}${s.hasFolder ? 'có tài liệu · ' : ''}${s.enrolled ? (s.passed || 0) + '/' + s.enrolled + ' học viên hoàn thành' : esc(s.dateText || '')}</span></div>
         <div class="a"><button class="h-btn xs line" data-a="vidMgr" data-sid="${esc(s.sid)}">${ic('video')}Video</button><button class="h-btn xs line" data-a="v4Upload" data-sid="${esc(s.sid)}">${ic('upload')}Tài liệu</button><button class="h-btn xs line" data-a="compose" data-sid="${esc(s.sid)}" data-k="pre">${ic('mail')}Email</button><button class="h-btn xs line" data-a="sessionForm" data-sid="${esc(s.sid)}">${ic('edit')}Sửa</button></div></div>`; };
     $('view').innerHTML = `<div class="v4-wrap" style="padding-top:36px"><div style="display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap"><div style="flex:1;min-width:240px"><div class="h-kick">Dành cho trainer</div><h1 class="h-h2" style="font-size:34px;margin-top:6px">Quản lý khoá học</h1>
         <p class="h-sub">3 bước: Tạo khoá học → Thêm video / tài liệu → Gửi email mời học viên.</p></div>
@@ -5416,6 +5433,390 @@ body.v4 .crs-side{font-family:var(--h-font)}
     if (!(opts && opts.mode) && !pref) opts = Object.assign({}, opts, {mode: 'hub'});
     return _ro.call(this, sid, fid, opts);
   };
+})();
+</script>
+
+<style id="v45-css">
+.sf-cover{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sf-cover .pv{width:150px;height:84px;border-radius:12px;background:#E9EFF6 center/cover no-repeat;border:1px solid var(--line2);display:grid;place-items:center;color:var(--faint);font-size:12px;flex:none}
+.v45-ren{margin-left:8px;width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:inherit;display:inline-grid;place-items:center;vertical-align:middle;cursor:pointer}
+.v45-ren svg{width:15px;height:15px}
+.vm-up{border:1.5px dashed var(--line2);border-radius:14px;padding:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--ice)}
+.vm-up.drag{border-color:var(--blue);background:#EEF4FF}
+.vm-up>svg{width:30px;height:30px;color:var(--blue);flex:none}
+.vm-job svg{flex:none}
+.vm-up .t{flex:1;min-width:220px;font-size:13.5px;color:#3D5268}
+.vm-up .t b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:2px}
+.vm-job{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:13px;color:#3D5268}
+.vm-job .bar{flex:1;height:6px;border-radius:6px;background:var(--mist);overflow:hidden;position:relative}.vm-job .bar .f{position:absolute;left:0;top:0;bottom:0;background:var(--blue);width:0;transition:width .3s}
+.uie-sec{font-weight:700;color:var(--navy);margin:18px 0 8px;font-size:14.5px}
+.uie-sec:first-child{margin-top:0}
+.uie-row{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.uie-row .pv{width:120px;height:68px;border-radius:10px;background:#E9EFF6 center/cover no-repeat;border:1px solid var(--line2)}
+.uie-row b{color:var(--navy);font-size:14px}.uie-row small{display:block;color:var(--muted);font-size:12px}
+.uie-acc{display:flex;gap:8px;flex-wrap:wrap}.uie-acc button{width:34px;height:34px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line2);cursor:pointer}
+.uie-acc button.on{box-shadow:0 0 0 2px var(--navy)}
+.gh-box{border:1px solid var(--line2);border-radius:14px;padding:14px 16px;background:#fff}
+.gh-box ol{margin:8px 0 10px 18px;padding:0;font-size:13px;color:#3D5268;line-height:1.6}
+.gh-st{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px}
+.gh-st.on{background:#E8F5E9;color:#2E7D32}.gh-st.off{background:#FFF4E5;color:#B45309}
+@media (max-width:640px){.uie-row{grid-template-columns:90px minmax(0,1fr)}.uie-row .pv{width:90px;height:52px}.uie-row .a{grid-column:1/-1}}
+</style>
+<script id="v45-js">
+/* ==========================================================================
+   ★ v4.5 (15/10/2026) — TRAINER TỰ QUẢN LÝ KHOÁ HỌC (máy chủ v3.25, file RH_HubCourse.gs)
+   1) Đổi tên khoá học bất cứ lúc nào: nút bút cạnh tên khoá (trang khoá học) + form Sửa thông tin.
+   2) Video: đổi tên / sắp xếp thứ tự (khung Video) + TẢI VIDEO TỪ MÁY lên thẳng app (Drive ▸ "Video bài giảng" ⇒ máy chủ đẩy lên GitHub Pages).
+   3) Nhóm sản phẩm do trainer chọn trong form (Nha khoa / Nhãn khoa / Ngoại khoa / tự gõ) ⇒ bộ lọc Lộ trình theo nhóm thật, không đoán theo tên.
+   4) Thư mục tài liệu: không tạo khi lưu — tạo khi gửi email mời hoặc tải file đầu tiên; huỷ / xoá buổi ⇒ thư mục vào Thùng rác Drive.
+   5) Ảnh bìa khoá học (trainer) + Giao diện & GitHub (Admin): chữ / ảnh phần đầu trang chủ, màu chính, ảnh bìa theo nhóm, kết nối GitHub.
+   6) Email: "Học online sau buổi" + "Nhắc hoàn thành khoá học" dùng được cả khi khoá không có bài kiểm tra.
+   ========================================================================== */
+(function(){
+  const VID_MAX_MB = 25;
+  const LINES = ['Nha khoa', 'Nhãn khoa', 'Ngoại khoa'];
+  const V = () => window.V4 || {};
+
+  /* ---------- dữ liệu khởi động: smeta / ui / gh ---------- */
+  S.smeta = S.smeta || {}; S.ui = S.ui || {}; S.gh = !!S.gh;
+  try { const c = JSON.parse(localStorage.getItem('mmh_hub_ui') || 'null'); if (c) { S.smeta = c.smeta || {}; S.ui = c.ui || {}; S.gh = !!c.gh; } } catch (e) {}
+  const saveUiCache = () => { try { localStorage.setItem('mmh_hub_ui', JSON.stringify({smeta: S.smeta, ui: S.ui, gh: S.gh})); } catch (e) {} };
+  function applyAccent(){ const a = S.ui && S.ui.accent; const r = document.documentElement.style; if (a) { r.setProperty('--h-blue', a); r.setProperty('--blue', a); } else { r.removeProperty('--h-blue'); r.removeProperty('--blue'); } }
+  const _ab = applyBoot;
+  applyBoot = function(r){
+    _ab(r);
+    if (r && r.smeta) S.smeta = r.smeta;
+    if (r && r.ui) S.ui = r.ui;
+    if (r && 'gh' in r) S.gh = !!r.gh;
+    applyAccent(); saveUiCache();
+  };
+  applyAccent();
+
+  /* ---------- tiện ích ---------- */
+  function pickFile(accept){ return new Promise(res => { const i = document.createElement('input'); i.type = 'file'; i.accept = accept; i.onchange = () => res(i.files && i.files[0] || null); i.click(); }); }
+  function imgToData(file, maxW, q){
+    return new Promise((res, rej) => {
+      const u = URL.createObjectURL(file), im = new Image();
+      im.onload = () => { const sc = Math.min(1, maxW / im.naturalWidth), c = document.createElement('canvas'); c.width = Math.round(im.naturalWidth * sc); c.height = Math.round(im.naturalHeight * sc);
+        c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); URL.revokeObjectURL(u); res(c.toDataURL('image/jpeg', q || .82)); };
+      im.onerror = () => { URL.revokeObjectURL(u); rej(new Error('Không đọc được ảnh — chọn file JPG / PNG.')); };
+      im.src = u;
+    });
+  }
+  /* thời lượng + ảnh bìa (khung hình giây thứ 1) của video trên máy */
+  function videoProbe(file){
+    return new Promise(res => {
+      const u = URL.createObjectURL(file), v = document.createElement('video'); let done = false;
+      const fin = (o) => { if (done) return; done = true; URL.revokeObjectURL(u); res(o); };
+      v.preload = 'auto'; v.muted = true; v.playsInline = true; v.src = u;
+      v.onloadedmetadata = () => { const d = v.duration || 0; try { v.currentTime = Math.min(1, d / 3); } catch (e) { fin({duration: d, poster: ''}); } };
+      v.onseeked = () => { let poster = ''; try { const sc = Math.min(1, 960 / (v.videoWidth || 960)), c = document.createElement('canvas'); c.width = Math.round((v.videoWidth || 960) * sc); c.height = Math.round((v.videoHeight || 540) * sc); c.getContext('2d').drawImage(v, 0, 0, c.width, c.height); poster = c.toDataURL('image/jpeg', .8); } catch (e) {} fin({duration: v.duration || 0, poster}); };
+      v.onerror = () => fin({duration: 0, poster: '', bad: true});
+      setTimeout(() => fin({duration: v.duration || 0, poster: ''}), 15000);
+    });
+  }
+  const lineOptions = () => uniq(LINES.concat(Object.values(S.smeta || {}).map(x => x.line).filter(Boolean)));
+
+  /* ==========================================================================
+     FORM TẠO / SỬA KHOÁ HỌC: nhóm sản phẩm, ảnh bìa, thư mục tạo sau, xoá khoá
+     ========================================================================== */
+  let SF = null;      // trạng thái form đang mở {sid, cover: undefined | '' | dataURL}
+  const _sf = sessionForm;
+  sessionForm = function(sid){
+    _sf(sid);
+    const m = Modal.top(); if (!m || !$('sfSave')) return;
+    const s = sid ? (findS(sid) || {}) : {};
+    const meta = (S.smeta || {})[sid] || {};
+    SF = {sid: sid || '', cover: undefined, m};
+    const catRow = $('sfCat').closest('.row3');
+    catRow.insertAdjacentHTML('afterend', `<div class="field" id="sfLineBox"><label>Nhóm sản phẩm <span class="faint">— trainer tự chọn, dùng để xếp khoá học ở Lộ trình</span></label>
+        <input class="inp" id="sfLine" list="dlLine" value="${esc(meta.line || '')}" placeholder="VD: Nha khoa · Nhãn khoa · Ngoại khoa (hoặc gõ nhóm mới)"><datalist id="dlLine">${lineOptions().map(x => `<option value="${esc(x)}">`).join('')}</datalist></div>`);
+    const syncLine = () => { $('sfLineBox').style.display = catKey($('sfCat').value) === 'product' ? '' : 'none'; };
+    $('sfCat').addEventListener('change', syncLine); syncLine();
+    /* ảnh bìa */
+    $('sfTrainer').closest('.field').insertAdjacentHTML('beforebegin', `<div class="field"><label>Ảnh bìa khoá học <span class="faint">(tuỳ chọn — không có thì dùng ảnh video / ảnh nhóm)</span></label>
+        <div class="sf-cover"><div class="pv" id="sfCovPv" style="${meta.cover ? `background-image:url('${esc(meta.cover)}')` : ''}">${meta.cover ? '' : 'Chưa có ảnh'}</div>
+        <button type="button" class="btn btn-line btn-sm" id="sfCovPick">${ic('upload')}Chọn ảnh</button><button type="button" class="btn btn-ghost btn-sm ${meta.cover ? '' : 'hide'}" id="sfCovDel">${ic('trash')}Bỏ ảnh</button></div></div>`);
+    $('sfCovPick').onclick = async () => {
+      const f = await pickFile('image/*'); if (!f) return;
+      try { SF.cover = await imgToData(f, 1600, .82); $('sfCovPv').style.backgroundImage = `url('${SF.cover}')`; $('sfCovPv').textContent = ''; $('sfCovDel').classList.remove('hide'); } catch (e) { err(e.message); }
+    };
+    $('sfCovDel').onclick = () => { SF.cover = ''; $('sfCovPv').style.backgroundImage = ''; $('sfCovPv').textContent = 'Chưa có ảnh'; $('sfCovDel').classList.add('hide'); };
+    /* thư mục: tạo khi gửi email mời / tải file đầu tiên */
+    const note = () => { if (s.hasFolder) return; const c = $('sfCat').value, d = $('sfDate').value.replace(/-/g, '');
+      $('sfFolderNote').innerHTML = `Thư mục tài liệu <b>tự tạo</b> khi bạn <b>gửi email mời</b> hoặc <b>tải tài liệu đầu tiên</b>: Drive › <b>${esc(catLabel(c))}</b> › <code>${esc(d)}_${esc($('sfType').value)}_${esc(c)}_…</code>. Huỷ / xoá buổi ⇒ thư mục tự vào Thùng rác.`; };
+    ['sfCat', 'sfType', 'sfDate'].forEach(id => $(id).addEventListener('change', note)); note();
+    $('sfStatus').addEventListener('change', () => { if ($('sfStatus').value === 'Cancel' && s.hasFolder) toast('Lưu ý: huỷ buổi ⇒ thư mục tài liệu do hệ thống tạo sẽ được chuyển vào Thùng rác Drive (khôi phục được trong 30 ngày).'); });
+    /* xoá khoá học */
+    if (sid && canEdit(s)) {
+      m.foot.insertAdjacentHTML('afterbegin', `<button class="btn btn-ghost" id="sfDel" style="color:#C62828">${ic('trash')}Xoá khoá học</button>`);
+      $('sfDel').onclick = async () => {
+        if (!await confirmBox('Xoá khoá học này?', `Buổi <b>${esc(s.topic || '')}</b> chuyển sang <b>Đã huỷ</b> (dòng trong sheet được giữ lại), học viên không thấy nữa. Thư mục tài liệu do hệ thống tạo được chuyển vào <b>Thùng rác Drive</b> (khôi phục được 30 ngày).`, 'Xoá khoá học', true)) return;
+        try { const r = await post('deleteSession', {sid}, {timeout: 90000}); SF = null; Modal.close(m); ok(r.message); const x = findS(sid); if (x) x.status = 'Cancel'; await reload(); go('#/manage'); } catch (e) { err(e.message); }
+      };
+    }
+    const _close = m.onClose; m.onClose = () => { if (SF && SF.m === m) SF = null; if (_close) _close(); };
+  };
+  /* lưu: thêm nhóm sản phẩm, không tạo thư mục ngay; xong thì tải ảnh bìa */
+  const _post = post;
+  post = function(action, params, opt){
+    if (action === 'saveSession' && SF && $('sfSave')) {
+      const st = SF, line = $('sfLine') ? $('sfLine').value.trim() : undefined;
+      params = Object.assign({}, params, {createFolder: 0});
+      if (line !== undefined && catKey(params.category) === 'product') params.line = line;
+      if (st.cover === '') params.cover = '';
+      return _post(action, params, opt).then(async r => {
+        if (r && r.sid) {
+          const mt = S.smeta[r.sid] || (S.smeta[r.sid] = {});
+          if (params.line !== undefined) mt.line = params.line;
+          if (st.cover === '') mt.cover = '';
+          if (st.cover) {
+            try { const u = await _post('imgPublish', {sid: r.sid, data: st.cover}, {timeout: 120000}); mt.cover = u.url; }
+            catch (e) { toast('Đã lưu khoá học nhưng chưa tải được ảnh bìa: ' + e.message); }
+          }
+          saveUiCache();
+        }
+        return r;
+      });
+    }
+    return _post.apply(this, arguments);
+  };
+
+  /* ==========================================================================
+     ĐỔI TÊN KHOÁ HỌC NGAY TRÊN TRANG KHOÁ HỌC
+     ========================================================================== */
+  async function renameCourse(sid){
+    const s = findS(sid); if (!s) return;
+    const m = Modal.open({title: 'Đổi tên khoá học', body: `<div class="field"><label>Tên khoá học</label><input class="inp" id="rnT" value="${esc(s.topic || '')}" autofocus></div><div class="hint">Đổi tên không ảnh hưởng tiến độ học, video, tài liệu và chứng chỉ đã cấp.</div>`,
+      foot: `<div class="sp"></div><button class="btn btn-line" data-mclose>Huỷ</button><button class="btn btn-primary" id="rnOk">${ic('check')}Lưu tên</button>`});
+    const go2 = async () => {
+      const t = $('rnT').value.trim(); if (!t) return err('Vui lòng nhập tên khoá học.');
+      if (t === s.topic) return Modal.close(m);
+      const old = s.topic; s.topic = t; Modal.close(m); route();
+      try { const r = await post('saveSession', {sid, topic: t}, {timeout: 90000}); ok('Đã đổi tên khoá học.'); delete S.full[sid]; reload(); }
+      catch (e) { s.topic = old; route(); err(e.message); }
+    };
+    $('rnOk').onclick = go2; $('rnT').addEventListener('keydown', e => { if (e.key === 'Enter') go2(); });
+  }
+  A.v45Rename = d => renameCourse(d.sid);
+  const _spr = SessionPage.render;
+  SessionPage.render = function(){
+    const r = _spr.apply(this, arguments);
+    try { decorateCourse(this.sid); } catch (e) {}
+    return r;
+  };
+  const _spt = SessionPage.renderTab;
+  SessionPage.renderTab = function(){ const r = _spt.apply(this, arguments); try { decorateCourse(this.sid); } catch (e) {} return r; };
+  function decorateCourse(sid){
+    const s = findS(sid); if (!s || !canEdit(s)) return;
+    const h = document.querySelector('.v4-lhead .x b');
+    if (h && !h.querySelector('.v45-ren')) h.insertAdjacentHTML('beforeend', `<button class="v45-ren" data-a="v45Rename" data-sid="${esc(sid)}" title="Đổi tên khoá học" aria-label="Đổi tên khoá học">${ic('edit')}</button>`);
+    const vb = document.querySelector('.v4-tools [data-a="vidMgr"]');
+    if (vb) vb.innerHTML = `${ic('video')}Video: thêm · đổi tên · thứ tự`;
+  }
+
+  /* ==========================================================================
+     KHUNG VIDEO: TẢI VIDEO TỪ MÁY (Drive ⇒ GitHub Pages), đổi tên, thứ tự
+     ========================================================================== */
+  if (window.VM) {
+    const VM = window.VM;
+    const _open = VM.open;
+    VM.open = async function(sid){
+      await _open.call(this, sid);
+      const L = $('vmList'); if (!L) return;
+      const nb = this.m && this.m.body.querySelector('.note-box div');
+      if (nb) nb.innerHTML = 'Học viên xem video ngay trong app, phải xem <b>≥ 70%</b> mỗi video (không tua qua phần chưa xem). Học xong toàn bộ video + tài liệu ⇒ chứng chỉ tự gửi email. Thứ tự dưới đây = thứ tự trình chiếu cho học viên.';
+      const sec = L.previousElementSibling;
+      if (sec) sec.textContent = 'Video của khoá học — gõ để đổi tên, bấm mũi tên để đổi thứ tự trình chiếu';
+      sec.insertAdjacentHTML('beforebegin', `<div class="vm-sec" style="margin-top:0">Tải video từ máy tính</div>
+        <div class="vm-up" id="vmUp">${ic('upload')}<div class="t"><b>Chọn hoặc kéo thả file video (MP4)</b>Tối đa ${VID_MAX_MB} MB / video (nên xuất 720p). File gốc lưu trong thư mục "Video bài giảng" của khoá trên Drive; video phát trên app qua GitHub.</div>
+          <button class="btn btn-primary btn-sm" id="vmPick">${ic('upload')}Chọn video</button></div><div id="vmJobs"></div>
+        ${S.gh ? '' : `<div class="note-box" style="margin-top:10px">${ic('info')}<div>${isAdminV() ? 'Chưa kết nối GitHub — bấm <a style="color:var(--blue);font-weight:700;cursor:pointer" data-a="v45Ui" data-tab="gh">Kết nối GitHub</a> (làm 1 lần) để trainer tải video từ app.' : 'Admin chưa kết nối GitHub cho Training Hub — tạm thời chưa tải video từ app được. Báo Admin (Quản lý ▸ Giao diện & GitHub).'}</div></div>`}`);
+      sec.style.marginTop = '18px';
+      const up = $('vmUp');
+      $('vmPick').onclick = async () => { const f = await pickFile('video/mp4,video/webm,video/x-m4v,.mp4,.m4v,.webm'); if (f) this.upload(f); };
+      up.addEventListener('dragover', e => { e.preventDefault(); up.classList.add('drag'); });
+      up.addEventListener('dragleave', () => up.classList.remove('drag'));
+      up.addEventListener('drop', e => { e.preventDefault(); up.classList.remove('drag'); [...(e.dataTransfer.files || [])].forEach(f => this.upload(f)); });
+    };
+    VM.upload = async function(file){
+      const sid = this.sid;
+      if (!/\.(mp4|m4v|webm)$/i.test(file.name)) return err('Chỉ nhận video MP4 / WEBM. Video .mov của iPhone: xuất lại dạng MP4 trước khi tải lên.');
+      if (file.size > VID_MAX_MB * 1048576) return err(`Video ${(file.size / 1048576).toFixed(1)} MB — tối đa ${VID_MAX_MB} MB. Hãy nén video (720p, ví dụ bằng HandBrake / CapCut) rồi tải lại.`);
+      if (!S.gh) return err(isAdminV() ? 'Chưa kết nối GitHub — vào Quản lý ▸ Giao diện & GitHub ▸ Kết nối GitHub trước.' : 'Admin chưa kết nối GitHub cho Training Hub nên chưa tải video từ app được.');
+      const title = file.name.replace(/\.[^.]+$/, '').replace(/[_]+/g, ' ').trim();
+      const id = 'j' + Date.now();
+      $('vmJobs').insertAdjacentHTML('beforeend', `<div class="vm-job" id="${id}"><span class="spin" style="width:14px;height:14px"></span><span class="x" style="min-width:0;flex:2"><b class="clamp1">${esc(title)}</b><small class="st" style="display:block">Đang đọc video…</small></span><div class="bar"><div class="f"></div></div><span class="pc">0%</span></div>`);
+      const J = $(id), set = (t, p) => { if (!J) return; J.querySelector('.st').textContent = t; if (p != null) { J.querySelector('.bar .f').style.width = p + '%'; J.querySelector('.pc').textContent = Math.round(p) + '%'; } };
+      try {
+        const info = await videoProbe(file);
+        if (info.bad) toast('Trình duyệt không xem trước được video này — vẫn tải lên, nhưng nếu học viên không xem được hãy xuất lại MP4 (H.264).');
+        /* 1) tải lên Drive (thư mục "Video bài giảng" của khoá) */
+        const CH = 8388608; let sent = 0, upId = '', res = null;
+        set('Đang tải lên Drive…', 2);
+        let r = await post('uploadInit', {sid, name: file.name, size: file.size, mime: file.type || 'video/mp4', path: ['Video bài giảng'], mode: 'replace', data: await blobB64(file.slice(0, Math.min(CH, file.size)))}, {timeout: 240000, direct: true});
+        upId = r.uploadId || ''; sent = r.done ? file.size : r.next; if (r.done) res = r.file;
+        while (sent < file.size) {
+          set('Đang tải lên Drive…', 2 + sent / file.size * 68);
+          r = await post('uploadChunk', {uploadId: upId, offset: sent, data: await blobB64(file.slice(sent, sent + CH))}, {timeout: 240000, direct: true});
+          sent = r.done ? file.size : r.next; if (r.done) res = r.file;
+        }
+        if (!res || !res.id) throw new Error('Drive chưa trả về file vừa tải.');
+        /* 2) máy chủ đẩy lên GitHub Pages + thêm vào danh sách video của khoá */
+        set('Đang đăng video lên GitHub (khoảng 30–60 giây)…', 75);
+        const p = await post('videoPublish', {sid, fileId: res.id, title, duration: Math.round(info.duration || 0), poster: info.poster || ''}, {timeout: 330000, direct: true});
+        const v = p.video || {};
+        if (this.sid === sid && $('vmList')) {
+          this.list.push({id: v.id, title: v.name || title, src: v.src, poster: v.poster, transcript: '', duration: v.duration || Math.round(info.duration || 0), catalogId: v.catalogId || '', _new: 1});
+          this.draw();
+        }
+        const sv = S.videos[sid] || (S.videos[sid] = {n: 0, poster: '', sec: 0});
+        sv.n++; sv.sec += v.duration || 0; if (!sv.poster && v.poster) sv.poster = v.poster;
+        delete S.full[sid]; delete S.mats[sid]; try { localStorage.removeItem('mmh_hub_mats_' + pre(S.user.email) + '_' + sid); } catch (e) {}
+        set('Đã đăng — GitHub cần 1–2 phút để phát được video trên mọi máy.', 100);
+        if (J) { J.querySelector('.spin').outerHTML = ic('check').replace('<svg', '<svg style="width:16px;height:16px;color:#2E7D32"'); }
+        ok(p.message || 'Đã đăng video.');
+      } catch (e) {
+        set('Lỗi: ' + e.message, null);
+        if (J) { const sp = J.querySelector('.spin'); if (sp) sp.outerHTML = ic('alert').replace('<svg', '<svg style="width:16px;height:16px;color:#C62828"'); }
+        err(e.message);
+      }
+    };
+    /* video vừa tải: ghi chú "GitHub đang xử lý" */
+    const _draw = VM.draw;
+    VM.draw = function(){
+      _draw.apply(this, arguments);
+      document.querySelectorAll('#vmList .vm-it').forEach(el => { const v = this.list[+el.dataset.i]; if (v && v._new) { const sm = el.querySelector('small'); if (sm) sm.textContent = 'Vừa tải lên · GitHub đang xử lý 1–2 phút'; } });
+    };
+  }
+
+  /* ==========================================================================
+     GIAO DIỆN & GITHUB (Admin)
+     ========================================================================== */
+  const ACCENTS = ['#3A5CAA', '#0F5E9C', '#0F766E', '#5B3FA8', '#B45309', '#BE123C', '#003047'];
+  const UIE = {
+    open(tab){
+      if (!isAdminV()) return err('Chức năng này chỉ dành cho Admin.');
+      this.ui = JSON.parse(JSON.stringify(S.ui || {})); this.ui.covers = this.ui.covers || {};
+      const v4 = V(), all = (v4.courses ? v4.courses() : S.sessions);
+      const grp = new Map(); all.forEach(s => { const k = v4.grpKey ? v4.grpKey(s) : ''; if (k && !grp.has(k)) grp.set(k, v4.grpName(s)); });
+      LINES.forEach(l => { if (!grp.has('L:' + l)) grp.set('L:' + l, l); });
+      this.grp = [...grp.entries()];
+      const u = this.ui;
+      this.m = Modal.open({size: 'wide', title: 'Giao diện & GitHub', sub: 'Chỉnh trên app — mọi người thấy sau khi mở lại Training Hub', lock: true,
+        body: `<div class="uie-sec">Phần đầu trang chủ</div>
+          <div class="row2"><div class="field"><label>Dòng nhỏ phía trên</label><input class="inp" id="uiTag" value="${esc(u.heroTag || '')}" placeholder="MMH Training Academy · FY68"></div>
+            <div class="field"><label>Tiêu đề lớn <span class="faint">(dấu | để xuống dòng)</span></label><input class="inp" id="uiTitle" value="${esc(u.heroTitle || '')}" placeholder="Hiểu sản phẩm MANI | tới từng chi tiết."></div></div>
+          <div class="field"><label>Mô tả</label><textarea class="inp" id="uiText" rows="2" placeholder="Video ngắn và tài liệu sản phẩm — học trên điện thoại…">${esc(u.heroText || '')}</textarea></div>
+          <div class="uie-row"><div class="pv" id="uiHeroPv" style="${u.heroImg ? `background-image:url('${esc(u.heroImg)}')` : ''}"></div><div><b>Ảnh nền phần đầu trang</b><small>Ảnh ngang 1600 × 900, nền tối — chữ trắng nằm bên trái</small></div>
+            <div class="a"><button class="btn btn-line btn-sm" data-up="hero">${ic('upload')}Tải ảnh</button> <button class="btn btn-ghost btn-sm" data-rm="hero">${ic('trash')}</button></div></div>
+          <div class="field" style="margin-top:12px"><label>Màu chính (nút, liên kết)</label><div class="uie-acc" id="uiAcc">${ACCENTS.map(c => `<button type="button" data-c="${c}" style="background:${c}" class="${(u.accent || '#3A5CAA') === c ? 'on' : ''}" title="${c}"></button>`).join('')}</div></div>
+          <div class="uie-sec">Ảnh bìa theo nhóm khoá học <span class="faint" style="font-weight:400">— khoá chưa có ảnh riêng / ảnh video dùng ảnh của nhóm</span></div>
+          <div id="uiCovers"></div>
+          <div class="uie-sec" id="uiGhSec">Kết nối GitHub (để trainer tải video từ app)</div>
+          <div class="gh-box"><span class="gh-st ${S.gh ? 'on' : 'off'}" id="ghSt">${S.gh ? ic('check') + 'Đã kết nối' : ic('alert') + 'Chưa kết nối'}</span>
+            <ol><li>Mở <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com ▸ Fine-grained token mới</a> (đăng nhập tài khoản có quyền kho <b>ManiMedicalHanoi/Training-Hub</b>).</li>
+              <li>Resource owner: <b>ManiMedicalHanoi</b> · Repository access: <b>Only select repositories ▸ Training-Hub</b> · Expiration: 1 năm.</li>
+              <li>Permissions ▸ Repository ▸ <b>Contents: Read and write</b> ▸ Generate token ▸ sao chép và dán vào ô dưới.</li></ol>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><input class="inp" id="ghTok" type="password" autocomplete="off" placeholder="github_pat_…" style="flex:1;min-width:220px"><button class="btn btn-primary btn-sm" id="ghSave">${ic('check')}Kết nối</button>${S.gh ? `<button class="btn btn-ghost btn-sm" id="ghDel">Gỡ kết nối</button>` : ''}</div>
+            <div class="hint" style="margin-top:6px">Token được lưu trên máy chủ Apps Script (không nằm trong app). Video tối đa ${VID_MAX_MB} MB.</div></div>`,
+        foot: `<div class="sp"></div><button class="btn btn-line" data-mclose>Đóng</button><button class="btn btn-primary" id="uiSave">${ic('check')}Lưu giao diện</button>`});
+      this.drawCovers();
+      this.m.el.querySelectorAll('[data-up="hero"]').forEach(b => b.onclick = () => this.upload('hero'));
+      this.m.el.querySelectorAll('[data-rm="hero"]').forEach(b => b.onclick = () => { delete u.heroImg; $('uiHeroPv').style.backgroundImage = ''; });
+      $('uiAcc').querySelectorAll('button').forEach(b => b.onclick = () => { u.accent = b.dataset.c; $('uiAcc').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); });
+      $('uiSave').onclick = () => this.save();
+      $('ghSave').onclick = () => this.gh(false);
+      if ($('ghDel')) $('ghDel').onclick = () => this.gh(true);
+      if (tab === 'gh') setTimeout(() => $('uiGhSec').scrollIntoView({behavior: 'smooth', block: 'start'}), 120);
+    },
+    drawCovers(){
+      const c = this.ui.covers;
+      $('uiCovers').innerHTML = this.grp.map(([k, n]) => `<div class="uie-row"><div class="pv" style="${c[k] ? `background-image:url('${esc(c[k])}')` : `background:${(V().COVER || {})[k.startsWith('L:') ? (/nh[aã]n|eye/i.test(n) ? 'nhan' : /ngo[aạ]i|surg/i.test(n) ? 'ngoai' : 'nha') : 'kn'] || '#E9EFF6'}`}"></div>
+          <div><b>${esc(n)}</b><small>${k.startsWith('L:') ? 'Nhóm sản phẩm' : 'Nhóm chủ đề'}${c[k] ? ' · đã có ảnh' : ' · đang dùng nền mặc định'}</small></div>
+          <div class="a"><button class="btn btn-line btn-sm" data-k="${esc(k)}">${ic('upload')}Tải ảnh</button>${c[k] ? ` <button class="btn btn-ghost btn-sm" data-rk="${esc(k)}">${ic('trash')}</button>` : ''}</div></div>`).join('');
+      $('uiCovers').querySelectorAll('[data-k]').forEach(b => b.onclick = () => this.upload(b.dataset.k));
+      $('uiCovers').querySelectorAll('[data-rk]').forEach(b => b.onclick = () => { delete c[b.dataset.rk]; this.drawCovers(); });
+    },
+    async upload(slot){
+      const f = await pickFile('image/*'); if (!f) return;
+      let data; try { data = await imgToData(f, 1600, .82); } catch (e) { return err(e.message); }
+      busy(true, 'Đang tải ảnh lên…');
+      try {
+        const r = await post('imgPublish', {slot: slot === 'hero' ? 'hero' : 'cover-' + slot.replace(/^[LC]:/, ''), data}, {timeout: 120000});
+        if (slot === 'hero') { this.ui.heroImg = r.url; $('uiHeroPv').style.backgroundImage = `url('${data}')`; }
+        else { this.ui.covers[slot] = r.url; this.drawCovers(); const pv = $('uiCovers').querySelector(`[data-k="${CSS.escape(slot)}"]`); if (pv) pv.closest('.uie-row').querySelector('.pv').style.backgroundImage = `url('${data}')`; }
+        toast(r.pending ? 'Đã tải ảnh — bấm "Lưu giao diện". GitHub cần 1–2 phút để hiện ảnh trên mọi máy.' : 'Đã tải ảnh — bấm "Lưu giao diện".');
+      } catch (e) { err(e.message); }
+      busy(false);
+    },
+    async save(){
+      const u = this.ui;
+      u.heroTag = $('uiTag').value.trim(); u.heroTitle = $('uiTitle').value.trim(); u.heroText = $('uiText').value.trim();
+      $('uiSave').disabled = true;
+      try { const r = await post('uiSave', {ui: JSON.stringify(u)}, {timeout: 60000}); S.ui = r.ui || u; applyAccent(); saveUiCache(); Modal.close(this.m); ok(r.message || 'Đã lưu giao diện.'); route(); }
+      catch (e) { $('uiSave').disabled = false; err(e.message); }
+    },
+    async gh(remove){
+      const t = $('ghTok').value.trim();
+      if (!remove && !t) return err('Dán GitHub token vào ô trước khi bấm Kết nối.');
+      if (remove && !await confirmBox('Gỡ kết nối GitHub?', 'Trainer sẽ không tải video từ app được nữa (video đã đăng vẫn xem bình thường).', 'Gỡ kết nối', true)) return;
+      busy(true, remove ? 'Đang gỡ…' : 'Đang kiểm tra token…');
+      try {
+        const r = await post('ghSetup', remove ? {remove: 1} : {ghToken: t}, {timeout: 60000});
+        S.gh = !!r.gh; saveUiCache(); $('ghTok').value = '';
+        $('ghSt').className = 'gh-st ' + (S.gh ? 'on' : 'off'); $('ghSt').innerHTML = S.gh ? ic('check') + 'Đã kết nối' : ic('alert') + 'Chưa kết nối';
+        ok(r.message);
+      } catch (e) { err(e.message); }
+      busy(false);
+    }
+  };
+  window.UIE = UIE;
+  A.v45Ui = d => UIE.open(d && d.tab);
+  /* lối vào: menu tài khoản + trang Quản lý (Admin) */
+  const _menu = A.v4Menu;
+  A.v4Menu = function(){
+    _menu.apply(this, arguments);
+    if (!isAdminV()) return;
+    const m = Modal.top(); const box = m && m.body.querySelector('[data-a="refresh"]');
+    if (box) { box.insertAdjacentHTML('beforebegin', `<button class="nv" data-a="v45Ui">${ic('gear')}<span>Giao diện & GitHub</span></button>`); box.previousElementSibling.addEventListener('click', () => Modal.close(m)); }
+  };
+  const _mg = VIEWS.manage;
+  VIEWS.manage = function(id, q){
+    const r = _mg.apply(this, arguments);
+    if (!(q && q.adv) && isAdminV()) {
+      const b = document.querySelector('.v4-wrap > div .h-btn.navy[data-a="sessionForm"]');
+      if (b) b.insertAdjacentHTML('beforebegin', `<button class="h-btn line" data-a="v45Ui" style="margin-right:8px">${ic('gear')}Giao diện & GitHub</button>`);
+    }
+    return r;
+  };
+
+  /* ==========================================================================
+     SOẠN EMAIL: "Học online sau buổi" + "Nhắc hoàn thành khoá học" cho mọi khoá
+     ========================================================================== */
+  const notDone = l => !(l.pass || l.status === 'Completed' || l.certUrl);
+  const _cOpen = Composer.open;
+  Composer.open = async function(sid, kind, onlyEmail){
+    await _cOpen.call(this, sid, kind, onlyEmail);
+    const st = this.st; if (!st || !$('emKind')) return;
+    const s = st.s || {}, hasQuiz = s.hasQuiz && s.questionCount > 0;
+    let changed = false;
+    if (kind && kind !== st.kind && ['after', 'reminder'].includes(kind)) { st.kind = kind; this.setDefaultTo(onlyEmail); changed = true; }
+    const kinds = [['pre', 'Mời tham dự'], ['after', 'Học online sau buổi'], ['reminder', 'Nhắc hoàn thành khoá học']].concat(hasQuiz ? [['quiz', 'Mời làm bài ôn tập']] : []);
+    $('emKind').innerHTML = kinds.map(([k, t]) => `<button type="button" data-k="${k}" class="${k === st.kind ? 'on' : ''}">${t}</button>`).join('');
+    $('emKind').querySelectorAll('button').forEach(b => b.onclick = () => { st.kind = b.dataset.k; $('emKind').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); if (st.kind === 'reminder') st.to = st.L.filter(notDone).map(l => l.email); this.draw(); this.preview(); });
+    const q = document.querySelector('.em-form .quick');
+    if (q && !q.querySelector('[data-q2]')) {
+      const pb = q.querySelector('[data-q="pending"]'); if (pb) pb.remove();
+      q.querySelector('[data-q="clear"]').insertAdjacentHTML('beforebegin', `<button type="button" data-q2="1">Chỉ người chưa hoàn thành (${st.L.filter(notDone).length})</button>`);
+      q.querySelector('[data-q2]').onclick = () => { st.to = st.L.filter(notDone).map(l => l.email); this.draw(); this.preview(); };
+    }
+    if (changed) { this.draw(); this.preview(); }
+  };
+  const _setTo = Composer.setDefaultTo;
+  Composer.setDefaultTo = function(only){ _setTo.call(this, only); const st = this.st; if (!only && st.kind === 'reminder') st.to = st.L.filter(notDone).map(l => l.email); };
+
+  try { if (S.user) { renderShell(); route(); } } catch (e) {}
 })();
 </script>
 
