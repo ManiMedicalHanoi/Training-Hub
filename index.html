@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '3.3';
+const APP_VERSION = '3.4';
 const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbgAAAC+BAMAAAC1ygcpAAAAGFBMVEX/6hH/4QL/4QD94QDz1gAkIAABAAAAAADD9cHRAAAPrElEQVR42u1d244bxxGtohbQrgKze7g2jDyRS8VBED9EtpI/SD4o/2mv7TwkARzxggBBYnnZ3RRg7wrQVB44fZ3qmeZyZGgXwxdR5HCmT9epqlPVPbMAj/iFk8WjxVYjykcLjs4eLzqiyWP2uRHcCG4EN4IbwY3gRnAjuBHcCG4EN4IbwY3gRnAjuBHcCG4EN4L70F5nD3DMhx65eoTgUAKpx2k5lKQAlwAAO/3IwKFQk2UFVQU7XYN+VOAqtX8uZxJgpeqteFyWq9TkiyWQkqvdBvrt9qDAoVpeLhSAXF1jVRIsHxA4FLPLuaoIX11XhfHy4YAT+8/mpiJzc12VpoIHo1Cq/cu5kWCmu2JsD8ZyqJ7PjQQSX23p0ckv8eRLLQHMTUkKsK8neH7+EAz39nOqAOjpCsqxPRTLics5AoC5OYKUDyWg4H5pAICmO/H4Sh7xsUAA0PVRhisEF+wyysThqvuAcJsS6a7fK9ZwfzISAHDVRBN/OtIng+tXBOrEE6gCw9HUGm5IhYK4cO/ZMgrFzL2vN8wBs8BytdYdF1hT1nDmR6la41nTyT730pngKzYW7//iD5DtA+TlC/+f73XHBWqlmFB5MBwpao3nZn26z6k+h3cHEOPzOBHFtBQtL0KYGQkAINyp/Xh2XTm90HISmzeap21lXZxYlpgFuvf8GewFNGP3N3MEANA7qdLx6NN9TlwGMFlWzt3gif29rgIgpjPxmjYtDr/GHbXHo09P4hPTDf7KXcOwV5shmzX8CRbtdyEtAABo6s+NzflIDKxQNONSlR88oyFwH37G8haZd54WMk1pqEvSXKHPBYF8gu3RmTn2aIDge1lzRxh7CZwnmcKy0iWCaDyGTgQXOol8x8XKwKV0z/ecbYLRYvv3lhaKjiVZES0D8USym5XsACo8puTmOR24F+67L3ckLUWXT4Ss5Dwc90L2if7gUu++5TkdJlB7QvNuAMt1I1+GsXSrO1UzAMC8jVXKnOXElWkbyR2txLDRUnbGwl7w/FSJPPaq7cw4IC3DHM7oIwzkB3O19K4MJmSEeJMU7xgbJFC5L8vhpVUB99aC/cQEkfkdHJ0oWtSIR2x/XTsVSYtBo6XO53Dcz7vrMlnpHmInsmRmeg2tiwRKmeVkx8TKSZihgVoqnWb9hsPA+KKOXUIyPmfPSEYPG1DSsS9NT5gv6OlgPrg2sjYykhzO58Is1Dt2JhEssFeGy4hzUciSHXViT7AsLHlkdmgxKxkn8OUOYS6ZJAFS6tLJ1gMElHA0if5KWMmodOdyhpsqLssH0+dxE5MJjT7dchGtYlHf8qhUpfsDaKpB9ss7APHRN23cvNCqxQAlTx7qLIqVXA53HYHdE5mRKNjxX4tblarB42gprjpi5cz0/dgegHXx9AUCjJHkBEP6XOLwgdclGZxzAisNqda5NJ60FrBnvuRVYbC8T55bRM2TeJxpkwH3zgpi4wNCXt4lhYHHrdvo+wRKETiZ94he9eG+12uZ9ZlEYonKpL/P4NjqU8FhljSBXTJO4MsdVDZ9oemropg+IAU45HABJdR9ybnFUveVE05gTPuSEl/Oyq4I0OdzRfUc5kyaNEfa5PHlDmnhvo4lCO4l9EYUYlJ+T5OhTFtmv9mnlRptY3hyZrWXeS3yE01Ja4Ecg/edk60GCCg53cuxMv6EJj6ggNkUdy589mwIavgmw8n1XNrMc51L2+fOCxTc/8a53JYwVxb4RI1cSdfkGH28GfrBySoH1rFSVbkyfcEyKMnhT1wZP7ECzTaXGZfwh/fu2ihJBSY+F/oMnrhMGhD9AonZCW/XtCxwU0NNJx1NcwhxOKpCUhaBy4Rl32g2K3IqPRk25kshZvZ2aUB0Sou4w2mjBwsotEnDfDO9uZEH5Y7Y6sCymJm9WqVeiZ1NBjzVci4a+yXpAygfK71q1Gm50wxEqyIf2dvV+/YqHSe0aEhaRvOFE+FYecVfzbsc7gQA1OywwpTtgpUpESiD1HP2Cuvo7GZhWalyHm5d7kDcIKcsJNNkoKk30KGkY5sMXqBsBtCWLZ+TsSSebtwgIvKE5U7MKszM3naa1EAOiOYOr4coebi6xAcLs5IZmV75cifOJfmFEZ0YXXQJlNNp6Xxb63lwfomWlUGFHfucmPkOQ9FmOwJti11x6MEjdBmpV7OcFVissYCLBxMNQEtbCYktsiodUaQdBrYscIrDvAvYUWUn+7I4h5eA8zwwB3eTALj/o/3stTQu4sd50Gkvu/WHutmrAEhbN5trHaydaWY8NEC0lI4zzXwLCSAraVlp/NJhRB6fCPRGNv+y/usVh6CpibIrl8P9b7d6sIAigjwVNJrFRmdc3PVX7NafrlU+ax4dZTxOvcnhAoovF2nr40kYKwXv4bgn32FIySCzIsEa/1DSyY6eYQEtzwosxlDVLn9QbUB8zHq4L3dIUzycsET0pJwCgHnzRbakSya7t8lQ5HPO6Zxl5hErfYcq3PsTlDvrzrjmV0G2OiAgShmwhptsfbrlMDyXdQTPytciWN4wbLkTFKrIJeJ4FcQcwKIW2ufw0EhucaIWJwcUp+QUQH2YQYNXNlZODfSWO1Mf1bTukncQbtdEGVw82Bl1zOaBPnCiCroxdmgfOe2hNtp35ogtdwLD+aDHBIMmZrhtMxMT4Jb3ESgF9ZxvMriQdeZW/3aCF4BphyGNOL4s8KWbOjgoMCWdbqvBAoFyvwV/t1ViakKiqHy5k1qJS8qH4ZI/hl07K9xqWRZQZHBlStKUrjchv4JtGuj7taK9Uh/lcEy2T2+b01dz3XTyY4HifmvoVHDeS4Jmsm3l4U5ol+Zy5U7t/UVq2VfoOyAYROHw2kcIlD5w4cYtjVY52+0J068OXtnWzWJmP8QfPVtvfsuvFkSolL1itf6sK3gQnE5Lm4UIACieeV1rSojbKndA3Cy7dGGQqA+yGtWL5od+4yXdT6D0ggtrtTQgY9zjDj3clzv4vDMGhzuACQBAuxBXbf9sJzH4pfPl3RDasp1HIWRlsADlPdyv7sQx1JG84qkBAEDG4n3RfIV8XJSnVuK+MU9SA0S0bFjZGh3Em9mqMmr4nXhNuAoWPQOhhUfk8N48V+XPdWhGcnqof/Ns2/m8MnNlQnWvKHKMz0WLxqHXNbESOA9HWSoBfSfBmceWdBUzsfLjsEA61XIyOld4G5JWWkdG8Ns0gttf+mqNtuF9r1Vx5jLFTYYj5NdWJz1ebGpw7qaBI24kSBfIgqhbMSryqB3Fk8ImQ5v9rpej09GV7B91Bm9lSRKtngK3TYMG8LmgDk8CQK0pX1z37r1pxXEvsajAzEU5vL+eixyB2qxkBIrfzNY7yJAaDm56JwS3ClJ0o/+kzPGpCWG+fJxuW1OvC1Mb23/yCMxac1VsQueSDv1ZWaC2juWkunu+EZP/9gU3EjhaNgwOJVYq89Q940mf5eze8Ob2Zy8fLStx0iJP+0aCIwQKF+XpXqsg/QFFuqZUPKX+fnRHnpu29lIdiid9BTd8iH41SEXLRmfdmcCScJfO266F344OJ6LA9xpL8ZWukjkj+XaV1idbzupyO3KrnLFjR49euFsV28dcoU3zBLlK1zx5kSOlV4PmZFpajVDrNIN7VqYZy99IgD/8LT3hv//aHLTr6hrEdA6NJI8KKJ3gXLPANXmaaWzRNJx663JUv0l5iZeZUSY62ETfc0aik8HZS5jXlpVPelkZaC+xoWzbC9McHgQoV9K1mgzHCZTOVGBvNvWtxyYMhB3y9mY2q9jMWvZHcMHKu2yTXuYbA0dHy+ZcadznWOlG6++b5gaAcY8pc8NHKD+ir9yiCUl9muXsVpNggZHCGpy3hWs1T9sVVxCZkq3f0Z79ePtMIDWPajJ0Ws72LGn6r3ysJOKpnPSs2q2upA5PrhDeNX/0ve9Flmt2AJl1sPXP6OgWAWZnmIxbLN2yy936p5NaUXPUOGoVpBtc0ywgkZIQo5YhsVRu58ZopFZKynZJkQAiNtr2brXsAWe3MJudvzBN284Ub7Dz8UywTQ6KKvDsU1QC00zboq20PJj0sZLEKuGAjkN8Io/mXYkg8VEnptJlcxM+WWgL92sydIFrNouGhjvwJWalGweauNxhM1G6jdBGH9UlQPT9Cp4OcE3Jqaap4bgQ73SoK3dyR8WVohNqBrI9IXYVpAzcWT4ZSwSg6lWcwEmYG6mYsC3quNzpu1tDhglfJM0myuRR0a7+7mO5al8ZADK7a5EIdoqXV1zYPkQfu9htMokg3n7fJHyzEtnCIDKSPK4qyIBDtZxLIDN9FfcMjG5HQe01h1hoGzdyMxsM1j3HpX1wEGHqewuUDC1RXH6hpcLpdWtBG1cxK0E/mXvFPutYCYe43A36m8zBneGwMIezlsNK7GdKqGq6bu1sIpUu+qFtCsig3NHrDIGmbZXAZw1nYUaglCoyznKkJi/nGqvdetV+8m57luWmkgBAs+8A7fMLMbPuSW4zOzmXI2ofTEJJlWu8ZJ5lUAQOr3C2gGqndhvmqcLr9KJUmwoAQBKIT6zerbMtDtNsLqG5sXcOshS2x9URpaD94VHgEFHWKyC9wjY2Ykxi3vzh8O9c1yuXH3JT6w4BWjYP9HrNGMkdFxrJn/6+4IheNdmAe0Qm9+DTw8ZkRKlf9V7PN3tQ2sfMfU9dx3V/drTPVYRa5tJwO3uS2C4O6uS7noevRp1H3XTdzTvWgZwCV8xv4f5PJlVdv2Zmr+GlJFmwH8s/Uu7w7CKiFas2ONqoIy03yKOOD9VY+iyD7pc92tRbDe/pNQQ4+3hlsTziDimxBL6iGvA1yOPF7/QzOAcAU8NtqeHefonnAGB++vYWPmTLWdMhzkpNh2IpJFtRfXCWgzv9jC4AnsqfCk0n91/enQPQxeqf789wAz07naa7SgPgfmaKipLKvCQJQObm+j0abqhH+t/t7hbmHJ5WP/2vhJQ/P//d3TmQmf4d9YcPDqr/PvvUnKO5+s/Fbb/D/er3dxLITK+3P8MDAHcrNs8+1RdP9+frqgdd9XT/+acXoO6m63/I2/cJbrBH+hvxNSwUCgHdf30FpZq8nBuCqv5mVSl4EODI0Nf1kjRc6VXuTwKhBCC1vJxrqGC1W79nbEP+jRAU29u3v74wi4v1LfJ8u729fbu8nJvqYrVjq8UP1HIAZMQr2lVX8BwV/+D/KwCsrgDqlao3+N6xAU6ObJdBtz/BTFYAQGrNgqsO4n4FWFJBnDjZNCg4AOtts+6/BfELQAMgGvgPoKimq77rLlTpvTNyaJ/rLyh/GUhDa8sP9DWCG8GN4EZwI7gR3AhuBDeCG8GN4EZwI7gR3AhuBDeCG8GN4EZwI7gR3DCv/wPKtJCmM5zCBwAAAABJRU5ErkJggg==';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
 const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
@@ -3880,5 +3880,570 @@ document.addEventListener('keydown', e => {
   boot(true);
 })();
 </script>
+<style id="v34-css">
+/* ★ v3.4 — Học online bằng video · nhập câu hỏi từ file · tạo câu hỏi bằng AI */
+.vp-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;background:#0E1B26;min-width:0}
+.vp-v{width:100%;max-width:1180px;max-height:calc(100% - 46px);aspect-ratio:16/9;background:#000;border-radius:10px;outline:none}
+.vp-bar{width:100%;max-width:1180px;display:flex;align-items:center;gap:12px;color:#C9D6E2;font-size:13px}
+.vp-prog{flex:1;height:6px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
+.vp-prog i{display:block;height:100%;width:0;background:#7FB3E6;transition:width .4s}
+.vp-prog.ok i{background:#5FBF77}
+.vp-bar b{color:#fff;font-weight:600}
+.vlearn{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:border-color .15s}
+.vcard:hover{border-color:var(--blue)}
+.vcard .th{position:relative;aspect-ratio:16/9;background:#EAF1F8 center/cover no-repeat}
+.vcard .th .pl{position:absolute;inset:auto auto 10px 10px;display:flex;align-items:center;gap:6px;background:rgba(0,48,71,.82);color:#fff;font-size:12px;padding:4px 9px;border-radius:999px}
+.vcard .th .pl svg{width:13px;height:13px}
+.vcard .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.vcard h4{font-size:14.5px;color:var(--navy);line-height:1.35;margin:0}
+.vcard .m{font-size:12.5px;color:var(--muted)}
+.vmgr{display:flex;align-items:center;gap:12px;padding:12px 14px;margin-bottom:14px;border:1px solid var(--line);border-radius:12px;background:#F6FAFE}
+.vmgr>svg{width:22px;height:22px;flex:none;color:var(--blue)}
+.ai-src svg{width:16px;height:16px;flex:none;color:var(--blue)}
+.ai-src .ftype{flex:none}
+.vmgr .t{flex:1;min-width:0}.vmgr .t b{color:var(--navy)}.vmgr .t div{font-size:12.5px;color:var(--muted)}
+.vm-list{display:flex;flex-direction:column;gap:8px}
+.vm-it{display:flex;align-items:center;gap:10px;padding:8px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.vm-it img,.vm-it .ph{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:#EAF1F8;flex:none}
+.vm-it .inp{height:36px}
+.vm-it .x{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.vm-it .x small{color:var(--muted);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vm-cat{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.vm-cat .vm-it{cursor:default}
+.vm-sec{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.qx-list{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:4px 12px;margin-top:10px}
+.qx-q{padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.qx-q:last-child{border-bottom:0}
+.qx-q b{color:var(--navy)}
+.qx-q .o{color:var(--muted);margin-top:3px}
+.qx-q .o.c{color:var(--ok);font-weight:600}
+.qx-q .bad{color:var(--bad);font-size:12px}
+.ai-src{display:flex;flex-direction:column;gap:4px;max-height:220px;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:6px 10px}
+.ai-src label{display:flex;align-items:center;gap:8px;font-size:13.5px;padding:4px 0;cursor:pointer}
+.ai-src label small{color:var(--muted)}
+.ai-run{display:flex;align-items:center;gap:10px;padding:12px;border-radius:10px;background:#F3F7FC;margin-top:12px;font-size:13.5px}
+@media (max-width:720px){.vp-wrap{padding:8px}.vm-it img,.vm-it .ph{width:72px}}
+</style>
+<script id="v34-js">
+/* ==========================================================================
+   ★ v3.4 (15/10/2026) — HỌC ONLINE BẰNG VIDEO
+   - Video MP4 nằm trên GitHub Pages của app (thư mục media/, danh mục media/catalog.json),
+     backend ghép video vào đầu danh sách tài liệu của buổi (id "V…", src = link MP4).
+   - Trình phát: đếm từng giây đã xem, không cho tua vượt phần chưa xem, nhớ chỗ xem dở;
+     xem ≥ 90% ⇒ tính "xong" ⇒ mở bài kiểm tra (cơ chế lộ trình tự học cũ) ⇒ chứng chỉ.
+   - Trainer: "Video bài giảng" ở tab Tài liệu (chọn từ thư viện video hoặc dán link MP4).
+   - Bài kiểm tra: "Tải từ file" (CSV / Excel / Word / TXT) + "Tạo bằng AI" (Gemini, backend aiQuiz)
+     + "Sao chép prompt cho Claude" (khi chưa có khoá AI).
+   ========================================================================== */
+(function(){
+  const MEDIA_BASE = 'https://manimedicalhanoi.github.io/Training-Hub/';
+  const PASS_PCT = 90;
+  const absUrl = p => !p ? '' : /^https?:/i.test(p) ? p : MEDIA_BASE + String(p).replace(/^\/+/, '');
+  const isVid = f => !!(f && f.src && (f.isVideo || f.player === 'html5'));
+  const mins = s => { s = Math.round(nnum(s)); return s >= 60 ? Math.round(s / 60) + ' phút' : s + ' giây'; };
+
+  /* ---------- dữ liệu khởi động: số video theo buổi ---------- */
+  try { S.videos = JSON.parse(localStorage.getItem('mmh_hub_vids') || '{}') || {}; } catch (e) { S.videos = {}; }
+  const _applyBoot = applyBoot;
+  applyBoot = function(r){
+    _applyBoot(r);
+    if (r && r.videos) { S.videos = r.videos; try { localStorage.setItem('mmh_hub_vids', JSON.stringify(r.videos)); } catch (e) {} }
+  };
+
+  /* ==========================================================================
+     TRÌNH PHÁT VIDEO
+     ========================================================================== */
+  const VP = {
+    key(sid, f){ return 'mmh_vw_' + pre(S.user && S.user.email) + '_' + sid + '_' + f.id; },
+    load(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } },
+    save(){
+      const st = Reader.st; if (!st || !st.vp) return;
+      const p = st.vp;
+      try { localStorage.setItem(p.key, JSON.stringify({b: p.seen.join(''), p: Math.floor(p.v ? p.v.currentTime : p.pos), m: Math.floor(p.reach), d: p.n})); } catch (e) {}
+    },
+    pct(p){ if (!p.n) return 0; let c = 0; for (let i = 0; i < p.n; i++) if (p.seen[i] === 1) c++; return Math.min(100, Math.round(c / p.n * 100)); },
+    show(f){
+      const st = Reader.st; if (!st) return;
+      const done0 = Course.done(st.sid, f.id);
+      const saved = this.load(this.key(st.sid, f)) || {};
+      const p = st.vp = {key: this.key(st.sid, f), seen: [], n: 0, reach: nnum(saved.m), pos: nnum(saved.p), last: null, warned: 0, lastSend: 0, done: done0, opened: false, savedB: String(saved.b || '')};
+      st.total = 100; st.maxPage = 0; st.video = true;
+      if (done0) { st.completed = true; st.done = true; }
+      $('rdBody').innerHTML = `<div class="vp-wrap"><video id="vpV" class="vp-v" controls playsinline preload="metadata" controlslist="nodownload" disablepictureinpicture
+          ${f.poster ? `poster="${esc(f.poster)}"` : ''} src="${esc(f.src)}"></video>
+        <div class="vp-bar"><div class="vp-prog ${done0 ? 'ok' : ''}" id="vpProg"><i id="vpFill"></i></div><span id="vpTxt">${done0 ? 'Đã hoàn thành video này' : 'Đang tải video…'}</span></div></div>`;
+      $('rdPgn') && $('rdPgn').classList.add('hide'); $('rdZoom') && $('rdZoom').classList.add('hide');
+      this.bar(100 * 0);
+      const v = p.v = $('vpV');
+      v.addEventListener('loadedmetadata', () => {
+        p.n = Math.max(1, Math.ceil(v.duration || f.duration || 1));
+        p.seen = new Array(p.n).fill(0);
+        for (let i = 0; i < Math.min(p.n, p.savedB.length); i++) p.seen[i] = p.savedB.charAt(i) === '1' ? 1 : 0;
+        if (p.pos > 3 && p.pos < p.n - 5) { v.currentTime = p.pos; toast('Tiếp tục xem từ ' + fmtSec(p.pos) + '.'); }
+        this.paint();
+      });
+      v.addEventListener('play', () => {
+        if (!p.opened) { p.opened = true; if (!p.done) Reader.track({open: 1, page: this.pct(p), total: 100}); }
+      });
+      v.addEventListener('timeupdate', () => this.tick());
+      v.addEventListener('ratechange', () => {
+        if (!p.done && v.playbackRate > 2) { v.playbackRate = 2; toast('Tốc độ xem tối đa 2x cho tới khi hoàn thành video.'); }
+      });
+      v.addEventListener('seeking', () => {
+        if (p.done || p.fixing) return;
+        if (v.currentTime > p.reach + 3) {
+          p.fixing = true; v.currentTime = p.reach;
+          setTimeout(() => { p.fixing = false; }, 300);
+          if (Date.now() - p.warned > 6000) { p.warned = Date.now(); toast('Chưa tua qua được phần chưa xem — hãy xem lần lượt để hoàn thành bài học.'); }
+        }
+        p.last = null;
+      });
+      v.addEventListener('pause', () => this.save());
+      v.addEventListener('ended', () => { this.save(); this.flush(true); if (st.course) Course.refresh(); });
+      v.addEventListener('error', () => {
+        const box = $('vpTxt'); if (box) box.innerHTML = 'Không phát được video. <a style="color:#9cc6f0" href="' + esc(f.src) + '" target="_blank" rel="noopener">Mở video ở tab mới</a>';
+      });
+      if (st.course) Course.refresh();
+    },
+    tick(){
+      const st = Reader.st; if (!st || !st.vp || !st.vp.n) return;
+      const p = st.vp, v = p.v, t = v.currentTime;
+      if (!v.paused && !v.seeking && p.last != null && t >= p.last && t - p.last < 2.5) {
+        for (let s = Math.floor(p.last); s <= Math.min(p.n - 1, Math.floor(t)); s++) p.seen[s] = 1;
+        if (t > p.reach) p.reach = t;
+      }
+      p.last = t;
+      const pct = this.pct(p);
+      if (pct !== p.shown) { p.shown = pct; this.paint(); }
+      if (Date.now() - p.lastSave > 5000 || !p.lastSave) { p.lastSave = Date.now(); this.save(); }
+      if (!p.done && pct >= PASS_PCT) this.finish();
+      else if (!p.done && Date.now() - p.lastSend > 45000 && p.opened) this.flush(false);
+    },
+    flush(){
+      const st = Reader.st; if (!st || !st.vp || st.vp.done) return;
+      st.vp.lastSend = Date.now();
+      const pct = this.pct(st.vp);
+      st.maxPage = pct;
+      Reader.track({page: pct, total: 100});
+    },
+    finish(){
+      const st = Reader.st, p = st.vp; p.done = true; st.maxPage = 100;
+      this.save();
+      if (st.course) Course.complete();
+      else {
+        st.completed = true; st.done = true;
+        const m = S.mats[st.sid];
+        if (m) m.myProgress = (m.myProgress || []).filter(x => x.fileId !== st.f.id).concat([{fileId: st.f.id, percent: 100, completed: true}]);
+        Reader.track({open: 1, page: 100, total: 100, done: 1});
+      }
+      ok('Bạn đã hoàn thành video "' + st.f.name + '".');
+      this.paint();
+    },
+    bar(n){ const b = $('rdBar'); if (b) b.style.width = Math.max(0, Math.min(100, n)) + '%'; },
+    paint(){
+      const st = Reader.st; if (!st || !st.vp) return;
+      const p = st.vp, pct = p.done ? 100 : this.pct(p);
+      const fill = $('vpFill'), txt = $('vpTxt'), pg = $('vpProg');
+      if (fill) fill.style.width = pct + '%';
+      if (pg) pg.classList.toggle('ok', p.done);
+      if (txt) txt.innerHTML = p.done ? '<b>Đã hoàn thành</b> video này' : `Đã xem <b>${pct}%</b> · cần ${PASS_PCT}% để hoàn thành`;
+      this.bar(pct);
+      const msg = document.querySelector('#crsFoot .crs-msg');
+      if (msg && st.course) msg.innerHTML = Course.vidMsg(st);
+    }
+  };
+  window.VP = VP;
+
+  const _showFrame = Reader.showFrame;
+  Reader.showFrame = function(f){ return isVid(f) ? VP.show(f) : _showFrame.call(this, f); };
+  const _rdClose = Reader.close;
+  Reader.close = function(silent){
+    const st = this.st;
+    if (st && st.vp) { VP.save(); try { st.vp.v && st.vp.v.pause(); } catch (e) {} if (!st.vp.done) { st.maxPage = VP.pct(st.vp); if (!st.vp.opened) st.done = true; } }
+    return _rdClose.call(this, silent);
+  };
+  window.addEventListener('pagehide', () => VP.save());
+
+  /* chân lộ trình tự học: video không có nút "Đã xem xong" — phải xem đủ ${PASS_PCT}% */
+  Course.vidMsg = function(st){
+    const p = st.vp, d = Course.done(st.sid, st.f.id) || st.completed;
+    if (d) return `<span class="crs-ok">${ic('check')}Đã hoàn thành video này</span>`;
+    const pct = p && p.n ? VP.pct(p) : 0;
+    return `<span>Đã xem <b>${pct}%</b> — xem tối thiểu ${PASS_PCT}% video để hoàn thành (không tua qua phần chưa xem).</span>`;
+  };
+  const _foot = Course.foot;
+  Course.foot = function(sid){
+    const st = Reader.st;
+    if (!st || !isVid(st.f)) return _foot.call(this, sid);
+    const fs = this.files(sid), i = fs.findIndex(x => x.id === st.f.id);
+    const d = this.done(sid, st.f.id) || st.completed, o = this.optional(sid).has(st.f.id), last = i === fs.length - 1;
+    return `<div class="crs-msg">${this.vidMsg(st)}</div>
+      <button class="btn btn-line" data-a="crsPrev" ${i <= 0 ? 'disabled' : ''}>${ic('left')}Trước</button>
+      <button class="btn ${last && d ? 'btn-go' : 'btn-primary'}" data-a="crsNext" ${d || o ? '' : 'disabled'}>${last ? 'Sang bài kiểm tra' : (!d && o ? 'Bỏ qua (không bắt buộc)' : 'Tiếp tục')}${ic('right')}</button>`;
+  };
+
+  /* ==========================================================================
+     TAB TÀI LIỆU: khối "Video bài giảng" cho trainer + nhãn video
+     ========================================================================== */
+  const _tabMat = SessionPage.tabMaterials;
+  SessionPage.tabMaterials = function(box, s){
+    _tabMat.call(this, box, s);
+    const m = S.mats[s.sid];
+    if (!m || m.loading || m.error || m.noAccess) return;
+    const vids = (m.files || []).filter(isVid);
+    vids.forEach(v => {
+      box.querySelectorAll(`.mat [data-fid="${CSS.escape(v.id)}"]`).forEach(el => {
+        const row = el.closest('.mat'); if (!row || row.dataset.v) return;
+        row.dataset.v = 1;
+        row.querySelectorAll('[data-a="renameMat"],[data-a="delMat"],a.ibtn').forEach(x => x.remove());
+        row.querySelectorAll('.acts .btn').forEach(b => { if (/Đọc/.test(b.textContent)) b.innerHTML = ic('play') + 'Xem'; });
+        const sp = row.querySelector('.nm span'); if (sp && v.poster && !row.querySelector('.vthumb')) row.querySelector('.ftype') && (row.querySelector('.ftype').outerHTML = `<div class="ftype video vthumb" style="background:#000 url('${esc(v.poster)}') center/cover;color:transparent">VID</div>`);
+      });
+    });
+    box.querySelectorAll('.fsec').forEach(sec => { if (sec.dataset.n === 'Video bài giảng') sec.querySelectorAll('.fsec-h button').forEach(b => b.remove()); });
+    if (canEdit(s)) {
+      const sec = Math.round(vids.reduce((a, v) => a + nnum(v.duration), 0));
+      box.insertAdjacentHTML('afterbegin', `<div class="vmgr">${ic('play')}<div class="t"><b>Video bài giảng</b><div>${vids.length ? vids.length + ' video · ' + mins(sec) + ' · học viên phải xem ≥ ' + PASS_PCT + '% mỗi video trước khi làm bài kiểm tra' : 'Chưa có video — thêm video để học viên xem ngay trên app (máy tính & điện thoại), xem xong làm bài kiểm tra, đạt thì nhận chứng chỉ.'}</div></div>
+        <button class="btn btn-primary btn-sm" data-a="vidMgr" data-sid="${esc(s.sid)}">${ic(vids.length ? 'edit' : 'plus')}${vids.length ? 'Sửa danh sách video' : 'Thêm video'}</button></div>`);
+    }
+  };
+
+  /* ---------- Khung quản lý video của buổi ---------- */
+  const VM = {
+    catalog: null,
+    async loadCatalog(){
+      if (this.catalog) return this.catalog;
+      try { const r = await fetch('media/catalog.json?t=' + Date.now(), {cache: 'no-store'}); this.catalog = await r.json(); }
+      catch (e) { this.catalog = {series: []}; }
+      return this.catalog;
+    },
+    async open(sid){
+      const s = findS(sid) || {};
+      let m = S.mats[sid];
+      if (!m || !m.files) { busy(true, 'Đang tải danh sách tài liệu…'); try { m = await ensureMats(sid); } catch (e) { busy(false); return err(e.message); } busy(false); }
+      const cat = await this.loadCatalog();
+      this.sid = sid;
+      this.list = (m.files || []).filter(isVid).map(f => ({id: f.id, title: f.name, src: f.src, poster: f.poster, transcript: f.transcript, duration: f.duration, catalogId: f.catalogId}));
+      this.cat = cat;
+      this.m = Modal.open({size: 'wide', title: 'Video bài giảng', sub: esc(s.topic || ''), lock: true,
+        body: `<div class="note-box" style="margin-bottom:12px">${ic('info')}<div>Học viên xem video ngay trong app, phải xem <b>≥ ${PASS_PCT}%</b> mỗi video (không tua qua phần chưa xem). Xem xong ⇒ mở bài kiểm tra ⇒ đạt ⇒ chứng chỉ tự gửi email. Video đặt trước các tài liệu khác trong lộ trình.</div></div>
+          <div class="vm-sec" style="margin-top:0">Video của buổi này</div><div class="vm-list" id="vmList"></div>
+          <div class="vm-sec">Thêm từ thư viện video MMH</div><div id="vmCat"></div>
+          <div class="vm-sec">Hoặc dán link video MP4</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><input class="inp" id="vmUrl" placeholder="https://…/video.mp4" style="flex:2;min-width:220px"><input class="inp" id="vmTitle" placeholder="Tên video" style="flex:1;min-width:160px"><button class="btn btn-line" id="vmAdd">${ic('plus')}Thêm</button></div>
+          <div class="xs muted" style="margin-top:6px">Video mới (làm bằng Claude / tự quay): nhờ Admin đưa vào thư viện video của app (kho GitHub Training-Hub ▸ media/) để mở nhanh trên mọi máy.</div>`,
+        foot: `<span class="xs muted" id="vmFoot"></span><div class="sp"></div><button class="btn btn-line" data-mclose>Huỷ</button><button class="btn btn-primary" id="vmSave">${ic('check')}Lưu video</button>`});
+      this.draw();
+      $('vmAdd').onclick = () => this.addUrl();
+      $('vmSave').onclick = () => this.save();
+    },
+    draw(){
+      const L = $('vmList'); if (!L) return;
+      L.innerHTML = this.list.length ? this.list.map((v, i) => `<div class="vm-it" data-i="${i}">${v.poster ? `<img src="${esc(v.poster)}" alt="">` : `<div class="ph"></div>`}
+          <div class="x"><input class="inp" data-t value="${esc(v.title)}"><small>${v.duration ? mins(v.duration) + ' · ' : ''}${esc(v.src)}</small></div>
+          <button class="ibtn sm" data-mv="-1" title="Lên">${ic('left').replace('<svg', '<svg style="transform:rotate(90deg)"')}</button><button class="ibtn sm" data-mv="1" title="Xuống">${ic('left').replace('<svg', '<svg style="transform:rotate(-90deg)"')}</button><button class="ibtn sm" data-del title="Gỡ khỏi buổi">${ic('trash')}</button></div>`).join('')
+        : '<div class="faint small" style="padding:6px 2px">Chưa có video nào.</div>';
+      L.querySelectorAll('.vm-it').forEach(el => {
+        const i = +el.dataset.i;
+        el.querySelector('[data-t]').oninput = e => { this.list[i].title = e.target.value; };
+        el.querySelector('[data-del]').onclick = () => { this.list.splice(i, 1); this.draw(); };
+        el.querySelectorAll('[data-mv]').forEach(b => b.onclick = () => { const j = i + (+b.dataset.mv); if (j < 0 || j >= this.list.length) return; [this.list[i], this.list[j]] = [this.list[j], this.list[i]]; this.draw(); });
+      });
+      const have = new Set(this.list.map(v => v.catalogId).filter(Boolean));
+      const ser = (this.cat && this.cat.series) || [];
+      $('vmCat').innerHTML = ser.length ? ser.map(sr => `<div class="xs" style="font-weight:600;color:var(--navy);margin:4px 0">${esc(sr.title)}</div><div class="vm-cat">${(sr.videos || []).map(v => `<div class="vm-it">
+          ${v.poster ? `<img src="${esc(absUrl(v.poster))}" alt="">` : '<div class="ph"></div>'}<div class="x"><b class="clamp1" style="font-size:13.5px;color:var(--navy)">${esc(v.title)}</b><small>${mins(v.duration)}</small></div>
+          ${have.has(v.id) ? `<span class="chip ok">${ic('check')}Đã thêm</span>` : `<button class="btn btn-soft btn-sm" data-cid="${esc(v.id)}">${ic('plus')}Thêm</button>`}</div>`).join('')}</div>`).join('')
+        : '<div class="faint small">Thư viện video đang trống.</div>';
+      $('vmCat').querySelectorAll('[data-cid]').forEach(b => b.onclick = () => {
+        let hit = null; ser.forEach(sr => (sr.videos || []).forEach(v => { if (v.id === b.dataset.cid) hit = v; }));
+        if (!hit) return;
+        this.list.push({id: '', title: hit.title, src: absUrl(hit.src), poster: absUrl(hit.poster), transcript: absUrl(hit.transcript), duration: hit.duration, catalogId: hit.id});
+        this.draw();
+      });
+      $('vmFoot').textContent = this.list.length + ' video · ' + mins(this.list.reduce((a, v) => a + nnum(v.duration), 0));
+    },
+    addUrl(){
+      const u = $('vmUrl').value.trim(), t = $('vmTitle').value.trim();
+      if (!/^https:\/\/\S+$/i.test(u)) return err('Link video phải bắt đầu bằng https://');
+      const item = {id: '', title: t || u.split('/').pop().replace(/\.[a-z0-9]+(\?.*)?$/i, ''), src: u, poster: '', transcript: '', duration: 0, catalogId: ''};
+      this.list.push(item); $('vmUrl').value = ''; $('vmTitle').value = ''; this.draw();
+      const probe = document.createElement('video'); probe.preload = 'metadata'; probe.src = u;
+      probe.onloadedmetadata = () => { item.duration = Math.round(probe.duration || 0); this.draw(); };
+      probe.onerror = () => toast('Chưa đọc được video từ link này — kiểm tra lại link (phải là file MP4 công khai).');
+    },
+    async save(){
+      $('vmSave').disabled = true;
+      try {
+        const r = await post('videoSave', {sid: this.sid, videos: this.list}, {timeout: 60000});
+        Modal.close(this.m); ok(r.message);
+        S.videos[this.sid] = r.count ? {n: r.count, poster: (this.list[0] || {}).poster || '', sec: this.list.reduce((a, v) => a + nnum(v.duration), 0)} : undefined;
+        if (!r.count) delete S.videos[this.sid];
+        delete S.full[this.sid]; A.matsRefresh({sid: this.sid});
+      } catch (e) { $('vmSave').disabled = false; err(e.message); }
+    }
+  };
+  window.VM = VM;
+  A.vidMgr = d => VM.open(d.sid);
+
+  /* ==========================================================================
+     TRANG CỦA TÔI: "Học online" — các buổi có video bài giảng
+     ========================================================================== */
+  const _home = VIEWS.home;
+  VIEWS.home = function(){
+    const r = _home.apply(this, arguments);
+    try {
+      const list = S.sessions.filter(s => S.videos[s.sid] && s.status !== 'Cancel')
+        .sort((a, b) => (b.assigned - a.assigned) || (!!a.myPass - !!b.myPass) || String(b.date).localeCompare(String(a.date))).slice(0, 8);
+      if (list.length) {
+        const html = `<section class="sec v34-home"><div class="sec-h"><h2>Học online</h2><span class="muted small">Xem video bài giảng → làm bài kiểm tra → nhận chứng chỉ</span></div>
+          <div class="vlearn">${list.map(s => { const v = S.videos[s.sid], pg = S.progress[s.sid] || {};
+            const st = s.myPass ? `<span class="chip ok">${ic('award')}Đã đạt${s.myCert ? ' · có chứng chỉ' : ''}</span>` : pg.done ? `<span class="chip">Đã xem ${Math.min(pg.done, v.n)}/${v.n} video</span>` : `<span class="chip todo">Chưa học</span>`;
+            return `<div class="vcard" data-a="course" data-sid="${esc(s.sid)}"><div class="th" style="background-image:url('${esc(v.poster || '')}')"><span class="pl">${ic('play')}${v.n} video · ${mins(v.sec)}</span></div>
+              <div class="bd">${catTag(s.category)}<h4 class="clamp2">${esc(s.topic)}</h4><div class="m">Trainer: ${esc(s.trainer || '—')}</div><div>${st}</div></div></div>`; }).join('')}</div></section>`;
+        const hello = $('view').querySelector('section.hello');
+        const after = hello && hello.nextElementSibling;
+        if (after) after.insertAdjacentHTML('afterend', html); else $('view').insertAdjacentHTML('afterbegin', html);
+      }
+    } catch (e) {}
+    return r;
+  };
+
+  /* ==========================================================================
+     BÀI KIỂM TRA: tải câu hỏi từ file · tạo bằng AI · prompt cho Claude
+     ========================================================================== */
+  const SHEETJS = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+  const MAMMOTH = 'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js';
+  const loadJs = src => new Promise((res, rej) => { if (document.querySelector(`script[src="${src}"]`)) return res(); const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => rej(new Error('Không tải được thư viện đọc file.')); document.head.appendChild(s); });
+  const hk = s => deacc(s).replace(/[^a-z0-9]/g, '');
+
+  function csvRows(text){
+    const t = String(text || '').replace(/^﻿/, '');
+    const first = t.split('\n')[0] || '';
+    const delim = (first.match(/\t/g) || []).length > (first.match(/,/g) || []).length ? '\t' : (first.match(/;/g) || []).length > (first.match(/,/g) || []).length ? ';' : ',';
+    const rows = []; let row = [], cell = '', q = false;
+    for (let i = 0; i < t.length; i++) {
+      const c = t[i];
+      if (q) { if (c === '"') { if (t[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; continue; }
+      if (c === '"') q = true;
+      else if (c === delim) { row.push(cell); cell = ''; }
+      else if (c === '\n') { row.push(cell.replace(/\r$/, '')); rows.push(row); row = []; cell = ''; }
+      else cell += c;
+    }
+    if (cell || row.length) { row.push(cell.replace(/\r$/, '')); rows.push(row); }
+    return rows.filter(r => r.some(x => String(x).trim()));
+  }
+  const COLS = {
+    type: ['type', 'loai', 'loaicauhoi', 'dang'],
+    question: ['question', 'cauhoi', 'noidung', 'noidungcauhoi', 'q'],
+    a: ['a', 'optiona', 'phuongana', 'dapana', 'pa'], b: ['b', 'optionb', 'phuonganb', 'dapanb', 'pb'],
+    c: ['c', 'optionc', 'phuonganc', 'dapanc', 'pc'], d: ['d', 'optiond', 'phuongand', 'dapand', 'pd'],
+    correct: ['correct', 'dapan', 'dapandung', 'answer', 'key', 'correctanswer'],
+    points: ['points', 'diem'], explanation: ['explanation', 'giaithich', 'explain', 'gt']
+  };
+  function rowsToQs(rows){
+    const hi = rows.findIndex(r => r.some(c => COLS.question.includes(hk(c))));
+    if (hi < 0) return [];
+    const head = rows[hi].map(hk), idx = {};
+    Object.keys(COLS).forEach(k => { const j = head.findIndex(h => COLS[k].includes(h)); if (j >= 0) idx[k] = j; });
+    const out = [];
+    rows.slice(hi + 1).forEach(r => {
+      const g = k => idx[k] == null ? '' : String(r[idx[k]] == null ? '' : r[idx[k]]).trim();
+      const qt = g('question'); if (!qt) return;
+      let type = hk(g('type'));
+      type = /^(multi|nhieu|nhieudapan|multiple)/.test(type) ? 'multi' : /^(truefalse|tf|dungsai|ds|truefalse)/.test(type) ? 'truefalse' : /^(single|1|motdapan|mot)/.test(type) ? 'single' : '';
+      let corr = g('correct');
+      if (/^(đúng|dung|true|t)$/i.test(corr)) { corr = 'A'; if (!type && !g('c')) type = 'truefalse'; }
+      else if (/^(sai|false|f)$/i.test(corr)) { corr = 'B'; if (!type && !g('c')) type = 'truefalse'; }
+      corr = uniq(corr.toUpperCase().replace(/[^ABCD]/g, '').split('')).sort().join('');
+      if (!type) type = corr.length > 1 ? 'multi' : 'single';
+      const q = {qid: '', type, question: qt, a: g('a'), b: g('b'), c: g('c'), d: g('d'), correct: corr, points: Math.max(1, nnum(g('points')) || 1), explanation: g('explanation')};
+      if (type === 'truefalse') { q.a = q.b = q.c = q.d = ''; if (q.correct !== 'A' && q.correct !== 'B') q.correct = ''; }
+      if (type === 'single' && q.correct.length > 1) q.type = 'multi';
+      out.push(q);
+    });
+    return out;
+  }
+  window.rowsToQs = rowsToQs;
+  /* "Dán nhanh" nhận thêm bảng CSV / TSV (vd. kết quả Claude trả về, copy từ Excel) */
+  const _parseQ = parseQuestions;
+  parseQuestions = function(text){
+    const t = String(text || '').replace(/```[a-z]*\n?/gi, '').trim();
+    const first = (t.split('\n')[0] || '');
+    if (/[,;\t]/.test(first) && csvRows(first)[0] && csvRows(first)[0].some(c => COLS.question.includes(hk(c)))) { const r = rowsToQs(csvRows(t)); if (r.length) return r; }
+    return _parseQ(text);
+  };
+
+  async function readQFile(file){
+    const n = file.name.toLowerCase();
+    if (/\.(xlsx|xlsm|xls|ods)$/.test(n)) {
+      await loadJs(SHEETJS);
+      const wb = XLSX.read(await file.arrayBuffer(), {type: 'array'});
+      for (const name of wb.SheetNames) { const r = rowsToQs(XLSX.utils.sheet_to_json(wb.Sheets[name], {header: 1, defval: '', raw: false})); if (r.length) return r; }
+      return [];
+    }
+    if (/\.docx$/.test(n)) { await loadJs(MAMMOTH); const r = await mammoth.extractRawText({arrayBuffer: await file.arrayBuffer()}); return parseQuestions(r.value); }
+    return parseQuestions(await file.text());
+  }
+
+  /** Xem trước danh sách câu hỏi mới ⇒ thêm / thay vào bài kiểm tra đang soạn */
+  function offer(list, src, extra){
+    if (!list.length) return err('Không nhận ra câu hỏi nào trong ' + src + '. Kiểm tra dòng tiêu đề (type, question, a, b, c, d, correct, explanation) hoặc định dạng "Câu 1: … / A. … / Đáp án: B".');
+    const bad = list.filter(q => !q.correct || (q.type !== 'truefalse' && (!q.a || !q.b))).length;
+    const pm = Modal.open({size: 'mid', title: 'Nhận được ' + list.length + ' câu hỏi', sub: esc(src),
+      body: `${extra || ''}${bad ? `<div class="msg err" style="margin-bottom:8px">${bad} câu thiếu đáp án / phương án — sửa ngay trong bảng soạn sau khi thêm.</div>` : ''}
+        <div class="qx-list">${list.map((q, i) => `<div class="qx-q"><b>${i + 1}. ${esc(q.question)}</b> <span class="chip" style="margin-left:4px">${q.type === 'truefalse' ? 'Đúng/Sai' : q.type === 'multi' ? 'Nhiều đáp án' : 'Một đáp án'}</span>
+          ${q.type === 'truefalse' ? `<div class="o ${q.correct ? 'c' : ''}">Đáp án: ${q.correct === 'A' ? 'Đúng' : q.correct === 'B' ? 'Sai' : '—'}</div>` : ['a', 'b', 'c', 'd'].filter(k => q[k]).map(k => `<div class="o ${q.correct.includes(k.toUpperCase()) ? 'c' : ''}">${k.toUpperCase()}. ${esc(q[k])}</div>`).join('')}
+          ${!q.correct ? '<div class="bad">Chưa có đáp án đúng</div>' : ''}${q.explanation ? `<div class="o" style="font-style:italic">${esc(q.explanation)}</div>` : ''}</div>`).join('')}</div>`,
+      foot: `<label class="check" style="padding:0"><input type="checkbox" id="qxRep" ${QB.qs.filter(q => q.question).length ? '' : 'checked'}><span>Thay thế các câu hiện có</span></label><div class="sp"></div><button class="btn btn-line" data-mclose>Huỷ</button><button class="btn btn-primary" id="qxOk">${ic('check')}Thêm vào bài kiểm tra</button>`});
+    $('qxOk').onclick = () => {
+      QB.collect();
+      const cur = QB.qs.filter(q => q.question);
+      QB.qs = $('qxRep').checked ? list : cur.concat(list);
+      if (!QB.qs.length) QB.qs = [QB.blank()];
+      Modal.close(pm); QB.drawList(); ok('Đã thêm ' + list.length + ' câu hỏi — kiểm tra lại rồi bấm Lưu bài kiểm tra.');
+    };
+  }
+
+  const TEMPLATE = 'type,question,a,b,c,d,correct,explanation\n' +
+    'single,"Lớp trong suốt phía trước nhãn cầu là gì?",Giác mạc (cornea),Củng mạc (sclera),Mống mắt (iris),Thể mi (ciliary body),A,"Giác mạc là lớp trong suốt phía trước — slide 3"\n' +
+    'multi,"Những cấu trúc nào thuộc bán phần trước?",Giác mạc,Thủy tinh thể,Võng mạc,Mống mắt,ABD,"Võng mạc thuộc bán phần sau"\n' +
+    'truefalse,"Thủy tinh thể nằm phía sau mống mắt.",,,,,A,"Đúng — slide 5"\n';
+
+  function claudePrompt(topic, count, level, text){
+    return [
+      'Bạn là chuyên gia đào tạo của MANI Medical Hanoi (MMH), soạn bài kiểm tra sau đào tạo cho nhân viên MMH (sales, marketing, back office).',
+      'Chủ đề: "' + topic + '". Soạn ĐÚNG ' + count + ' câu hỏi trắc nghiệm, mức độ ' + ({easy: 'dễ', medium: 'trung bình', hard: 'khó'}[level] || 'trung bình') + ', từ tài liệu đào tạo đính kèm' + (text ? ' và lời thoại video bên dưới' : '') + '.',
+      '',
+      'QUY TẮC: chỉ hỏi những gì có trong tài liệu; phủ đều các phần (~40% nhớ, ~40% hiểu, ~20% vận dụng tình huống thực tế); câu ngắn, một ý, không phủ định kép, không "Tất cả các đáp án trên";',
+      'phương án nhiễu hợp lý, vị trí đáp án đúng phân bố đều A/B/C/D; thuật ngữ chuyên môn kèm tiếng Anh trong ngoặc ở lần đầu; giải thích 1 câu + vị trí trong tài liệu (slide / trang / phút).',
+      'Loại câu: single = 1 đáp án đúng (≥ 70% số câu) · multi = nhiều đáp án đúng, ghi liền vd AC · truefalse = Đúng/Sai, để trống a–d, đáp án A = Đúng, B = Sai.',
+      '',
+      'CHỈ trả về 1 khối CSV, dòng đầu là tiêu đề, không viết gì thêm:',
+      'type,question,a,b,c,d,correct,explanation',
+      text ? '\n=== LỜI THOẠI VIDEO ===\n' + text : ''
+    ].join('\n');
+  }
+  const vttText = t => String(t || '').replace(/^WEBVTT.*$/m, '').split(/\r?\n/).filter(l => l.trim() && !/-->/.test(l) && !/^\d+$/.test(l.trim()) && !/^(NOTE|STYLE)/.test(l)).join(' ').replace(/\s+/g, ' ').trim();
+  async function transcripts(files){
+    const parts = [];
+    for (const f of files) {
+      if (!f.transcript) continue;
+      try { const r = await fetch(f.transcript, {cache: 'force-cache'}); if (r.ok) parts.push('### ' + f.name + '\n' + vttText(await r.text())); } catch (e) {}
+    }
+    return parts.join('\n\n');
+  }
+
+  const AI = {
+    async open(){
+      const sid = QB.sid, s = QB.s || findS(sid) || {};
+      let m = S.mats[sid];
+      if (!m || !m.files) { try { busy(true, 'Đang tải tài liệu của buổi…'); m = await ensureMats(sid); } catch (e) { m = {files: []}; } busy(false); }
+      const vids = (m.files || []).filter(isVid);
+      const docs = (m.files || []).filter(f => !isVid(f) && (f.view === 'pdf' || f.view === 'office' || (f.view === 'gdoc' && !/spreadsheet/.test(f.mime || ''))) && f.kind !== 'sheet');
+      let st = {has: false, admin: isAdminV()};
+      try { st = await post('aiStatus', {}, {timeout: 30000, retry: 1}); } catch (e) {}
+      this.vids = vids; this.docs = docs; this.sid = sid; this.topic = s.topic || '';
+      const keyBox = !st.has ? (st.admin || isAdminV()
+        ? `<div class="ai-run" id="aiKeyBox">${ic('zap')}<div style="flex:1"><b>Cài khoá AI miễn phí (1 lần)</b><div class="xs muted">Vào <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color:var(--link)">aistudio.google.com/apikey</a> bằng tài khoản Google công ty ▸ Create API key ▸ dán vào đây.</div>
+            <div style="display:flex;gap:6px;margin-top:8px"><input class="inp" id="aiKey" placeholder="AIza…" style="height:38px"><button class="btn btn-primary btn-sm" id="aiKeySave">Lưu khoá</button></div></div></div>`
+        : `<div class="msg info" id="aiKeyBox">Chưa cài khoá AI — nhờ Admin cài 1 lần. Trong lúc chờ: bấm <b>Sao chép prompt cho Claude</b>, dán vào Claude kèm tài liệu, rồi dán kết quả vào <b>Dán nhanh</b> hoặc <b>Tải từ file</b>.</div>`) : '';
+      this.m = Modal.open({size: 'mid', title: 'Tạo câu hỏi bằng AI', sub: esc(this.topic),
+        body: `<div class="row3"><div class="field"><label>Số câu</label><input class="inp" type="number" id="aiN" min="3" max="40" value="10"></div>
+            <div class="field"><label>Mức độ</label><select class="inp" id="aiLv"><option value="easy">Dễ</option><option value="medium" selected>Trung bình</option><option value="hard">Khó</option></select></div>
+            <div class="field"><label>Ngôn ngữ</label><select class="inp" id="aiLang"><option value="vi">Tiếng Việt</option><option value="en">English</option></select></div></div>
+          <div class="field"><label>AI đọc nội dung từ</label><div class="ai-src">
+            ${vids.map(f => `<label><input type="checkbox" data-v="${esc(f.id)}" ${f.transcript ? 'checked' : 'disabled'}>${ic('play')}<span>${esc(f.name)} <small>${f.transcript ? '· lời thoại video' : '· video chưa có lời thoại (.vtt)'}</small></span></label>`).join('')}
+            ${docs.map((f, i) => `<label><input type="checkbox" data-f="${esc(f.id)}" ${i < 3 && !vids.length ? 'checked' : ''}>${ftype(f.kind).replace('class="ftype', 'style="transform:scale(.8)" class="ftype')}<span>${esc(f.name)} <small>${f.sizeText ? '· ' + esc(f.sizeText) : ''}</small></span></label>`).join('')}
+            ${!vids.length && !docs.length ? '<div class="faint small" style="padding:6px 0">Buổi này chưa có video / tài liệu PDF, slide để AI đọc — tải tài liệu lên trước.</div>' : ''}</div>
+            <div class="hint">Tối đa 6 tài liệu, tổng ≤ 14 MB. PPTX / DOCX được chuyển sang PDF trước (lần đầu mất ~30 giây).</div></div>
+          <div class="field"><label>Yêu cầu thêm (không bắt buộc)</label><input class="inp" id="aiNote" placeholder="VD: tập trung vào chỉ định & chống chỉ định; có 2 câu tình huống"></div>
+          ${keyBox}<div id="aiOut"></div>`,
+        foot: `<button class="btn btn-line" id="aiCopy">${ic('copy')}Sao chép prompt cho Claude</button><div class="sp"></div><button class="btn btn-line" data-mclose>Đóng</button><button class="btn btn-primary" id="aiGo" ${st.has ? '' : 'disabled'}>${ic('sparkle')}Tạo câu hỏi</button>`});
+      $('aiGo').onclick = () => this.run();
+      $('aiCopy').onclick = () => this.copy();
+      if ($('aiKeySave')) $('aiKeySave').onclick = async () => {
+        const k = $('aiKey').value.trim(); if (!k) return;
+        try { const r = await post('aiKey', {key: k}, {timeout: 30000}); ok(r.message); $('aiKeyBox').remove(); $('aiGo').disabled = false; } catch (e) { err(e.message); }
+      };
+    },
+    picked(){
+      const v = [...document.querySelectorAll('.ai-src [data-v]:checked')].map(x => this.vids.find(f => f.id === x.dataset.v)).filter(Boolean);
+      const d = [...document.querySelectorAll('.ai-src [data-f]:checked')].map(x => this.docs.find(f => f.id === x.dataset.f)).filter(Boolean);
+      return {v, d};
+    },
+    async copy(){
+      const {v, d} = this.picked();
+      const txt = claudePrompt(this.topic, nnum($('aiN').value) || 10, $('aiLv').value, await transcripts(v));
+      try { await navigator.clipboard.writeText(txt); ok('Đã sao chép prompt' + (d.length ? ' — nhớ đính kèm ' + d.length + ' tài liệu khi dán vào Claude.' : '.')); }
+      catch (e) { Modal.open({size: 'mid', title: 'Prompt cho Claude', body: `<textarea class="inp" rows="14" readonly>${esc(txt)}</textarea>`}); }
+    },
+    async prep(f, out){
+      if (f.view !== 'office') return;
+      let meta = await get('fileMeta', {sid: this.sid, fileId: f.id}, {timeout: 60000, retry: 1});
+      for (let i = 0; meta.pending && i < 8; i++) {
+        out('Đang chuyển "' + f.name + '" sang PDF…');
+        const c = await post('fileConvert', {sid: this.sid, fileId: f.id}, {timeout: 120000, retry: 1});
+        if (c.stage === 'busy') await sleep(5000);
+        meta = await get('fileMeta', {sid: this.sid, fileId: f.id}, {fresh: true, timeout: 60000, retry: 1});
+      }
+    },
+    async run(){
+      const {v, d} = this.picked();
+      if (!v.length && !d.length) return err('Chọn ít nhất 1 video hoặc 1 tài liệu cho AI đọc.');
+      if (d.length > 6) return err('Chọn tối đa 6 tài liệu.');
+      const box = $('aiOut'), go = $('aiGo');
+      const out = t => { if (box) box.innerHTML = `<div class="ai-run"><span class="spin"></span><span>${esc(t)}</span></div>`; };
+      go.disabled = true;
+      try {
+        out('Đang đọc lời thoại video…');
+        const text = await transcripts(v);
+        for (const f of d) { try { await this.prep(f, out); } catch (e) {} }
+        out('AI đang soạn câu hỏi (thường 20–60 giây)…');
+        const r = await post('aiQuiz', {sid: this.sid, count: nnum($('aiN').value) || 10, level: $('aiLv').value, lang: $('aiLang').value, note: $('aiNote').value.trim(), text, fileIds: d.map(f => f.id)}, {timeout: 240000, retry: 0});
+        Modal.close(this.m);
+        const skip = (r.skipped || []).length ? `<div class="msg info" style="margin-bottom:8px">Bỏ qua ${r.skipped.length} tài liệu: ${r.skipped.map(x => esc((x.name || '') + ' (' + x.reason + ')')).join('; ')}</div>` : '';
+        offer(r.questions || [], 'AI soạn từ ' + [v.length ? v.length + ' video' : '', (r.used || []).length ? r.used.length + ' tài liệu' : ''].filter(Boolean).join(' + '), skip + `<div class="note-box" style="margin-bottom:8px">${ic('info')}<div>AI có thể sai — đọc lại từng câu và đáp án trước khi lưu.</div></div>`);
+      } catch (e) {
+        go.disabled = false;
+        if (box) box.innerHTML = `<div class="msg err" style="margin-top:12px">${esc(e.message)}</div>`;
+      }
+    }
+  };
+  window.AIQ = AI;
+
+  const _qbOpen = QB.open;
+  QB.open = async function(sid){
+    await _qbOpen.call(this, sid);
+    const paste = $('qbPaste'); if (!paste || $('qbFile')) return;
+    paste.insertAdjacentHTML('beforebegin', `<button class="btn btn-soft btn-sm" id="qbAi">${ic('sparkle')}Tạo bằng AI</button><button class="btn btn-line btn-sm" id="qbFile">${ic('upload')}Tải từ file</button>`);
+    $('qbAi').onclick = () => { QB.collect(); AI.open(); };
+    $('qbFile').onclick = () => {
+      QB.collect();
+      const pm = Modal.open({size: 'mid', title: 'Tải câu hỏi từ file', sub: 'Excel (.xlsx), CSV, Word (.docx) hoặc .txt',
+        body: `<div class="note-box" style="margin-bottom:12px">${ic('info')}<div><b>Excel / CSV</b>: dòng tiêu đề <code>type, question, a, b, c, d, correct, explanation</code> (hoặc tiếng Việt: Loại, Câu hỏi, A, B, C, D, Đáp án, Giải thích).
+            type = <code>single</code> / <code>multi</code> / <code>truefalse</code> (bỏ trống = tự nhận); correct = <code>B</code>, <code>AC</code>, <code>Đúng</code>, <code>Sai</code>.<br><b>Word / TXT</b>: dạng <code>Câu 1: … / A. … / B. … / Đáp án: B</code>.</div></div>
+          <div class="drop" id="qfDrop" style="cursor:pointer">${ic('upload')} <b>Bấm để chọn file</b> hoặc kéo thả file vào đây</div><input type="file" id="qfIn" accept=".xlsx,.xls,.xlsm,.ods,.csv,.tsv,.txt,.docx" hidden>`,
+        foot: `<button class="btn btn-line" id="qfTpl">${ic('dl')}Tải file mẫu (CSV)</button><div class="sp"></div><button class="btn btn-line" data-mclose>Huỷ</button>`});
+      const handle = async file => {
+        if (!file) return;
+        busy(true, 'Đang đọc file…');
+        try { const list = await readQFile(file); busy(false); Modal.close(pm); offer(list, file.name); }
+        catch (e) { busy(false); err('Không đọc được file: ' + e.message); }
+      };
+      $('qfDrop').onclick = () => $('qfIn').click();
+      $('qfIn').onchange = e => handle(e.target.files[0]);
+      $('qfDrop').addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); });
+      $('qfDrop').addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); handle(e.dataTransfer.files[0]); });
+      $('qfTpl').onclick = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + TEMPLATE], {type: 'text/csv;charset=utf-8'})); a.download = 'Mau_cau_hoi_Training_Hub.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000); };
+    };
+  };
+
+  /* dữ liệu từ bản lưu đã vẽ trước khi khối này chạy ⇒ vẽ lại trang hiện tại */
+  try { if (S.user && S.sessions.length && typeof route === 'function') route(); } catch (e) {}
+})();
+</script>
+
 </body>
 </html>
