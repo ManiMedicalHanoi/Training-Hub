@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '5.1';
+const APP_VERSION = '5.2';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -6283,6 +6283,201 @@ post = function(action){
       ${o.done.length ? `<div class="lb-done">${o.done.map(sid => `<div data-a="go" data-h="#/s/${esc(sid)}">${ic('award')}<span>${esc(topicOf(sid))}</span></div>`).join('')}</div>` : '<div class="lb-rule">Chưa có chứng chỉ — đang tích điểm từ các bài học đã xong.</div>'}`});
     m.el.querySelectorAll('[data-a="go"]').forEach(b => b.addEventListener('click', () => Modal.close(m)));
   };
+})();
+</script>
+
+<style id="v52-css">
+/* ★ v5.2 — bài kiểm tra bắt buộc (mở sau khi xem ≥ 70% video) · chứng chỉ khi đạt điểm · kết quả test của buổi */
+.v52-qi .n{background:#EEF3FB;color:#3A5CAA}
+.v52-qi.lock{opacity:.85}
+.v52-qi.ok .n{background:#E8F6EE;color:#1E7B46}
+.v52-tag{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;border:1px solid #E6EAEF;color:#5B6B7D;background:#F5F7FA;vertical-align:1px}
+.v52-tag.ok{color:#1E7B46;border-color:#CBE9D7;background:#EEF8F2}
+.v52-tag.lock{color:#7A5A00;border-color:#F0D58A;background:#FFF9EA}
+.v52-as{border:1px solid #E6EAEF;border-radius:12px;padding:12px 14px;margin:0 0 16px;background:#FBFCFE}
+.v52-as h5{margin:0 0 8px;font-size:13px;color:#003047;display:flex;align-items:center;gap:8px}
+.v52-as h5 svg{width:16px;height:16px;flex:none}
+.v52-as.need{border-color:#E9C46A;background:#FFFBEB}
+.v52-as .hint{font-size:12.5px;line-height:1.5}
+.v52-as .hint b{color:#003047}
+</style>
+<script id="v52-js">
+/* ==========================================================================
+   ★ v5.2 (16/10/2026) — BÀI KIỂM TRA SAU ĐÀO TẠO BẬT LẠI (máy chủ v3.31, file RH_Assess.gs)
+   Người dùng yêu cầu: trainer tạo lại được bài kiểm tra (assessment); học viên chỉ làm bài sau khi đã xem ≥ 70% thời lượng
+   mỗi video (nếu khoá có video); đạt ≥ điểm trainer đặt ⇒ chứng chỉ tự cấp + email. Khoá không có bài kiểm tra: như cũ
+   (học xong 100% ⇒ chứng chỉ). v4.0 từng hạ bài kiểm tra thành "ôn tập không bắt buộc" — khối này đảo lại cho khoá có bài.
+   · Điều kiện mở bài = VIDEO (tài liệu đọc không còn là điều kiện; máy chủ hubGate tính như vậy).
+   · Form buổi đào tạo: thêm "Link bài kiểm tra" + "Kết quả bài kiểm tra" — chuyển Đã diễn ra cần kết quả (trừ Coaching / External);
+     buổi có bài trên Hub và đã có người nộp ⇒ máy chủ tự điền. Kết quả + chứng chỉ được lưu vào thư mục đào tạo của buổi.
+   ========================================================================== */
+(function(){
+  window.MIN_SERVER = '3.31';
+  const curSid = () => { const m = /#\/[a-z]+\/([^?\/]+)/i.exec(location.hash); return m ? decodeURIComponent(m[1]) : ''; };
+  const isV = f => !!(f && f.src && (f.isVideo || f.player === 'html5' || f.kind === 'video'));
+  const quizOf = sid => { const f = S.full[sid]; return f && f.quiz; };
+  const hasQuiz = sid => { const q = quizOf(sid); return !!(q && q.hasQuiz && q.active && q.totalQuestions > 0); };
+  window.v52HasQuiz = hasQuiz;
+  /** điều kiện mở bài: mọi video đã xem ≥ 70% (đánh dấu completed) */
+  function vGate(sid){
+    const vids = Course.files(sid).filter(isV), miss = vids.filter(x => !Course.done(sid, x.id));
+    return {total: vids.length, done: vids.length - miss.length, missing: miss, passed: !miss.length};
+  }
+  window.v52Gate = vGate;
+  const needVid = sid => { const q = quizOf(sid); return !q || q.requireMaterials !== false; };
+
+  /* ---------- lộ trình: 1 Học · 2 Bài kiểm tra · 3 Chứng chỉ (khoá có bài kiểm tra) ---------- */
+  const _side = Course.side;
+  Course.side = function(sid, curId){
+    const html = _side.call(this, sid, curId);
+    if (!hasQuiz(sid)) return html;
+    const i = html.indexOf('<div class="crs-sec">2 · ');
+    if (i < 0) return html;
+    const q = quizOf(sid), g = vGate(sid), s = findS(sid) || {}, open = !needVid(sid) || g.passed;
+    const qs = q.passed ? 'done' : open ? 'open' : 'locked';
+    return html.slice(0, i) + `<div class="crs-sec">2 · Bài kiểm tra</div>
+      <button class="crs-st quiz ${qs}" data-a="crsQuiz" data-sid="${esc(sid)}"><i>${qs === 'done' ? ic('check') : qs === 'locked' ? ic('lock') : ic('clip')}</i><span><b>Bài kiểm tra sau đào tạo</b><small>${qs === 'done' ? 'Đã đạt ' + (q.best ? pts(q.best.percent) + ' điểm' : '') : qs === 'locked' ? 'Mở khi xem ≥ 70% mỗi video (' + g.done + '/' + g.total + ')' : q.totalQuestions + ' câu · ' + q.durationMin + ' phút · đạt từ ' + q.passScore + '/100'}</small></span></button>
+      <div class="crs-sec">3 · Chứng chỉ</div>
+      <div class="crs-st crt ${s.myCert ? 'done' : ''}"><i>${s.myCert ? ic('check') : ic('award')}</i><span><b>Chứng chỉ hoàn thành</b><small>${s.myCert ? 'Đã cấp — đã gửi email' : 'Tự cấp khi đạt từ ' + q.passScore + '/100 điểm'}</small></span></div>
+      </div>`;
+  };
+  const _sync = Course.syncGate;
+  Course.syncGate = function(sid){
+    if (!hasQuiz(sid)) return _sync.call(this, sid);
+    const q = quizOf(sid); if (!q) return;
+    const g = vGate(sid);
+    q.gate = Object.assign({}, q.gate || {}, {required: needVid(sid), total: g.total, done: g.done, passed: !needVid(sid) || g.passed, missing: g.missing.map(x => ({id: x.id, name: x.name, path: x.path}))});
+    delete q.gate.pending;
+    if (q.gate.passed && q.active && q.totalQuestions > 0 && (q.attempts < q.maxAttempts || q.inProgress)) { q.available = true; q.reason = ''; }
+    else if (!q.gate.passed && !q.inProgress) { q.available = false; q.reason = 'Xem ≥ 70% thời lượng mỗi video (còn ' + g.missing.length + ' video) để mở bài kiểm tra.'; }
+  };
+  const _foot = Course.foot;
+  Course.foot = function(sid){
+    const h = _foot.call(this, sid);
+    return hasQuiz(sid) ? h.replace('>Hoàn thành<', '>Sang bài kiểm tra<').replace('Hoàn thành' + ic('right'), 'Sang bài kiểm tra' + ic('right')) : h;
+  };
+  const _qStep = Course.quizStep;
+  Course.quizStep = function(sid){
+    if (!hasQuiz(sid)) return _qStep.call(this, sid);
+    const q = quizOf(sid), g = vGate(sid), s = findS(sid) || (S.full[sid] || {}).data || {};
+    if (Reader.st) Reader.st.onQuiz = true;
+    this.syncGate(sid);
+    let body;
+    if (q.passed) body = `<div class="crs-card">${ic('award', 'big ok')}<h2 class="h-lg">Bạn đã đạt bài kiểm tra</h2><p class="muted">Điểm cao nhất ${q.best ? pts(q.best.percent) + '/100' : ''}. ${s.myCert ? 'Chứng chỉ đã được cấp và gửi vào email của bạn.' : 'Bấm Nhận chứng chỉ nếu chưa thấy email.'}</p>${s.myCert ? `<a class="btn btn-primary" href="${esc(s.myCert)}" target="_blank" rel="noopener">${ic('award')}Xem chứng chỉ</a>` : ''}</div>`;
+    else if (needVid(sid) && !g.passed) body = `<div class="crs-card">${ic('lock', 'big')}<h2 class="h-lg">Còn ${g.missing.length} video cần xem</h2><p class="muted">Xem tối thiểu 70% thời lượng mỗi video (không tua qua phần chưa xem) để mở bài kiểm tra.</p>
+        <div class="crs-miss">${g.missing.map(x => `<button class="resume" data-a="crsGo" data-sid="${esc(sid)}" data-fid="${esc(x.id)}">${ftype(x.kind || 'video')}<div class="t"><b class="clamp1">${esc(x.name)}</b><span>Video${x.duration ? ' · ' + fmtSec(x.duration) : ''}</span></div>${ic('right')}</button>`).join('')}</div></div>`;
+    else if (!q.available) body = `<div class="crs-card">${ic('info', 'big')}<h2 class="h-lg">Chưa làm được bài kiểm tra</h2><p class="muted">${esc(q.reason || '')}</p><button class="btn btn-line" data-a="rdClose">Đóng</button></div>`;
+    else body = `<div class="crs-card">${ic('check', 'big ok')}<h2 class="h-lg">${g.total ? 'Bạn đã xem đủ ' + g.total + ' video' : 'Sẵn sàng làm bài'}</h2><p class="muted">Bài kiểm tra ${q.totalQuestions} câu trong ${q.durationMin} phút — đạt từ <b>${q.passScore}/100</b> điểm sẽ nhận chứng chỉ ngay.${q.deadline ? ' Hạn hoàn thành ' + dmy(q.deadline) + '.' : ''}</p>
+        <div class="qfacts" style="justify-content:center;margin:6px 0 22px"><div><b>${q.totalQuestions}</b>câu hỏi</div><div><b>${q.durationMin}'</b>thời gian</div><div><b>${q.passScore}</b>điểm đạt /100</div><div><b>${Math.max(0, q.maxAttempts - q.attempts)}</b>lượt còn lại</div></div>
+        <button class="btn btn-go btn-lg" data-a="crsStartQuiz" data-sid="${esc(sid)}">${ic('play')}${q.inProgress ? 'Tiếp tục bài kiểm tra' : 'Làm bài kiểm tra ngay'}</button></div>`;
+    $('rdBody').innerHTML = `<div class="crs-final">${body}</div>`;
+    $('rdPgn') && $('rdPgn').classList.add('hide'); $('rdZoom') && $('rdZoom').classList.add('hide');
+    const sd = $('crsSide'); if (sd) { sd.innerHTML = this.side(sid, ''); const qb = sd.querySelector('.crs-st.quiz'); if (qb) qb.classList.add('cur'); }
+    const ft = $('crsFoot'); if (ft) ft.innerHTML = `<div class="crs-msg"></div><button class="btn btn-line" data-a="crsBack">${ic('left')}Quay lại bài học</button>`;
+    const t = document.querySelector('#reader .rd-top .t span'); if (t) t.textContent = 'Bước 2 · Bài kiểm tra';
+  };
+  const _complete = Course.complete;
+  Course.complete = function(){
+    const st = Reader.st, sid = st && st.sid, before = sid && hasQuiz(sid) ? vGate(sid).passed : true;
+    const r = _complete.apply(this, arguments);
+    try { if (sid && hasQuiz(sid) && !before && vGate(sid).passed) toast('Bạn đã xem đủ video — đã mở bài kiểm tra, làm bài để nhận chứng chỉ.', 'ok'); } catch (e) {}
+    return r;
+  };
+
+  /* ---------- màn giới thiệu bài kiểm tra: chứng chỉ khi đạt ---------- */
+  const _intro = Quiz.intro;
+  Quiz.intro = async function(sid, fromCourse){
+    await _intro.call(this, sid, fromCourse);
+    const q = quizOf(sid) || {};
+    document.querySelectorAll('#qz .qz-intro li').forEach(li => {
+      if (/ôn tập|chứng chỉ/i.test(li.textContent)) li.innerHTML = `${ic('award')}<span>Đạt từ <b>${esc(String(q.passScore || ''))}/100</b> điểm ⇒ <b>chứng chỉ tự cấp</b> và gửi vào email của bạn.</span>`;
+    });
+  };
+
+  /* ---------- trang khoá học (giao diện v4): thêm bước Bài kiểm tra, đổi "Bài ôn tập" ---------- */
+  function patchCourse(){
+    const sid = curSid(); if (!sid || !/^#\/s\//.test(location.hash) || /adv=1/.test(location.hash)) return;
+    const s = findS(sid) || {}, q = quizOf(sid);
+    document.querySelectorAll('.h-btn, .v4-tools button').forEach(b => {
+      if (b.dataset.v52) return;
+      if (/Bài ôn tập \(không bắt buộc\)/.test(b.textContent)) { b.dataset.v52 = 1; b.innerHTML = ic('clip') + 'Làm bài kiểm tra'; b.classList.remove('line'); b.classList.add('yellow'); }
+      else if (b.dataset.a === 'quizBuilder' && /Bài ôn tập/.test(b.textContent)) { b.dataset.v52 = 1; b.innerHTML = ic('clip') + 'Bài kiểm tra'; }
+    });
+    const lockCert = hasQuiz(sid) && !q.passed && !s.myCert;
+    document.querySelectorAll('.v49-cb').forEach(b => { b.style.display = lockCert ? 'none' : ''; });
+    if (!hasQuiz(sid)) {
+      if (q && q.hasQuiz === false && canEdit(s) && !document.querySelector('.v52-mk')) {
+        const tools = document.querySelector('.v4-navy p'); if (tools) tools.insertAdjacentHTML('beforeend', ' <span class="v52-mk">Có thể thêm <b>bài kiểm tra</b>: học viên làm sau khi xem đủ video, đạt điểm ⇒ chứng chỉ.</span>');
+      }
+      return;
+    }
+    const ce = document.querySelector('.v4-li.ce');
+    if (ce && !document.querySelector('.v52-qi')) {
+      const g = vGate(sid), open = !needVid(sid) || g.passed, done = !!q.passed;
+      ce.insertAdjacentHTML('beforebegin', `<div class="v4-li v52-qi ${done ? 'ok done' : open ? '' : 'lock'}" data-a="${open || done ? 'quiz' : 'course'}" data-sid="${esc(sid)}"><span class="n">${done ? ic('check') : open ? ic('clip') : ic('lock')}</span><span class="t">Bài kiểm tra sau đào tạo
+        <small>${done ? 'Đã đạt ' + (q.best ? pts(q.best.percent) + '/100' : '') : open ? q.totalQuestions + ' câu · ' + q.durationMin + ' phút · đạt từ ' + q.passScore + '/100' : 'Mở khi xem ≥ 70% mỗi video · ' + g.done + '/' + g.total}</small></span>
+        <span class="v52-tag ${done ? 'ok' : open ? '' : 'lock'}">${done ? 'Đã đạt' : open ? 'Đã mở' : 'Chưa mở'}</span></div>`);
+      const sm = ce.querySelector('.t small'); if (sm && !s.myCert) sm.textContent = 'Tự cấp khi đạt từ ' + q.passScore + '/100 điểm bài kiểm tra';
+    }
+    const key = document.querySelector('.v4-key ul');
+    if (key && !key.dataset.v52) {
+      key.dataset.v52 = 1;
+      [].forEach.call(key.querySelectorAll('li'), li => {
+        if (/Đọc hết các trang/.test(li.textContent)) li.textContent = 'Tài liệu đọc thêm (nên đọc hết trang).';
+        if (/chứng chỉ tự gửi/.test(li.textContent)) li.innerHTML = `Làm <b>bài kiểm tra</b> (${q.totalQuestions} câu, ${q.durationMin} phút) — đạt từ <b>${q.passScore}/100</b> ⇒ chứng chỉ tự gửi vào email.`;
+      });
+    }
+  }
+  new MutationObserver(() => { clearTimeout(patchCourse.t); patchCourse.t = setTimeout(() => { try { patchCourse(); } catch (e) {} }, 120); }).observe(document.body, {childList: true, subtree: true});
+
+  /* ---------- soạn bài kiểm tra: điều kiện mở = xem đủ video; đạt ⇒ chứng chỉ ---------- */
+  const _drawSet = QB.drawSet;
+  QB.drawSet = function(){
+    _drawSet.apply(this, arguments);
+    const rq = $('qcReq'); const row = rq && rq.closest('.toggle-row');
+    if (row) row.querySelector('.t').innerHTML = 'Bắt buộc xem video trước<small>Học viên phải xem ≥ 70% thời lượng mỗi video của khoá rồi mới mở được bài. Khoá không có video ⇒ làm bài ngay.</small>';
+    const h = document.querySelector('#qbSet h4'); if (h && !document.querySelector('.v52-qbn')) h.insertAdjacentHTML('afterend', '<div class="note-box v52-qbn" style="margin:0 0 12px">' + ic('info') + '<div>Khoá có bài kiểm tra: học viên <b>xem đủ video → làm bài → đạt điểm</b> mới nhận chứng chỉ. Kết quả tự ghi vào cột kết quả của buổi và thư mục đào tạo.</div></div>');
+  };
+  if (window.VM && VM.open) {
+    const _vm = VM.open;
+    VM.open = async function(sid){ await _vm.apply(this, arguments); const nb = document.querySelector('.modal .note-box div'); if (nb) nb.innerHTML = 'Học viên xem video ngay trong app, phải xem <b>≥ 70%</b> mỗi video (không tua qua phần chưa xem). Khoá có <b>bài kiểm tra</b>: xem đủ video ⇒ mở bài, đạt điểm ⇒ chứng chỉ. Khoá không có bài: học xong toàn bộ ⇒ chứng chỉ.'; };
+  }
+
+  /* ---------- form buổi đào tạo: link + kết quả bài kiểm tra (bắt buộc khi Đã diễn ra) ---------- */
+  let AS = null;
+  const _sf = sessionForm;
+  sessionForm = function(sid){
+    _sf.apply(this, arguments);
+    if (!$('sfSave') || !$('sfSum')) return;
+    const s = sid ? Object.assign({}, findS(sid) || {}, ((S.full[sid] || {}).data) || {}) : {};
+    const q = sid ? quizOf(sid) : null;
+    AS = {sid: sid || '', link0: s.assessment || '', res0: s.assessmentResult || ''};
+    $('sfSum').closest('.field').insertAdjacentHTML('afterend', `<div class="v52-as" id="sfAsBox"><h5>${ic('clip')}Bài kiểm tra sau đào tạo</h5>
+      <div class="row2"><div class="field"><label>Link bài kiểm tra</label><input class="inp" id="sfAsLink" value="${esc(AS.link0)}" placeholder="${q && q.hasQuiz ? 'Bài kiểm tra trên Hub — tự điền' : 'https:// (bài làm ngoài Hub, nếu có)'}"></div>
+        <div class="field"><label>Kết quả bài kiểm tra</label><input class="inp" id="sfAsRes" value="${esc(AS.res0)}" placeholder="VD: 8/10 đạt · điểm TB 82"></div></div>
+      <div class="hint" id="sfAsHint"></div></div>`);
+    const hint = () => {
+      const st = $('sfStatus').value, ty = String($('sfType').value || ''), exempt = /coaching|external/i.test(ty);
+      const box = $('sfAsBox'), empty = !$('sfAsRes').value.trim();
+      box.classList.toggle('need', st === 'Completed' && !exempt && empty && !(q && q.hasQuiz));
+      $('sfAsHint').innerHTML = exempt ? 'Coaching / External: không bắt buộc kết quả bài kiểm tra.'
+        : q && q.hasQuiz ? 'Buổi có bài kiểm tra trên Hub: kết quả <b>tự điền</b> khi học viên nộp bài, bảng kết quả + chứng chỉ được lưu vào thư mục đào tạo của buổi.'
+        : '<b>Bắt buộc</b> khi chuyển <b>Đã diễn ra</b>: nhập kết quả bài kiểm tra, hoặc soạn bài kiểm tra trên Hub để học viên làm (kết quả tự điền).';
+    };
+    ['sfStatus', 'sfType'].forEach(id => $(id).addEventListener('change', hint)); $('sfAsRes').addEventListener('input', hint); hint();
+    const m = Modal.top(); if (m) { const _c = m.onClose; m.onClose = () => { AS = null; if (_c) _c(); }; }
+  };
+  const _post = post;
+  post = function(action, params, opt){
+    if (action === 'saveSession' && AS && $('sfAsRes')) {
+      const link = $('sfAsLink').value.trim(), res = $('sfAsRes').value.trim(), add = {};
+      if (link !== AS.link0) add.assessment = link;
+      if (res !== AS.res0) add.assessmentResult = res;
+      if (Object.keys(add).length) params = Object.assign({}, params, add);
+    }
+    return _post.call(this, action, params, opt);
+  };
+  try { if (S.user) route(true); } catch (e) {}
 })();
 </script>
 
