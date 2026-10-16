@@ -5915,7 +5915,7 @@ try { if (S.user) hydrate(); } catch (e) {}   /* app đã hiện bản boot lưu
 "use strict";
 const MAXB = 24 * 1048576, OKEXT = /\.(mp4|m4v|webm)$/i;
 const mb = n => (n / 1048576).toFixed(1);
-function pickVideo(){ return new Promise(res => { const i = document.createElement('input'); i.type = 'file'; i.accept = 'video/*'; i.onchange = () => res(i.files && i.files[0] || null); i.click(); }); }
+function pickVideo(){ return new Promise(res => { const i = document.createElement('input'); i.type = 'file'; i.accept = 'video/*'; i.style.cssText = 'position:fixed;left:-9999px;opacity:0'; document.body.appendChild(i); i.onchange = () => { res(i.files && i.files[0] || null); setTimeout(() => i.remove(), 1000); }; i.click(); }); }
 function recMime(){
   if (!window.MediaRecorder) return '';
   return ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
@@ -6021,6 +6021,26 @@ new MutationObserver(ms => ms.forEach(m => { const el = m.target.nodeType === 3 
   if (!el || !el.classList || !el.classList.contains('st') || !el.closest('#vmJobs')) return;
   const hit = STEP.find(x => x[0].test(el.textContent)); if (hit && el.textContent !== hit[1]) el.textContent = hit[1]; }))
   .observe(document.body, {subtree: true, childList: true, characterData: true});
+
+/* video vừa đăng: GitHub Pages cần 1–2 phút ⇒ tự thử lại thay vì báo hỏng */
+let rtWarn = 0;
+document.addEventListener('error', e => {
+  const v = e.target; if (!(v instanceof HTMLVideoElement)) return;
+  const src = v.currentSrc || v.src || ''; if (!/\/Training-Hub\/media\//.test(src)) return;
+  v.__rt = (v.__rt || 0) + 1; if (v.__rt > 8) return;
+  if (Date.now() - rtWarn > 60000) { rtWarn = Date.now(); toast('Video có thể vừa được đăng — GitHub cần 1–2 phút để phát. App tự thử lại…'); }
+  setTimeout(() => { if (!document.body.contains(v)) return; v.src = src.replace(/([?&])r=\d+&?/, '$1').replace(/[?&]$/, '') + (src.indexOf('?') >= 0 ? '&' : '?') + 'r=' + Date.now(); try { v.load(); } catch (_) {} }, 15000);
+}, true);
+
+/* trainer / Admin của khoá không nhận chứng chỉ (máy chủ bỏ qua tiến độ của người sửa được khoá) ⇒ nói rõ thay vì "Tự cấp khi học xong" */
+const TR_TXT = 'Bạn là trainer / Admin của khoá này nên không tính tiến độ và không nhận chứng chỉ. Muốn thử như học viên: Chế độ Test ▸ vai Học viên, hoặc đăng nhập bằng tài khoản học viên.';
+function trNote(){
+  const m = /#\/[a-z]+\/([^?\/]+)/i.exec(location.hash); if (!m) return;
+  const s0 = findS(decodeURIComponent(m[1])); if (!s0 || s0.myCert) return;
+  if (!(typeof canEdit === 'function' && canEdit(s0)) || (S.test && S.testRole === 'learner')) return;
+  document.querySelectorAll('.v4-li.ce small, .crs-st.crt small').forEach(el => { if (el.textContent !== TR_TXT) el.textContent = TR_TXT; });
+}
+new MutationObserver(() => { clearTimeout(trNote.t); trNote.t = setTimeout(trNote, 120); }).observe(document.body, {childList: true, subtree: true});
 
 /* nút Tạo / Lưu khoá học: hiện đang lưu */
 const post1 = post;
