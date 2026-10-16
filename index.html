@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '4.6';
+const APP_VERSION = '4.7';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -5897,6 +5897,161 @@ window.ensureMats = async function(sid){
   return em0.apply(this, arguments);
 };
 try { if (S.user) hydrate(); } catch (e) {}   /* app đã hiện bản boot lưu trên máy trước khi khối này chạy */
+})();
+</script>
+
+
+<style id="v47-css">
+@media (max-width:600px){#vmList .vm-it{flex-wrap:wrap}#vmList .vm-it .x{flex-basis:calc(100% - 86px)}}
+.vz-go{margin-top:8px}
+</style>
+<script id="v47-js">
+/* ★ v4.7 (15/10/2026) — LÀM TỪ ĐIỆN THOẠI
+   · Tải video từ điện thoại: chọn được mọi video trong thư viện (cả .MOV của iPhone). Video > 24 MB / không phải MP4-WEBM ⇒ app NÉN NGAY TRÊN MÁY
+     (720p, ≤ 24 MB, canvas + MediaRecorder, MP4 nếu trình duyệt hỗ trợ, không thì WEBM) rồi tải lên như cũ. Thời gian nén ≈ thời lượng video; giữ màn hình mở.
+   · Nút Tạo / Lưu khoá học hiện "Đang lưu…" trong lúc chờ máy chủ.
+   · Khung Video trên điện thoại: ô tên video rộng hơn. */
+(function(){
+"use strict";
+const MAXB = 24 * 1048576, OKEXT = /\.(mp4|m4v|webm)$/i;
+const mb = n => (n / 1048576).toFixed(1);
+function pickVideo(){ return new Promise(res => { const i = document.createElement('input'); i.type = 'file'; i.accept = 'video/*'; i.style.cssText = 'position:fixed;left:-9999px;opacity:0'; document.body.appendChild(i); i.onchange = () => { res(i.files && i.files[0] || null); setTimeout(() => i.remove(), 1000); }; i.click(); }); }
+function recMime(){
+  if (!window.MediaRecorder) return '';
+  return ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm']
+    .find(t => { try { return MediaRecorder.isTypeSupported(t); } catch (e) { return false; } }) || '';
+}
+/* Chuẩn bị video (đọc thời lượng, kích thước) — chưa phát */
+function loadVideo(file){
+  return new Promise((res, rej) => {
+    const v = document.createElement('video'), u = URL.createObjectURL(file);
+    v.playsInline = true; v.preload = 'auto'; v.src = u; v.setAttribute('playsinline', '');
+    const t = setTimeout(() => rej(new Error('Không đọc được video (quá thời gian).')), 30000);
+    v.onloadedmetadata = () => { clearTimeout(t); res({v, u}); };
+    v.onerror = () => { clearTimeout(t); URL.revokeObjectURL(u); rej(new Error('Trình duyệt không đọc được video này — hãy xuất lại MP4 trên máy rồi tải lên.')); };
+  });
+}
+/* Nén: PHẢI gọi trong sự kiện bấm của người dùng (điện thoại chỉ cho phát có tiếng khi người dùng bấm) */
+function compress(file, V, onProg){
+  const {v, u} = V, dur = v.duration;
+  const w0 = v.videoWidth || 1280, h0 = v.videoHeight || 720;
+  const sc = Math.min(1, 1280 / Math.max(w0, h0), 720 / Math.min(w0, h0));
+  const W = Math.max(2, Math.round(w0 * sc / 2) * 2), H = Math.max(2, Math.round(h0 * sc / 2) * 2);
+  const ab = 96000, vb = Math.max(200000, Math.min(2400000, (MAXB * 8 / dur) * 0.9 - ab));
+  const mime = recMime();
+  const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+  const stream = c.captureStream(30);
+  let ac = null;
+  try { ac = new (window.AudioContext || window.webkitAudioContext)(); const src = ac.createMediaElementSource(v), dst = ac.createMediaStreamDestination(); src.connect(dst); dst.stream.getAudioTracks().forEach(t => stream.addTrack(t)); } catch (e) { ac = null; }
+  const rec = new MediaRecorder(stream, Object.assign({videoBitsPerSecond: Math.round(vb)}, mime ? {mimeType: mime} : {}, ac ? {audioBitsPerSecond: ab} : {}));
+  const parts = [];
+  rec.ondataavailable = e => { if (e.data && e.data.size) parts.push(e.data); };
+  let lock = null; try { if (navigator.wakeLock) navigator.wakeLock.request('screen').then(l => lock = l).catch(() => {}); } catch (e) {}
+  const p = new Promise((res, rej) => {
+    let stop = false;
+    const draw = () => { if (stop) return; try { g.drawImage(v, 0, 0, W, H); } catch (e) {} onProg(Math.min(99, v.currentTime / dur * 100));
+      if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(draw); else requestAnimationFrame(draw); };
+    const fin = () => { if (stop) return; stop = true; try { rec.stop(); } catch (e) {} };
+    rec.onstop = () => {
+      try { if (lock) lock.release(); } catch (e) {} try { if (ac) ac.close(); } catch (e) {} URL.revokeObjectURL(u);
+      const type = (rec.mimeType || mime || 'video/webm').split(';')[0], ext = /mp4/.test(type) ? 'mp4' : 'webm';
+      const blob = new Blob(parts, {type});
+      if (!blob.size) return rej(new Error('Nén video không thành công trên trình duyệt này — hãy dùng máy tính hoặc ứng dụng nén video (CapCut) rồi tải lại.'));
+      if (blob.size > 25 * 1048576) return rej(new Error(`Sau khi nén video vẫn ${mb(blob.size)} MB (tối đa 25 MB) — hãy cắt video ngắn hơn rồi tải lại.`));
+      res(new File([blob], file.name.replace(/\.[^.]+$/, '') + '.' + ext, {type}));
+    };
+    v.onended = fin;
+    v.onerror = () => { fin(); rej(new Error('Video bị lỗi khi đang nén.')); };
+    document.addEventListener('visibilitychange', function vis(){ if (document.hidden && !stop) toast('Đang nén video — giữ màn hình Training Hub mở, không chuyển ứng dụng.'); if (stop) document.removeEventListener('visibilitychange', vis); });
+    rec.start(1000);
+    if (ac && ac.state === 'suspended') ac.resume().catch(() => {});
+    const pl = v.play();
+    if (pl && pl.catch) pl.catch(e => { fin(); rej(new Error('Điện thoại không cho phát video để nén (' + (e.name || e.message) + ') — bấm “Bắt đầu nén” lại.')); });
+    draw();
+  });
+  return {W, H, vb, mime, p};
+}
+
+function wire(){
+  const VM = window.VM; if (!VM || VM.__v47) return; VM.__v47 = 1;
+  const open0 = VM.open, up0 = VM.upload;
+  VM.open = async function(){
+    await open0.apply(this, arguments);
+    const pick = $('vmPick'); if (!pick) return;
+    pick.onclick = async () => { const f = await pickVideo(); if (f) this.upload(f); };
+    const sec = document.querySelector('#vmUp') && document.querySelector('#vmUp').previousElementSibling;
+    if (sec && /Tải video/.test(sec.textContent)) sec.textContent = 'Tải video từ máy tính / điện thoại';
+    const t = document.querySelector('#vmUp .t');
+    if (t) t.innerHTML = '<b>Chọn video (máy tính hoặc thư viện ảnh điện thoại)</b>MP4 ≤ 25 MB tải lên ngay. Video lớn hơn / quay bằng iPhone (.MOV) ⇒ app tự nén còn ≤ 24 MB (720p) ngay trên máy — mất khoảng bằng thời lượng video, giữ màn hình mở.';
+  };
+  VM.upload = async function(file){
+    if (OKEXT.test(file.name) && file.size <= 25 * 1048576) return up0.call(this, file);
+    if (!S.gh) return up0.call(this, file);   /* báo "chưa kết nối GitHub" như cũ */
+    const self = this, id = 'z' + Date.now(), title = file.name.replace(/\.[^.]+$/, '');
+    if (!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream) return err('Trình duyệt này không nén video được — hãy mở Training Hub bằng Chrome (Android) / Safari (iPhone) bản mới, hoặc nén bằng CapCut rồi tải lại.');
+    $('vmJobs').insertAdjacentHTML('beforeend', `<div class="vm-job" id="${id}"><span class="spin" style="width:14px;height:14px"></span><span class="x" style="min-width:0;flex:2"><b class="clamp1">${esc(title)}</b><small class="st" style="display:block">Đang đọc video…</small><button class="btn btn-primary btn-sm vz-go hide">${ic('play')}Bắt đầu nén</button></span><span class="bar" style="flex:1;height:6px;background:#E6EEF6;border-radius:4px;overflow:hidden"><span class="f" style="display:block;height:100%;width:0;background:var(--blue)"></span></span><b class="pc" style="font-size:12px;min-width:34px;text-align:right">0%</b></div>`);
+    const J = $(id), st = t => { J.querySelector('.st').textContent = t; }, pc = p => { J.querySelector('.bar .f').style.width = p + '%'; J.querySelector('.pc').textContent = Math.round(p) + '%'; };
+    const fail = m => { st('Lỗi: ' + m); const sp = J.querySelector('.spin'); if (sp) sp.outerHTML = ic('alert').replace('<svg', '<svg style="width:16px;height:16px;color:#C62828"'); err(m); };
+    let V;
+    try { V = await loadVideo(file); } catch (e) { return fail(e.message); }
+    const dur = V.v.duration;
+    if (!isFinite(dur) || !dur) return fail('Không đọc được thời lượng video.');
+    if ((200000 + 96000) * dur / 8 > MAXB) return fail(`Video dài ${Math.round(dur / 60)} phút — nén xuống 25 MB sẽ quá mờ. Hãy cắt thành nhiều phần ≤ 10 phút rồi tải lần lượt.`);
+    st(`${mb(file.size)} MB · ${Math.floor(dur / 60)}:${String(Math.round(dur % 60)).padStart(2, '0')} — cần nén còn ≤ 24 MB (khoảng ${Math.ceil(dur / 60)} phút). Bấm “Bắt đầu nén”, giữ màn hình mở.`);
+    const go = J.querySelector('.vz-go'); go.classList.remove('hide');
+    go.onclick = () => {
+      go.remove();
+      let job;
+      try { job = compress(file, V, p => pc(p * 0.98)); } catch (e) { return fail(e.message); }   /* gọi ngay trong lần bấm */
+      st(`Đang nén ${job.W}×${job.H}… giữ màn hình mở`);
+      job.p.then(out => {
+        st(`Đã nén còn ${mb(out.size)} MB — đang tải lên…`); pc(100);
+        setTimeout(() => J.remove(), 1500);
+        return up0.call(self, out);
+      }).catch(e => fail(e.message));
+    };
+  };
+}
+wire();
+
+/* chữ trạng thái tải video: nói rõ 2 bước (Drive chỉ là chỗ trung chuyển, học viên xem video từ GitHub) */
+const STEP = [[/^Đang tải lên Drive…/, 'Bước 1/2 · Gửi video lên máy chủ (lưu tạm trên Drive)…'], [/^Đang đăng video lên GitHub/, 'Bước 2/2 · Đăng lên GitHub để phát mượt trên mọi máy (30–60 giây)…'],
+  [/^Đã đăng — GitHub/, 'Xong — video phát từ GitHub; GitHub cần 1–2 phút để phát được trên mọi máy.']];
+new MutationObserver(ms => ms.forEach(m => { const el = m.target.nodeType === 3 ? m.target.parentNode : m.target;
+  if (!el || !el.classList || !el.classList.contains('st') || !el.closest('#vmJobs')) return;
+  const hit = STEP.find(x => x[0].test(el.textContent)); if (hit && el.textContent !== hit[1]) el.textContent = hit[1]; }))
+  .observe(document.body, {subtree: true, childList: true, characterData: true});
+
+/* video vừa đăng: GitHub Pages cần 1–2 phút ⇒ tự thử lại thay vì báo hỏng */
+let rtWarn = 0;
+document.addEventListener('error', e => {
+  const v = e.target; if (!(v instanceof HTMLVideoElement)) return;
+  const src = v.currentSrc || v.src || ''; if (!/\/Training-Hub\/media\//.test(src)) return;
+  v.__rt = (v.__rt || 0) + 1; if (v.__rt > 8) return;
+  if (Date.now() - rtWarn > 60000) { rtWarn = Date.now(); toast('Video có thể vừa được đăng — GitHub cần 1–2 phút để phát. App tự thử lại…'); }
+  setTimeout(() => { if (!document.body.contains(v)) return; v.src = src.replace(/([?&])r=\d+&?/, '$1').replace(/[?&]$/, '') + (src.indexOf('?') >= 0 ? '&' : '?') + 'r=' + Date.now(); try { v.load(); } catch (_) {} }, 15000);
+}, true);
+
+/* trainer / Admin của khoá không nhận chứng chỉ (máy chủ bỏ qua tiến độ của người sửa được khoá) ⇒ nói rõ thay vì "Tự cấp khi học xong" */
+const TR_TXT = 'Bạn là trainer / Admin của khoá này nên không tính tiến độ và không nhận chứng chỉ. Muốn thử như học viên: Chế độ Test ▸ vai Học viên, hoặc đăng nhập bằng tài khoản học viên.';
+function trNote(){
+  const m = /#\/[a-z]+\/([^?\/]+)/i.exec(location.hash); if (!m) return;
+  const s0 = findS(decodeURIComponent(m[1])); if (!s0 || s0.myCert) return;
+  if (!(typeof canEdit === 'function' && canEdit(s0)) || (S.test && S.testRole === 'learner')) return;
+  document.querySelectorAll('.v4-li.ce small, .crs-st.crt small').forEach(el => { if (el.textContent !== TR_TXT) el.textContent = TR_TXT; });
+}
+new MutationObserver(() => { clearTimeout(trNote.t); trNote.t = setTimeout(trNote, 120); }).observe(document.body, {childList: true, subtree: true});
+
+/* nút Tạo / Lưu khoá học: hiện đang lưu */
+const post1 = post;
+post = function(action){
+  const b = action === 'saveSession' && $('sfSave');
+  let html = '';
+  if (b) { html = b.innerHTML; b.innerHTML = '<span class="spin" style="width:14px;height:14px;border-color:rgba(255,255,255,.4);border-top-color:#fff"></span> Đang lưu…'; }
+  const r = post1.apply(this, arguments);
+  if (b) Promise.resolve(r).catch(() => {}).then(() => { if (document.body.contains(b)) b.innerHTML = html; });
+  return r;
+};
 })();
 </script>
 
