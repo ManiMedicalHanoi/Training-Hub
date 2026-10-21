@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '5.2';
+const APP_VERSION = '5.3';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -6478,6 +6478,128 @@ post = function(action){
     return _post.call(this, action, params, opt);
   };
   try { if (S.user) route(true); } catch (e) {}
+})();
+</script>
+
+<style id="v53-css">
+/* ==========================================================================
+   ★ v5.3 (21/10/2026) — GIAO DIỆN GỌN theo đánh giá "Taste Skill" (màn hình làm việc)
+   ① Lỗi bố cục: lề trang Tổng quan / Lịch / Kết quả / Người dùng / Cấu hình (giao diện cũ trong khung v4 mất lề),
+     điểm chính khoá học vỡ cột khi có chữ đậm, nút ▶ đè tên bài trên điện thoại, mô hình 3D đè chữ ở trang chủ điện thoại.
+   ② Điện thoại: thanh dưới 5 nút (Quản lý chuyển vào Thêm), bộ lọc 1 hàng cuộn ngang, trang chủ gọn ⇒ thấy "Tiếp tục học" ngay.
+   ③ Phẳng: bỏ chữ hoa nhỏ giãn cách trên tiêu đề, bỏ chuyển màu / đổ bóng ở thẻ, biểu đồ 1 màu, nút dòng Quản lý = chữ.
+   ========================================================================== */
+/* ① giao diện cũ trong khung v4: trả lại lề (lớp do v53-js gắn khi phần tử đầu không phải khối v4) */
+body.v4 .view.v53-old{max-width:1320px;margin:0 auto;padding:24px 24px 90px}
+body.v4 .view.v53-old.wide{max-width:1320px}
+/* điểm chính của khoá: chữ đậm nằm trong dòng, không tách cột */
+.v4-key li{display:block;position:relative;padding:3px 0 3px 24px}
+.v4-key li::before{position:absolute;left:0;top:3px}
+/* ③ chữ hoa nhỏ giãn cách ⇒ chữ thường; nhãn đứng trên tiêu đề trang ⇒ bỏ (tiêu đề đã nói đủ) */
+.h-kick{text-transform:none;letter-spacing:0;font-size:14px;font-weight:500}
+.h-kick:has(+ h1),.h-kick:has(+ .h-h2){display:none}
+.h-kick:has(+ h1) + h1,.h-kick:has(+ .h-h2) + .h-h2{margin-top:0 !important}
+.v4-hero .tag{text-transform:none;letter-spacing:0;border:0;padding:0;font-size:15px;font-weight:500}
+.v4-fl .k,.v4-player .kk{text-transform:none;letter-spacing:0;font-size:14px;font-weight:500}
+/* thẻ: không đổ bóng khi đứng yên, không nhấc / nghiêng khi rê chuột — viền đậm lên một bậc */
+.hub-card{transition:border-color .2s ease}
+.hub-card:hover{transform:none;box-shadow:none}
+.v4-cc:hover,.v4-mrow:hover{border-color:var(--h-lb)}
+.v4-cont{box-shadow:none;border:1px solid var(--h-line)}
+.v4-cont:hover{border-color:var(--h-lb)}
+.v4-player{box-shadow:none}
+.v4-cc .cv::after{display:none}
+/* chứng chỉ: nền trắng phẳng, 1 viền, dấu tròn vàng phẳng */
+.v4-cert{background:#fff;border:1px solid var(--h-line)}
+.v4-cert::before{display:none}
+.v4-cert .seal{background:var(--h-y);box-shadow:none;width:52px;height:52px}
+.v4-cert .seal svg{width:24px;height:24px;color:#1A1A1A}
+.v4-cert .k{text-transform:lowercase;letter-spacing:0;font-size:13px;font-weight:600}
+.v4-cert .k::first-letter{text-transform:uppercase}
+.v4-cert.lock{border:1px solid var(--h-line)}
+.v4-cert.lock .seal{background:var(--h-pale)}
+/* Quản lý: hành động trên dòng = chữ (1 lần bấm như cũ, bớt 4 khung nút giống hệt nhau) */
+.v4-mrow .a .h-btn.line{border-color:transparent;background:none;color:var(--h-blue);padding:0 10px}
+.v4-mrow .a .h-btn.line:hover{background:var(--h-pale)}
+/* Tổng quan đào tạo: điểm theo nhóm chủ đề = 1 màu (trước đây mỗi nhóm 1 màu) */
+.hbars .bar i[style*="--c-"]{background:var(--h-blue) !important}
+/* Lịch: chú thích xuống dòng thay vì tràn khỏi màn hình */
+body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:wrap}
+@media (max-width:900px){
+  body.v4 .view.v53-old{padding:16px 16px 110px}
+  /* ① trang chủ: mô hình 3D thu nhỏ đúng cách (animation ghi đè transform:scale cũ ⇒ mô hình to nguyên cỡ, đè chữ; dùng thuộc tính scale riêng — cộng dồn với animation / kéo xoay) */
+  .v4-stage{height:180px;margin:-6px 0 -6px}
+  .v4-stage .model{scale:.5}
+  .v4-stage .orbits{transform:none;scale:.56}
+  .v4-stage .glow{display:none}
+  .v4-fl.a{display:none}
+  .v4-hero .in{padding:12px 16px 52px;gap:14px}
+  .v4-hero .txt{gap:16px}
+  .h-h1{font-size:30px}
+  .v4-hero p{display:none}
+  .v4-hero .acts .h-btn.outline{display:none}
+  .v4-stats{gap:8px;margin-top:0}
+  .v4-stats div{padding:10px 12px;border-radius:12px}
+  .v4-stats b{font-size:22px}
+  .v4-stats span{font-size:12px}
+  /* thẻ "Tiếp tục học": 1 hàng gọn (ảnh nhỏ + tên bài + tiến độ), cả thẻ bấm được ⇒ bỏ nút riêng */
+  .v4-cont{flex-wrap:nowrap;gap:14px;padding:12px;border-radius:16px}
+  .v4-cont .th{width:88px;height:64px;border-radius:10px}
+  .v4-cont .th .pl{width:32px;height:32px;margin:-16px 0 0 -16px}
+  .v4-cont .th .pl svg{width:14px;height:14px}
+  .v4-cont .th small{display:none}
+  .v4-cont .x{flex:1 1 auto}
+  .v4-cont .x b{font-size:16px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .v4-cont .pr{margin-top:8px}
+  .v4-cont>.h-btn{display:none}
+  /* ① khoá học: nút ▶ nhỏ ở góc, tên bài không bị che */
+  .v4-player .pl{left:auto;top:auto;right:16px;bottom:16px;margin:0;width:52px;height:52px}
+  .v4-player .pl svg{width:22px;height:22px}
+  .v4-player .tt{left:20px;right:84px;bottom:18px}
+  .v4-player .kk{left:20px;top:16px}
+  .v4-player .art{display:none}
+  /* ② bộ lọc 1 hàng, cuộn ngang trong chính hàng đó */
+  .h-seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;max-width:100%}
+  .h-seg::-webkit-scrollbar{display:none}
+  .h-seg button{flex:none}
+  .v4-mrow .a .h-btn.line{padding:0 8px}
+}
+</style>
+<script id="v53-js">
+/* ★ v5.3 — xem ghi chú ở <style id="v53-css"> */
+(function(){
+  /* ① giao diện cũ (Tổng quan, Lịch, Kết quả, Người dùng, Cấu hình, bảng cũ ?adv=1 / ?old=1) nằm trong khung v4 không lề ⇒ gắn lớp v53-old */
+  const V4 = /(^|\s)(v4-hero|v4-wrap|v4-lhead|v4-lbody)(\s|$)/;
+  const mark = () => { const v = $('view'); if (!v) return; const f = v.firstElementChild; v.classList.toggle('v53-old', !!f && !V4.test(f.className || '')); };
+  const view = $('view');
+  if (view) new MutationObserver(mark).observe(view, {childList: true});
+  mark();
+
+  /* khoá học: bài kế tiếp là tài liệu ⇒ biểu tượng "đọc" thay cho ▶ */
+  const fixPlayer = () => { const p = document.querySelector('.v4-player .pl'); if (!p || p.dataset.v53) return; p.dataset.v53 = 1;
+    const s = p.parentElement.querySelector('.tt span'); if (s && !/^Video/.test(s.textContent.trim()) && s.textContent.trim()) p.innerHTML = ic('book'); };
+  if (view) new MutationObserver(fixPlayer).observe(view, {childList: true, subtree: true});
+
+  /* ② thanh dưới điện thoại: tối đa 5 nút — Quản lý chuyển vào "Thêm" (thanh trên máy tính vẫn có Quản lý) */
+  const _shell = renderShell;
+  renderShell = function(){
+    _shell.apply(this, arguments);
+    const tb = $('tabbar'); if (!tb) return;
+    const btns = tb.querySelectorAll('button');
+    if (btns.length > 5) { const m = tb.querySelector('[data-h="#/manage"]'); if (m) m.remove(); }
+  };
+  const _menu = A.v4Menu;
+  A.v4Menu = function(){
+    _menu.apply(this, arguments);
+    if (!isTrainerV()) return;
+    const m = Modal.stack[Modal.stack.length - 1]; if (!m) return;
+    const g = m.body.querySelector('div'); if (!g || g.querySelector('[data-h="#/manage"]')) return;
+    const b = document.createElement('button'); b.className = 'nv'; b.dataset.a = 'go'; b.dataset.h = '#/manage';
+    b.innerHTML = ic('clip') + '<span>Quản lý khoá học</span>';
+    const n = g.querySelector('[data-a="noti"]'); n ? n.after(b) : g.prepend(b);
+    b.addEventListener('click', () => Modal.close(m));
+  };
+  try { if (S.user) { renderShell(); mark(); } } catch (e) {}
 })();
 </script>
 
