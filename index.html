@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '5.4';
+const APP_VERSION = '5.5';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbgAAAC+BAMAAAC1ygcpAAAAGFBMVEX/6hH/4QL/4QD94QDz1gAkIAABAAAAAADD9cHRAAAPrElEQVR42u1d244bxxGtohbQrgKze7g2jDyRS8VBED9EtpI/SD4o/2mv7TwkARzxggBBYnnZ3RRg7wrQVB44fZ3qmeZyZGgXwxdR5HCmT9epqlPVPbMAj/iFk8WjxVYjykcLjs4eLzqiyWP2uRHcCG4EN4IbwY3gRnAjuBHcCG4EN4IbwY3gRnAjuBHcCG4EN4L70F5nD3DMhx65eoTgUAKpx2k5lKQAlwAAO/3IwKFQk2UFVQU7XYN+VOAqtX8uZxJgpeqteFyWq9TkiyWQkqvdBvrt9qDAoVpeLhSAXF1jVRIsHxA4FLPLuaoIX11XhfHy4YAT+8/mpiJzc12VpoIHo1Cq/cu5kWCmu2JsD8ZyqJ7PjQQSX23p0ckv8eRLLQHMTUkKsK8neH7+EAz39nOqAOjpCsqxPRTLics5AoC5OYKUDyWg4H5pAICmO/H4Sh7xsUAA0PVRhisEF+wyysThqvuAcJsS6a7fK9ZwfzISAHDVRBN/OtIng+tXBOrEE6gCw9HUGm5IhYK4cO/ZMgrFzL2vN8wBs8BytdYdF1hT1nDmR6la41nTyT730pngKzYW7//iD5DtA+TlC/+f73XHBWqlmFB5MBwpao3nZn26z6k+h3cHEOPzOBHFtBQtL0KYGQkAINyp/Xh2XTm90HISmzeap21lXZxYlpgFuvf8GewFNGP3N3MEANA7qdLx6NN9TlwGMFlWzt3gif29rgIgpjPxmjYtDr/GHbXHo09P4hPTDf7KXcOwV5shmzX8CRbtdyEtAABo6s+NzflIDKxQNONSlR88oyFwH37G8haZd54WMk1pqEvSXKHPBYF8gu3RmTn2aIDge1lzRxh7CZwnmcKy0iWCaDyGTgQXOol8x8XKwKV0z/ecbYLRYvv3lhaKjiVZES0D8USym5XsACo8puTmOR24F+67L3ckLUWXT4Ss5Dwc90L2if7gUu++5TkdJlB7QvNuAMt1I1+GsXSrO1UzAMC8jVXKnOXElWkbyR2txLDRUnbGwl7w/FSJPPaq7cw4IC3DHM7oIwzkB3O19K4MJmSEeJMU7xgbJFC5L8vhpVUB99aC/cQEkfkdHJ0oWtSIR2x/XTsVSYtBo6XO53Dcz7vrMlnpHmInsmRmeg2tiwRKmeVkx8TKSZihgVoqnWb9hsPA+KKOXUIyPmfPSEYPG1DSsS9NT5gv6OlgPrg2sjYykhzO58Is1Dt2JhEssFeGy4hzUciSHXViT7AsLHlkdmgxKxkn8OUOYS6ZJAFS6tLJ1gMElHA0if5KWMmodOdyhpsqLssH0+dxE5MJjT7dchGtYlHf8qhUpfsDaKpB9ss7APHRN23cvNCqxQAlTx7qLIqVXA53HYHdE5mRKNjxX4tblarB42gprjpi5cz0/dgegHXx9AUCjJHkBEP6XOLwgdclGZxzAisNqda5NJ60FrBnvuRVYbC8T55bRM2TeJxpkwH3zgpi4wNCXt4lhYHHrdvo+wRKETiZ94he9eG+12uZ9ZlEYonKpL/P4NjqU8FhljSBXTJO4MsdVDZ9oemropg+IAU45HABJdR9ybnFUveVE05gTPuSEl/Oyq4I0OdzRfUc5kyaNEfa5PHlDmnhvo4lCO4l9EYUYlJ+T5OhTFtmv9mnlRptY3hyZrWXeS3yE01Ja4Ecg/edk60GCCg53cuxMv6EJj6ggNkUdy589mwIavgmw8n1XNrMc51L2+fOCxTc/8a53JYwVxb4RI1cSdfkGH28GfrBySoH1rFSVbkyfcEyKMnhT1wZP7ECzTaXGZfwh/fu2ihJBSY+F/oMnrhMGhD9AonZCW/XtCxwU0NNJx1NcwhxOKpCUhaBy4Rl32g2K3IqPRk25kshZvZ2aUB0Sou4w2mjBwsotEnDfDO9uZEH5Y7Y6sCymJm9WqVeiZ1NBjzVci4a+yXpAygfK71q1Gm50wxEqyIf2dvV+/YqHSe0aEhaRvOFE+FYecVfzbsc7gQA1OywwpTtgpUpESiD1HP2Cuvo7GZhWalyHm5d7kDcIKcsJNNkoKk30KGkY5sMXqBsBtCWLZ+TsSSebtwgIvKE5U7MKszM3naa1EAOiOYOr4coebi6xAcLs5IZmV75cifOJfmFEZ0YXXQJlNNp6Xxb63lwfomWlUGFHfucmPkOQ9FmOwJti11x6MEjdBmpV7OcFVissYCLBxMNQEtbCYktsiodUaQdBrYscIrDvAvYUWUn+7I4h5eA8zwwB3eTALj/o/3stTQu4sd50Gkvu/WHutmrAEhbN5trHaydaWY8NEC0lI4zzXwLCSAraVlp/NJhRB6fCPRGNv+y/usVh6CpibIrl8P9b7d6sIAigjwVNJrFRmdc3PVX7NafrlU+ax4dZTxOvcnhAoovF2nr40kYKwXv4bgn32FIySCzIsEa/1DSyY6eYQEtzwosxlDVLn9QbUB8zHq4L3dIUzycsET0pJwCgHnzRbakSya7t8lQ5HPO6Zxl5hErfYcq3PsTlDvrzrjmV0G2OiAgShmwhptsfbrlMDyXdQTPytciWN4wbLkTFKrIJeJ4FcQcwKIW2ufw0EhucaIWJwcUp+QUQH2YQYNXNlZODfSWO1Mf1bTukncQbtdEGVw82Bl1zOaBPnCiCroxdmgfOe2hNtp35ogtdwLD+aDHBIMmZrhtMxMT4Jb3ESgF9ZxvMriQdeZW/3aCF4BphyGNOL4s8KWbOjgoMCWdbqvBAoFyvwV/t1ViakKiqHy5k1qJS8qH4ZI/hl07K9xqWRZQZHBlStKUrjchv4JtGuj7taK9Uh/lcEy2T2+b01dz3XTyY4HifmvoVHDeS4Jmsm3l4U5ol+Zy5U7t/UVq2VfoOyAYROHw2kcIlD5w4cYtjVY52+0J068OXtnWzWJmP8QfPVtvfsuvFkSolL1itf6sK3gQnE5Lm4UIACieeV1rSojbKndA3Cy7dGGQqA+yGtWL5od+4yXdT6D0ggtrtTQgY9zjDj3clzv4vDMGhzuACQBAuxBXbf9sJzH4pfPl3RDasp1HIWRlsADlPdyv7sQx1JG84qkBAEDG4n3RfIV8XJSnVuK+MU9SA0S0bFjZGh3Em9mqMmr4nXhNuAoWPQOhhUfk8N48V+XPdWhGcnqof/Ns2/m8MnNlQnWvKHKMz0WLxqHXNbESOA9HWSoBfSfBmceWdBUzsfLjsEA61XIyOld4G5JWWkdG8Ns0gttf+mqNtuF9r1Vx5jLFTYYj5NdWJz1ebGpw7qaBI24kSBfIgqhbMSryqB3Fk8ImQ5v9rpej09GV7B91Bm9lSRKtngK3TYMG8LmgDk8CQK0pX1z37r1pxXEvsajAzEU5vL+eixyB2qxkBIrfzNY7yJAaDm56JwS3ClJ0o/+kzPGpCWG+fJxuW1OvC1Mb23/yCMxac1VsQueSDv1ZWaC2juWkunu+EZP/9gU3EjhaNgwOJVYq89Q940mf5eze8Ob2Zy8fLStx0iJP+0aCIwQKF+XpXqsg/QFFuqZUPKX+fnRHnpu29lIdiid9BTd8iH41SEXLRmfdmcCScJfO266F344OJ6LA9xpL8ZWukjkj+XaV1idbzupyO3KrnLFjR49euFsV28dcoU3zBLlK1zx5kSOlV4PmZFpajVDrNIN7VqYZy99IgD/8LT3hv//aHLTr6hrEdA6NJI8KKJ3gXLPANXmaaWzRNJx663JUv0l5iZeZUSY62ETfc0aik8HZS5jXlpVPelkZaC+xoWzbC9McHgQoV9K1mgzHCZTOVGBvNvWtxyYMhB3y9mY2q9jMWvZHcMHKu2yTXuYbA0dHy+ZcadznWOlG6++b5gaAcY8pc8NHKD+ir9yiCUl9muXsVpNggZHCGpy3hWs1T9sVVxCZkq3f0Z79ePtMIDWPajJ0Ws72LGn6r3ysJOKpnPSs2q2upA5PrhDeNX/0ve9Flmt2AJl1sPXP6OgWAWZnmIxbLN2yy936p5NaUXPUOGoVpBtc0ywgkZIQo5YhsVRu58ZopFZKynZJkQAiNtr2brXsAWe3MJudvzBN284Ub7Dz8UywTQ6KKvDsU1QC00zboq20PJj0sZLEKuGAjkN8Io/mXYkg8VEnptJlcxM+WWgL92sydIFrNouGhjvwJWalGweauNxhM1G6jdBGH9UlQPT9Cp4OcE3Jqaap4bgQ73SoK3dyR8WVohNqBrI9IXYVpAzcWT4ZSwSg6lWcwEmYG6mYsC3quNzpu1tDhglfJM0myuRR0a7+7mO5al8ZADK7a5EIdoqXV1zYPkQfu9htMokg3n7fJHyzEtnCIDKSPK4qyIBDtZxLIDN9FfcMjG5HQe01h1hoGzdyMxsM1j3HpX1wEGHqewuUDC1RXH6hpcLpdWtBG1cxK0E/mXvFPutYCYe43A36m8zBneGwMIezlsNK7GdKqGq6bu1sIpUu+qFtCsig3NHrDIGmbZXAZw1nYUaglCoyznKkJi/nGqvdetV+8m57luWmkgBAs+8A7fMLMbPuSW4zOzmXI2ofTEJJlWu8ZJ5lUAQOr3C2gGqndhvmqcLr9KJUmwoAQBKIT6zerbMtDtNsLqG5sXcOshS2x9URpaD94VHgEFHWKyC9wjY2Ykxi3vzh8O9c1yuXH3JT6w4BWjYP9HrNGMkdFxrJn/6+4IheNdmAe0Qm9+DTw8ZkRKlf9V7PN3tQ2sfMfU9dx3V/drTPVYRa5tJwO3uS2C4O6uS7noevRp1H3XTdzTvWgZwCV8xv4f5PJlVdv2Zmr+GlJFmwH8s/Uu7w7CKiFas2ONqoIy03yKOOD9VY+iyD7pc92tRbDe/pNQQ4+3hlsTziDimxBL6iGvA1yOPF7/QzOAcAU8NtqeHefonnAGB++vYWPmTLWdMhzkpNh2IpJFtRfXCWgzv9jC4AnsqfCk0n91/enQPQxeqf789wAz07naa7SgPgfmaKipLKvCQJQObm+j0abqhH+t/t7hbmHJ5WP/2vhJQ/P//d3TmQmf4d9YcPDqr/PvvUnKO5+s/Fbb/D/er3dxLITK+3P8MDAHcrNs8+1RdP9+frqgdd9XT/+acXoO6m63/I2/cJbrBH+hvxNSwUCgHdf30FpZq8nBuCqv5mVSl4EODI0Nf1kjRc6VXuTwKhBCC1vJxrqGC1W79nbEP+jRAU29u3v74wi4v1LfJ8u729fbu8nJvqYrVjq8UP1HIAZMQr2lVX8BwV/+D/KwCsrgDqlao3+N6xAU6ObJdBtz/BTFYAQGrNgqsO4n4FWFJBnDjZNCg4AOtts+6/BfELQAMgGvgPoKimq77rLlTpvTNyaJ/rLyh/GUhDa8sP9DWCG8GN4EZwI7gR3AhuBDeCG8GN4EZwI7gR3AhuBDeCG8GN4EZwI7gR3DCv/wPKtJCmM5zCBwAAAABJRU5ErkJggg==';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -6770,6 +6770,269 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
   Auth.show = function(){ const r = _show.apply(this, arguments); authImgs(); return r; };
   authImgs();
   try { if (S.user) route(true); } catch (e) {}
+})();
+</script>
+
+<style id="v55-css">
+/* ==========================================================================
+   ★ v5.5 (21/10/2026) — TRANG CHỦ: TRÌNH CHIẾU ẢNH THƯƠNG HIỆU (người dùng yêu cầu: ảnh công ty + sản phẩm, tự chuyển, mỗi ảnh có câu riêng)
+   ① Phần đầu trang chủ = 29 ảnh (media/hero/*.webp — MANI Integrated Report 2025, Kế hoạch trung hạn 2029, MANI Medical Germany),
+     tự chuyển 6,5 giây / ảnh, mỗi ảnh 1 nhãn + tiêu đề + câu hook; dừng khi rê chuột / giữ tay; vuốt / phím ← → để chuyển.
+     4 kiểu: full (ảnh lớn, chữ trắng) · light (ảnh nền sáng, chữ navy) · card (ảnh nhỏ trong khung trên nền mờ) · prod (ảnh sản phẩm nền trắng trên bục).
+     Nút "Tiếp tục bài học / Khám phá lộ trình" + 3 con số học tập giữ nguyên (chuyển từ phần đầu cũ). Ảnh 2 = tiêu đề / mô tả Admin chỉnh (Giao diện).
+   ② Dải "MANI trong con số" (số chạy khi cuộn tới). ③ Có media/brand/brand.json (backend RH_Brand.gs) ⇒ dải ảnh "Workshop & hội thảo".
+   Thêm / đổi ảnh: thêm file vào media/hero/ + 1 dòng trong HERO.SL.
+   ========================================================================== */
+.v55-hero{position:relative;height:clamp(600px,80vh,760px);overflow:hidden;background:#021a27;color:#fff;isolation:isolate;touch-action:pan-y;border-radius:28px;margin-top:14px}
+.v55-hero h2,.v55-facts h2{color:#fff}
+.v55-sl.light h2{color:var(--h-navy)}
+.v55-sl{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.1s ease,visibility 0s linear 1.1s}
+.v55-sl.on{opacity:1;visibility:visible;transition:opacity 1.1s ease;z-index:1}
+.v55-sl .bg{position:absolute;inset:-2%;background:#021a27 center/cover no-repeat;transform:scale(1.02);will-change:transform}
+.v55-sl.on .bg{animation:v55kb 9s ease-out forwards}
+@keyframes v55kb{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.12) translate3d(var(--kx,-1.5%),var(--ky,-1%),0)}}
+.v55-sl .sh{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,22,34,.9) 0%,rgba(0,22,34,.62) 38%,rgba(0,22,34,.12) 72%,rgba(0,22,34,0) 100%),linear-gradient(0deg,rgba(0,18,28,.85) 0%,rgba(0,18,28,0) 46%)}
+.v55-sl.light{color:var(--h-navy)}
+.v55-sl.light .sh{background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.78) 36%,rgba(255,255,255,.1) 66%,rgba(255,255,255,0) 100%),linear-gradient(0deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,0) 40%)}
+/* card: ảnh nhỏ ⇒ nền mờ của chính ảnh + khung ảnh rõ bên phải */
+.v55-sl.card .bg{filter:blur(28px) brightness(.55) saturate(1.2);inset:-8%}
+.v55-sl.card .sh{background:linear-gradient(90deg,rgba(0,22,34,.85) 0%,rgba(0,22,34,.45) 45%,rgba(0,22,34,.15) 100%),linear-gradient(0deg,rgba(0,18,28,.8) 0%,rgba(0,18,28,0) 46%)}
+.v55-sl .fr{position:absolute;z-index:1;right:max(32px,calc((100vw - 1320px)/2 + 24px));top:50%;width:min(46vw,640px);aspect-ratio:var(--ar,1.6);max-height:56%;transform:translateY(-68%) scale(.96);border-radius:22px;
+  background:center/cover no-repeat;box-shadow:0 40px 90px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.14);opacity:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity .9s ease}
+.v55-sl.on .fr{opacity:1;transform:translateY(-66%) scale(1)}
+/* prod: ảnh sản phẩm nền trắng trên bục sáng */
+.v55-sl.prod .bg{background:radial-gradient(ellipse at 72% 45%,#2a5d86 0%,#0d3550 45%,#021a27 100%)!important;animation:none}
+.v55-sl.prod .fr{background-size:contain;background-color:#fff;box-shadow:0 50px 100px rgba(0,0,0,.5),0 0 0 8px rgba(255,255,255,.06),0 0 120px rgba(120,190,255,.25)}
+.v55-sl.prod.on .fr{animation:v55fl 6s ease-in-out infinite alternate}
+@keyframes v55fl{from{transform:translateY(-66%)}to{transform:translateY(-69%)}}
+.v55-cap{position:absolute;z-index:2;left:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:232px;max-width:min(620px,48vw)}
+.v55-cap .k{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#FFE100;opacity:0;transform:translateY(14px);transition:all .7s ease .25s}
+.v55-cap .k::before{content:"";width:26px;height:2px;background:currentColor}
+.v55-sl.light .v55-cap .k{color:var(--h-blue)}
+.v55-cap h2{margin:14px 0 0;font-size:clamp(34px,4.4vw,60px);line-height:1.04;font-weight:600;letter-spacing:-1.2px;opacity:0;transform:translateY(22px);transition:all .8s cubic-bezier(.2,.7,.2,1) .4s;text-wrap:balance}
+.v55-cap p{margin:16px 0 0;font-size:clamp(15px,1.25vw,19px);line-height:1.55;color:rgba(255,255,255,.86);opacity:0;transform:translateY(18px);transition:all .8s ease .6s;max-width:560px}
+.v55-sl.light .v55-cap p{color:#33475b}
+.v55-sl.on .v55-cap .k,.v55-sl.on .v55-cap h2,.v55-sl.on .v55-cap p{opacity:1;transform:none}
+/* phần cố định: nút + con số + điều khiển */
+.v55-ui{position:absolute;z-index:3;left:max(24px,calc((100vw - 1320px)/2 + 24px));right:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:58px;display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.v55-ui .acts{display:flex;gap:12px;flex-wrap:wrap}
+.v55-ui .v4-stats{margin:0;display:flex;gap:10px}
+.v55-ui .v4-stats>div{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
+.v55-hero.lt .v55-ui .v4-stats>div{background:rgba(0,48,71,.06);border-color:rgba(0,48,71,.14);color:var(--h-navy)}
+.v55-hero.lt .v55-ui .v4-stats span{color:#55657a}
+.v55-hero.lt .v55-ui .h-btn.outline{color:var(--h-navy);border-color:rgba(0,48,71,.35)}
+.v55-hero.lt .v55-ui .h-btn.white{background:var(--h-navy);color:#fff}
+.v55-nav{margin-left:auto;display:flex;align-items:center;gap:14px;min-width:300px}
+.v55-nav .ct{font-variant-numeric:tabular-nums;font-size:14px;font-weight:600;letter-spacing:.5px;white-space:nowrap}
+.v55-nav .ct b{font-size:22px}
+.v55-nav .pg{flex:1;min-width:120px}
+.v55-nav .bar{height:3px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden}
+.v55-nav .bar i{display:block;height:100%;width:0;background:#FFE100}
+.v55-nav .bar i.run{animation:v55pg var(--dur,6.5s) linear forwards}
+.v55-nav .bar i.pz{animation-play-state:paused}
+@keyframes v55pg{from{width:0}to{width:100%}}
+.v55-nav .nx{margin-top:7px;font-size:12.5px;color:rgba(255,255,255,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px}
+.v55-nav button{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);color:inherit;background:rgba(255,255,255,.06);backdrop-filter:blur(8px);cursor:pointer;flex:none;transition:background .2s}
+.v55-nav button:hover{background:rgba(255,255,255,.18)}
+.v55-nav button svg{width:18px;height:18px}
+.v55-hero.lt .v55-nav{color:var(--h-navy)}
+.v55-hero.lt .v55-nav .bar{background:rgba(0,48,71,.15)}
+.v55-hero.lt .v55-nav .bar i{background:var(--h-navy)}
+.v55-hero.lt .v55-nav .nx{color:#55657a}
+.v55-hero.lt .v55-nav button{border-color:rgba(0,48,71,.3);background:rgba(255,255,255,.5)}
+.v55-cr{position:absolute;z-index:3;right:max(24px,calc((100vw - 1320px)/2 + 24px));top:16px;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.3px}
+.v55-hero.lt .v55-cr{color:rgba(0,48,71,.5)}
+/* dải con số */
+.v55-facts{position:relative;margin-top:56px;border-radius:26px;overflow:hidden;color:#fff;background:#021a27}
+.v55-facts .bgi{position:absolute;inset:0;background:center/cover no-repeat;opacity:.38;transform:scale(1.04)}
+.v55-facts .in{position:relative;padding:44px 44px 40px;background:linear-gradient(90deg,rgba(2,26,39,.92),rgba(2,26,39,.55))}
+.v55-facts .k{font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#FFE100}
+.v55-facts h2{margin:10px 0 0;font-size:clamp(26px,2.6vw,36px);font-weight:600;letter-spacing:-.6px;max-width:760px}
+.v55-facts .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:30px}
+.v55-facts .f{padding:18px 18px 16px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px)}
+.v55-facts .f b{display:block;font-size:clamp(28px,2.6vw,40px);font-weight:700;letter-spacing:-1px;color:#fff;font-variant-numeric:tabular-nums}
+.v55-facts .f span{display:block;margin-top:6px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.78)}
+.v55-facts .src{margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.5)}
+/* workshop */
+.cv[style*="media/hero/"],.v4-cont .th[style*="media/hero/"],.v4-mrow .th[style*="media/hero/"],.v54-tile .im[style*="media/hero/"]{background-size:cover!important;background-color:#0d3550!important}
+.cv[style*="media/hero/"] .h-pill.l{border:0}
+.v55-ws{margin-top:56px}
+.v55-ws .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,250px);gap:16px;overflow-x:auto;margin-top:18px;padding-bottom:10px;scrollbar-width:thin}
+.v55-ws figure{margin:0;background:#fff;border:1px solid var(--h-line);border-radius:16px;overflow:hidden}
+.v55-ws figure .im{aspect-ratio:4/5;background:#eef3f8 center/contain no-repeat}
+.v55-ws figcaption{padding:10px 12px 12px;font-size:14px;font-weight:600;color:var(--h-navy);border-top:1px solid var(--h-line)}
+.v55-ws figcaption small{display:block;font-size:12px;font-weight:500;color:var(--h-mu);margin-top:2px}
+@media (max-width:900px){
+  .v55-hero{height:max(600px,min(88svh,740px));border-radius:22px;margin-top:10px}
+  .v55-sl .fr{left:16px;right:16px;top:20px;width:auto;max-height:none;aspect-ratio:auto;height:30%;transform:scale(.96)}
+  .v55-sl.on .fr{transform:none}
+  .v55-sl.prod.on .fr{animation:none}
+  .v55-sl .sh{background:linear-gradient(0deg,rgba(0,18,28,.95) 0%,rgba(0,18,28,.7) 42%,rgba(0,18,28,.1) 75%)}
+  .v55-sl.light .sh{background:linear-gradient(0deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.82) 45%,rgba(255,255,255,0) 78%)}
+  .v55-cap{left:16px;right:16px;max-width:none;bottom:196px}
+  .v55-cap h2{font-size:30px;letter-spacing:-.6px;margin-top:10px}
+  .v55-cap .k{font-size:11px;letter-spacing:1.2px}
+  .v55-cap p{font-size:15px;margin-top:10px}
+  .v55-ui{left:16px;right:16px;bottom:48px;gap:10px}
+  .v55-ui .acts{width:100%;flex-wrap:nowrap;gap:8px}
+  .v55-ui .acts .h-btn{flex:1 1 0;min-width:0;height:44px;padding:0 10px;font-size:14px;gap:6px}
+  .v55-ui .v4-stats{width:100%}
+  .v55-ui .v4-stats{display:none}
+  .v55-nav{min-width:0;width:100%;gap:10px}
+  .v55-nav button{display:none}
+  .v55-nav .nx{display:none}
+  .v55-nav button{width:38px;height:38px}
+  .v55-cr{top:auto;bottom:4px;right:16px;font-size:10px}
+  .v55-facts{margin-top:40px;border-radius:20px}
+  .v55-facts .in{padding:28px 20px}
+  .v55-facts .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .v55-facts .f{padding:14px}
+  .v55-facts .f:last-child{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){.v55-sl.on .bg,.v55-sl.prod.on .fr{animation:none}.v55-sl,.v55-cap *{transition:opacity .4s ease!important}}
+</style>
+<script id="v55-js">
+/* ★ v5.5 (21/10/2026) — Trang chủ: trình chiếu ảnh thương hiệu + MANI trong con số + workshop (xem chú thích v55-css). */
+(function(){
+  if (!ICON.right) ICON.right = '<path d="M9 6l6 6-6 6"/>';
+  const B = 'media/hero/';
+  /* t: full | light | card | prod · ar = tỉ lệ khung (card / prod) · kx/ky = hướng trôi chậm */
+  const SL = [
+    {f: 'needle', t: 'light', k: 'MANI · Chất lượng tốt nhất thế giới', h: 'Chính xác đến từng micron.', p: 'Kim khâu không lỗ đường kính chỉ từ 140 micron — MANI là hãng duy nhất trên thế giới sản xuất hàng loạt.'},
+    {f: 'dental', t: 'full', k: 'MMH Training Academy · FY68', h: '', p: '', ui: 1},
+    {f: 'anniv70', t: 'light', k: '1956 – 2026', h: '70 năm MANI.', p: 'Bảy thập kỷ theo đuổi một điều duy nhất: chất lượng tốt nhất thế giới, mang tới cả thế giới.'},
+    {f: 'hq', t: 'full', k: 'Trụ sở · Utsunomiya, Tochigi', h: 'Từ Utsunomiya tới hơn 120 quốc gia.', p: 'Hơn 83% doanh thu của MANI đến từ thị trường nước ngoài.'},
+    {f: 'vn-factory', t: 'card', ar: 1.92, k: 'MANI HANOI · từ 2003', h: 'Trái tim sản xuất toàn cầu.', p: 'Nhà máy tại Việt Nam là cơ sở sản xuất chính của MANI — 3.300 nhân sự (08/2025).'},
+    {f: 'hanaoka', t: 'full', k: 'Nhà máy thông minh · Nhật Bản', h: 'Nhà máy của tương lai.', p: 'Sản xuất hàng loạt từ 2026: dao mắt, JIZAI, kẹp dịch kính — rồi nhân rộng sang Việt Nam và Trung Quốc.'},
+    {f: 'line', t: 'card', ar: 1.78, k: 'Công nghệ lõi', h: 'Vi gia công độc quyền.', p: 'Nền tảng chung của mọi sản phẩm MANI — từ kim khâu, dao mắt tới trâm nội nha.'},
+    {f: 'jizai', t: 'prod', ar: 1.5, k: 'Nội nha · NiTi', h: 'JIZAI.', p: 'Trâm máy NiTi thế hệ mới của MANI — đã ra mắt tại Nhật Bản, Ấn Độ và Việt Nam.'},
+    {f: 'smile', t: 'light', k: 'MMG · Vật liệu phục hồi', h: 'Nụ cười tự nhiên.', p: 'Composite MANI dễ tạo màu, tạo hình — cho phục hồi thẩm mỹ cao.'},
+    {f: 'nano', t: 'prod', ar: 1.43, k: 'Composite · MMG', h: 'MANI Nano.', p: 'Vật liệu phục hồi nha khoa do MANI Medical Germany phát triển và sản xuất.'},
+    {f: 'mmg', t: 'card', ar: 1.31, k: 'MANI Medical Germany', h: 'Chất lượng Đức.', p: 'Trụ sở và nhà máy mới của MMG (2023) — trung tâm vật liệu phục hồi nha khoa của MANI.'},
+    {f: 'mmg-products', t: 'light', k: 'ManiFill · ManiBond · ManiShine', h: 'Một hệ phục hồi đồng bộ.', p: 'Từ trám, dán tới tẩy trắng — đủ cho một quy trình nha khoa thẩm mỹ.'},
+    {f: 'whitening', t: 'light', k: 'ManiShine', h: 'Tự tin với nụ cười.', p: 'Hệ tẩy trắng răng tại phòng khám và tại nhà.'},
+    {f: 'ophth', t: 'full', k: 'Nhãn khoa', h: 'Số 1 tại Nhật Bản.', p: 'Dao mắt MANI chiếm khoảng 35% thị phần toàn cầu — mục tiêu nâng lên 50%.'},
+    {f: 'knives', t: 'prod', ar: 1.33, k: 'Dao mổ nhãn khoa', h: 'Mỗi lưỡi dao, một thì phẫu thuật.', p: 'Đa dạng kiểu lưỡi cho đục thuỷ tinh thể, glôcôm và phẫu thuật dịch kính.'},
+    {f: 'eyeless', t: 'full', k: 'Kim khâu không lỗ', h: 'Số 2 toàn cầu.', p: 'Kim liền chỉ siêu nhỏ cho vi phẫu — nhãn khoa, tim mạch, thần kinh.', kx: '-1%', ky: '1%'},
+    {f: 'surgery', t: 'full', k: 'Phẫu thuật', h: 'Tin cậy trong phòng mổ.', p: 'Hơn 10.000 loại kim khâu phẫu thuật mang thương hiệu MANI.'},
+    {f: 'manipler', t: 'prod', ar: 1.5, k: 'Ngoại khoa', h: 'Manipler.', p: 'Stapler da của MANI cho đóng vết mổ ngoại khoa.'},
+    {f: 'robot', t: 'card', ar: .75, k: 'Tự động hoá', h: 'Đồng đều trên từng sản phẩm.', p: 'Mỗi công đoạn được kiểm soát để chất lượng giống nhau từ chiếc đầu tiên tới chiếc cuối cùng.'},
+    {f: 'inspect', t: 'card', ar: 1.69, k: 'Kiểm định', h: 'Không thoả hiệp về chất lượng.', p: '“The Best Quality in the World, to the World.”'},
+    {f: 'people', t: 'card', ar: 1.78, k: 'Con người MANI', h: 'Một đội ngũ. Một tiêu chuẩn.', p: 'Tinh thần Global One MANI — từ nhà máy tới khách hàng.'},
+    {f: 'vn-factory2', t: 'card', ar: 1.92, k: 'MANI tại Việt Nam', h: 'Sản xuất cho cả thế giới.', p: 'Chất lượng cao, chi phí tối ưu — xuất đi hơn 120 quốc gia và vùng lãnh thổ.'},
+    {f: 'care', t: 'card', ar: 1.51, k: 'Sứ mệnh', h: 'Vì bệnh nhân và bác sĩ.', p: 'Góp phần vào phúc lợi của con người trên toàn thế giới bằng những sản phẩm có ích cho bệnh nhân và bác sĩ.'},
+    {f: 'clipboard', t: 'card', ar: 1.5, k: 'Training Hub', h: 'Hiểu sâu để tư vấn chắc.', p: 'Kiến thức sản phẩm vững vàng — mỗi lần gặp bác sĩ đều tạo ra giá trị.'},
+    {f: 'practice', t: 'card', ar: 1.22, k: 'Thực hành', h: 'Học bằng đôi tay.', p: 'Workshop thực hành biến kiến thức thành kỹ năng.'},
+    {f: 'machine', t: 'card', ar: 1.78, k: 'Từng chi tiết', h: 'Chính xác từ quy trình.', p: 'Độ chính xác của sản phẩm bắt đầu từ độ chính xác của từng máy, từng thao tác.'},
+    {f: 'meeting', t: 'card', ar: 1.33, k: 'Học mỗi ngày', h: 'Học ngắn, nhớ lâu.', p: 'Video ngắn, tài liệu gọn — học ngay giữa hai lần thăm khách hàng.'},
+    {f: 'mmg-sign', t: 'full', k: 'MANI · Toàn cầu', h: 'The Best Quality in the World, to the World.', p: 'Học xong toàn bộ khoá học — chứng chỉ tự gửi vào email của bạn.'}
+  ];
+  const DUR = 6500;
+  const H = {k: 0, timer: 0, hold: 0, sec: null};
+  const url = f => B + f + '.webp';
+  function slideHtml(x, i){
+    const U = S.ui || {};
+    const h = x.ui ? (U.heroTitle ? esc(U.heroTitle).replace(/\n|\|/g, '<br>') : 'Hiểu sản phẩm MANI<br>tới từng chi tiết.') : esc(x.h);
+    const p = x.ui ? esc(U.heroText || 'Video ngắn và tài liệu sản phẩm — học trên điện thoại ngay giữa hai lần thăm khách hàng. Học xong toàn bộ bài, chứng chỉ tự gửi vào email.') : esc(x.p);
+    const k = x.ui ? esc(U.heroTag || x.k) : esc(x.k);
+    const fr = x.t === 'card' || x.t === 'prod' ? `<div class="fr" data-bg="${url(x.f)}" style="--ar:${x.ar || 1.6}"></div>` : '';
+    return `<div class="v55-sl ${x.t}" data-i="${i}" style="--kx:${x.kx || (i % 2 ? '1.5%' : '-1.5%')};--ky:${x.ky || '-1%'}"><div class="bg" data-bg="${url(x.f)}"></div><div class="sh"></div>${fr}
+      <div class="v55-cap"><div class="k">${k}</div><h2>${h}</h2><p>${p}</p></div></div>`;
+  }
+  function load(i){ const s = H.sec && H.sec.querySelector(`.v55-sl[data-i="${i}"]`); if (!s) return; s.querySelectorAll('[data-bg]').forEach(e => { if (!e.style.backgroundImage) e.style.backgroundImage = `url('${e.dataset.bg}')`; }); }
+  function show(i, user){
+    const sec = H.sec; if (!sec || !sec.isConnected) { stop(); return; }
+    const n = SL.length; H.k = (i + n) % n;
+    sec.querySelectorAll('.v55-sl').forEach(s => s.classList.toggle('on', +s.dataset.i === H.k));
+    load(H.k); load((H.k + 1) % n);
+    sec.classList.toggle('lt', SL[H.k].t === 'light');
+    sec.querySelector('.ct').innerHTML = `<b>${String(H.k + 1).padStart(2, '0')}</b> / ${n}`;
+    const nx = SL[(H.k + 1) % n]; sec.querySelector('.nx').textContent = 'Tiếp theo: ' + (nx.ui ? 'Hiểu sản phẩm MANI' : nx.h.replace(/\.$/, ''));
+    const bar = sec.querySelector('.bar i'); bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run'); bar.classList.toggle('pz', !!H.hold);
+    clearTimeout(H.timer); H.timer = setTimeout(tick, DUR);
+    if (user) try { localStorage.setItem('mmh_hub_hero', String(H.k)); } catch (e) {}
+  }
+  function tick(){ if (H.hold || document.hidden) { H.timer = setTimeout(tick, 500); return; } show(H.k + 1); }
+  function stop(){ clearTimeout(H.timer); H.timer = 0; }
+  function pause(on){ H.hold = on; const b = H.sec && H.sec.querySelector('.bar i'); if (b) b.classList.toggle('pz', on);
+    if (!on) { clearTimeout(H.timer); H.timer = setTimeout(tick, DUR * .45); } }
+  function mount(){
+    const old = document.querySelector('.v4-hero'); if (!old) return;
+    const acts = old.querySelector('.acts'), stats = old.querySelector('.v4-stats');
+    const sec = document.createElement('section'); sec.className = 'v55-hero'; sec.id = 'v55hero'; sec.setAttribute('aria-roledescription', 'carousel'); sec.setAttribute('aria-label', 'MANI — hình ảnh và câu chuyện');
+    sec.innerHTML = SL.map(slideHtml).join('') + `<div class="v55-ui"></div><div class="v55-cr">Ảnh: MANI Integrated Report 2025 · MANI Medical Germany</div>`;
+    const ui = sec.querySelector('.v55-ui');
+    if (acts) ui.appendChild(acts); if (stats) ui.appendChild(stats);
+    ui.insertAdjacentHTML('beforeend', `<div class="v55-nav"><span class="ct"></span><div class="pg"><div class="bar"><i style="--dur:${DUR}ms"></i></div><div class="nx"></div></div>
+      <button type="button" data-v55="-1" aria-label="Ảnh trước">${ic('left')}</button><button type="button" data-v55="1" aria-label="Ảnh sau">${ic('right')}</button></div>`);
+    old.replaceWith(sec); H.sec = sec;
+    sec.querySelectorAll('[data-v55]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); show(H.k + (+b.dataset.v55), true); }));
+    sec.addEventListener('mouseenter', () => pause(true)); sec.addEventListener('mouseleave', () => pause(false));
+    let x0 = null, t0 = 0;
+    sec.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; t0 = Date.now(); pause(true); }, {passive: true});
+    sec.addEventListener('touchend', e => { const dx = x0 == null ? 0 : e.changedTouches[0].clientX - x0; x0 = null; pause(false); if (Math.abs(dx) > 45 && Date.now() - t0 < 900) show(H.k + (dx < 0 ? 1 : -1), true); }, {passive: true});
+    sec.tabIndex = -1; sec.addEventListener('keydown', e => { if (e.key === 'ArrowRight') show(H.k + 1, true); if (e.key === 'ArrowLeft') show(H.k - 1, true); });
+    let st = 0; try { st = (+localStorage.getItem('mmh_hub_hero') + 1) || 0; } catch (e) {}
+    show(st);
+  }
+  /* ② MANI trong con số */
+  const FACTS = [['1956', 'năm thành lập — 70 năm vào 2026'], ['120+', 'quốc gia và vùng lãnh thổ có sản phẩm MANI'], ['10.000+', 'loại kim khâu phẫu thuật'], ['1.500+', 'loại sản phẩm nha khoa'], ['~35%', 'thị phần dao mắt toàn cầu']];
+  function facts(){
+    if (document.querySelector('.v55-facts')) return;
+    const anchor = document.querySelector('.v54-prod') || document.getElementById('paths'); if (!anchor) return;
+    const h = `<section class="v55-facts"><div class="bgi" style="background-image:url('${url('hanaoka')}')"></div><div class="in"><div class="k">MANI trong con số</div>
+      <h2>Chúng ta đang đào tạo về sản phẩm của một thương hiệu dẫn đầu thế giới.</h2>
+      <div class="grid">${FACTS.map(([v, t]) => `<div class="f"><b data-v="${esc(v)}">${esc(v)}</b><span>${esc(t)}</span></div>`).join('')}</div>
+      <div class="src">Nguồn: MANI Integrated Report 2025 (năm tài chính kết thúc 31/08/2025)</div></div></section>`;
+    anchor.insertAdjacentHTML(anchor.classList.contains('v54-prod') ? 'afterend' : 'beforebegin', h);
+    const box = document.querySelector('.v55-facts');
+    const run = () => box.querySelectorAll('b[data-v]').forEach(b => { const v = b.dataset.v, m = v.match(/[\d.]+/); if (!m) return; const n = +m[0].replace(/\./g, ''), t0 = performance.now();
+      const fmt = x => v.replace(m[0], Math.round(x).toLocaleString('vi-VN'));
+      (function f(){ const q = Math.min(1, (performance.now() - t0) / 1400), e = 1 - Math.pow(1 - q, 3); b.textContent = n >= 1900 && n < 2100 ? String(Math.round(1900 + (n - 1900) * e)) : fmt(n * e); if (q < 1) requestAnimationFrame(f); else b.textContent = v; })(); });
+    if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); run(); } }, {threshold: .35}); io.observe(box); } else run();
+  }
+  /* ③ workshop & hội thảo (ảnh do backend RH_Brand.gs đẩy lên media/brand/) */
+  let BR = null;
+  const WS = {'ws-comp': ['Nghệ thuật phục hình', 'Workshop composite · Hà Nội'], 'ws-jizai': ['JIZAI Journey', 'Nội nha nhẹ – nhanh – nhàn'], 'ws-jizai-kit': ['Bộ thực hành JIZAI', 'Hands-on kit'],
+    'ws-restorative': ['Hands-on phục hồi', 'Xoang loại II · composite MANI'], 'ws-led': ['Khắc chế ca khó với JIZAI', 'Hội thảo nội nha'],
+    'ws-comp-1': ['Nghệ thuật phục hình', 'Ngày 1 · composite xâm lấn tối thiểu'], 'ws-comp-2': ['Nghệ thuật phục hình', 'Ngày 2 · 30% lý thuyết, 70% thực hành'],
+    'ws-comp-3': ['Nghệ thuật phục hình', 'Khoá học đặc biệt · Hà Nội'], 'ws-led-hn': ['Khắc chế ca khó với JIZAI', 'Hội thảo nội nha · Hà Nội'], 'ws-led-vp': ['Khắc chế ca khó với JIZAI', 'Hội thảo nội nha · Vĩnh Phúc']};
+  function wsName(k){ const key = Object.keys(WS).sort((a, b) => b.length - a.length).find(p => k.indexOf(p) === 0); return key ? WS[key] : ['Hoạt động đào tạo', '']; }
+  function workshop(){
+    if (!BR || document.querySelector('.v55-ws')) return;
+    const items = (BR.items || []).filter(x => /^ws-/.test(x.k)); if (items.length < 3) return;
+    const anchor = document.querySelector('.v4-bottom'); if (!anchor) return;
+    anchor.insertAdjacentHTML('beforebegin', `<section class="v55-ws"><h2 class="h-h2">Workshop & hội thảo</h2><p class="h-sub">Các chương trình đào tạo bác sĩ MMH đã tổ chức</p>
+      <div class="row">${items.map(x => { const [t, d] = wsName(x.k); return `<figure data-f="${esc(x.f)}"><div class="im" style="background-image:url('media/brand/${esc(x.f)}')"></div><figcaption>${esc(t)}${d ? `<small>${esc(d)}</small>` : ''}</figcaption></figure>`; }).join('')}</div></section>`);
+    /* băng rôn quá dài (màn LED) không hợp khung poster ⇒ bỏ */
+    document.querySelectorAll('.v55-ws figure[data-f]').forEach(f => { const im = new Image(); im.onload = () => { if (im.naturalWidth > im.naturalHeight * 1.8) f.remove(); }; im.src = 'media/brand/' + f.dataset.f; });
+  }
+  try { fetch('media/brand/brand.json?d=' + new Date().toISOString().slice(0, 10), {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).then(j => { BR = j; if (S.route && S.route.name === 'home') workshop(); }).catch(() => {}); } catch (e) {}
+  const _home = VIEWS.home;
+  VIEWS.home = function(){
+    stop();
+    const r = _home.apply(this, arguments);
+    try { mount(); facts(); workshop(); } catch (e) { console.warn('v55 home', e); }
+    return r;
+  };
+  /* ④ khoá học mới / chưa có ảnh: tự chèn ảnh liên quan (ngẫu nhiên theo mã khoá — mỗi khoá giữ cố định 1 ảnh trên mọi máy)
+     thứ tự bìa: ảnh riêng (trainer tải) > ảnh video > ảnh sản phẩm (v5.4) > ảnh liên quan (v5.5) > hình vẽ */
+  const POOL = {
+    nha: ['dental', 'smile', 'whitening', 'mmg-products', 'practice', 'mmg', 'mmg-sign', 'line'],
+    nhan: ['ophth', 'eyeless', 'needle', 'inspect', 'surgery', 'care'],
+    ngoai: ['surgery', 'eyeless', 'needle', 'care', 'inspect', 'robot'],
+    kn: ['clipboard', 'meeting', 'care', 'people', 'hq', 'vn-factory', 'hanaoka', 'machine', 'line']
+  };
+  const hashOf = t => { let h = 2166136261; for (const c of String(t)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+  const autoImg = s => {
+    if (!s || !s.sid) return '';
+    let sp = 'kn'; try { sp = (window.V4 && V4.specOf) ? V4.specOf(s) : 'kn'; } catch (e) {}
+    const isProd = /product|sản phẩm/i.test(String(s.category || ''));
+    const pool = POOL[isProd ? sp : 'kn'] || POOL.kn;
+    return url(pool[hashOf(s.sid) % pool.length]);
+  };
+  if (window.PROD && PROD.img && !PROD._v55) { const _img = PROD.img; PROD.img = s => _img(s) || autoImg(s); PROD._v55 = 1; }
+  window.HERO = {SL, show: i => show(i, true), pause, autoImg};
 })();
 </script>
 
