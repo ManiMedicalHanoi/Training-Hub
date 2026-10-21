@@ -6783,7 +6783,9 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
    ② Dải "MANI trong con số" (số chạy khi cuộn tới). ③ Có media/brand/brand.json (backend RH_Brand.gs) ⇒ dải ảnh "Workshop & hội thảo".
    Thêm / đổi ảnh: thêm file vào media/hero/ + 1 dòng trong HERO.SL.
    ========================================================================== */
-.v55-hero{position:relative;height:clamp(600px,80vh,760px);overflow:hidden;background:#021a27;color:#fff;isolation:isolate;touch-action:pan-y}
+.v55-hero{position:relative;height:clamp(600px,80vh,760px);overflow:hidden;background:#021a27;color:#fff;isolation:isolate;touch-action:pan-y;border-radius:28px;margin-top:14px}
+.v55-hero h2,.v55-facts h2{color:#fff}
+.v55-sl.light h2{color:var(--h-navy)}
 .v55-sl{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.1s ease,visibility 0s linear 1.1s}
 .v55-sl.on{opacity:1;visibility:visible;transition:opacity 1.1s ease;z-index:1}
 .v55-sl .bg{position:absolute;inset:-2%;background:#021a27 center/cover no-repeat;transform:scale(1.02);will-change:transform}
@@ -6795,15 +6797,15 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 /* card: ảnh nhỏ ⇒ nền mờ của chính ảnh + khung ảnh rõ bên phải */
 .v55-sl.card .bg{filter:blur(28px) brightness(.55) saturate(1.2);inset:-8%}
 .v55-sl.card .sh{background:linear-gradient(90deg,rgba(0,22,34,.85) 0%,rgba(0,22,34,.45) 45%,rgba(0,22,34,.15) 100%),linear-gradient(0deg,rgba(0,18,28,.8) 0%,rgba(0,18,28,0) 46%)}
-.v55-sl .fr{position:absolute;z-index:1;right:max(32px,calc((100vw - 1320px)/2 + 24px));top:50%;width:min(46vw,640px);aspect-ratio:var(--ar,1.6);max-height:70%;transform:translateY(-58%) scale(.96);border-radius:22px;
+.v55-sl .fr{position:absolute;z-index:1;right:max(32px,calc((100vw - 1320px)/2 + 24px));top:50%;width:min(46vw,640px);aspect-ratio:var(--ar,1.6);max-height:56%;transform:translateY(-68%) scale(.96);border-radius:22px;
   background:center/cover no-repeat;box-shadow:0 40px 90px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.14);opacity:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity .9s ease}
-.v55-sl.on .fr{opacity:1;transform:translateY(-55%) scale(1)}
+.v55-sl.on .fr{opacity:1;transform:translateY(-66%) scale(1)}
 /* prod: ảnh sản phẩm nền trắng trên bục sáng */
 .v55-sl.prod .bg{background:radial-gradient(ellipse at 72% 45%,#2a5d86 0%,#0d3550 45%,#021a27 100%)!important;animation:none}
 .v55-sl.prod .fr{background-size:contain;background-color:#fff;box-shadow:0 50px 100px rgba(0,0,0,.5),0 0 0 8px rgba(255,255,255,.06),0 0 120px rgba(120,190,255,.25)}
 .v55-sl.prod.on .fr{animation:v55fl 6s ease-in-out infinite alternate}
-@keyframes v55fl{from{transform:translateY(-55%)}to{transform:translateY(-58%)}}
-.v55-cap{position:absolute;z-index:2;left:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:206px;max-width:min(620px,52vw)}
+@keyframes v55fl{from{transform:translateY(-66%)}to{transform:translateY(-69%)}}
+.v55-cap{position:absolute;z-index:2;left:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:232px;max-width:min(620px,48vw)}
 .v55-cap .k{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#FFE100;opacity:0;transform:translateY(14px);transition:all .7s ease .25s}
 .v55-cap .k::before{content:"";width:26px;height:2px;background:currentColor}
 .v55-sl.light .v55-cap .k{color:var(--h-blue)}
@@ -6812,7 +6814,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 .v55-sl.light .v55-cap p{color:#33475b}
 .v55-sl.on .v55-cap .k,.v55-sl.on .v55-cap h2,.v55-sl.on .v55-cap p{opacity:1;transform:none}
 /* phần cố định: nút + con số + điều khiển */
-.v55-ui{position:absolute;z-index:3;left:max(24px,calc((100vw - 1320px)/2 + 24px));right:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:34px;display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.v55-ui{position:absolute;z-index:3;left:max(24px,calc((100vw - 1320px)/2 + 24px));right:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:58px;display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
 .v55-ui .acts{display:flex;gap:12px;flex-wrap:wrap}
 .v55-ui .v4-stats{margin:0;display:flex;gap:10px}
 .v55-ui .v4-stats>div{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
@@ -6852,26 +6854,30 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 .v55-facts .f span{display:block;margin-top:6px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.78)}
 .v55-facts .src{margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.5)}
 /* workshop */
+.cv[style*="media/hero/"],.v4-cont .th[style*="media/hero/"],.v4-mrow .th[style*="media/hero/"],.v54-tile .im[style*="media/hero/"]{background-size:cover!important;background-color:#0d3550!important}
+.cv[style*="media/hero/"] .h-pill.l{border:0}
 .v55-ws{margin-top:56px}
 .v55-ws .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,320px);gap:16px;overflow-x:auto;margin-top:18px;padding-bottom:10px;scrollbar-width:thin}
 .v55-ws figure{margin:0;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#e9eef4 center/cover no-repeat}
 .v55-ws figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(0deg,rgba(0,20,30,.8),rgba(0,20,30,0))}
 @media (max-width:900px){
-  .v55-hero{height:max(620px,min(92svh,760px))}
-  .v55-sl .fr{left:16px;right:16px;top:86px;width:auto;max-height:34%;aspect-ratio:auto;height:34%;transform:scale(.96)}
+  .v55-hero{height:max(600px,min(88svh,740px));border-radius:22px;margin-top:10px}
+  .v55-sl .fr{left:16px;right:16px;top:20px;width:auto;max-height:none;aspect-ratio:auto;height:30%;transform:scale(.96)}
   .v55-sl.on .fr{transform:none}
   .v55-sl.prod.on .fr{animation:none}
   .v55-sl .sh{background:linear-gradient(0deg,rgba(0,18,28,.95) 0%,rgba(0,18,28,.7) 42%,rgba(0,18,28,.1) 75%)}
   .v55-sl.light .sh{background:linear-gradient(0deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.82) 45%,rgba(255,255,255,0) 78%)}
-  .v55-cap{left:16px;right:16px;max-width:none;bottom:236px}
-  .v55-cap h2{font-size:32px;letter-spacing:-.6px}
+  .v55-cap{left:16px;right:16px;max-width:none;bottom:196px}
+  .v55-cap h2{font-size:30px;letter-spacing:-.6px;margin-top:10px}
+  .v55-cap .k{font-size:11px;letter-spacing:1.2px}
   .v55-cap p{font-size:15px;margin-top:10px}
-  .v55-ui{left:16px;right:16px;bottom:18px;gap:12px}
-  .v55-ui .acts{width:100%}
-  .v55-ui .acts .h-btn{flex:1 1 auto;height:46px;padding:0 14px;font-size:15px}
+  .v55-ui{left:16px;right:16px;bottom:48px;gap:10px}
+  .v55-ui .acts{width:100%;flex-wrap:nowrap;gap:8px}
+  .v55-ui .acts .h-btn{flex:1 1 0;min-width:0;height:44px;padding:0 10px;font-size:14px;gap:6px}
   .v55-ui .v4-stats{width:100%}
-  .v55-ui .v4-stats>div{flex:1;padding:8px 10px}
+  .v55-ui .v4-stats{display:none}
   .v55-nav{min-width:0;width:100%;gap:10px}
+  .v55-nav button{display:none}
   .v55-nav .nx{display:none}
   .v55-nav button{width:38px;height:38px}
   .v55-cr{top:auto;bottom:4px;right:16px;font-size:10px}
@@ -7002,7 +7008,24 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
     try { mount(); facts(); workshop(); } catch (e) { console.warn('v55 home', e); }
     return r;
   };
-  window.HERO = {SL, show: i => show(i, true), pause};
+  /* ④ khoá học mới / chưa có ảnh: tự chèn ảnh liên quan (ngẫu nhiên theo mã khoá — mỗi khoá giữ cố định 1 ảnh trên mọi máy)
+     thứ tự bìa: ảnh riêng (trainer tải) > ảnh video > ảnh sản phẩm (v5.4) > ảnh liên quan (v5.5) > hình vẽ */
+  const POOL = {
+    nha: ['dental', 'smile', 'whitening', 'mmg-products', 'practice', 'mmg', 'mmg-sign', 'line'],
+    nhan: ['ophth', 'eyeless', 'needle', 'inspect', 'surgery', 'care'],
+    ngoai: ['surgery', 'eyeless', 'needle', 'care', 'inspect', 'robot'],
+    kn: ['clipboard', 'meeting', 'care', 'people', 'hq', 'vn-factory', 'hanaoka', 'machine', 'line']
+  };
+  const hashOf = t => { let h = 2166136261; for (const c of String(t)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+  const autoImg = s => {
+    if (!s || !s.sid) return '';
+    let sp = 'kn'; try { sp = (window.V4 && V4.specOf) ? V4.specOf(s) : 'kn'; } catch (e) {}
+    const isProd = /product|sản phẩm/i.test(String(s.category || ''));
+    const pool = POOL[isProd ? sp : 'kn'] || POOL.kn;
+    return url(pool[hashOf(s.sid) % pool.length]);
+  };
+  if (window.PROD && PROD.img && !PROD._v55) { const _img = PROD.img; PROD.img = s => _img(s) || autoImg(s); PROD._v55 = 1; }
+  window.HERO = {SL, show: i => show(i, true), pause, autoImg};
 })();
 </script>
 
