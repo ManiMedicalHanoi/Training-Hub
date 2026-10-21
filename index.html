@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '5.3';
+const APP_VERSION = '5.4';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -4657,8 +4657,10 @@ body.v4 .crs-side{font-family:var(--h-font)}
   const ownCover = s => ((S.smeta || {})[s.sid] || {}).cover || '';
   const grpCover = s => { const c = (S.ui && S.ui.covers) || {}; return c[grpKey(s)] || UI['cover-' + specOf(s)] || ''; };
   const uiImg = s => grpCover(s) ? `url('${esc(grpCover(s))}') center/cover,` : '';
-  const coverStyle = s => { const p = ownCover(s) || posterOf(s); return p ? `background-image:linear-gradient(180deg,rgba(0,20,32,0),rgba(0,20,32,.15)),url('${esc(p)}')` : `background:${uiImg(s)}${COVER[specOf(s)]}`; };
-  const hasUi = s => !posterOf(s) && !!(ownCover(s) || grpCover(s));
+  /* ★ v5.4 — ảnh sản phẩm thật (window.PROD, khối v54-js) đứng sau ảnh riêng / ảnh video, trước ảnh nhóm */
+  const prodImg = s => (window.PROD && PROD.img(s)) || '';
+  const coverStyle = s => { const p = ownCover(s) || posterOf(s); if (p) return `background-image:linear-gradient(180deg,rgba(0,20,32,0),rgba(0,20,32,.15)),url('${esc(p)}')`; const pi = prodImg(s); return pi ? `background:#fff url('${esc(pi)}') center/contain no-repeat` : `background:${uiImg(s)}${COVER[specOf(s)]}`; };
+  const hasUi = s => !posterOf(s) && !!(ownCover(s) || prodImg(s) || grpCover(s));
 
   /* ---------- dữ liệu ---------- */
   const isCourse = s => s && s.status !== 'Cancel' && (S.videos[s.sid] || s.hasFolder);
@@ -4791,11 +4793,12 @@ body.v4 .crs-side{font-family:var(--h-font)}
   /* ==========================================================================
      LỘ TRÌNH / THƯ VIỆN VIDEO
      ========================================================================== */
-  const F4 = {spec: '', st: '', q: ''};
+  const F4 = {spec: '', st: '', q: '', p: ''};
   VIEWS.learn = function(id, q){
     setCrumb('');
     q = q || {};
     if (q.spec !== undefined) F4.spec = q.spec;
+    F4.p = q.p || '';  /* ★ v5.4 — lọc theo sản phẩm (bấm ô sản phẩm ở trang chủ) */
     const mode = q.f || '';
     const all = courses().filter(s => mode === 'video' ? S.videos[s.sid] : mode === 'doc' ? s.hasFolder : true);
     $('view').innerHTML = `<div class="v4-wrap" style="padding-top:36px">
@@ -4806,10 +4809,10 @@ body.v4 .crs-side{font-family:var(--h-font)}
         <label style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--h-line2);border-radius:12px;padding:0 14px;height:46px;flex:1 1 280px">${ic('search').replace('<svg', '<svg style="width:18px;height:18px;color:#666"')}<input id="v4q" placeholder="Tìm sản phẩm, bài học, trainer…" value="${esc(F4.q)}" style="border:0;outline:0;flex:1;font:inherit;background:transparent"></label>
         <div class="h-seg" id="v4seg">${grpSeg(all, F4.spec)}</div>
         <div class="h-seg" id="v4st">${[['', 'Mọi trạng thái'], ['new', 'Chưa học'], ['run', 'Đang học'], ['done', 'Hoàn thành']].map(([k, t]) => `<button class="${F4.st === k ? 'on' : ''}" data-k="${k}">${t}</button>`).join('')}</div></div>
-      <div id="v4list"></div></div>`;
+      ${F4.p && window.PROD ? PROD.chip(F4.p) : ''}<div id="v4list"></div></div>`;
     const draw = () => {
       const qq = deacc(F4.q);
-      const list = all.filter(s => (!F4.spec || grpKey(s) === F4.spec) && (!F4.st || stateOf(s) === F4.st) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose].join(' ')).includes(qq)))
+      const list = all.filter(s => (!F4.spec || grpKey(s) === F4.spec) && (!F4.st || stateOf(s) === F4.st) && (!F4.p || (window.PROD && PROD.idOf(s) === F4.p)) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose, lineOf(s), window.PROD ? PROD.nameOf(s) : ''].join(' ')).includes(qq)))
         .sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date)));
       $('v4list').innerHTML = list.length ? `<div class="v4-grid">${list.map(card).join('')}</div>` : `<div class="v4-empty">${ic('search')}<b>Không có khoá học phù hợp</b>Thử đổi nhóm hoặc bỏ bớt bộ lọc.</div>`;
     };
@@ -6600,6 +6603,173 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
     b.addEventListener('click', () => Modal.close(m));
   };
   try { if (S.user) { renderShell(); mark(); } } catch (e) {}
+})();
+</script>
+
+<style id="v54-css">
+/* ==========================================================================
+   ★ v5.4 (21/10/2026) — ẢNH SẢN PHẨM THẬT (từ kho ManiMedicalHanoi/mmh-library, thu nhỏ ở media/products/*.webp 960×540 nền trắng)
+   ① Thẻ khoá học: tên / mục tiêu / nhóm sản phẩm nhắc tới sản phẩm (JIZAI, K-Files, Dia Burs, ManiFill…) ⇒ ảnh bìa = ảnh sản phẩm
+     (thứ tự: ảnh riêng của khoá > ảnh video > ảnh sản phẩm > ảnh nhóm > hình vẽ).
+   ② Trang chủ: hàng "Sản phẩm MANI" — bấm 1 sản phẩm ⇒ Lộ trình lọc đúng các khoá của sản phẩm đó (#/learn?p=<id>).
+   ③ Phần đầu trang chủ khi chưa có video: tủ trưng bày ảnh sản phẩm tự chuyển (thay mũi khoan vẽ). Màn đăng nhập: 3 ảnh sản phẩm.
+   Thêm sản phẩm: thêm ảnh vào media/products/ + 1 dòng trong PROD.LIST (k = từ khoá không dấu).
+   ========================================================================== */
+.v54-prod{margin-top:48px}
+.v54-row{display:grid;grid-auto-flow:column;grid-auto-columns:204px;gap:14px;overflow-x:auto;margin-top:18px;padding-bottom:8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.v54-tile{display:block;background:#fff;border:1px solid var(--h-line);border-radius:14px;overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;transition:border-color .2s ease}
+.v54-tile:hover,.v54-tile:focus-visible{border-color:var(--h-lb);outline:0}
+.v54-tile .im{aspect-ratio:16/9;background:#fff center/contain no-repeat;border-bottom:1px solid var(--h-line)}
+.v54-tile .tx{padding:10px 12px 12px}
+.v54-tile b{display:block;font-size:15px;font-weight:600;color:var(--h-navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v54-tile small{display:block;font-size:12.5px;color:var(--h-mu);margin-top:2px}
+.v54-tile small.n{color:var(--h-blue);font-weight:600}
+.v54-tile.empty .im{opacity:.75}
+/* thẻ khoá học có ảnh sản phẩm (nền trắng): nhãn nhóm có viền để không chìm */
+.cv[style*="media/products/"] .h-pill.l{border:1px solid var(--h-line)}
+.v4-cont .th[style*="media/products/"]{border:1px solid var(--h-line)}
+.v4-cont .th[style*="media/products/"]::before{display:none}
+.v4-cont .th[style*="media/products/"] .pl,.v4-cont .th[style*="media/products/"] .doc{border:1px solid var(--h-line)}
+/* chip lọc theo sản phẩm ở Lộ trình */
+.v54-chip{display:flex;align-items:center;gap:14px;margin-top:20px;background:#fff;border:1px solid var(--h-line);border-radius:14px;padding:10px 14px 10px 10px}
+.v54-chip .im{width:96px;aspect-ratio:16/9;border-radius:8px;background:#fff center/contain no-repeat;border:1px solid var(--h-line);flex:none}
+.v54-chip .t{flex:1 1 auto;min-width:0}
+.v54-chip .t b{display:block;font-size:16px;color:var(--h-navy)}
+.v54-chip .t small{font-size:13px;color:var(--h-mu)}
+.v54-chip .x{font-weight:600;color:var(--h-blue);cursor:pointer;white-space:nowrap}
+/* tủ trưng bày ở phần đầu trang chủ (khi chưa có video) */
+.v54-show{position:absolute;left:50%;top:50%;width:min(520px,92%);aspect-ratio:16/10;transform:translate(-50%,-50%);background:#fff;border-radius:20px;overflow:hidden;cursor:pointer;z-index:0}
+.v54-show img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:18px 18px 64px;opacity:0;transform:scale(1);transition:opacity .9s ease,transform 5.5s ease-out}
+.v54-show img.on{opacity:1;transform:scale(1.05)}
+.v54-show .cap{position:absolute;left:20px;right:96px;bottom:16px;color:var(--h-navy)}
+.v54-show .cap b{display:block;font-size:18px;font-weight:600}
+.v54-show .cap small{font-size:13px;color:var(--h-mu)}
+.v54-show .dots{position:absolute;right:18px;bottom:24px;display:flex;gap:6px}
+.v54-show .dots i{width:6px;height:6px;border-radius:99px;background:#C9D3DD;transition:width .3s ease,background .3s ease}
+.v54-show .dots i.on{width:18px;background:var(--h-blue)}
+.v4-stage .v4-fl{z-index:1}
+/* màn đăng nhập: 3 ảnh sản phẩm */
+.v54-auth{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px;max-width:520px}
+.v54-auth div{aspect-ratio:16/10;background:#fff center/contain no-repeat;border-radius:12px;border:1px solid rgba(58,92,170,.15)}
+@media (prefers-reduced-motion:reduce){.v54-show img{transition:opacity .3s ease}.v54-show img.on{transform:none}}
+@media (max-width:900px){
+  .v54-prod{margin-top:32px}
+  .v54-row{grid-auto-columns:156px;gap:10px}
+  .v54-tile b{font-size:14px}
+  .v54-show{width:100%;aspect-ratio:auto;height:100%}
+  .v54-show img{padding:10px 10px 46px}
+  .v54-show .cap{left:14px;bottom:10px}
+  .v54-show .cap b{font-size:15px}
+  .v54-show .dots{bottom:16px;right:14px}
+  .v54-auth{display:none}
+  .v54-chip .im{width:72px}
+}
+</style>
+<script id="v54-js">
+/* ★ v5.4 — xem ghi chú ở <style id="v54-css"> */
+(function(){
+  const IMG = id => 'media/products/' + id + '.webp';
+  /* id ảnh · tên · nhóm · từ khoá (so trên tên khoá + mục tiêu + nhóm sản phẩm, đã bỏ dấu, chữ thường). Thứ tự = ưu tiên khớp */
+  const LIST = [
+    ['jizai', 'JIZAI', 'Trâm máy nội nha', /jizai/],
+    ['dfinder', 'D Finders · Glide Finders', 'Trâm tay nội nha', /d[ -]?finders?|glide[ -]?finders?/],
+    ['rtfile', 'RT Files', 'Trâm tay nội nha', /\brt[ -]?files?\b/],
+    ['flare', 'Flare Files', 'Trâm tay nội nha', /flare[ -]?files?/],
+    ['hfile', 'H-Files', 'Trâm tay nội nha', /\bh[ -]?files?\b|hedstr/],
+    ['kfile', 'K-Files', 'Trâm tay nội nha', /\bk[ -]?files?\b|hand[ -]?files?|tram tay/],
+    ['reamer', 'Reamers', 'Trâm tay nội nha', /reamers?/],
+    ['ipr', 'IPR-01EF', 'Mũi khoan', /\bipr\b|mai ke/],
+    ['surgbur', 'Surgical Burs', 'Mũi khoan phẫu thuật', /surgical[ -]?burs?|1559|mui khoan phau thuat/],
+    ['carbide', 'Carbide Burs', 'Mũi khoan', /carbide|tungsten/],
+    ['mibur', 'MI Stainless Burs', 'Mũi khoan', /\bmi\b[ -]?(stainless[ -]?)?burs?|stainless[ -]?burs?/],
+    ['diabur', 'Dia Burs', 'Mũi khoan kim cương', /dia(mond)?[ -]?burs?|mui khoan kim cuong|endo access/],
+    ['manifill', 'ManiFill', 'Composite · MMG', /manifill|composite/],
+    ['manibond', 'ManiBond 7th Gen', 'Keo dán · MMG', /manibond|\bbond(ing)?\b|keo dan/],
+    ['manishine', 'ManiShine', 'Tẩy trắng · MMG', /manishine|whitening|tay trang/],
+    ['suture', 'Chỉ khâu', 'Chỉ khâu nha khoa', /suture|chi khau/],
+    /* từ khoá chung — chỉ dùng khi không khớp tên sản phẩm nào ở trên */
+    ['diabur', 'Dia Burs', 'Mũi khoan kim cương', /\bburs?\b|mui khoan/],
+    ['kfile', 'K-Files', 'Trâm tay nội nha', /tram noi nha|\bendo/]
+  ];
+  const NSPEC = LIST.length - 2;   /* 2 dòng cuối = từ khoá chung */
+  const ONE = [], seen = new Set();
+  LIST.forEach(x => { if (!seen.has(x[0])) { seen.add(x[0]); ONE.push({id: x[0], n: x[1], g: x[2]}); } });
+  const byId = id => ONE.find(x => x.id === id);
+  const memo = new Map();
+  const of = s => {
+    if (!s) return null;
+    const line = (((S.smeta || {})[s.sid] || {}).line || '');
+    const t = deacc([s.topic, s.purpose, line].join(' '));
+    if (memo.has(t)) return memo.get(t);
+    /* nhiều sản phẩm trong cùng tên (vd. "K-Files & H-Files") ⇒ lấy sản phẩm nhắc tới đầu tiên */
+    let h = null, at = 1e9;
+    LIST.slice(0, NSPEC).forEach(x => { const m = t.match(x[3]); if (m && m.index < at) { at = m.index; h = x; } });
+    if (!h) h = LIST.slice(NSPEC).find(x => x[3].test(t));
+    const r = h ? byId(h[0]) : null;
+    memo.set(t, r); return r;
+  };
+  const courses = () => (window.V4 && V4.courses ? V4.courses() : []);
+  const countOf = id => courses().filter(s => (of(s) || {}).id === id).length;
+
+  window.PROD = {
+    LIST: ONE, IMG,
+    of, idOf: s => (of(s) || {}).id || '', nameOf: s => (of(s) || {}).n || '',
+    img: s => { const p = of(s); return p ? IMG(p.id) : ''; },
+    chip(id){
+      const p = byId(id); if (!p) return '';
+      const n = countOf(id);
+      return `<div class="v54-chip"><div class="im" style="background-image:url('${IMG(id)}')"></div><div class="t"><b>${esc(p.n)}</b><small>${esc(p.g)} · ${n ? n + ' khoá học' : 'chưa có khoá học'}</small></div><span class="x" data-a="go" data-h="#/learn">Bỏ lọc ✕</span></div>`;
+    }
+  };
+
+  /* ② + ③ trang chủ */
+  const _home = VIEWS.home;
+  VIEWS.home = function(){
+    const r = _home.apply(this, arguments);
+    try {
+      const cs = courses();
+      const cnt = {}; cs.forEach(s => { const p = of(s); if (p) cnt[p.id] = (cnt[p.id] || 0) + 1; });
+      const order = ONE.slice().sort((a, b) => (cnt[b.id] || 0) - (cnt[a.id] || 0));
+      const paths = $('paths');
+      if (paths && !document.querySelector('.v54-prod')) {
+        paths.insertAdjacentHTML('beforebegin', `<section class="v54-prod"><h2 class="h-h2">Sản phẩm MANI</h2><p class="h-sub">Bấm một sản phẩm để xem các khoá học liên quan</p>
+          <div class="v54-row">${order.map(p => `<button class="v54-tile ${cnt[p.id] ? '' : 'empty'}" data-a="go" data-h="#/learn?p=${p.id}"><div class="im" style="background-image:url('${IMG(p.id)}')"></div><div class="tx"><b>${esc(p.n)}</b>${cnt[p.id] ? `<small class="n">${cnt[p.id]} khoá học</small>` : `<small>${esc(p.g)}</small>`}</div></button>`).join('')}</div></section>`);
+      }
+      /* thẻ "Tiếp tục học" chưa có ảnh ⇒ ảnh sản phẩm */
+      const ct = document.querySelector('.v4-cont[data-sid] .th');
+      if (ct && !/url\(/.test(ct.getAttribute('style') || '')) { const im = PROD.img(cs.find(s => s.sid === ct.parentElement.dataset.sid)); if (im) ct.setAttribute('style', `background:#fff url('${im}') center/contain no-repeat`); }
+      /* phần đầu: chưa có video (còn mũi khoan vẽ) ⇒ tủ trưng bày ảnh sản phẩm */
+      const stage = document.querySelector('.v4-hero .v4-stage');
+      if (stage && stage.querySelector('.model') && !stage.querySelector('.vscreen')) showcase(stage, order, cnt);
+    } catch (e) { console.warn('v54 home', e); }
+    return r;
+  };
+  let timer = 0;
+  function showcase(stage, order, cnt){
+    const items = order.slice(0, 8);
+    stage.querySelectorAll('.model,.glow,.orbits').forEach(e => e.remove());
+    stage.setAttribute('aria-label', 'Ảnh sản phẩm MANI');
+    const fb = stage.querySelector('.v4-fl.b [style*="12px"]'); if (fb) fb.textContent = 'Học xong ⇒ chứng chỉ gửi email';
+    stage.insertAdjacentHTML('afterbegin', `<div class="v54-show" id="v54show">${items.map((p, i) => `<img src="${IMG(p.id)}" alt="${esc(p.n)}" class="${i ? '' : 'on'}" ${i ? 'loading="lazy"' : ''}>`).join('')}
+      <div class="cap"><b></b><small></small></div><div class="dots">${items.map((p, i) => `<i class="${i ? '' : 'on'}"></i>`).join('')}</div></div>`);
+    const box = $('v54show'), imgs = box.querySelectorAll('img'), dots = box.querySelectorAll('.dots i');
+    let k = 0, hold = false;
+    const show = i => { k = (i + items.length) % items.length; imgs.forEach((m, j) => m.classList.toggle('on', j === k)); dots.forEach((d, j) => d.classList.toggle('on', j === k));
+      const p = items[k]; box.querySelector('.cap b').textContent = p.n; box.querySelector('.cap small').textContent = cnt[p.id] ? `${p.g} · ${cnt[p.id]} khoá học` : p.g; };
+    show(0);
+    box.onmouseenter = () => { hold = true; }; box.onmouseleave = () => { hold = false; };
+    box.onclick = () => go('#/learn?p=' + items[k].id);
+    clearInterval(timer);
+    timer = setInterval(() => { if (!document.body.contains(box)) return clearInterval(timer); if (!hold && !document.hidden) show(k + 1); }, 4500);
+  }
+  const go = h => { location.hash = h; };
+
+  /* ③ màn đăng nhập */
+  const authImgs = () => { try { const st = document.querySelector('.auth-art .auth-steps'); if (st && !document.querySelector('.v54-auth')) st.insertAdjacentHTML('afterend', `<div class="v54-auth" aria-hidden="true">${['jizai', 'manifill', 'diabur'].map(id => `<div style="background-image:url('${IMG(id)}')"></div>`).join('')}</div>`); } catch (e) {} };
+  const _show = Auth.show;
+  Auth.show = function(){ const r = _show.apply(this, arguments); authImgs(); return r; };
+  authImgs();
+  try { if (S.user) route(true); } catch (e) {}
 })();
 </script>
 
