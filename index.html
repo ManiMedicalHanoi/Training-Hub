@@ -6857,9 +6857,11 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 .cv[style*="media/hero/"],.v4-cont .th[style*="media/hero/"],.v4-mrow .th[style*="media/hero/"],.v54-tile .im[style*="media/hero/"]{background-size:cover!important;background-color:#0d3550!important}
 .cv[style*="media/hero/"] .h-pill.l{border:0}
 .v55-ws{margin-top:56px}
-.v55-ws .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,320px);gap:16px;overflow-x:auto;margin-top:18px;padding-bottom:10px;scrollbar-width:thin}
-.v55-ws figure{margin:0;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#e9eef4 center/cover no-repeat}
-.v55-ws figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(0deg,rgba(0,20,30,.8),rgba(0,20,30,0))}
+.v55-ws .row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,250px);gap:16px;overflow-x:auto;margin-top:18px;padding-bottom:10px;scrollbar-width:thin}
+.v55-ws figure{margin:0;background:#fff;border:1px solid var(--h-line);border-radius:16px;overflow:hidden}
+.v55-ws figure .im{aspect-ratio:4/5;background:#eef3f8 center/contain no-repeat}
+.v55-ws figcaption{padding:10px 12px 12px;font-size:14px;font-weight:600;color:var(--h-navy);border-top:1px solid var(--h-line)}
+.v55-ws figcaption small{display:block;font-size:12px;font-weight:500;color:var(--h-mu);margin-top:2px}
 @media (max-width:900px){
   .v55-hero{height:max(600px,min(88svh,740px));border-radius:22px;margin-top:10px}
   .v55-sl .fr{left:16px;right:16px;top:20px;width:auto;max-height:none;aspect-ratio:auto;height:30%;transform:scale(.96)}
@@ -6991,14 +6993,19 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
   }
   /* ③ workshop & hội thảo (ảnh do backend RH_Brand.gs đẩy lên media/brand/) */
   let BR = null;
-  const WS = {'ws-comp': 'Workshop Composite', 'ws-jizai': 'Workshop JIZAI', 'ws-jizai-kit': 'Bộ thực hành JIZAI', 'ws-restorative': 'Hands-on phục hồi', 'ws-led': 'Hội thảo nha khoa'};
-  function wsName(k){ const key = Object.keys(WS).sort((a, b) => b.length - a.length).find(p => k.indexOf(p) === 0); return key ? WS[key] : 'Hoạt động đào tạo'; }
+  const WS = {'ws-comp': ['Nghệ thuật phục hình', 'Workshop composite · Hà Nội'], 'ws-jizai': ['JIZAI Journey', 'Nội nha nhẹ – nhanh – nhàn'], 'ws-jizai-kit': ['Bộ thực hành JIZAI', 'Hands-on kit'],
+    'ws-restorative': ['Hands-on phục hồi', 'Xoang loại II · composite MANI'], 'ws-led': ['Khắc chế ca khó với JIZAI', 'Hội thảo nội nha'],
+    'ws-comp-1': ['Nghệ thuật phục hình', 'Ngày 1 · composite xâm lấn tối thiểu'], 'ws-comp-2': ['Nghệ thuật phục hình', 'Ngày 2 · 30% lý thuyết, 70% thực hành'],
+    'ws-comp-3': ['Nghệ thuật phục hình', 'Khoá học đặc biệt · Hà Nội'], 'ws-led-hn': ['Khắc chế ca khó với JIZAI', 'Hội thảo nội nha · Hà Nội'], 'ws-led-vp': ['Khắc chế ca khó với JIZAI', 'Hội thảo nội nha · Vĩnh Phúc']};
+  function wsName(k){ const key = Object.keys(WS).sort((a, b) => b.length - a.length).find(p => k.indexOf(p) === 0); return key ? WS[key] : ['Hoạt động đào tạo', '']; }
   function workshop(){
     if (!BR || document.querySelector('.v55-ws')) return;
     const items = (BR.items || []).filter(x => /^ws-/.test(x.k)); if (items.length < 3) return;
     const anchor = document.querySelector('.v4-bottom'); if (!anchor) return;
-    anchor.insertAdjacentHTML('beforebegin', `<section class="v55-ws"><h2 class="h-h2">Workshop & hội thảo</h2><p class="h-sub">Hình ảnh các chương trình đào tạo bác sĩ MMH đã tổ chức</p>
-      <div class="row">${items.map(x => `<figure style="background-image:url('media/brand/${esc(x.f)}')"><figcaption>${esc(wsName(x.k))}</figcaption></figure>`).join('')}</div></section>`);
+    anchor.insertAdjacentHTML('beforebegin', `<section class="v55-ws"><h2 class="h-h2">Workshop & hội thảo</h2><p class="h-sub">Các chương trình đào tạo bác sĩ MMH đã tổ chức</p>
+      <div class="row">${items.map(x => { const [t, d] = wsName(x.k); return `<figure data-f="${esc(x.f)}"><div class="im" style="background-image:url('media/brand/${esc(x.f)}')"></div><figcaption>${esc(t)}${d ? `<small>${esc(d)}</small>` : ''}</figcaption></figure>`; }).join('')}</div></section>`);
+    /* băng rôn quá dài (màn LED) không hợp khung poster ⇒ bỏ */
+    document.querySelectorAll('.v55-ws figure[data-f]').forEach(f => { const im = new Image(); im.onload = () => { if (im.naturalWidth > im.naturalHeight * 1.8) f.remove(); }; im.src = 'media/brand/' + f.dataset.f; });
   }
   try { fetch('media/brand/brand.json?d=' + new Date().toISOString().slice(0, 10), {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).then(j => { BR = j; if (S.route && S.route.name === 'home') workshop(); }).catch(() => {}); } catch (e) {}
   const _home = VIEWS.home;
