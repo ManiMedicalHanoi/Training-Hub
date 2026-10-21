@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '5.6';
+const APP_VERSION = '5.7';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -4812,7 +4812,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
       ${F4.p && window.PROD ? PROD.chip(F4.p) : ''}<div id="v4list"></div></div>`;
     const draw = () => {
       const qq = deacc(F4.q);
-      const list = all.filter(s => (!F4.spec || grpKey(s) === F4.spec) && (!F4.st || stateOf(s) === F4.st) && (!F4.p || (window.PROD && PROD.idOf(s) === F4.p)) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose, lineOf(s), window.PROD ? PROD.nameOf(s) : ''].join(' ')).includes(qq)))
+      const list = all.filter(s => (!F4.spec || grpKey(s) === F4.spec) && (!F4.st || stateOf(s) === F4.st) && (!F4.p || (window.PROD && (PROD.inP ? PROD.inP(s, F4.p) : PROD.idOf(s) === F4.p))) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose, lineOf(s), window.PROD ? PROD.nameOf(s) : ''].join(' ')).includes(qq)))
         .sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date)));
       $('v4list').innerHTML = list.length ? `<div class="v4-grid">${list.map(card).join('')}</div>` : `<div class="v4-empty">${ic('search')}<b>Không có khoá học phù hợp</b>Thử đổi nhóm hoặc bỏ bớt bộ lọc.</div>`;
     };
@@ -6690,6 +6690,19 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
     ['manifill', 'ManiFill', 'Composite · MMG', /manifill|composite/],
     ['manibond', 'ManiBond 7th Gen', 'Keo dán · MMG', /manibond|\bbond(ing)?\b|keo dan/],
     ['manishine', 'ManiShine', 'Tẩy trắng · MMG', /manishine|whitening|tay trang/],
+    /* ★ v5.7 — nhãn khoa · ngoại khoa (ảnh mới trong mmh-library) */
+    ['slit', 'Slit Knife', 'Dao vi phẫu nhãn khoa', /slit[ -]?knife|dao slit|keratome|dao phaco/],
+    ['crescent', 'Crescent Knife', 'Dao vi phẫu nhãn khoa', /crescent/],
+    ['mvr', 'MVR Knife', 'Dao vi phẫu nhãn khoa', /\bmvr\b/],
+    ['sideport', 'Side Port Knife', 'Dao vi phẫu nhãn khoa', /side[ -]?port/],
+    ['forceps', 'Micro Forceps', 'Kẹp vi phẫu nhãn khoa', /micro[ -]?forceps?|kep vi phau/],
+    ['trocar', 'Trocar Kit', 'Phẫu thuật dịch kính', /trocar/],
+    ['trabhook', 'Trabeculotomy Hook', 'Phẫu thuật glôcôm', /trabecul|\bhook\b/],
+    ['ophsuture', 'Chỉ khâu nhãn khoa', 'Chỉ khâu nhãn khoa', /chi khau nhan khoa|ophthalmic sutures?/],
+    ['manipler', 'Manipler', 'Ghim khâu da', /manipler|ghim (khau )?da|skin stapler|stapler/],
+    ['vessel', 'Vessel Knife', 'Dao mạch máu', /vessel[ -]?knife|dao mach mau/],
+    ['eyeless', 'Eyeless Needle', 'Kim liền chỉ', /eyeless|kim lien chi/],
+    ['ent', 'ENT Knife', 'Dao tai mũi họng', /\bent\b[ -]?knife|tai mui hong/],
     ['suture', 'Chỉ khâu', 'Chỉ khâu nha khoa', /suture|chi khau/],
     /* từ khoá chung — chỉ dùng khi không khớp tên sản phẩm nào ở trên */
     ['diabur', 'Dia Burs', 'Mũi khoan kim cương', /\bburs?\b|mui khoan/],
@@ -7041,6 +7054,151 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
   /* ★ v5.6 — BỎ ảnh "liên quan" ngẫu nhiên (khoá SOP / kỹ năng nhận ảnh nhà máy, robot… không liên quan — người dùng báo 21/10/2026).
      Khoá chưa có ảnh ⇒ ảnh nhóm do Admin chọn (Giao diện) hoặc nền màu + hình vẽ theo chuyên khoa. */
   window.HERO = {SL, show: i => show(i, true), pause, autoImg};
+})();
+</script>
+
+<style id="v57-css">
+/* ==========================================================================
+   ★ v5.7 (22/10/2026) — ĐA DẠNG GIAO DIỆN với ảnh mới của mmh-library (nhãn khoa, ngoại khoa, ảnh kỹ thuật)
+   ① +12 sản phẩm nhãn khoa / ngoại khoa trong PROD.LIST (khối v54) ⇒ khoá Product nhãn khoa / ngoại khoa có ảnh bìa đúng sản phẩm.
+   ② "Sản phẩm MANI" = bento theo chuyên khoa: tab Nha khoa · Nhãn khoa · Ngoại khoa · MMG; ô ảnh lớn (media/hero) + lưới sản phẩm,
+     "+N sản phẩm" mở thêm; bấm ô ảnh lớn ⇒ Lộ trình lọc cả chuyên khoa (#/learn?p=nhan), bấm sản phẩm ⇒ lọc sản phẩm.
+   ③ Mục "Soi từng chi tiết" (sau Lộ trình): kéo so sánh ảnh hiển vi dao nhãn khoa · chọn 7 kiểu mũi kim Eyeless · 5 bước dùng Vessel Knife
+     (ảnh ở media/tech/). Mỗi khối có link khoá học nếu có khoá của sản phẩm đó.
+   ========================================================================== */
+.v57-prod{margin-top:48px}
+.v57-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.v57-bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:20px}
+.v57-feat{grid-column:span 2;grid-row:span 2;position:relative;min-height:330px;border-radius:18px;overflow:hidden;background:#021a27 center/cover no-repeat;color:#fff;cursor:pointer;border:0;padding:0;text-align:left;font:inherit}
+.v57-feat::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,26,39,.9),rgba(2,26,39,.35) 55%,rgba(2,26,39,.05))}
+.v57-feat .tx{position:absolute;left:24px;right:24px;bottom:22px}
+.v57-feat .k{font-size:13px;font-weight:600;color:#FFE100}
+.v57-feat b{display:block;margin-top:6px;font-size:24px;font-weight:600;line-height:1.25;letter-spacing:-.3px}
+.v57-feat .go{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;font-weight:600;background:#fff;color:var(--h-navy);border-radius:999px;padding:8px 14px}
+.v57-bento .v54-tile{height:100%}
+.v57-more{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--h-pale);border:1px dashed var(--h-lb);border-radius:14px;color:var(--h-blue);font:inherit;font-weight:600;cursor:pointer;min-height:140px}
+.v57-more small{font-weight:400;color:var(--h-mu)}
+.v57-tech{margin-top:56px}
+.v57-tg{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;margin-top:20px}
+.v57-box{background:#fff;border:1px solid var(--h-line);border-radius:18px;padding:20px}
+.v57-box h3{margin:0;font-size:18px;font-weight:600;color:var(--h-navy)}
+.v57-box p{margin:4px 0 14px;font-size:14px;color:var(--h-mu);line-height:1.5}
+.v57-box .lk{display:inline-block;margin-top:12px;font-size:14px;font-weight:600;color:var(--h-blue);cursor:pointer}
+.v57-cmp{position:relative;aspect-ratio:654/458;border-radius:12px;overflow:hidden;background:#222;--x:50%;user-select:none}
+.v57-cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.v57-cmp .fr{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.v57-cmp .bar{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;pointer-events:none}
+.v57-cmp .bar::after{content:"⇆";position:absolute;top:50%;left:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:#fff;color:var(--h-navy);display:grid;place-items:center;font-size:18px;font-weight:700}
+.v57-cmp .lb{position:absolute;top:10px;font-size:12.5px;font-weight:600;background:rgba(0,0,0,.55);color:#fff;border-radius:6px;padding:3px 8px;pointer-events:none}
+.v57-cmp .lb.l{left:10px}.v57-cmp .lb.r{right:10px}
+.v57-cmp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.v57-np .big{aspect-ratio:558/312;border-radius:12px;background:#F4F6F8 center/contain no-repeat;border:1px solid var(--h-line)}
+.v57-np .v57-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.v57-np .v57-chips button{min-width:46px;height:40px;border-radius:10px;border:1px solid var(--h-line2,#D5DCE4);background:#fff;font:inherit;font-weight:700;color:var(--h-navy);cursor:pointer}
+.v57-np .v57-chips button.on{background:var(--h-navy);border-color:var(--h-navy);color:#fff}
+.v57-steps{margin-top:16px}
+.v57-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:12px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.v57-st{position:relative;border:1px solid var(--h-line);border-radius:12px;overflow:hidden;background:#fff}
+.v57-st img{display:block;width:100%;aspect-ratio:760/428;object-fit:contain;background:#fff}
+.v57-st span{position:absolute;left:10px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--h-navy);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700}
+@media (max-width:900px){
+  .v57-prod{margin-top:32px}
+  .v57-bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .v57-feat{min-height:220px}
+  .v57-feat b{font-size:19px}
+  .v57-feat .tx{left:16px;right:16px;bottom:14px}
+  .v57-tg{grid-template-columns:1fr}
+  .v57-tech{margin-top:40px}
+  .v57-box{padding:16px}
+  .v57-row{grid-auto-columns:78%}
+  .v57-head .h-seg{width:100%}
+}
+</style>
+<script id="v57-js">
+/* ★ v5.7 — xem ghi chú ở <style id="v57-css"> */
+(function(){
+  if (!window.PROD) return;
+  const SPEC = [
+    {k: 'nha', t: 'Nha khoa', img: 'media/hero/dental.webp', h: 'Trâm nội nha, mũi khoan & chỉ khâu nha khoa',
+      ids: ['jizai', 'kfile', 'hfile', 'rtfile', 'flare', 'reamer', 'dfinder', 'diabur', 'carbide', 'surgbur', 'mibur', 'ipr', 'suture']},
+    {k: 'nhan', t: 'Nhãn khoa', img: 'media/hero/ophth.webp', h: 'Dao vi phẫu, kẹp, trocar & chỉ khâu nhãn khoa',
+      ids: ['slit', 'crescent', 'mvr', 'sideport', 'forceps', 'trocar', 'trabhook', 'ophsuture']},
+    {k: 'ngoai', t: 'Ngoại khoa', img: 'media/hero/surgery.webp', h: 'Ghim khâu da, kim liền chỉ & dao phẫu thuật',
+      ids: ['manipler', 'eyeless', 'vessel', 'ent']},
+    {k: 'mmg', t: 'MMG', img: 'media/hero/mmg-products.webp', h: 'Composite, keo dán & tẩy trắng — MANI Medical Germany',
+      ids: ['manifill', 'manibond', 'manishine']}
+  ];
+  const specOfId = id => (SPEC.find(x => x.ids.includes(id)) || {}).k || '';
+  const byId = id => PROD.LIST.find(x => x.id === id);
+  /* lọc Lộ trình: p = mã sản phẩm hoặc mã chuyên khoa */
+  PROD.inP = (s, p) => { const id = PROD.idOf(s); if (!id) return false; return id === p || specOfId(id) === p; };
+  const _chip = PROD.chip;
+  PROD.chip = function(p){
+    const sp = SPEC.find(x => x.k === p); if (!sp) return _chip.apply(this, arguments);
+    const n = (window.V4 ? V4.courses() : []).filter(s => PROD.inP(s, p)).length;
+    return `<div class="v54-chip"><div class="im" style="background-image:url('${sp.img}');background-size:cover"></div><div class="t"><b>${esc(sp.t)}</b><small>${esc(sp.h)} · ${n ? n + ' khoá học' : 'chưa có khoá học'}</small></div><span class="x" data-a="go" data-h="#/learn">Bỏ lọc ✕</span></div>`;
+  };
+
+  let cur = '', open = false;
+  function bento(host){
+    const cs = window.V4 ? V4.courses() : [];
+    const cnt = {}; cs.forEach(s => { const id = PROD.idOf(s); if (id) cnt[id] = (cnt[id] || 0) + 1; });
+    const nSp = sp => sp.ids.reduce((a, id) => a + (cnt[id] || 0), 0);
+    if (!cur) cur = SPEC.slice().sort((a, b) => nSp(b) - nSp(a))[0].k;
+    const sp = SPEC.find(x => x.k === cur);
+    const ids = sp.ids.filter(byId).slice().sort((a, b) => (cnt[b] || 0) - (cnt[a] || 0));
+    const max = open ? ids.length : 8, show = ids.slice(0, ids.length > max ? max - 1 : max), rest = ids.length - show.length;
+    const n = nSp(sp);
+    host.innerHTML = `<div class="v57-head"><div><h2 class="h-h2">Sản phẩm MANI</h2><p class="h-sub">${sp.ids.length} sản phẩm ${esc(sp.t.toLowerCase())} · bấm để xem khoá học liên quan</p></div>
+        <div class="h-seg" id="v57seg">${SPEC.map(x => `<button class="${x.k === cur ? 'on' : ''}" data-k="${x.k}">${esc(x.t)}</button>`).join('')}</div></div>
+      <div class="v57-bento">
+        <button class="v57-feat" data-a="go" data-h="#/learn?p=${sp.k}" style="background-image:url('${sp.img}')"><div class="tx"><div class="k">${esc(sp.t)}</div><b>${esc(sp.h)}</b>
+          <span class="go">${n ? `Xem ${n} khoá học` : 'Xem lộ trình'} →</span></div></button>
+        ${show.map(id => { const p = byId(id); return `<button class="v54-tile ${cnt[id] ? '' : 'empty'}" data-a="go" data-h="#/learn?p=${id}"><div class="im" style="background-image:url('${PROD.IMG(id)}')"></div><div class="tx"><b>${esc(p.n)}</b>${cnt[id] ? `<small class="n">${cnt[id]} khoá học</small>` : `<small>${esc(p.g)}</small>`}</div></button>`; }).join('')}
+        ${rest > 0 ? `<button class="v57-more" id="v57more">+${rest} sản phẩm<small>Xem tất cả</small></button>` : ''}
+      </div>`;
+    host.querySelectorAll('#v57seg button').forEach(b => b.onclick = () => { cur = b.dataset.k; open = false; bento(host); });
+    const m = host.querySelector('#v57more'); if (m) m.onclick = () => { open = true; bento(host); };
+  }
+
+  const NP = ['T', 'O', 'Y', 'R', 'R4', 'Q', 'Q4'];
+  function tech(){
+    const cs = window.V4 ? V4.courses() : [];
+    const has = id => cs.some(s => PROD.idOf(s) === id);
+    const lk = (id, t) => has(id) ? `<a class="lk" data-a="go" data-h="#/learn?p=${id}">${t} →</a>` : '';
+    return `<section class="v57-tech"><h2 class="h-h2">Soi từng chi tiết</h2><p class="h-sub">Ảnh kỹ thuật trong catalogue MANI — kéo, chọn, xem từng bước</p>
+      <div class="v57-tg">
+        <div class="v57-box"><h3>Dao nhãn khoa dưới kính hiển vi</h3><p>Lưỡi dao đã xử lý chống lóa — kéo thanh trượt để so sánh mặt trước và mặt sau.</p>
+          <div class="v57-cmp" id="v57cmp"><img src="media/tech/nonglare-back.webp" alt="Mặt sau lưỡi dao dưới kính hiển vi" loading="lazy"><img class="fr" src="media/tech/nonglare-front.webp" alt="Mặt trước lưỡi dao dưới kính hiển vi" loading="lazy">
+            <span class="lb l">Mặt trước</span><span class="lb r">Mặt sau</span><i class="bar"></i><input type="range" min="0" max="100" value="50" aria-label="Kéo để so sánh mặt trước và mặt sau"></div>
+          ${lk('slit', 'Khoá học dao nhãn khoa')}</div>
+        <div class="v57-box v57-np"><h3>7 kiểu mũi kim Eyeless</h3><p>Mỗi mã là một kiểu mũi kim: đường cắt (edge), thân kim (body) và mặt cắt ngang (cross section).</p>
+          <div class="big" id="v57npb" style="background-image:url('media/tech/np-t.webp')" role="img" aria-label="Mũi kim T"></div>
+          <div class="v57-chips" id="v57npc">${NP.map((c, i) => `<button class="${i ? '' : 'on'}" data-c="${c.toLowerCase()}">${c}</button>`).join('')}</div>
+          ${lk('eyeless', 'Khoá học Eyeless Needle')}</div>
+      </div>
+      <div class="v57-box v57-steps"><h3>Cách dùng Vessel Knife — 5 bước</h3><p>Lắp lưỡi dao, giữ đúng tay và tháo nắp an toàn.</p>
+        <div class="v57-row">${[1, 2, 3, 4, 5].map(i => `<div class="v57-st"><img src="media/tech/vessel-${i}.webp" alt="Bước ${i}" loading="lazy"><span>${i}</span></div>`).join('')}</div>
+        ${lk('vessel', 'Khoá học Vessel Knife')}</div></section>`;
+  }
+  function wireTech(){
+    const c = $('v57cmp'); if (c) { const r = c.querySelector('input'); r.oninput = () => c.style.setProperty('--x', r.value + '%'); }
+    const b = $('v57npb'), ch = $('v57npc');
+    if (b && ch) ch.querySelectorAll('button').forEach(x => x.onclick = () => { ch.querySelectorAll('button').forEach(y => y.classList.toggle('on', y === x)); b.style.backgroundImage = `url('media/tech/np-${x.dataset.c}.webp')`; b.setAttribute('aria-label', 'Mũi kim ' + x.textContent); });
+  }
+
+  const _home = VIEWS.home;
+  VIEWS.home = function(){
+    const r = _home.apply(this, arguments);
+    try {
+      const old = document.querySelector('.v54-prod');
+      if (old && !document.querySelector('.v57-prod')) { const sec = document.createElement('section'); sec.className = 'v57-prod'; old.replaceWith(sec); bento(sec); }
+      const paths = $('paths');
+      if (paths && !document.querySelector('.v57-tech')) { paths.insertAdjacentHTML('afterend', tech()); wireTech(); }
+    } catch (e) { console.warn('v57 home', e); }
+    return r;
+  };
+  try { if (S.user) route(true); } catch (e) {}
 })();
 </script>
 
