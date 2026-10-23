@@ -970,7 +970,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '5.8';
+const APP_VERSION = '5.9';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -7466,6 +7466,128 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
   }
   let t = 0;
   new MutationObserver(() => { clearTimeout(t); t = setTimeout(pass, 60); }).observe(document.body, {childList: true, subtree: true, characterData: true});
+  try { if (S.user) route(true); } catch (e) {}
+})();
+</script>
+
+<style id="v59-css">
+/* ==========================================================================
+   ★ v5.9 (23/10/2026) — VIDEO NỀN NHA KHOA / NHÃN KHOA (từ 2 video giới thiệu người dùng gửi)
+   media/intro/loop-dental · loop-ophth (.webm + .mp4, ~22–26 giây, không tiếng, < 1 MB) = đoạn ghép từ video gốc;
+   media/intro/dental-full.mp4 · ophth-full.mp4 = video đầy đủ có tiếng; ảnh chờ media/hero/vid-*.webp.
+   ① Trình chiếu trang chủ: +2 ảnh "video" (khung bên phải chạy video nền, chỉ tải khi tới lượt) + nút "Xem video giới thiệu".
+   ② Sản phẩm MANI ▸ ô lớn Nha khoa / Nhãn khoa: video nền chạy khi cuộn tới + nút xem video đầy đủ.
+   ③ Khung xem video đầy đủ (có tiếng, Esc / bấm nền để đóng). Máy bật giảm chuyển động / tiết kiệm dữ liệu ⇒ không tự chạy video nền (chỉ ảnh).
+   ========================================================================== */
+.v55-sl .fr video,.v59-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;opacity:0;transition:opacity .6s ease}
+.v55-sl .fr video.on,.v59-bg.on{opacity:1}
+.v59-play{display:inline-flex;align-items:center;gap:8px;margin-top:20px;height:44px;padding:0 18px 0 8px;border-radius:999px;border:0;background:#FFE100;color:#003047;font:inherit;font-size:15px;font-weight:700;cursor:pointer;
+  opacity:0;transform:translateY(14px);transition:all .8s ease .75s}
+.v59-play i{width:30px;height:30px;border-radius:50%;background:#003047;color:#FFE100;display:grid;place-items:center}
+.v59-play i svg{width:14px;height:14px}
+.v59-play small{font-weight:600;opacity:.75}
+.v55-sl.on .v59-play{opacity:1;transform:none}
+.v59-play:hover{filter:brightness(1.05)}
+.v57-feat::before{z-index:1}
+.v57-feat .tx{z-index:2}
+.v59-bg{z-index:0;filter:blur(1.5px) brightness(.5) saturate(1.15);transform:scale(1.05)}
+.v57-feat:has(.v59-bg.on)::before{background:linear-gradient(0deg,rgba(2,26,39,.92),rgba(2,26,39,.45) 60%,rgba(2,26,39,.2))}
+.v57-feat .go2{display:inline-flex;align-items:center;gap:6px;margin:14px 0 0 8px;font-size:14px;font-weight:700;background:#FFE100;color:var(--h-navy);border-radius:999px;padding:8px 14px;cursor:pointer}
+.v57-feat .go2 svg{width:13px;height:13px}
+.v59-ov{position:fixed;inset:0;z-index:9999;background:rgba(2,16,26,.82);display:grid;place-items:center;padding:20px;animation:v59in .25s ease}
+@keyframes v59in{from{opacity:0}to{opacity:1}}
+.v59-ov .bx{width:min(1100px,100%);background:#000;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.v59-ov .hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px 12px 18px;background:#021a27;color:#fff}
+.v59-ov .hd b{font-size:16px;font-weight:600}
+.v59-ov .hd small{display:block;font-size:13px;color:rgba(255,255,255,.7);font-weight:400}
+.v59-ov .hd button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}
+.v59-ov .hd button svg{width:18px;height:18px}
+.v59-ov video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+@media (max-width:900px){
+  .v55-sl.vid .v55-cap p{-webkit-line-clamp:2}
+  .v59-play{margin-top:12px;height:38px;font-size:14px}
+  .v59-play i{width:26px;height:26px}
+  .v57-feat .go2{margin:10px 0 0 0}
+  .v59-ov{padding:0}
+  .v59-ov .bx{border-radius:0}
+}
+</style>
+<script id="v59-js">
+/* ★ v5.9 — xem ghi chú ở <style id="v59-css"> */
+(function(){
+  if (!window.HERO || !HERO.SL) return;
+  const V = {
+    dental: {loop: 'media/intro/loop-dental', full: 'media/intro/dental-full.mp4', poster: 'media/hero/vid-dental.webp', dur: '4:29', t: 'Giới thiệu MANI Dental', sub: 'Nha khoa · 1976 – 2026'},
+    ophth: {loop: 'media/intro/loop-ophth', full: 'media/intro/ophth-full.mp4', poster: 'media/hero/vid-ophth.webp', dur: '8:23', t: 'Giới thiệu MANI Nhãn khoa', sub: 'Dao vi phẫu · chỉ khâu · dụng cụ vi phẫu'}
+  };
+  const lite = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches || (navigator.connection && navigator.connection.saveData); } catch (e) { return false; } };
+  const SL = HERO.SL;
+  if (!SL.some(x => x.vid)) {
+    SL.splice(2, 0, {f: 'vid-dental', t: 'card', ar: 1.78, vid: 'dental', k: 'MANI Dental · 1976 – 2026', h: '50 năm nha khoa.',
+      p: 'Trâm nội nha, mũi khoan kim cương DIA-BURS, JIZAI và vật liệu phục hồi MMG — tất cả trong 4 phút.'});
+    SL.splice(6, 0, {f: 'vid-ophth', t: 'card', ar: 1.78, vid: 'ophth', k: 'MANI · Nhãn khoa', h: 'Mỗi bước, một dụng cụ riêng.',
+      p: 'Dao vi phẫu, chỉ khâu và dụng cụ vi phẫu dịch kính — từ bán phần trước đến bán phần sau.'});
+  }
+  const srcs = k => `<source src="${V[k].loop}.webm" type="video/webm"><source src="${V[k].loop}.mp4" type="video/mp4">`;
+  const play = v => {
+    if (!v || lite()) return;
+    if (!v.dataset.ld) { v.dataset.ld = 1; v.innerHTML = srcs(v.dataset.k); v.load(); }
+    const p = v.play(); if (p && p.catch) p.catch(() => {});
+  };
+  const playBtn = (k, cls) => `<span class="${cls}" role="button" tabindex="0" data-v59="${k}">${cls === 'v59-play' ? `<i>${ic('play')}</i>Xem video giới thiệu <small>· ${V[k].dur}</small>` : ic('play') + 'Xem video ' + V[k].dur}</span>`;
+
+  /* ① trình chiếu */
+  function hero(){
+    const sec = document.getElementById('v55hero'); if (!sec || sec.dataset.v59) return;
+    sec.dataset.v59 = 1;
+    SL.forEach((x, i) => {
+      if (!x.vid) return;
+      const s = sec.querySelector(`.v55-sl[data-i="${i}"]`); if (!s) return;
+      s.classList.add('vid');
+      const fr = s.querySelector('.fr');
+      if (fr) { fr.insertAdjacentHTML('beforeend', `<video muted loop playsinline preload="none" data-k="${x.vid}" aria-hidden="true"></video>`); fr.querySelector('video').addEventListener('playing', e => e.target.classList.add('on')); }
+      s.querySelector('.v55-cap').insertAdjacentHTML('beforeend', playBtn(x.vid, 'v59-play'));
+    });
+    const sync = () => sec.querySelectorAll('.v55-sl.vid').forEach(s => { const v = s.querySelector('video'); if (!v) return; if (s.classList.contains('on')) play(v); else { v.pause(); } });
+    new MutationObserver(sync).observe(sec, {subtree: true, attributes: true, attributeFilter: ['class']});
+    sync();
+  }
+
+  /* ② ô lớn trong "Sản phẩm MANI" */
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(e.target); else e.target.pause(); }), {threshold: .35}) : null;
+  function bento(){
+    document.querySelectorAll('.v57-feat').forEach(f => {
+      if (f.querySelector('.v59-bg')) return;
+      const h = f.dataset.h || '', k = /p=nha$/.test(h) ? 'dental' : /p=nhan$/.test(h) ? 'ophth' : '';
+      if (!k) return;
+      f.insertAdjacentHTML('afterbegin', `<video class="v59-bg" muted loop playsinline preload="none" poster="${V[k].poster}" data-k="${k}" aria-hidden="true"></video>`);
+      const v = f.querySelector('.v59-bg'); v.addEventListener('playing', () => v.classList.add('on'));
+      const go = f.querySelector('.tx .go'); if (go) go.insertAdjacentHTML('afterend', playBtn(k, 'go2'));
+      if (io) io.observe(v); else play(v);
+    });
+  }
+
+  /* ③ khung xem video đầy đủ */
+  function open(k){
+    const x = V[k]; if (!x) return;
+    close();
+    try { HERO.pause(true); } catch (e) {}
+    const el = document.createElement('div'); el.className = 'v59-ov'; el.id = 'v59ov';
+    el.innerHTML = `<div class="bx" role="dialog" aria-modal="true" aria-label="${esc(x.t)}"><div class="hd"><div><b>${esc(x.t)}</b><small>${esc(x.sub)} · ${x.dur}</small></div><button type="button" aria-label="Đóng">${ic('x')}</button></div>
+      <video controls autoplay playsinline preload="metadata" poster="${x.poster}" src="${x.full}"></video></div>`;
+    document.body.appendChild(el);
+    el.addEventListener('click', e => { if (e.target === el || e.target.closest('.hd button')) close(); });
+    el.querySelector('.hd button').focus();
+  }
+  function close(){ const el = document.getElementById('v59ov'); if (!el) return; const v = el.querySelector('video'); if (v) v.pause(); el.remove(); try { HERO.pause(false); } catch (e) {} }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('v59ov')) { e.stopPropagation(); close(); } }, true);
+  const fire = e => { const b = e.target.closest && e.target.closest('[data-v59]'); if (!b) return false; e.preventDefault(); e.stopPropagation(); open(b.dataset.v59); return true; };
+  document.addEventListener('click', fire, true);
+  document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest && e.target.closest('[data-v59]')) fire(e); }, true);
+  window.HUBVID = {open, close, V};
+
+  let t = 0;
+  new MutationObserver(() => { clearTimeout(t); t = setTimeout(() => { if (S.route && S.route.name === 'home') { hero(); bento(); } }, 80); }).observe(document.body, {childList: true, subtree: true});
   try { if (S.user) route(true); } catch (e) {}
 })();
 </script>
