@@ -17,6 +17,14 @@ dung bằng tiếng Việt**, câu ngắn, kiểu *bấm vào đâu → làm gì
 - Vá theo lớp: khối `<style id="vXY-css">` / `<script id="vXY-js">` mới ở cuối file, ghi chú phiên bản + mục đích; bọc hàm cũ
   (`const _f = A.x; A.x = function(){ … return _f.apply(this, arguments); }`).
 
+## Ứng dụng cài được (PWA, từ v6.4)
+- `manifest.webmanifest` + biểu tượng `media/app/` + `sw.js` (service worker ở gốc repo). Mục "Cài ứng dụng lên máy này" trong menu tài khoản
+  (`window.MMHApp.install()`); iPhone / Safari Mac không có hộp cài tự động ⇒ hiện hướng dẫn có hình.
+- `sw.js` KHÔNG giữ dữ liệu cũ: trang, `*.json`, `updates/notes.js` lấy mạng trước; chỉ ảnh / font cùng trang được trả bản lưu rồi tải mới.
+  Không đụng Apps Script, video, tên miền khác. Đổi quy tắc lưu đệm ⇒ tăng hằng `V` trong `sw.js`.
+- Gỡ khẩn cấp nếu service worker gây lỗi: thay nội dung `sw.js` bằng dòng ghi ở đầu file (tự gỡ trên mọi máy ở lần mở sau).
+- Kiểm tra: `node tools/pwa_check.js <thư mục ảnh>` (Chrome xác nhận cài được, service worker, mất mạng, hướng dẫn iPhone).
+
 ## Backend
 - Apps Script "Training Hub" (`backends/training/` trong kho riêng tư `ManiMedicalHanoi/mmh-backend`, dùng chung với
   MMH-Report). Sửa backend ⇒ PR ở kho đó, GitHub Actions tự deploy; gộp backend TRƯỚC frontend. Không bắt người dùng dán `.gs`.

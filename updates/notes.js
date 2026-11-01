@@ -2,6 +2,23 @@
    tăng APP_VERSION trong index.html và tham số ?v= của file này. title là chữ thuần; text được dùng thẻ HTML đơn giản. */
 window.APP_UPDATES = [
   {
+    id: "2026-11-01-v6.4",
+    version: "v6.4",
+    date: "2026-11-01",
+    title: "Cài Training Hub như một ứng dụng",
+    summary: "Training Hub giờ cài được lên điện thoại và máy tính: có biểu tượng riêng, mở toàn màn hình, không cần gõ link, tự cập nhật.",
+    items: [
+      { type: "new", title: "Cài lên điện thoại Android hoặc máy tính",
+        text: "Mở Training Hub bằng <b>Chrome</b> hoặc <b>Edge</b>, bấm ảnh đại diện (máy tính) hoặc nút <b>Thêm</b> (điện thoại), chọn <b>Cài ứng dụng lên máy này</b> rồi bấm <b>Cài đặt</b>. Biểu tượng <b>MMH Training</b> hiện trên màn hình chính / Start menu. <a href=\"#\" onclick=\"UPD.close();setTimeout(function(){MMHApp.install()},300);return false\">Cài ngay</a>",
+        img: "updates/v6.4/menu.jpg" },
+      { type: "new", title: "Cài lên iPhone / iPad",
+        text: "Mở Training Hub bằng <b>Safari</b>, bấm nút <b>Chia sẻ</b> ở thanh dưới, chọn <b>Thêm vào MH chính</b> rồi bấm <b>Thêm</b>. Lần đầu mở app cần đăng nhập lại một lần. Mục <b>Cài ứng dụng lên máy này</b> trong menu cũng có hướng dẫn kèm hình.",
+        img: "updates/v6.4/ios.jpg" },
+      { type: "imp", title: "Mở nhanh hơn",
+        text: "Logo, biểu tượng và ảnh được giữ sẵn trên máy nên app mở nhanh hơn. Dữ liệu khoá học, điểm, chứng chỉ vẫn luôn lấy mới từ máy chủ." }
+    ]
+  },
+  {
     id: "2026-11-01-v6.3",
     version: "v6.3",
     date: "2026-11-01",

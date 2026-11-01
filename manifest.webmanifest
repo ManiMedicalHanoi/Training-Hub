@@ -1,0 +1,68 @@
+{
+  "id": "./",
+  "name": "MMH Training Hub",
+  "short_name": "MMH Training",
+  "description": "Học sản phẩm MANI, làm bài kiểm tra và nhận chứng chỉ — Mani Medical Hanoi.",
+  "lang": "vi",
+  "dir": "ltr",
+  "start_url": "./#/home",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F4F7FB",
+  "theme_color": "#F4F7FB",
+  "categories": [
+    "education",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "media/app/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "media/app/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "media/app/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "media/app/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Lộ trình",
+      "short_name": "Lộ trình",
+      "url": "./#/learn",
+      "icons": [
+        {
+          "src": "media/app/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Chứng chỉ của tôi",
+      "short_name": "Chứng chỉ",
+      "url": "./#/certs",
+      "icons": [
+        {
+          "src": "media/app/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
