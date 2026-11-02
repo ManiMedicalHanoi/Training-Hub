@@ -2,6 +2,23 @@
    tăng APP_VERSION trong index.html và tham số ?v= của file này. title là chữ thuần; text được dùng thẻ HTML đơn giản. */
 window.APP_UPDATES = [
   {
+    id: "2026-11-02-v6.6",
+    version: "v6.6",
+    date: "2026-11-02",
+    title: "Xem tài liệu dạng trình chiếu ngay trên app",
+    summary: "Tài liệu PDF, PowerPoint, Word được trainer đăng lên app sẽ mở dạng trình chiếu, không cần quyền Google Drive. Xem đủ 70% số trang là được tính hoàn thành.",
+    items: [
+      { type: "new", title: "Tài liệu mở dạng trình chiếu",
+        text: "Bấm vào tài liệu có nhãn <b>Trên app</b>: mỗi màn hình 1 trang, bấm <b>‹ ›</b>, phím mũi tên hoặc vuốt ngang để lật. Xem đủ <b>70% số trang</b> (mỗi trang dừng ít nhất 1–2 giây) là tài liệu được tính hoàn thành. Không còn lỗi \"Cần quyền truy cập\" của Drive.",
+        img: "updates/v6.6/deck.jpg" },
+      { type: "new", title: "Trainer: đăng tài liệu lên app",
+        text: "Mở trang khoá học, bấm <b>Tài liệu xem trên app</b>, rồi bấm <b>Đăng tất cả chưa đăng</b>. PowerPoint / Word tự chuyển sang PDF (lần đầu 10–60 giây / file). Bản đăng nằm trên GitHub <b>công khai</b>, file gốc vẫn ở Drive. Sửa file trên Drive xong thì bấm <b>Đăng lại</b>.",
+        img: "updates/v6.6/manage.jpg" },
+      { type: "imp", title: "Trình xem của Google không còn tự tính xong",
+        text: "Trong lộ trình học, mở tài liệu bằng <b>Xem nhanh</b> (trình xem Google) không còn được tính xong sau 30 giây vì hệ thống không biết bạn đã xem tới đâu. Bấm <b>Qua Hub</b> ở phía trên để được tính hoàn thành." }
+    ]
+  },
+  {
     id: "2026-11-02-v6.5",
     version: "v6.5",
     date: "2026-11-02",
