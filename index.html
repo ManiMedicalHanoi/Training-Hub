@@ -978,7 +978,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '6.4';
+const APP_VERSION = '6.5';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbgAAAC+BAMAAAC1ygcpAAAAGFBMVEX/6hH/4QL/4QD94QDz1gAkIAABAAAAAADD9cHRAAAPrElEQVR42u1d244bxxGtohbQrgKze7g2jDyRS8VBED9EtpI/SD4o/2mv7TwkARzxggBBYnnZ3RRg7wrQVB44fZ3qmeZyZGgXwxdR5HCmT9epqlPVPbMAj/iFk8WjxVYjykcLjs4eLzqiyWP2uRHcCG4EN4IbwY3gRnAjuBHcCG4EN4IbwY3gRnAjuBHcCG4EN4L70F5nD3DMhx65eoTgUAKpx2k5lKQAlwAAO/3IwKFQk2UFVQU7XYN+VOAqtX8uZxJgpeqteFyWq9TkiyWQkqvdBvrt9qDAoVpeLhSAXF1jVRIsHxA4FLPLuaoIX11XhfHy4YAT+8/mpiJzc12VpoIHo1Cq/cu5kWCmu2JsD8ZyqJ7PjQQSX23p0ckv8eRLLQHMTUkKsK8neH7+EAz39nOqAOjpCsqxPRTLics5AoC5OYKUDyWg4H5pAICmO/H4Sh7xsUAA0PVRhisEF+wyysThqvuAcJsS6a7fK9ZwfzISAHDVRBN/OtIng+tXBOrEE6gCw9HUGm5IhYK4cO/ZMgrFzL2vN8wBs8BytdYdF1hT1nDmR6la41nTyT730pngKzYW7//iD5DtA+TlC/+f73XHBWqlmFB5MBwpao3nZn26z6k+h3cHEOPzOBHFtBQtL0KYGQkAINyp/Xh2XTm90HISmzeap21lXZxYlpgFuvf8GewFNGP3N3MEANA7qdLx6NN9TlwGMFlWzt3gif29rgIgpjPxmjYtDr/GHbXHo09P4hPTDf7KXcOwV5shmzX8CRbtdyEtAABo6s+NzflIDKxQNONSlR88oyFwH37G8haZd54WMk1pqEvSXKHPBYF8gu3RmTn2aIDge1lzRxh7CZwnmcKy0iWCaDyGTgQXOol8x8XKwKV0z/ecbYLRYvv3lhaKjiVZES0D8USym5XsACo8puTmOR24F+67L3ckLUWXT4Ss5Dwc90L2if7gUu++5TkdJlB7QvNuAMt1I1+GsXSrO1UzAMC8jVXKnOXElWkbyR2txLDRUnbGwl7w/FSJPPaq7cw4IC3DHM7oIwzkB3O19K4MJmSEeJMU7xgbJFC5L8vhpVUB99aC/cQEkfkdHJ0oWtSIR2x/XTsVSYtBo6XO53Dcz7vrMlnpHmInsmRmeg2tiwRKmeVkx8TKSZihgVoqnWb9hsPA+KKOXUIyPmfPSEYPG1DSsS9NT5gv6OlgPrg2sjYykhzO58Is1Dt2JhEssFeGy4hzUciSHXViT7AsLHlkdmgxKxkn8OUOYS6ZJAFS6tLJ1gMElHA0if5KWMmodOdyhpsqLssH0+dxE5MJjT7dchGtYlHf8qhUpfsDaKpB9ss7APHRN23cvNCqxQAlTx7qLIqVXA53HYHdE5mRKNjxX4tblarB42gprjpi5cz0/dgegHXx9AUCjJHkBEP6XOLwgdclGZxzAisNqda5NJ60FrBnvuRVYbC8T55bRM2TeJxpkwH3zgpi4wNCXt4lhYHHrdvo+wRKETiZ94he9eG+12uZ9ZlEYonKpL/P4NjqU8FhljSBXTJO4MsdVDZ9oemropg+IAU45HABJdR9ybnFUveVE05gTPuSEl/Oyq4I0OdzRfUc5kyaNEfa5PHlDmnhvo4lCO4l9EYUYlJ+T5OhTFtmv9mnlRptY3hyZrWXeS3yE01Ja4Ecg/edk60GCCg53cuxMv6EJj6ggNkUdy589mwIavgmw8n1XNrMc51L2+fOCxTc/8a53JYwVxb4RI1cSdfkGH28GfrBySoH1rFSVbkyfcEyKMnhT1wZP7ECzTaXGZfwh/fu2ihJBSY+F/oMnrhMGhD9AonZCW/XtCxwU0NNJx1NcwhxOKpCUhaBy4Rl32g2K3IqPRk25kshZvZ2aUB0Sou4w2mjBwsotEnDfDO9uZEH5Y7Y6sCymJm9WqVeiZ1NBjzVci4a+yXpAygfK71q1Gm50wxEqyIf2dvV+/YqHSe0aEhaRvOFE+FYecVfzbsc7gQA1OywwpTtgpUpESiD1HP2Cuvo7GZhWalyHm5d7kDcIKcsJNNkoKk30KGkY5sMXqBsBtCWLZ+TsSSebtwgIvKE5U7MKszM3naa1EAOiOYOr4coebi6xAcLs5IZmV75cifOJfmFEZ0YXXQJlNNp6Xxb63lwfomWlUGFHfucmPkOQ9FmOwJti11x6MEjdBmpV7OcFVissYCLBxMNQEtbCYktsiodUaQdBrYscIrDvAvYUWUn+7I4h5eA8zwwB3eTALj/o/3stTQu4sd50Gkvu/WHutmrAEhbN5trHaydaWY8NEC0lI4zzXwLCSAraVlp/NJhRB6fCPRGNv+y/usVh6CpibIrl8P9b7d6sIAigjwVNJrFRmdc3PVX7NafrlU+ax4dZTxOvcnhAoovF2nr40kYKwXv4bgn32FIySCzIsEa/1DSyY6eYQEtzwosxlDVLn9QbUB8zHq4L3dIUzycsET0pJwCgHnzRbakSya7t8lQ5HPO6Zxl5hErfYcq3PsTlDvrzrjmV0G2OiAgShmwhptsfbrlMDyXdQTPytciWN4wbLkTFKrIJeJ4FcQcwKIW2ufw0EhucaIWJwcUp+QUQH2YQYNXNlZODfSWO1Mf1bTukncQbtdEGVw82Bl1zOaBPnCiCroxdmgfOe2hNtp35ogtdwLD+aDHBIMmZrhtMxMT4Jb3ESgF9ZxvMriQdeZW/3aCF4BphyGNOL4s8KWbOjgoMCWdbqvBAoFyvwV/t1ViakKiqHy5k1qJS8qH4ZI/hl07K9xqWRZQZHBlStKUrjchv4JtGuj7taK9Uh/lcEy2T2+b01dz3XTyY4HifmvoVHDeS4Jmsm3l4U5ol+Zy5U7t/UVq2VfoOyAYROHw2kcIlD5w4cYtjVY52+0J068OXtnWzWJmP8QfPVtvfsuvFkSolL1itf6sK3gQnE5Lm4UIACieeV1rSojbKndA3Cy7dGGQqA+yGtWL5od+4yXdT6D0ggtrtTQgY9zjDj3clzv4vDMGhzuACQBAuxBXbf9sJzH4pfPl3RDasp1HIWRlsADlPdyv7sQx1JG84qkBAEDG4n3RfIV8XJSnVuK+MU9SA0S0bFjZGh3Em9mqMmr4nXhNuAoWPQOhhUfk8N48V+XPdWhGcnqof/Ns2/m8MnNlQnWvKHKMz0WLxqHXNbESOA9HWSoBfSfBmceWdBUzsfLjsEA61XIyOld4G5JWWkdG8Ns0gttf+mqNtuF9r1Vx5jLFTYYj5NdWJz1ebGpw7qaBI24kSBfIgqhbMSryqB3Fk8ImQ5v9rpej09GV7B91Bm9lSRKtngK3TYMG8LmgDk8CQK0pX1z37r1pxXEvsajAzEU5vL+eixyB2qxkBIrfzNY7yJAaDm56JwS3ClJ0o/+kzPGpCWG+fJxuW1OvC1Mb23/yCMxac1VsQueSDv1ZWaC2juWkunu+EZP/9gU3EjhaNgwOJVYq89Q940mf5eze8Ob2Zy8fLStx0iJP+0aCIwQKF+XpXqsg/QFFuqZUPKX+fnRHnpu29lIdiid9BTd8iH41SEXLRmfdmcCScJfO266F344OJ6LA9xpL8ZWukjkj+XaV1idbzupyO3KrnLFjR49euFsV28dcoU3zBLlK1zx5kSOlV4PmZFpajVDrNIN7VqYZy99IgD/8LT3hv//aHLTr6hrEdA6NJI8KKJ3gXLPANXmaaWzRNJx663JUv0l5iZeZUSY62ETfc0aik8HZS5jXlpVPelkZaC+xoWzbC9McHgQoV9K1mgzHCZTOVGBvNvWtxyYMhB3y9mY2q9jMWvZHcMHKu2yTXuYbA0dHy+ZcadznWOlG6++b5gaAcY8pc8NHKD+ir9yiCUl9muXsVpNggZHCGpy3hWs1T9sVVxCZkq3f0Z79ePtMIDWPajJ0Ws72LGn6r3ysJOKpnPSs2q2upA5PrhDeNX/0ve9Flmt2AJl1sPXP6OgWAWZnmIxbLN2yy936p5NaUXPUOGoVpBtc0ywgkZIQo5YhsVRu58ZopFZKynZJkQAiNtr2brXsAWe3MJudvzBN284Ub7Dz8UywTQ6KKvDsU1QC00zboq20PJj0sZLEKuGAjkN8Io/mXYkg8VEnptJlcxM+WWgL92sydIFrNouGhjvwJWalGweauNxhM1G6jdBGH9UlQPT9Cp4OcE3Jqaap4bgQ73SoK3dyR8WVohNqBrI9IXYVpAzcWT4ZSwSg6lWcwEmYG6mYsC3quNzpu1tDhglfJM0myuRR0a7+7mO5al8ZADK7a5EIdoqXV1zYPkQfu9htMokg3n7fJHyzEtnCIDKSPK4qyIBDtZxLIDN9FfcMjG5HQe01h1hoGzdyMxsM1j3HpX1wEGHqewuUDC1RXH6hpcLpdWtBG1cxK0E/mXvFPutYCYe43A36m8zBneGwMIezlsNK7GdKqGq6bu1sIpUu+qFtCsig3NHrDIGmbZXAZw1nYUaglCoyznKkJi/nGqvdetV+8m57luWmkgBAs+8A7fMLMbPuSW4zOzmXI2ofTEJJlWu8ZJ5lUAQOr3C2gGqndhvmqcLr9KJUmwoAQBKIT6zerbMtDtNsLqG5sXcOshS2x9URpaD94VHgEFHWKyC9wjY2Ykxi3vzh8O9c1yuXH3JT6w4BWjYP9HrNGMkdFxrJn/6+4IheNdmAe0Qm9+DTw8ZkRKlf9V7PN3tQ2sfMfU9dx3V/drTPVYRa5tJwO3uS2C4O6uS7noevRp1H3XTdzTvWgZwCV8xv4f5PJlVdv2Zmr+GlJFmwH8s/Uu7w7CKiFas2ONqoIy03yKOOD9VY+iyD7pc92tRbDe/pNQQ4+3hlsTziDimxBL6iGvA1yOPF7/QzOAcAU8NtqeHefonnAGB++vYWPmTLWdMhzkpNh2IpJFtRfXCWgzv9jC4AnsqfCk0n91/enQPQxeqf789wAz07naa7SgPgfmaKipLKvCQJQObm+j0abqhH+t/t7hbmHJ5WP/2vhJQ/P//d3TmQmf4d9YcPDqr/PvvUnKO5+s/Fbb/D/er3dxLITK+3P8MDAHcrNs8+1RdP9+frqgdd9XT/+acXoO6m63/I2/cJbrBH+hvxNSwUCgHdf30FpZq8nBuCqv5mVSl4EODI0Nf1kjRc6VXuTwKhBCC1vJxrqGC1W79nbEP+jRAU29u3v74wi4v1LfJ8u729fbu8nJvqYrVjq8UP1HIAZMQr2lVX8BwV/+D/KwCsrgDqlao3+N6xAU6ObJdBtz/BTFYAQGrNgqsO4n4FWFJBnDjZNCg4AOtts+6/BfELQAMgGvgPoKimq77rLlTpvTNyaJ/rLyh/GUhDa8sP9DWCG8GN4EZwI7gR3AhuBDeCG8GN4EZwI7gR3AhuBDeCG8GN4EZwI7gR3DCv/wPKtJCmM5zCBwAAAABJRU5ErkJggg==';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -3991,14 +3991,14 @@ document.addEventListener('keydown', e => {
       });
       v.addEventListener('timeupdate', () => this.tick());
       v.addEventListener('ratechange', () => {
-        if (!p.done && v.playbackRate > 2) { v.playbackRate = 2; toast('Tốc độ xem tối đa 2x cho tới khi hoàn thành video.'); }
+        if (!p.done && v.playbackRate > 1) { v.playbackRate = 1; toast('Chưa xem đủ 70% video lần đầu nên chỉ xem ở tốc độ 1x. Xem đủ 70% là được tua và tăng tốc.'); }  /* ★ v6.5: 2x ⇒ 1x */
       });
       v.addEventListener('seeking', () => {
         if (p.done || p.fixing) return;
         if (v.currentTime > p.reach + 3) {
           p.fixing = true; v.currentTime = p.reach;
           setTimeout(() => { p.fixing = false; }, 300);
-          if (Date.now() - p.warned > 6000) { p.warned = Date.now(); toast('Chưa tua qua được phần chưa xem — hãy xem lần lượt để hoàn thành bài học.'); }
+          if (Date.now() - p.warned > 6000) { p.warned = Date.now(); toast('Chưa tua được: cần xem đủ 70% video lần đầu. Sau đó tua và tăng tốc tự do.'); }
         }
         p.last = null;
       });
@@ -4359,7 +4359,7 @@ document.addEventListener('keydown', e => {
 body.v4{background:var(--h-bg);font-family:var(--h-font)}
 body.v4 .side{display:none}
 body.v4 .main{margin-left:0}
-body.v4 .top{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--h-line2);height:72px;padding:0 max(24px,calc((100vw - 1320px)/2 + 24px));gap:18px;backdrop-filter:none}
+body.v4 .top{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--h-line2);height:72px;padding:0 max(24px,calc((100vw - var(--wrapw,1320px))/2 + 24px));gap:18px;backdrop-filter:none}
 body.v4 .top .crumb{display:none}
 body.v4 .top .m-logo{display:block !important;height:40px;width:auto}
 .v4-brand{font-size:18px;font-weight:600;color:var(--h-navy);letter-spacing:-.2px;white-space:nowrap;cursor:pointer}
@@ -4367,9 +4367,9 @@ body.v4 .top .search-btn{height:44px;border-radius:12px;background:var(--h-bg);b
 body.v4 .top .sync{display:none}
 body.v4 .top [data-a="refresh"]{display:none}
 body.v4 .view{max-width:none;padding:0 0 90px}
-body.v4 #verbar,body.v4 #testbar{max-width:1320px;margin-left:auto;margin-right:auto}
+body.v4 #verbar,body.v4 #testbar{max-width:var(--wrapw,1320px);margin-left:auto;margin-right:auto}
 .verbar>svg,.testbar svg{width:18px;height:18px;flex:none}
-.v4-nav{display:flex;flex-wrap:wrap;gap:4px;flex:1 1 auto}
+.v4-nav{display:flex;flex-wrap:nowrap;gap:2px;flex:1 1 auto;min-width:0}
 .v4-nav button{padding:10px 14px;border-radius:10px;color:#3A3F4A;font-size:14px;font-weight:500;white-space:nowrap}
 .v4-nav button:hover{background:var(--h-bg)}
 .v4-nav button.on{background:var(--h-pale);color:var(--h-navy);font-weight:600}
@@ -4377,7 +4377,7 @@ body.v4 #verbar,body.v4 #testbar{max-width:1320px;margin-left:auto;margin-right:
 .v4-me .dn{position:absolute;right:-2px;top:-2px;min-width:18px;height:18px;border-radius:9px;background:#C62828;color:#fff;font-size:11px;display:grid;place-items:center;padding:0 4px;border:2px solid #fff}
 body.v4 .tabbar{background:#fff;border-top:1px solid var(--h-line2)}
 body.v4 .tabbar button.on{color:var(--h-navy)}
-.v4-wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+.v4-wrap{max-width:var(--wrapw,1320px);margin:0 auto;padding:0 24px}
 
 /* ---------- chữ & nút ---------- */
 .h-h1{margin:0;font-size:50px;line-height:1.08;font-weight:600;letter-spacing:-1px}
@@ -4421,7 +4421,7 @@ body.v4 .tabbar button.on{color:var(--h-navy)}
 .v4-navy h3{color:#fff}
 .v4-crow>svg{width:16px;height:16px;color:var(--h-mu);flex:none}
 .v4-player .tt b{color:#fff}
-.v4-hero .in{max-width:1320px;margin:0 auto;padding:56px 24px 64px;display:flex;flex-wrap:wrap;align-items:center;gap:40px}
+.v4-hero .in{max-width:var(--wrapw,1320px);margin:0 auto;padding:56px 24px 64px;display:flex;flex-wrap:wrap;align-items:center;gap:40px}
 .v4-hero .txt{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:22px}
 .v4-hero .tag{align-self:flex-start;font-size:13px;font-weight:500;color:var(--h-lb);border:1px solid rgba(207,226,243,.4);border-radius:999px;padding:6px 14px}
 .v4-hero p{margin:0;font-size:18px;line-height:1.6;color:var(--h-lb);max-width:520px}
@@ -4506,16 +4506,16 @@ body.v4 .tabbar button.on{color:var(--h-navy)}
 .v4-quick button svg{width:20px;height:20px}
 .v4-quick button span{flex:1}.v4-quick button small{font-size:14px;color:var(--h-lb)}
 .v4-foot{border-top:3px solid var(--h-y);margin-top:56px}
-.v4-foot div{max-width:1320px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--h-mu)}
+.v4-foot div{max-width:var(--wrapw,1320px);margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--h-mu)}
 
 /* ---------- trang khoá học (giống màn "Bài học") ---------- */
 .v4-lhead{background:#fff;border-bottom:1px solid var(--h-line2)}
-.v4-lhead .in{max-width:1320px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.v4-lhead .in{max-width:var(--wrapw,1320px);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .v4-lhead .back{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px;border-radius:12px;background:var(--h-pale);color:var(--h-navy);font-size:16px;cursor:pointer}
 .v4-lhead .back svg{width:18px;height:18px}
 .v4-lhead .x{flex:1;min-width:0}.v4-lhead .x span{font-size:13px;color:var(--h-blue);font-weight:600}.v4-lhead .x b{display:block;font-size:20px;font-weight:600;color:var(--h-navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .v4-lhead .pg{display:flex;align-items:center;gap:10px;width:260px}.v4-lhead .pg div{flex:1;height:8px;background:var(--h-pale);border-radius:8px;overflow:hidden}.v4-lhead .pg i{display:block;height:8px;background:var(--h-blue)}.v4-lhead .pg span{font-size:14px;color:var(--h-mu);white-space:nowrap}
-.v4-lbody{max-width:1320px;margin:0 auto;padding:24px;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+.v4-lbody{max-width:var(--wrapw,1320px);margin:0 auto;padding:24px;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
 .v4-player{position:relative;border-radius:24px;overflow:hidden;background:var(--h-navy) center/cover;aspect-ratio:16/9;box-shadow:0 20px 50px rgba(0,48,71,.2);cursor:pointer}
 .v4-player::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,20,32,.82),rgba(0,20,32,.28) 72%)}
 .v4-player .kk{position:absolute;left:28px;top:26px;font-size:13px;color:var(--h-lb)}
@@ -4648,6 +4648,44 @@ body.v4 .crs-side{font-family:var(--h-font)}
     const keys = [...m.keys()].sort((a, b) => (a[0] === 'L' ? 0 : a === 'C:product' ? 1 : 2) - (b[0] === 'L' ? 0 : b === 'C:product' ? 1 : 2) || m.get(a).localeCompare(m.get(b), 'vi'));
     return [['', 'Tất cả']].concat(keys.map(k => [k, m.get(k)])).map(([k, t]) => `<button class="${cur === k ? 'on' : ''}" data-k="${esc(k)}">${esc(t)}</button>`).join('');
   }
+  /* ★ v6.5 (02/11/2026) — HAI LỚP NHÓM ĐỂ LỌC (chỉ đổi cách hiển thị; KHÔNG đổi Nhóm chủ đề của khoá ⇒ KPI đào tạo giữ nguyên)
+     Cấp 1: Sản phẩm · Kiến thức y khoa · các Nhóm chủ đề khác (Compliance, SOP, …).
+     Cấp 2 (thư mục) trong Sản phẩm / Kiến thức y khoa: Nha khoa · Nhãn khoa · Ngoại khoa · MMG · Khác.
+     Khoá Product: ô "Nhóm" (S.smeta[sid].line) lưu "Sản phẩm · Nha khoa" hoặc "Kiến thức y khoa · Nhãn khoa" (form v6.5).
+     Dữ liệu cũ: Nhóm đúng "Nha khoa" / "Nhãn khoa" / "Ngoại khoa" ⇒ Kiến thức y khoa (người dùng yêu cầu 02/11/2026);
+     khoá Product chưa chọn Nhóm ⇒ Sản phẩm, thư mục đoán theo tên + mục tiêu. grpKey/grpName giữ nguyên cho ảnh bìa theo nhóm. */
+  const FOLD = [['nha', 'Nha khoa'], ['nhan', 'Nhãn khoa'], ['ngoai', 'Ngoại khoa'], ['mmg', 'MMG'], ['other', 'Khác']];
+  const MMG_RE = /\bmmg\b|mani medical germany|manifill|mani ?bond|manishine|composite|keo dan|tay trang|whitening/;
+  const isKnow = s => {
+    if (!isProd(s)) return /kien thuc|y khoa|medical knowledge/.test(deacc(s.category || ''));
+    const l = deacc(lineOf(s)).trim();
+    if (!l || /^san pham/.test(l)) return false;
+    return /kien thuc|y khoa/.test(l) || /^(nha|nhan|ngoai) khoa$/.test(l);
+  };
+  const topOf = s => isKnow(s) ? 'K' : isProd(s) ? 'P' : 'C:' + (catKey(s.category) || 'other');
+  const topName = k => k === 'P' ? 'Sản phẩm' : k === 'K' ? 'Kiến thức y khoa' : null;
+  /* đoán thư mục theo chữ (đã bỏ dấu): so nguyên từ để "Minh Trang" không bị hiểu là "răng"; thứ tự MMG → nhãn → ngoại → nha */
+  const SUB_RE = [['nhan', /nhan khoa|\beyes?\b|\bmat\b|ophthal|keratome|\bmvr\b|crescent|slit knife|side ?port|giac mac|thuy tinh|cataract|glaucoma|eyeless/],
+    ['ngoai', /ngoai khoa|surgical|manipler|ghim da|stapler|trocar|forceps|\bsutures?\b|chi khau/],
+    ['nha', /nha khoa|dental|jizai|endo|\btram\b|\bburs?\b|mui khoan|implant|\brang\b|carbide|dia-?burs|\b[hk]-?files?\b|reamer|composite/]];
+  const subIn = t => MMG_RE.test(t) ? 'mmg' : ((SUB_RE.find(x => x[1].test(t)) || [])[0] || '');
+  const subOf = s => { const l = deacc(lineOf(s).replace(/^.*·/, '')); return (l && subIn(l)) || subIn(deacc([s.topic, s.purpose].join(' '))) || 'other'; };
+  function topSeg(list, cur){
+    const n = new Map(), lab = new Map();
+    list.forEach(s => { const k = topOf(s); n.set(k, (n.get(k) || 0) + 1); if (!lab.has(k)) lab.set(k, topName(k) || catLabel(s.category) || 'Khác'); });
+    const keys = [...n.keys()].sort((a, b) => ({P: 0, K: 1}[a] ?? 2) - ({P: 0, K: 1}[b] ?? 2) || lab.get(a).localeCompare(lab.get(b), 'vi'));
+    return [['', 'Tất cả', list.length]].concat(keys.map(k => [k, lab.get(k), n.get(k)])).map(([k, t, c]) => `<button class="${cur === k ? 'on' : ''}" data-k="${esc(k)}">${esc(t)}<span class="v65-n">${c}</span></button>`).join('');
+  }
+  /* thư mục cấp 2: chỉ hiện khi đang chọn Sản phẩm / Kiến thức y khoa và có từ 2 thư mục */
+  function foldRow(list, top, cur){
+    if (top !== 'P' && top !== 'K') return '';
+    const n = {}; list.filter(s => topOf(s) === top).forEach(s => { const k = subOf(s); n[k] = (n[k] || 0) + 1; });
+    const ks = FOLD.filter(([k]) => n[k]);
+    if (ks.length < 2) return '';
+    return `<div class="v65-fold" role="tablist" aria-label="Thư mục ${esc(topName(top))}"><button class="${!cur ? 'on' : ''}" data-f="">${ic('grid')}<span>Tất cả</span><small>${list.filter(s => topOf(s) === top).length}</small></button>`
+      + ks.map(([k, t]) => `<button class="${cur === k ? 'on' : ''}" data-f="${k}" style="--fc:var(--v65-${k})">${ic('folder')}<span>${t}</span><small>${n[k]}</small></button>`).join('') + '</div>';
+  }
+  const inGrp = (s, top, sub) => (!top || topOf(s) === top) && (!sub || subOf(s) === sub);
   /* ★ v6.3 — nền bìa phẳng (bỏ quầng sáng radial-gradient) */
   const COVER = {nha: '#1F3F7A', nhan: '#164A6E', ngoai: '#2E4E8F', kn: '#123B52'};
   /* ★ v6.3 — khoá SOP / kỹ năng / compliance chưa có ảnh: nền nhạt theo màu nhóm + hình nét theo nhóm (thay bong bóng chat 3D trên nền chuyển màu) */
@@ -4745,7 +4783,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
   /* ==========================================================================
      TRANG CHỦ
      ========================================================================== */
-  const H = {spec: ''};
+  const H = {spec: '', sub: ''};
   VIEWS.home = function(){
     setCrumb('');
     const u = S.user, all = courses();
@@ -4776,9 +4814,9 @@ body.v4 .crs-side{font-family:var(--h-font)}
           <div class="x"><div class="h-kick">${stateOf(resume) === 'run' ? 'Tiếp tục học' : 'Bắt đầu học'} · ${esc(grpName(resume))}</div><b>${esc(resume.topic)}</b><div class="pr"><div><i style="width:${rp}%"></i></div><span>${rp}%</span></div></div>
           <span class="h-btn navy sm">${stateOf(resume) === 'run' ? 'Học tiếp' : 'Vào học'}</span></div>` : ''}
         <section id="paths" style="margin-top:48px"><div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
-            <div><h2 class="h-h2">Lộ trình sản phẩm</h2><p class="h-sub">${all.length} khoá học · ${nVid} video bài giảng</p></div>
-            <div class="h-seg" id="v4seg">${grpSeg(all, H.spec)}</div></div>
-          <div id="v4homeGrid"></div></section>
+            <div><h2 class="h-h2">Lộ trình học</h2><p class="h-sub">${all.length} khoá học · ${nVid} video bài giảng</p></div>
+            <div class="h-seg" id="v4seg">${topSeg(all, H.spec)}</div></div>
+          <div id="v4fold"></div><div id="v4homeGrid"></div></section>
         <section class="v4-bottom">
           <div class="h-box"><h3 class="h-h3">Chứng chỉ của tôi</h3><p class="h-sub" style="margin:4px 0 14px">Học xong toàn bộ bài của khoá ⇒ chứng chỉ tự gửi email</p>
             ${myCerts.length ? myCerts.map(s => `<a class="v4-crow" href="${esc(s.myCert)}" target="_blank" rel="noopener"><span class="ic">${ic('award')}</span><span class="t">${esc(s.topic)}</span>${ic('ext')}</a>`).join('') + `<div style="margin-top:10px"><a class="s-link" style="color:var(--h-blue);font-weight:600;cursor:pointer" data-a="go" data-h="#/certs">Xem tất cả</a></div>`
@@ -4795,10 +4833,12 @@ body.v4 .crs-side{font-family:var(--h-font)}
         </section></div>
       <footer class="v4-foot"><div><span>MANI Medical Hanoi · Training Hub · nội bộ</span><span>Dữ liệu: Google Sheet · Video: GitHub</span></div></footer>`;
     const draw = () => {
-      const list = all.filter(s => !H.spec || grpKey(s) === H.spec).sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date))).slice(0, 12);
+      $('v4fold').innerHTML = foldRow(all, H.spec, H.sub);
+      $('v4fold').querySelectorAll('button').forEach(b => b.onclick = () => { H.sub = b.dataset.f; draw(); });
+      const list = all.filter(s => inGrp(s, H.spec, H.sub)).sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date))).slice(0, 12);
       $('v4homeGrid').innerHTML = list.length ? `<div class="v4-grid">${list.map(card).join('')}</div>` : `<div class="v4-empty">${ic('book')}<b>Chưa có khoá học ở nhóm này</b>${isTrainerV() ? 'Bấm "Tạo khoá học mới" ở Thư viện nhanh.' : 'Trainer sẽ sớm cập nhật.'}</div>`;
     };
-    $('v4seg').querySelectorAll('button').forEach(b => b.onclick = () => { H.spec = b.dataset.k; $('v4seg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); draw(); });
+    $('v4seg').querySelectorAll('button').forEach(b => b.onclick = () => { H.spec = b.dataset.k; H.sub = ''; $('v4seg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); draw(); });
     draw(); dragModel();
   };
   /* kéo để xoay mô hình */
@@ -4814,11 +4854,11 @@ body.v4 .crs-side{font-family:var(--h-font)}
   /* ==========================================================================
      LỘ TRÌNH / THƯ VIỆN VIDEO
      ========================================================================== */
-  const F4 = {spec: '', st: '', q: '', p: ''};
+  const F4 = {spec: '', sub: '', st: '', q: '', p: ''};
   VIEWS.learn = function(id, q){
     setCrumb('');
     q = q || {};
-    if (q.spec !== undefined) F4.spec = q.spec;
+    if (q.spec !== undefined) { F4.spec = /^[PK]$|^C:/.test(q.spec) ? q.spec : ''; F4.sub = q.sub || ''; }
     F4.p = q.p || '';  /* ★ v5.4 — lọc theo sản phẩm (bấm ô sản phẩm ở trang chủ) */
     const mode = q.f || '';
     const all = courses().filter(s => mode === 'video' ? S.videos[s.sid] : mode === 'doc' ? s.hasFolder : true);
@@ -4828,17 +4868,19 @@ body.v4 .crs-side{font-family:var(--h-font)}
         ${isTrainerV() ? `<button class="h-btn navy sm" data-a="sessionForm">${ic('plus')}Tạo khoá học mới</button>` : ''}</div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px">
         <label style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--h-line2);border-radius:12px;padding:0 14px;height:46px;flex:1 1 280px">${ic('search').replace('<svg', '<svg style="width:18px;height:18px;color:#666"')}<input id="v4q" placeholder="Tìm sản phẩm, bài học, trainer…" value="${esc(F4.q)}" style="border:0;outline:0;flex:1;font:inherit;background:transparent"></label>
-        <div class="h-seg" id="v4seg">${grpSeg(all, F4.spec)}</div>
+        <div class="h-seg" id="v4seg">${topSeg(all, F4.spec)}</div>
         <div class="h-seg" id="v4st">${[['', 'Mọi trạng thái'], ['new', 'Chưa học'], ['run', 'Đang học'], ['done', 'Hoàn thành']].map(([k, t]) => `<button class="${F4.st === k ? 'on' : ''}" data-k="${k}">${t}</button>`).join('')}</div></div>
-      ${F4.p && window.PROD ? PROD.chip(F4.p) : ''}<div id="v4list"></div></div>`;
+      <div id="v4fold"></div>${F4.p && window.PROD ? PROD.chip(F4.p) : ''}<div id="v4list"></div></div>`;
     const draw = () => {
       const qq = deacc(F4.q);
-      const list = all.filter(s => (!F4.spec || grpKey(s) === F4.spec) && (!F4.st || stateOf(s) === F4.st) && (!F4.p || (window.PROD && (PROD.inP ? PROD.inP(s, F4.p) : PROD.idOf(s) === F4.p))) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose, lineOf(s), window.PROD ? PROD.nameOf(s) : ''].join(' ')).includes(qq)))
+      $('v4fold').innerHTML = foldRow(all, F4.spec, F4.sub);
+      $('v4fold').querySelectorAll('button').forEach(b => b.onclick = () => { F4.sub = b.dataset.f; draw(); });
+      const list = all.filter(s => inGrp(s, F4.spec, F4.sub) && (!F4.st || stateOf(s) === F4.st) && (!F4.p || (window.PROD && (PROD.inP ? PROD.inP(s, F4.p) : PROD.idOf(s) === F4.p))) && (!qq || deacc([s.topic, s.trainer, s.category, s.purpose, lineOf(s), window.PROD ? PROD.nameOf(s) : ''].join(' ')).includes(qq)))
         .sort((a, b) => (stateOf(a) === 'run' ? -1 : 0) - (stateOf(b) === 'run' ? -1 : 0) || String(b.date).localeCompare(String(a.date)));
       $('v4list').innerHTML = list.length ? `<div class="v4-grid">${list.map(card).join('')}</div>` : `<div class="v4-empty">${ic('search')}<b>Không có khoá học phù hợp</b>Thử đổi nhóm hoặc bỏ bớt bộ lọc.</div>`;
     };
     $('v4q').addEventListener('input', debounce(e => { F4.q = e.target.value; draw(); }, 200));
-    ['v4seg', 'v4st'].forEach(id => $(id).querySelectorAll('button').forEach(b => b.onclick = () => { if (id === 'v4seg') F4.spec = b.dataset.k; else F4.st = b.dataset.k; $(id).querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); draw(); }));
+    ['v4seg', 'v4st'].forEach(id => $(id).querySelectorAll('button').forEach(b => b.onclick = () => { if (id === 'v4seg') { F4.spec = b.dataset.k; F4.sub = ''; } else F4.st = b.dataset.k; $(id).querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); draw(); }));
     draw();
   };
   const _lib = VIEWS.library;
@@ -4968,7 +5010,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
     el.addEventListener('click', e => { if (e.target === el || e.target.closest('[data-v4close]')) el.remove(); });
     try { confetti(); } catch (e) {}
   }
-  window.V4 = {celebrate, renderCourse, courses, stateOf, specOf, grpKey, grpName, lineOf, coverStyle, COVER, ART};
+  window.V4 = {celebrate, renderCourse, courses, stateOf, specOf, grpKey, grpName, lineOf, coverStyle, COVER, ART, topOf, subOf, FOLD};
 
   /* bỏ thông báo cũ "bài kiểm tra đã mở" (bài KT không còn là bước bắt buộc) */
   const _toast = toast;
@@ -5253,10 +5295,10 @@ body.v4 .crs-side{font-family:var(--h-font)}
       paint();
     });
     v.addEventListener('play', () => { if (!p.opened) { p.opened = true; if (!p.done) send({open: 1, page: pct(), total: 100}).catch(() => {}); } });
-    v.addEventListener('ratechange', () => { if (!p.done && v.playbackRate > 2) { v.playbackRate = 2; toast('Tốc độ xem tối đa 2x cho tới khi hoàn thành video.'); } });
+    v.addEventListener('ratechange', () => { if (!p.done && v.playbackRate > 1) { v.playbackRate = 1; toast('Chưa xem đủ 70% video lần đầu nên chỉ xem ở tốc độ 1x. Xem đủ 70% là được tua và tăng tốc.'); }  /* ★ v6.5: 2x ⇒ 1x */ });
     v.addEventListener('seeking', () => {
       if (p.done || p.fix) return;
-      if (v.currentTime > p.reach + 3) { p.fix = true; v.currentTime = p.reach; setTimeout(() => p.fix = false, 300); if (Date.now() - p.warned > 6000) { p.warned = Date.now(); toast('Chưa tua qua được phần chưa xem — hãy xem lần lượt để hoàn thành bài học.'); } }
+      if (v.currentTime > p.reach + 3) { p.fix = true; v.currentTime = p.reach; setTimeout(() => p.fix = false, 300); if (Date.now() - p.warned > 6000) { p.warned = Date.now(); toast('Chưa tua được: cần xem đủ 70% video lần đầu. Sau đó tua và tăng tốc tự do.'); } }
       p.last = null;
     });
     v.addEventListener('timeupdate', () => {
@@ -6515,8 +6557,8 @@ post = function(action){
    ③ Phẳng: bỏ chữ hoa nhỏ giãn cách trên tiêu đề, bỏ chuyển màu / đổ bóng ở thẻ, biểu đồ 1 màu, nút dòng Quản lý = chữ.
    ========================================================================== */
 /* ① giao diện cũ trong khung v4: trả lại lề (lớp do v53-js gắn khi phần tử đầu không phải khối v4) */
-body.v4 .view.v53-old{max-width:1320px;margin:0 auto;padding:24px 24px 90px}
-body.v4 .view.v53-old.wide{max-width:1320px}
+body.v4 .view.v53-old{max-width:var(--wrapw,1320px);margin:0 auto;padding:24px 24px 90px}
+body.v4 .view.v53-old.wide{max-width:var(--wrapw,1320px)}
 /* điểm chính của khoá: chữ đậm nằm trong dòng, không tách cột */
 .v4-key li{display:block;position:relative;padding:3px 0 3px 24px}
 .v4-key li::before{position:absolute;left:0;top:3px}
@@ -6838,7 +6880,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 /* card: ảnh nhỏ ⇒ nền mờ của chính ảnh + khung ảnh rõ bên phải */
 .v55-sl.card .bg{filter:blur(28px) brightness(.55) saturate(1.2);inset:-8%}
 .v55-sl.card .sh{background:linear-gradient(90deg,rgba(0,22,34,.85) 0%,rgba(0,22,34,.45) 45%,rgba(0,22,34,.15) 100%),linear-gradient(0deg,rgba(0,18,28,.8) 0%,rgba(0,18,28,0) 46%)}
-.v55-sl .fr{position:absolute;z-index:1;right:max(32px,calc((100vw - 1320px)/2 + 24px));top:50%;width:min(46vw,640px);aspect-ratio:var(--ar,1.6);max-height:56%;transform:translateY(-68%) scale(.96);border-radius:22px;
+.v55-sl .fr{position:absolute;z-index:1;right:clamp(24px,3.6vw,64px);top:50%;width:min(46%,680px);aspect-ratio:var(--ar,1.6);max-height:56%;transform:translateY(-68%) scale(.96);border-radius:22px;
   background:center/cover no-repeat;box-shadow:0 40px 90px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.14);opacity:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity .9s ease}
 .v55-sl.on .fr{opacity:1;transform:translateY(-66%) scale(1)}
 /* prod: ảnh sản phẩm nền trắng trên bục sáng */
@@ -6846,7 +6888,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 .v55-sl.prod .fr{background-size:contain;background-color:#fff;box-shadow:0 50px 100px rgba(0,0,0,.5),0 0 0 8px rgba(255,255,255,.06),0 0 120px rgba(120,190,255,.25)}
 .v55-sl.prod.on .fr{animation:v55fl 6s ease-in-out infinite alternate}
 @keyframes v55fl{from{transform:translateY(-66%)}to{transform:translateY(-69%)}}
-.v55-cap{position:absolute;z-index:2;left:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:232px;max-width:min(620px,48vw)}
+.v55-cap{position:absolute;z-index:2;left:clamp(24px,3.6vw,64px);bottom:232px;max-width:min(640px,48%)}
 .v55-cap .k{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#FFE100;opacity:0;transform:translateY(14px);transition:opacity .7s ease .25s,transform .7s ease .25s}
 .v55-cap .k::before{content:"";width:26px;height:2px;background:currentColor}
 .v55-sl.light .v55-cap .k{color:var(--h-blue)}
@@ -6855,7 +6897,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 .v55-sl.light .v55-cap p{color:#33475b}
 .v55-sl.on .v55-cap .k,.v55-sl.on .v55-cap h2,.v55-sl.on .v55-cap p{opacity:1;transform:none}
 /* phần cố định: nút + con số + điều khiển */
-.v55-ui{position:absolute;z-index:3;left:max(24px,calc((100vw - 1320px)/2 + 24px));right:max(24px,calc((100vw - 1320px)/2 + 24px));bottom:58px;display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.v55-ui{position:absolute;z-index:3;left:clamp(24px,3.6vw,64px);right:clamp(24px,3.6vw,64px);bottom:58px;display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap}
 .v55-ui .acts{display:flex;gap:12px;flex-wrap:wrap}
 .v55-ui .v4-stats{margin:0;display:flex;gap:10px}
 .v55-ui .v4-stats>div{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
@@ -6881,7 +6923,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 .v55-hero.lt .v55-nav .bar i{background:var(--h-navy)}
 .v55-hero.lt .v55-nav .nx{color:#55657a}
 .v55-hero.lt .v55-nav button{border-color:rgba(0,48,71,.3);background:rgba(255,255,255,.5)}
-.v55-cr{position:absolute;z-index:3;right:max(24px,calc((100vw - 1320px)/2 + 24px));top:16px;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.3px}
+.v55-cr{position:absolute;z-index:3;right:clamp(24px,3.6vw,64px);top:16px;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.3px}
 .v55-hero.lt .v55-cr{color:rgba(0,48,71,.5)}
 /* dải con số */
 .v55-facts{position:relative;margin-top:56px;border-radius:26px;overflow:hidden;color:#fff;background:#021a27}
@@ -7248,7 +7290,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
 .v55-ui .v4-stats,.v55-cr{display:none!important}
 .v55-sl .sh{background:linear-gradient(90deg,rgba(0,22,34,.94) 0%,rgba(0,22,34,.78) 36%,rgba(0,22,34,.25) 68%,rgba(0,22,34,0) 100%),linear-gradient(0deg,rgba(0,18,28,.88) 0%,rgba(0,18,28,0) 46%)}
 .v55-nav .nx{font-size:13px}
-@media (min-width:901px){.v55-sl.card .fr,.v55-sl.prod .fr{width:min(40vw,600px)}.v55-sl.card .v55-cap,.v55-sl.prod .v55-cap{max-width:min(34vw,480px)}}
+@media (min-width:901px){.v55-sl.card .fr,.v55-sl.prod .fr{width:min(44%,640px)}.v55-sl.card .v55-cap,.v55-sl.prod .v55-cap{max-width:min(40%,540px)}}
 @media (prefers-reduced-motion:reduce){.v55-nav .bar{visibility:hidden}}
 /* ① Việc của tôi */
 .v58-mine{margin-top:28px}
@@ -7812,7 +7854,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
   .verbar{margin:8px 12px 0;align-items:flex-start;flex-wrap:wrap}
 }
 </style>
-<script src="updates/notes.js?v=6.4"></script>
+<script src="updates/notes.js?v=6.5"></script>
 <style id="upd-css">
 .ver-badge{font-size:10.5px;font-weight:700;background:var(--t-soft,#F0F7FF);color:var(--t-pri,#3A5CAA);border:1px solid var(--t-line,#CFE2F3);padding:2px 7px;border-radius:7px;vertical-align:middle;cursor:pointer}
 #upd{position:fixed;inset:0;z-index:770;background:rgba(20,35,50,.45);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;padding:16px;font-family:Aptos,'Aptos Display','Segoe UI',Calibri,Arial,sans-serif}
@@ -8037,6 +8079,119 @@ UPD.start=function(cfg){
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname))) {
     window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js', {updateViaCache: 'none'}).catch(e => console.warn('SW', e)); });
   }
+})();
+</script>
+<!-- ══ ★ v6.5 (02/11/2026) — MÀN HÌNH RỘNG · HAI LỚP NHÓM · KHOÁ TUA VIDEO ══════════════════════════════════════
+  ① Khung nội dung rộng hơn trên màn hình lớn (--wrapw); phần đầu trang chủ đặt chữ / ảnh / nút theo khung của nó (trước tính theo
+    100vw ⇒ màn hình rộng bị đẩy vào giữa, chữ đè ảnh và nút); menu trên cùng không xuống dòng.
+  ② Lộ trình: Sản phẩm · Kiến thức y khoa · nhóm chủ đề khác; thư mục Nha / Nhãn / Ngoại khoa / MMG (topOf / subOf trong khối v4).
+    Form khoá học: "Loại nội dung" + "Chuyên khoa" thay ô gõ "Nhóm sản phẩm" (vẫn lưu vào S.smeta.line; Nhóm chủ đề / KPI không đổi).
+  ③ Video: chưa xem đủ 70% lần đầu ⇒ không tua, chỉ 1x (sửa trong 2 trình phát). Video nằm trên Drive (trình phát của Google, Hub
+    không đếm được) ⇒ không còn tự tính xong sau 20 giây / khi mở; trainer bấm "Đưa lên trình phát Hub" (videoPublish có sẵn).
+    Video Drive đã đưa lên Hub (catalogId drive:<id>) ⇒ ẩn bản Drive trùng.
+═══════════════════════════════════════════════════════════════════════════════════════════════════ -->
+<style id="v65-css">
+:root{--wrapw:1320px;--v65-nha:#1F3F7A;--v65-nhan:#2C8BC0;--v65-ngoai:#3A5CAA;--v65-mmg:#C98F00;--v65-other:#7B8BA3}
+@media (min-width:1600px){:root{--wrapw:1520px}}
+@media (min-width:1900px){:root{--wrapw:1680px}}
+/* ① menu trên cùng: một dòng; ô tìm co lại trước */
+body.v4 .top .search-btn{flex:0 1 280px;min-width:150px}
+body.v4 .top .search-btn span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (min-width:901px) and (max-width:1365px){
+  .v4-nav button{padding:9px 10px;font-size:13.5px}
+  body.v4 .top .search-btn{flex:none;min-width:0;width:44px;padding:0;justify-content:center}
+  body.v4 .top .search-btn span,body.v4 .top .search-btn kbd{display:none}
+}
+/* ② số khoá trên tab + thư mục cấp 2 */
+.v65-n{margin-left:6px;font-size:12px;opacity:.6;font-variant-numeric:tabular-nums}
+.v65-fold{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.v65-fold button{display:flex;align-items:center;gap:10px;min-width:150px;padding:10px 14px;border:1px solid var(--h-line2);border-radius:12px;background:#fff;font:inherit;font-size:14px;font-weight:500;color:var(--h-navy);cursor:pointer;transition:border-color .15s,background-color .15s}
+.v65-fold button svg{width:20px;height:20px;flex:none;color:var(--fc,var(--h-blue))}
+.v65-fold button small{margin-left:auto;padding-left:8px;font-size:12.5px;color:var(--h-mu);font-variant-numeric:tabular-nums}
+.v65-fold button:hover{border-color:var(--h-lb)}
+.v65-fold button.on{border-color:var(--h-navy);box-shadow:inset 0 0 0 1px var(--h-navy);background:var(--h-pale)}
+.v65-fold button:focus-visible{outline:2px solid var(--h-blue);outline-offset:2px}
+@media (max-width:900px){.v65-fold{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.v65-fold::-webkit-scrollbar{display:none}.v65-fold button{flex:none;min-width:0}}
+</style>
+<script id="v65-js">
+(function(){
+  /* ② form khoá học: Loại nội dung + Chuyên khoa ⇒ ô "Nhóm" (S.smeta.line) */
+  const KIND = ['Sản phẩm', 'Kiến thức y khoa'], SPECS = ['Nha khoa', 'Nhãn khoa', 'Ngoại khoa', 'MMG'];
+  function enhanceLine(){
+    const inp = $('sfLine'), box = $('sfLineBox'); if (!inp || !box || box.dataset.v65) return;
+    box.dataset.v65 = '1';
+    const cur = inp.value.trim(), d = deacc(cur);
+    const know = /kien thuc|y khoa/.test(d) || /^(nha|nhan|ngoai) khoa$/.test(d);
+    const spec = cur.includes('·') ? cur.split('·').pop().trim() : (/^(san pham|kien thuc y khoa)$/.test(d) ? '' : cur);
+    const specs = SPECS.concat(spec && !SPECS.includes(spec) ? [spec] : []);
+    const lab = box.querySelector('label'); if (lab) lab.innerHTML = 'Xếp khoá học ở Lộ trình <span class="faint">— chỉ để sắp xếp, không ảnh hưởng KPI đào tạo</span>';
+    inp.style.display = 'none';
+    inp.insertAdjacentHTML('afterend', `<div class="row2" id="v65Line"><div class="field"><label for="v65Kind">Loại nội dung</label><select class="inp" id="v65Kind">${KIND.map(k => `<option ${(k === 'Kiến thức y khoa') === know ? 'selected' : ''}>${k}</option>`).join('')}</select></div>
+      <div class="field"><label for="v65Spec">Chuyên khoa</label><select class="inp" id="v65Spec"><option value="">Tự nhận theo tên khoá học</option>${specs.map(x => `<option ${x === spec ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select></div></div>`);
+    const sync = () => { const k = $('v65Kind').value, sp = $('v65Spec').value; inp.value = sp ? k + ' · ' + sp : (k === 'Sản phẩm' ? '' : k); };
+    $('v65Kind').addEventListener('change', sync); $('v65Spec').addEventListener('change', sync);
+  }
+  const _sf65 = sessionForm;
+  sessionForm = function(){ const r = _sf65.apply(this, arguments); try { enhanceLine(); } catch (e) { console.warn('v6.5 form', e); } return r; };
+
+  /* ③ video trên Drive */
+  const isDV = f => !!(f && f.kind === 'video' && !(f.src && (f.isVideo || f.player === 'html5')));
+  /* bản Drive của video đã đưa lên Hub ⇒ ẩn (tránh 2 bài trùng) */
+  const _mf = matsFrom;
+  matsFrom = function(){
+    const m = _mf.apply(this, arguments);
+    try {
+      if (m && Array.isArray(m.files)) {
+        const pub = new Set(m.files.filter(x => x.isVideo && /^drive:/.test(x.catalogId || '')).map(x => x.catalogId.slice(6)));
+        if (pub.size) m.files = m.files.filter(x => x.isVideo || !pub.has(x.id));
+      }
+    } catch (e) {}
+    return m;
+  };
+  /* ngoài lộ trình (tab Tài liệu): mở video Drive không còn tính "xong" ngay */
+  const _frame = Reader.showFrame;
+  Reader.showFrame = function(f){
+    if (!isDV(f) || (this.st && this.st.course)) return _frame.call(this, f);
+    $('rdBody').innerHTML = `<iframe class="rd-frame" src="${esc(f.preview)}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    $('rdZoom') && $('rdZoom').classList.add('hide');
+    this.st.total = 1; this.st.maxPage = 0; this.bar(0);
+    this.track({open: 1, page: 0, total: 1});
+    toast('Video trên Google Drive: xem được nhưng chưa tính hoàn thành. Trainer cần đưa video lên trình phát Hub.');
+  };
+  /* trong lộ trình: không có nút "Đã xem xong" cho video Drive; trainer có nút đưa lên Hub */
+  const _foot = Course.foot;
+  Course.foot = function(sid){
+    const st = Reader.st;
+    if (!st || !st.course || !isDV(st.f) || this.done(sid, st.f.id) || st.completed) return _foot.call(this, sid);
+    const fs = this.files(sid), i = fs.findIndex(x => x.id === st.f.id), o = this.optional(sid).has(st.f.id);
+    const tr = canEdit(findS(sid) || {});
+    const msg = tr ? 'Video đang nằm trên Google Drive nên Hub không đếm được thời gian xem. Bấm <b>Đưa lên trình phát Hub</b> để học viên xem và được tính đúng 70%.'
+      : 'Video này đang nằm trên Google Drive nên Hub chưa đếm được thời gian xem. Bạn vẫn xem được; bài sẽ được tính khi trainer chuyển video sang trình phát của Hub.';
+    return `<div class="crs-msg"><span>${msg}</span></div>
+      <button class="btn btn-line" data-a="crsPrev" ${i <= 0 ? 'disabled' : ''}>${ic('left')}Trước</button>
+      ${tr ? `<button class="btn btn-soft" data-a="v65pub">${ic('upload')}Đưa lên trình phát Hub</button>` : ''}
+      <button class="btn btn-primary" data-a="crsNext" ${o ? '' : 'disabled'}>${o ? 'Bỏ qua (không bắt buộc)' : 'Tiếp tục'}${ic('right')}</button>`;
+  };
+  const _mark = A.crsMark;
+  A.crsMark = function(){
+    const st = Reader.st;
+    if (st && isDV(st.f) && !Course.done(st.sid, st.f.id)) { toast('Video trên Google Drive chưa tính được thời gian xem — cần đưa lên trình phát Hub.'); return; }
+    return _mark.apply(this, arguments);
+  };
+  A.v65pub = async function(){
+    const st = Reader.st; if (!st || !isDV(st.f)) return;
+    const sid = st.sid, f = st.f;
+    busy(true, 'Đang đưa video lên trình phát Hub… video lớn có thể mất 1–3 phút');
+    try {
+      const r = await post('videoPublish', {sid, fileId: f.id, title: String(f.name || '').replace(/\.[^.]+$/, ''), duration: 0}, {timeout: 330000, direct: true});
+      ok(r.message || 'Đã đưa video lên trình phát Hub.');
+      netInvalidate(); delete S.mats[sid];
+      Reader.close();
+      try { await ensureMats(sid); } catch (e) {}
+      if (S.route && S.route.name === 's' && typeof SessionPage !== 'undefined' && SessionPage.render) SessionPage.render();
+    } catch (e) { err(e.message || 'Chưa đưa được video lên Hub.'); }
+    finally { busy(false); }
+  };
 })();
 </script>
 </body>
