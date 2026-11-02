@@ -4713,7 +4713,7 @@ body.v4 .crs-side{font-family:var(--h-font)}
   fetch('media/catalog.json?t=' + Date.now(), {cache: 'no-store'}).then(r => r.json()).then(j => { UI = (j && j.ui) || {}; if (Object.keys(UI).length && S.user) route(); }).catch(() => {});
   /* ★ v4.5 — ảnh bìa: ảnh riêng của khoá (trainer tải lên) > ảnh video > ảnh nhóm (Admin chỉnh trên app) > catalog.json ▸ ui > hình vẽ */
   const ownCover = s => ((S.smeta || {})[s.sid] || {}).cover || '';
-  const grpCover = s => { const c = (S.ui && S.ui.covers) || {}; return c[grpKey(s)] || UI['cover-' + specOf(s)] || ''; };
+  const grpCover = s => { const c = (S.ui && S.ui.covers) || {}; return c[grpKey(s)] || c['L:' + lineOf(s).replace(/^.*·\s*/, '')] || UI['cover-' + specOf(s)] || ''; };  /* ★ v6.5: Nhóm "Sản phẩm · Nha khoa" dùng lại ảnh bìa nhóm cũ "Nha khoa" */
   const uiImg = s => grpCover(s) ? `url('${esc(grpCover(s))}') center/cover,` : '';
   /* ★ v5.4 — ảnh sản phẩm thật (window.PROD, khối v54-js) đứng sau ảnh riêng / ảnh video, trước ảnh nhóm */
   const prodImg = s => (window.PROD && PROD.img(s)) || '';
@@ -7387,7 +7387,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
   const isTr = () => { try { return typeof isTrainerV === 'function' ? isTrainerV() : /trainer|admin/i.test(S.user.role || ''); } catch (e) { return false; } };
 
   /* ④ thứ tự bộ lọc chuyên khoa dùng chung */
-  const RANK = [/^tat ca/, /^nha khoa/, /^nhan khoa/, /^ngoai khoa/, /^mmg/, /^san pham/];
+  const RANK = [/^tat ca/, /^nha khoa/, /^nhan khoa/, /^ngoai khoa/, /^mmg/, /^san pham/, /^kien thuc y khoa/];  /* ★ v6.5: Kiến thức y khoa đứng ngay sau Sản phẩm */
   const rank = t => { t = deacc(t).trim(); const i = RANK.findIndex(r => r.test(t)); return i >= 0 ? i : /^functional|^ky nang/.test(t) ? 8 : /^khac/.test(t) ? 9 : 7; };
   function orderSeg(el){
     if (!el || el.dataset.v58o) return;
@@ -8030,7 +8030,7 @@ UPD.start=function(cfg){
       title = 'Cài lên iPhone / iPad';
       body = head + `<ol class="v64-steps">
         <li><span>Mở trang này bằng <b>Safari</b> (nếu đang ở Zalo, Messenger, Gmail… bấm <b>Mở bằng Safari</b>).</span></li>
-        <li><span>Bấm nút <b>Chia sẻ</b> ${icx('share')} ở thanh dưới (iPad: góc trên bên phải).</span></li>
+        <li><span>Bấm nút <b>Chia sẻ</b> ${icx('share')} ở thanh dưới (iPad: góc trên bên phải). iOS 26: bấm nút <b>•••</b> trước, rồi chọn <b>Chia sẻ</b>.</span></li>
         <li><span>Kéo xuống, chọn <b>Thêm vào MH chính</b> ${icx('addsq')}, rồi bấm <b>Thêm</b>.</span></li>
         <li><span>Mở app từ biểu tượng <b>MMH Training</b> trên màn hình chính và đăng nhập lại một lần.</span></li></ol>
         <div class="v64-note">iPhone giữ đăng nhập của app riêng với Safari, nên lần đầu mở app cần nhập email và PIN.</div>`;

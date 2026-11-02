@@ -1,4 +1,11 @@
-# Bàn giao phiên Claude — Training Hub v6.5 đang dở (02/11/2026)
+# Bàn giao phiên Claude — Training Hub v6.5 (02/11/2026)
+
+> **Cập nhật phiên 2 (02/11/2026)**: nhánh làm tiếp = `claude/elegant-meitner-ro2h2k` (gồm toàn bộ WIP của `ccr-19f5b594-7qmqk8`).
+> Đã kiểm thử bằng Playwright + máy chủ giả lập: form (Loại nội dung / Chuyên khoa ⇒ `line`, lưu đúng, dữ liệu cũ, ẩn khi không phải Product),
+> video HTML5 (2x ⇒ 1x, chặn tua, xong 70% ⇒ `trackProgress done=1`, sau đó được 2x) ở cả 2 trình phát, video Drive (không tính xong sau 21 s,
+> `crsMark` bị chặn, trainer có nút ⇒ `videoPublish`). Sửa thêm: thứ tự tab Lộ trình (v5.8 `orderSeg` ▸ RANK có Kiến thức y khoa),
+> ảnh bìa nhóm cũ "L:Nha khoa" dùng cho line "Sản phẩm · Nha khoa" (`grpCover`), hướng dẫn iOS 26 (nút •••).
+> Đã có thông báo v6.5 + ảnh `updates/v6.5/`. Còn lại: hỏi người dùng gộp `main`; mục 4 chờ quyết định công khai.
 
 Đọc file này trước, rồi `CLAUDE.md`, `DESIGN.md` của repo. Trả lời người dùng bằng tiếng Việt. Quy trình chung: skill **gh-webapp-upgrader**.
 
