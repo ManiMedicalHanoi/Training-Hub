@@ -978,7 +978,7 @@ button.crs-st:hover{background:var(--ice)}
    → Edit → New version giữ nguyên URL cũ, nên thường KHÔNG phải sửa).
    ========================================================================== */
 const API_URL = "https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec";
-const APP_VERSION = '6.5';
+const APP_VERSION = '6.6';
 window.MIN_SERVER = '3.25';   // ★ v4.0: bản backend tối thiểu app cần (số phiên bản app và máy chủ không còn đi cùng nhau)
 const LOGO = 'data:image/png;base64,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';
 document.querySelectorAll('.logoimg').forEach(i => i.src = LOGO);
@@ -7854,7 +7854,7 @@ body.v4 .view.v53-old .lgd,body.v4 .view.v53-old [class*="cal"] .lgd{flex-wrap:w
   .verbar{margin:8px 12px 0;align-items:flex-start;flex-wrap:wrap}
 }
 </style>
-<script src="updates/notes.js?v=6.5"></script>
+<script src="updates/notes.js?v=6.6"></script>
 <style id="upd-css">
 .ver-badge{font-size:10.5px;font-weight:700;background:var(--t-soft,#F0F7FF);color:var(--t-pri,#3A5CAA);border:1px solid var(--t-line,#CFE2F3);padding:2px 7px;border-radius:7px;vertical-align:middle;cursor:pointer}
 #upd{position:fixed;inset:0;z-index:770;background:rgba(20,35,50,.45);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;padding:16px;font-family:Aptos,'Aptos Display','Segoe UI',Calibri,Arial,sans-serif}
@@ -8192,6 +8192,300 @@ body.v4 .top .search-btn span{min-width:0;overflow:hidden;text-overflow:ellipsis
     } catch (e) { err(e.message || 'Chưa đưa được video lên Hub.'); }
     finally { busy(false); }
   };
+})();
+</script>
+<style id="v66-css">
+/* ★ v6.6 (02/11/2026) — tài liệu xem trên app dạng trình chiếu (bản PDF trên GitHub Pages, backend v3.39 docPublish) */
+.v66-deck{flex:1;display:flex;flex-direction:column;min-width:0;background:#0E1B26;color:#fff;outline:none}
+.v66-stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:16px 64px;touch-action:pan-y}
+.v66-stage canvas{max-width:100%;max-height:100%;background:#fff;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.v66-nav{position:absolute;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background-color .15s}
+.v66-nav:hover{background:rgba(255,255,255,.18)}.v66-nav:disabled{opacity:.3;cursor:default}
+.v66-nav.p{left:12px}.v66-nav.n{right:12px}.v66-nav svg{width:22px;height:22px}
+.v66-nav:focus-visible{outline:2px solid #9CC6F0;outline-offset:2px}
+.v66-bar{display:flex;align-items:center;gap:12px;padding:10px 16px 12px;font-size:13px;color:#CFE2F3}
+.v66-bar .tr{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.14);display:flex;gap:2px;overflow:hidden}
+.v66-bar .tr i{flex:1;background:transparent}.v66-bar .tr i.s{background:#6FA8DC}.v66-bar .tr i.c{background:#fff}
+.v66-bar b{color:#fff;font-weight:600;font-variant-numeric:tabular-nums}
+.v66-bar.ok .tr i.s{background:#7BC59A}
+.v66-load{color:#CFE2F3;font-size:14px}
+.v66-tag{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:500;background:var(--h-pale,#F0F7FF);color:var(--h-navy,#003047);border:1px solid var(--h-line2,#E6EAEF);vertical-align:middle}
+.v66-tag.old{background:#FFF7E0;border-color:#F1DFA8;color:#7A5A00}
+.v66-tag svg{width:12px;height:12px}
+.v66-list{display:flex;flex-direction:column;border:1px solid var(--line2,#E6EAEF);border-radius:12px;overflow:hidden;margin-top:12px}
+.v66-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line2,#E6EAEF);font-size:14px}
+.v66-row:first-child{border-top:0}
+.v66-row .nm{flex:1;min-width:0}.v66-row .nm b{display:block;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v66-row .nm small{color:var(--muted,#5B6B7D);font-size:12.5px}
+.v66-st{font-size:12.5px;color:var(--muted,#5B6B7D);white-space:nowrap}
+.v66-st.ok{color:#1E7F4F}.v66-st.bad{color:#C62828}.v66-st.run{color:var(--blue,#3A5CAA)}
+@media (max-width:720px){.v66-stage{padding:8px 8px 4px}.v66-nav{display:none}.v66-row{flex-wrap:wrap}.v66-row .nm{flex-basis:100%}}
+</style>
+<script id="v66-js">
+/* ==========================================================================
+   ★ v6.6 (02/11/2026) — TÀI LIỆU XEM TRÊN APP (TRÌNH CHIẾU) + LUẬT 70% SỐ TRANG
+   Người dùng (02/11/2026): tài liệu PDF / PPT mở qua Drive hay lỗi, hệ thống không biết "xem hết" ⇒ trainer đăng bản PDF lên GitHub
+   (kho Training-Hub CÔNG KHAI — người dùng đã chấp nhận) bằng backend docPublish (v3.39). listMaterials trả f.gh (link + ?v=), f.ghOld.
+   - Có f.gh ⇒ mở Qua Hub, tải PDF thẳng từ GitHub Pages (cùng trang, không qua Drive) ⇒ chế độ trình chiếu: 1 trang / màn, ‹ ›, phím ← →,
+     vuốt, Toàn màn hình. Hoàn thành khi đã xem ≥ 70% số trang (mỗi trang ≥ 1,5 giây mới tính đã xem).
+   - Trainer: nút "Đăng tài liệu lên app" (trang khoá học ▸ công cụ trainer, tab Tài liệu ở chế độ chi tiết) ⇒ bảng đăng từng / tất cả tài liệu;
+     trong trình đọc có nút "Đăng bản xem trên app" cho tài liệu chưa đăng.
+   - Trình xem Google ("Xem nhanh") trong lộ trình KHÔNG còn tính xong sau 30 giây — chọn "Qua Hub" để được tính.
+   ========================================================================== */
+(function(){
+  window.MIN_SERVER = '3.39';   /* docPublish + f.gh (RH_Docs.gs) */
+  const PASS = 70, DWELL = 1500;
+  const okDoc = f => !!(f && !f.isVideo && f.kind !== 'video' && f.kind !== 'sheet' && ['pdf', 'office', 'gdoc'].includes(f.view)
+    && !/spreadsheet|excel|csv/i.test(f.mime || '') && !/\.(xlsx?|csv|ods)$/i.test(f.name || ''));
+  const need = n => Math.max(1, Math.ceil(n * PASS / 100));
+  const isTr = sid => { try { return canEdit(findS(sid) || {}); } catch (e) { return false; } };
+
+  /* ① tài liệu có bản trên GitHub ⇒ luôn mở Qua Hub (trừ khi người dùng bấm Xem nhanh) */
+  const _ro = Reader.open;
+  Reader.open = function(sid, fid, opts){
+    const m = S.mats[sid], f = m && m.files && m.files.find(x => x.id === fid);
+    if (f && f.gh && !(opts && opts.mode === 'google')) opts = Object.assign({}, opts, {mode: 'hub'});
+    const r = _ro.call(this, sid, fid, opts);
+    Promise.resolve(r).then(() => { try { topBtn(); } catch (e) {} });
+    return r;
+  };
+  /* ② tải PDF từ GitHub Pages (lỗi / chưa kịp xuất bản ⇒ đường cũ qua máy chủ) */
+  const _fb = Reader.fetchBlob;
+  Reader.fetchBlob = async function(sid, f, onProg){
+    if (f && f.gh) {
+      try {
+        onProg && onProg({stage: 'prep', view: f.view});
+        const r = await fetch(f.gh, {cache: 'default'});
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const b = await r.blob();
+        if (b.size < 200) throw new Error('rỗng');
+        return new Blob([b], {type: 'application/pdf'});
+      } catch (e) { console.warn('v6.6 gh', e); }
+    }
+    return _fb.apply(this, arguments);
+  };
+
+  /* ③ trình chiếu */
+  const _sp = Reader.showPdf;
+  Reader.showPdf = async function(blob){
+    const st = this.st;
+    if (!st || !st.f || !st.f.gh) return _sp.apply(this, arguments);
+    const lib = await this.loadPdfJs();
+    const pdf = await lib.getDocument({data: new Uint8Array(await blob.arrayBuffer())}).promise;
+    if (this.st !== st) { try { pdf.destroy(); } catch (e) {} return; }
+    st.pdf = pdf; st.total = pdf.numPages; st.deck = {seen: new Set(), at: 0, tm: 0, rt: 0};
+    const done0 = Course.done(st.sid, st.f.id);
+    if (done0) { st.completed = true; st.done = true; }
+    $('rdBody').innerHTML = `<div class="v66-deck" id="v66Deck" tabindex="0" aria-label="Trình chiếu tài liệu">
+        <div class="v66-stage" id="v66Stage"><button class="v66-nav p" data-a="rdPrev" aria-label="Trang trước">${ic('left')}</button><canvas id="v66C"></canvas><button class="v66-nav n" data-a="rdNext" aria-label="Trang sau">${ic('right')}</button></div>
+        <div class="v66-bar ${done0 ? 'ok' : ''}" id="v66Bar"><span id="v66Pg"></span><div class="tr" id="v66Tr">${Array.from({length: Math.min(pdf.numPages, 120)}, () => '<i></i>').join('')}</div><span id="v66Tx"></span></div></div>`;
+    $('rdPgn').classList.remove('hide'); $('rdTotal').textContent = '/ ' + pdf.numPages;
+    const z = $('rdZoom'); if (z) { z.classList.remove('hide'); z.querySelectorAll('[data-a="rdZoom"]').forEach(b => b.classList.add('hide')); }
+    $('rdPage').onchange = e => this.goto(parseInt(e.target.value, 10) || 1);
+    const deck = $('v66Deck'), stage = $('v66Stage');
+    deck.addEventListener('keydown', e => {
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target || {}).tagName || '')) return;
+      if (e.key === ' ') { e.preventDefault(); this.goto(st.page + (e.shiftKey ? -1 : 1)); }   /* ← → PageUp/Down: phím tắt chung của trình đọc */
+    });
+    let x0 = null, y0 = 0;
+    stage.addEventListener('touchstart', e => { const t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; }, {passive: true});
+    stage.addEventListener('touchend', e => { if (x0 == null) return; const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0; x0 = null; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) this.goto(st.page + (dx < 0 ? 1 : -1)); }, {passive: true});
+    st.deck.onRs = debounce(() => { if (this.st === st) draw(st, st.page); }, 150);
+    window.addEventListener('resize', st.deck.onRs);
+    document.addEventListener('fullscreenchange', st.deck.onRs);
+    st.page = 1; st.maxPage = 0;
+    await draw(st, 1);
+    try { deck.focus({preventScroll: true}); } catch (e) {}
+    if (st.course) Course.refresh();
+  };
+  async function draw(st, n){
+    if (!st.pdf || Reader.st !== st) return;
+    n = Math.max(1, Math.min(st.total, n));
+    st.page = n; const tk = ++st.deck.rt;
+    const page = await st.pdf.getPage(n);
+    const stage = $('v66Stage'), c = $('v66C'); if (!stage || !c || tk !== st.deck.rt) return;
+    const cs = getComputedStyle(stage), aw = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), ah = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    const v1 = page.getViewport({scale: 1}), sc = Math.max(0.1, Math.min(aw / v1.width, ah / v1.height));
+    const vp = page.getViewport({scale: sc}), dpr = Math.min(2, window.devicePixelRatio || 1);
+    const off = document.createElement('canvas'); off.width = Math.floor(vp.width * dpr); off.height = Math.floor(vp.height * dpr);
+    await page.render({canvasContext: off.getContext('2d'), viewport: vp, transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null}).promise;
+    if (tk !== st.deck.rt || Reader.st !== st) return;
+    c.width = off.width; c.height = off.height; c.style.width = Math.floor(vp.width) + 'px'; c.style.height = Math.floor(vp.height) + 'px';
+    c.getContext('2d').drawImage(off, 0, 0);
+    c.setAttribute('aria-label', 'Trang ' + n + ' / ' + st.total);
+    clearTimeout(st.deck.tm);
+    st.deck.tm = setTimeout(() => { if (Reader.st === st && st.page === n) seen(st, n); }, DWELL);
+    paint(st);
+  }
+  function seen(st, n){
+    if (st.deck.seen.has(n)) return;
+    st.deck.seen.add(n);
+    st.maxPage = st.deck.seen.size;
+    Reader.bar(Math.round(st.deck.seen.size / st.total * 100));
+    paint(st);
+    if (!st.completed && st.deck.seen.size >= need(st.total)) {
+      if (st.course) Course.complete();
+      else { st.done = true; st.completed = true; Reader.track({open: 1, page: st.total, total: st.total, done: 1}); ok('Bạn đã xem đủ ' + PASS + '% số trang — tài liệu được tính hoàn thành.'); }
+      paint(st);
+    } else if (st.course && !st.completed) { const ft = $('crsFoot'); if (ft) ft.innerHTML = Course.foot(st.sid); }
+  }
+  function paint(st){
+    const n = st.page, pg = $('v66Pg'), tx = $('v66Tx'), tr = $('v66Tr'), bar = $('v66Bar');
+    if ($('rdPage')) $('rdPage').value = n;
+    if (pg) pg.innerHTML = `Trang <b>${n}</b> / ${st.total}`;
+    if (tx) tx.innerHTML = st.completed ? 'Đã hoàn thành' : `Đã xem <b>${st.deck.seen.size}</b> / ${st.total} trang · cần ${need(st.total)}`;
+    if (bar) bar.classList.toggle('ok', !!st.completed);
+    if (tr) { const k = tr.children.length, per = st.total / k; [...tr.children].forEach((el, i) => { const a = Math.floor(i * per) + 1; el.className = (n >= a && n < a + Math.max(1, per)) ? 'c' : (st.deck.seen.has(a) || st.completed ? 's' : ''); }); }
+    document.querySelectorAll('#v66Stage .v66-nav').forEach(b => b.disabled = b.classList.contains('p') ? n <= 1 : n >= st.total);
+  }
+  const _goto = Reader.goto;
+  Reader.goto = function(n, instant){ const st = this.st; if (st && st.deck) return draw(st, n); return _goto.apply(this, arguments); };
+  const _zoom = Reader.zoom;
+  Reader.zoom = function(){ if (this.st && this.st.deck) return; return _zoom.apply(this, arguments); };
+  const _close = Reader.close;
+  Reader.close = function(){
+    const st = this.st;
+    if (st && st.deck) { clearTimeout(st.deck.tm); window.removeEventListener('resize', st.deck.onRs); document.removeEventListener('fullscreenchange', st.deck.onRs); }
+    return _close.apply(this, arguments);
+  };
+  /* chân lộ trình */
+  const _foot = Course.foot;
+  Course.foot = function(sid){
+    const st = Reader.st;
+    if (st && st.course && st.mode === 'google' && !st.f.gh && okDoc(st.f) && !this.done(sid, st.f.id) && !st.completed) {
+      const fs = this.files(sid), i = fs.findIndex(x => x.id === st.f.id), o = this.optional(sid).has(st.f.id), tr = isTr(sid);
+      return `<div class="crs-msg"><span>${tr ? 'Trình xem của Google không đếm được trang đã xem. Bấm <b>Đăng bản xem trên app</b> để học viên xem dạng trình chiếu và được tính hoàn thành.' : 'Trình xem của Google không đếm được trang đã xem. Bấm <b>Qua Hub</b> ở phía trên để được tính hoàn thành.'}</span></div>
+        <button class="btn btn-line" data-a="crsPrev" ${i <= 0 ? 'disabled' : ''}>${ic('left')}Trước</button>
+        ${tr ? `<button class="btn btn-soft" data-a="v66pub1">${ic('upload')}Đăng bản xem trên app</button>` : `<button class="btn btn-soft" data-a="rdMode" data-m="hub">${ic('shield')}Xem qua Hub</button>`}
+        <button class="btn btn-primary" data-a="crsNext" ${o ? '' : 'disabled'}>${o ? 'Bỏ qua (không bắt buộc)' : 'Tiếp tục'}${ic('right')}</button>`;
+    }
+    const h = _foot.apply(this, arguments);
+    if (st && st.deck && !st.completed && !this.done(sid, st.f.id))
+      return h.replace(/<div class="crs-msg">[\s\S]*?<\/div>/, `<div class="crs-msg"><span>Xem tối thiểu <b>${need(st.total)}/${st.total} trang</b> (${PASS}%) để hoàn thành — đã xem ${st.deck.seen.size} trang. ${matchMedia('(max-width:720px)').matches ? 'Vuốt ngang để lật trang.' : 'Bấm ‹ › hoặc phím mũi tên để lật trang.'}</span></div>`);
+    return h;
+  };
+  const _mark = A.crsMark;
+  A.crsMark = function(){
+    const st = Reader.st;
+    if (st && st.mode === 'google' && okDoc(st.f) && !Course.done(st.sid, st.f.id)) { toast('Trình xem của Google không đếm được trang — bấm "Qua Hub" để được tính hoàn thành.'); return; }
+    return _mark.apply(this, arguments);
+  };
+
+  /* ④ trainer: nút đăng trong trình đọc */
+  function topBtn(){
+    const st = Reader.st; if (!st || !okDoc(st.f) || !isTr(st.sid)) return;
+    const top = document.querySelector('#reader .rd-top'); if (!top || top.querySelector('.v66-pubb')) return;
+    const ext = top.querySelector('a.ibtn[target="_blank"]');
+    const lab = st.f.gh ? (st.f.ghOld ? 'Đăng lại bản mới' : '') : 'Đăng bản xem trên app';
+    if (!lab) return;
+    (ext || top.lastElementChild).insertAdjacentHTML('beforebegin', `<button class="btn btn-soft btn-sm hide-m v66-pubb" data-a="v66pub1" title="Đưa bản PDF lên app để học viên xem dạng trình chiếu và được tính hoàn thành (bản này công khai trên GitHub)">${ic('upload')}${lab}</button>`);
+  }
+  async function pubOne(sid, f, onStep){
+    for (let i = 0; i < 10; i++) {
+      const r = await post('docPublish', {sid, fileId: f.id}, {timeout: 330000, direct: true});
+      if (!r.pending) return r;
+      onStep && onStep(r.message || 'Đang chuyển sang PDF…');
+      await sleep(r.stage === 'busy' ? 6000 : 1500);
+    }
+    throw new Error('Chuyển đổi lâu hơn bình thường — thử lại sau ít phút.');
+  }
+  async function refreshMats(sid){
+    try { netInvalidate(); } catch (e) {}
+    try {
+      const r = await get('listMaterials', {sid}, {fresh: true, timeout: 60000});
+      if (r && !r.pending) { S.mats[sid] = matsFrom(r); if (S.full[sid]) S.full[sid].materials = r; }
+      else { delete S.mats[sid]; await ensureMats(sid); }
+    } catch (e) { delete S.mats[sid]; try { await ensureMats(sid); } catch (x) {} }
+    try { if (window.MC) MC.save(sid); } catch (e) {}
+  }
+  A.v66pub1 = async function(){
+    const st = Reader.st; if (!st || !okDoc(st.f)) return;
+    const sid = st.sid, f = st.f;
+    busy(true, 'Đang đăng "' + f.name + '" lên app…');
+    try {
+      const r = await pubOne(sid, f, t => busy(true, t));
+      busy(false); ok(r.message || 'Đã đăng.');
+      await refreshMats(sid);
+      if (Reader.st && Reader.st.f.id === f.id) Reader.open(sid, f.id, {course: st.course});
+    } catch (e) { busy(false); err(e.message || 'Chưa đăng được tài liệu.'); }
+  };
+
+  /* ⑤ bảng đăng tài liệu của khoá */
+  A.v66mgr = async function(d){
+    const sid = d.sid;
+    busy(true, 'Đang đọc danh sách tài liệu…');
+    try { await ensureMats(sid); } catch (e) { busy(false); return err(e.message); }
+    busy(false);
+    const all = ((S.mats[sid] || {}).files || []).filter(okDoc);
+    const st = {};
+    const row = f => { const s = st[f.id]; const tag = s ? s : f.gh ? (f.ghOld ? ['bad', 'Có bản mới trên Drive — nên đăng lại'] : ['ok', 'Đã đăng · xem trên app']) : ['', 'Chưa đăng · mở qua Drive'];
+      return `<div class="v66-row" data-id="${esc(f.id)}">${ftype(f.kind)}<div class="nm"><b>${esc(f.name)}</b><small>${esc([f.sizeText, f.updated].filter(Boolean).join(' · '))}</small></div>
+        <span class="v66-st ${tag[0]}">${tag[1]}</span>
+        <button class="btn btn-line btn-sm" data-one="${esc(f.id)}">${f.gh ? 'Đăng lại' : 'Đăng'}</button>${f.gh ? `<button class="ibtn sm" data-rm="${esc(f.id)}" title="Bỏ bản xem trên app">${ic('trash')}</button>` : ''}</div>`; };
+    const m = Modal.open({size: 'wide', title: 'Tài liệu xem trên app', sub: (findS(sid) || {}).topic || '',
+      body: `<div class="note-box">${ic('info')}<div>Tài liệu đã đăng mở ngay trong app dạng <b>trình chiếu</b> (không cần quyền Drive); học viên xem đủ <b>${PASS}% số trang</b> là được tính hoàn thành.
+          Bản đăng nằm trên kho GitHub <b>công khai</b> của Training Hub — ai có link đều tải được. File gốc vẫn ở Drive. PowerPoint / Word tự chuyển sang PDF (lần đầu 10–60 giây / file).</div></div>
+        ${all.length ? `<div class="v66-list" id="v66L">${all.map(row).join('')}</div>` : `<div class="loadnote" style="margin-top:12px">Khoá học chưa có tài liệu PDF / PowerPoint / Word.</div>`}
+        ${S.gh === false ? `<div class="note-box" style="margin-top:10px">${ic('alert')}<div>Admin chưa kết nối GitHub (Quản lý ▸ Giao diện & GitHub) nên chưa đăng được.</div></div>` : ''}`,
+      foot: `<div class="sp"></div><button class="btn btn-line" data-mclose>Đóng</button><button class="btn btn-primary" id="v66All" ${all.some(f => !f.gh || f.ghOld) ? '' : 'disabled'}>${ic('upload')}Đăng tất cả chưa đăng</button>`});
+    const L = $('v66L');
+    const redraw = () => { if (L) L.innerHTML = all.map(row).join(''); };
+    let running = false;
+    const runList = async list => {
+      if (running) return; running = true; $('v66All') && ($('v66All').disabled = true);
+      let n = 0, bad = 0;
+      for (const f of list) {
+        st[f.id] = ['run', 'Đang đăng…']; redraw();
+        try { const r = await pubOne(sid, f, t => { st[f.id] = ['run', t]; redraw(); }); f.gh = r.gh; f.ghOld = false; st[f.id] = ['ok', 'Đã đăng · xem trên app']; n++; }
+        catch (e) { st[f.id] = ['bad', e.message || 'Lỗi']; bad++; }
+        redraw();
+        if (!document.body.contains(L)) break;
+      }
+      running = false;
+      await refreshMats(sid);
+      if (n) ok('Đã đăng ' + n + ' tài liệu. GitHub cần 1–2 phút trước khi mọi máy mở được.');
+      if (bad) err(bad + ' tài liệu chưa đăng được — xem lý do trong danh sách.');
+      if (S.route && S.route.name === 's') { try { SessionPage.renderTab(); } catch (e) {} }
+    };
+    if (L) L.addEventListener('click', async e => {
+      const one = e.target.closest('[data-one]'), rm = e.target.closest('[data-rm]');
+      if (one) { const f = all.find(x => x.id === one.dataset.one); if (f) runList([f]); }
+      if (rm && !running) {
+        const f = all.find(x => x.id === rm.dataset.rm); if (!f) return;
+        if (!await confirmBox('Bỏ bản xem trên app?', `<b>${esc(f.name)}</b> sẽ mở qua Drive như trước. File gốc trên Drive không bị xoá.`, 'Bỏ bản trên app', true)) return;
+        try { await post('docPublish', {sid, fileId: f.id, op: 'remove'}, {timeout: 60000}); delete f.gh; delete st[f.id]; redraw(); await refreshMats(sid); toast('Đã bỏ bản xem trên app.'); } catch (x) { err(x.message); }
+      }
+    });
+    const ba = $('v66All'); if (ba) ba.onclick = () => runList(all.filter(f => !f.gh || f.ghOld));
+    return m;
+  };
+
+  /* ⑥ lối vào: công cụ trainer trên trang khoá học + tab Tài liệu (chế độ chi tiết); nhãn "Trên app" */
+  function deco(sid){
+    const s = findS(sid); if (!s) return;
+    const tools = document.querySelector('.v4-tools');
+    if (tools && canEdit(s) && !tools.querySelector('[data-a="v66mgr"]')) {
+      const up = tools.querySelector('[data-a="v4Upload"]');
+      (up || tools.lastElementChild).insertAdjacentHTML('afterend', `<button data-a="v66mgr" data-sid="${esc(sid)}">${ic('eye')}Tài liệu xem trên app</button>`);
+    }
+    const files = ((S.mats[sid] || {}).files || []);
+    const head = document.querySelector('#tabBody .mat-head > div:last-child');
+    if (head && canEdit(s) && !head.querySelector('[data-a="v66mgr"]')) head.insertAdjacentHTML('afterbegin', `<button class="btn btn-line btn-sm" data-a="v66mgr" data-sid="${esc(sid)}">${ic('eye')}Xem trên app</button>`);
+    document.querySelectorAll('.mat .nm[data-fid] b, .crs-st[data-fid] b').forEach(b => {
+      const el = b.closest('[data-fid]'), f = files.find(x => x.id === el.dataset.fid);
+      if (!f || !f.gh || b.parentNode.querySelector('.v66-tag')) return;
+      if (el.classList.contains('nm')) b.insertAdjacentHTML('afterend', `<span class="v66-tag ${f.ghOld && canEdit(s) ? 'old' : ''}" title="Mở trong app dạng trình chiếu">${ic('eye')}${f.ghOld && canEdit(s) ? 'Trên app · bản cũ' : 'Trên app'}</span>`);
+    });
+  }
+  const _rt = SessionPage.renderTab;
+  SessionPage.renderTab = function(){ const r = _rt.apply(this, arguments); try { deco(this.sid); } catch (e) {} return r; };
+  /* trang khoá học vẽ lại qua nhiều đường (renderCourse, tải xong tài liệu…) ⇒ theo dõi DOM, chỉ khi đang ở #/s/… */
+  const kick = debounce(() => {
+    try { if (S.route && S.route.name === 's' && SessionPage.sid) deco(SessionPage.sid); } catch (e) {}
+    try { if (Reader.st && $('reader').classList.contains('on')) topBtn(); } catch (e) {}
+  }, 120);
+  new MutationObserver(ms => { if (((S.route && S.route.name === 's') || Reader.st) && ms.some(m => m.addedNodes.length)) kick(); }).observe(document.body, {childList: true, subtree: true});
+  window.V66 = {okDoc, need, PASS};
 })();
 </script>
 </body>

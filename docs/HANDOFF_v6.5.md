@@ -5,7 +5,8 @@
 > video HTML5 (2x ⇒ 1x, chặn tua, xong 70% ⇒ `trackProgress done=1`, sau đó được 2x) ở cả 2 trình phát, video Drive (không tính xong sau 21 s,
 > `crsMark` bị chặn, trainer có nút ⇒ `videoPublish`). Sửa thêm: thứ tự tab Lộ trình (v5.8 `orderSeg` ▸ RANK có Kiến thức y khoa),
 > ảnh bìa nhóm cũ "L:Nha khoa" dùng cho line "Sản phẩm · Nha khoa" (`grpCover`), hướng dẫn iOS 26 (nút •••).
-> Đã có thông báo v6.5 + ảnh `updates/v6.5/`. Còn lại: hỏi người dùng gộp `main`; mục 4 chờ quyết định công khai.
+> v6.5 đã gộp (#27). **Mục 4 làm xong ở v6.6** (người dùng chấp nhận tài liệu công khai trên GitHub): backend v3.39 `docPublish` (RH_Docs.gs, sheet HUB_Docs, mmh-backend #128),
+> app khối `v66-js` (trình chiếu `f.gh`, 70% số trang, mỗi trang ≥ 1,5 s; bảng `A.v66mgr`; Google viewer trong lộ trình không còn tự tính xong).
 
 Đọc file này trước, rồi `CLAUDE.md`, `DESIGN.md` của repo. Trả lời người dùng bằng tiếng Việt. Quy trình chung: skill **gh-webapp-upgrader**.
 
