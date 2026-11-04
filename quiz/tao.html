@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tạo Google Form · MMH</title>
+<meta name="robots" content="noindex">
+<style>
+  body { margin:0; background:#F6F8FB; color:#1d2733; font:15px/1.5 Aptos, "Segoe UI", Roboto, Arial, sans-serif; }
+  .card { max-width:640px; margin:24px auto; background:#fff; border:1px solid #E6EAEF; border-radius:12px; padding:22px; }
+  h1 { font-size:20px; color:#003047; margin:0 0 10px; }
+  .btn { border:0; border-radius:8px; padding:11px 20px; font:inherit; font-weight:600; cursor:pointer; background:#3A5CAA; color:#fff; }
+  .btn[disabled] { opacity:.55; }
+  .hide { display:none; }
+  .mut { color:#5b6b7a; } .err { color:#b3261e; }
+  a { color:#3A5CAA; word-break:break-all; }
+  dl { margin:14px 0 0; } dt { font-weight:600; color:#003047; margin-top:10px; } dd { margin:2px 0 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Tạo Google Form từ bản soạn của Claude</h1>
+  <div id="sum" class="mut">Đang đọc bản soạn…</div>
+  <p><button class="btn" id="go" disabled>Tạo form</button></p>
+  <div id="out"></div>
+</div>
+<script>
+/* Trang tạo form từ bản soạn của Claude (skill mmh-survey-quiz ▸ survey.py link). Link: tao.html#k=<khoá>&z=<spec gzip base64url>.
+   Phần sau dấu # không gửi lên máy chủ GitHub. Gọi máy chủ survey bằng fetch không kèm cookie (tránh lỗi "không thể mở tệp" của trang Apps Script). */
+var API = 'https://script.google.com/macros/s/AKfycbx8l7u4j2tFDpfsg8IFsEcuXNrTbrLVRA_SoZ2Iisqprfm1ipL4z2NfDudVKuI1paFQPg/exec';
+var H = new URLSearchParams(location.hash.replace(/^#/, '')), K = H.get('k') || '', Z = H.get('z') || '';
+function $(i) { return document.getElementById(i); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function unz(z) {
+  var b = atob(z.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((z.length + 3) % 4)), u = new Uint8Array(b.length);
+  for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i);
+  return new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'))).text().then(JSON.parse);
+}
+if (!K || !Z) $('sum').innerHTML = '<span class="err">Link thiếu bản soạn. Nhờ Claude gửi lại link.</span>';
+else unz(Z).then(function (s) {
+  var n = (s.sections || []).reduce(function (a, x) { return a + (x.questions || []).filter(function (q) { return q.t !== 'header'; }).length; }, 0);
+  $('sum').innerHTML = '<b>' + esc(s.title) + '</b><br>' + (s.type === 'quiz' ? 'Bài kiểm tra' : 'Khảo sát') + ' · ' + n + ' câu · ' + (s.sections || []).length + ' phần' +
+    (s.type === 'quiz' && s.passScore ? ' · đạt ' + s.passScore + ' điểm' : '') + (s.minutes ? ' · ' + s.minutes + ' phút' : '') +
+    ((s.notify || []).length ? '<br>Email kết quả: ' + esc(s.notify.join(', ')) : '');
+  $('go').disabled = false;
+}).catch(function (e) { $('sum').innerHTML = '<span class="err">Bản soạn lỗi (' + esc(e.message) + '). Nhờ Claude gửi lại link.</span>'; });
+$('go').onclick = function () {
+  $('go').disabled = true; $('go').textContent = 'Đang tạo (khoảng 30–60 giây)…'; $('out').innerHTML = '';
+  fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action: 'create', key: K, pz: Z }) })
+    .then(function (r) { return r.text(); })
+    .then(function (t) { var r; try { r = JSON.parse(t); } catch (e) { throw new Error('Máy chủ bận, vui lòng bấm lại.'); } if (!r.ok) throw new Error(r.error || 'Lỗi máy chủ'); return r; })
+    .then(function (r) {
+      $('go').textContent = 'Đã tạo';
+      var L = [[r.quizUrl ? 'Link làm bài (gửi học viên)' : 'Link trả lời (gửi người làm khảo sát)', r.quizUrl || r.shortUrl],
+        ['Kết quả (Google Sheet)', r.sheetUrl], ['Sửa form', r.editUrl], r.quizUrl ? ['Google Form dự phòng (không đếm giờ, không email)', r.shortUrl] : null].filter(Boolean);
+      $('out').innerHTML = '<dl>' + L.map(function (x) { return '<dt>' + x[0] + '</dt><dd><a href="' + esc(x[1]) + '" target="_blank" rel="noopener">' + esc(x[1]) + '</a></dd>'; }).join('') + '</dl>' +
+        '<p class="mut">Lưu lại các link này. Làm thử 1 lần trước khi gửi.</p>';
+    })
+    .catch(function (e) { $('go').disabled = false; $('go').textContent = 'Tạo form'; $('out').innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
+};
+</script>
+</body>
+</html>
