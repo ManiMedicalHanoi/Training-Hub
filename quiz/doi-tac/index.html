@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!-- Bài kiểm tra đối tác MMH (NPP, đại lý) — cách chơi giống Kahoot: nhập thông tin + SĐT trước, 10 câu, mỗi câu 20 giây, điểm theo tốc độ, bảng xếp hạng.
      Máy chủ: kho riêng tư mmh-backend ▸ backends/survey/MMH_PartnerQuiz.gs (pqMeta / pqStart / pqAnswer / pqBoard), câu hỏi ở MMH_PartnerQuizBank.gs.
-     Link làm bài (mã QR cuối video đào tạo): quiz/doi-tac/?b=nha-khoa-1 · ?b=nha-khoa-2 · màn xếp hạng chiếu TV: thêm &v=board -->
+     Link làm bài (mã QR cuối video đào tạo): quiz/doi-tac/?b=nha-khoa-1 · ?b=nha-khoa-2 · màn xếp hạng chiếu TV: thêm &v=board
+     Bảng xếp hạng chung (17/11/2026, cả 2 phần + tổng điểm, ai có link đều xem): quiz/doi-tac/?v=top (máy chủ pqBoardAll) -->
 <html lang="vi">
 <head>
 <meta charset="utf-8">
@@ -115,6 +116,23 @@
     .kpi b { font-size:24px; }
   }
   @media (max-width:900px) { .bd { grid-template-columns:1fr; } }
+
+  /* bảng xếp hạng chung ?v=top */
+  body.top .wrap { max-width:1500px; }
+  .tp-tabs { display:flex; gap:6px; margin:4px 0 14px; overflow-x:auto; }
+  .tp-tabs button { border:1px solid var(--fld); background:#fff; color:var(--navy); border-radius:999px; padding:8px 14px; font:inherit; font-size:14px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .tp-tabs button.on { background:var(--navy); border-color:var(--navy); color:#fff; }
+  .tp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:start; }
+  .tp-col { border:1px solid var(--line); border-radius:14px; padding:14px 14px 6px; }
+  .tp-col h2 { margin:0; font-size:17px; color:var(--navy); line-height:1.3; }
+  .tp-col .st { font-size:13px; color:var(--mut); margin:2px 0 8px; }
+  .tp-col table.lb td.r span { display:inline-flex; width:26px; height:26px; border-radius:50%; align-items:center; justify-content:center; background:var(--soft); }
+  .tp-col table.lb tr.p1 td.r span { background:var(--yel); color:#1a1a1a; }
+  .tp-col table.lb tr.p2 td.r span, .tp-col table.lb tr.p3 td.r span { background:var(--navy); color:#fff; }
+  .gift { display:inline-block; font-size:11px; font-weight:700; color:var(--navy); background:#FFF6B3; border-radius:6px; padding:1px 6px; margin-top:3px; }
+  .tp-note { color:var(--mut); font-size:13px; margin:12px 0 0; }
+  @media (max-width:1100px) { .tp-grid { grid-template-columns:1fr; } .tp-grid .tp-col { display:none; } .tp-grid .tp-col.on { display:block; } }
+  @media (min-width:1101px) { .tp-tabs { display:none; } }
 </style>
 </head>
 <body>
@@ -142,6 +160,7 @@
     <label class="agree"><input type="checkbox" id="fAgree"><span>Tôi đồng ý cho Mani Medical Hanoi lưu thông tin trên để ghi nhận kết quả đào tạo và liên hệ khi cần.</span></label>
     <div class="err" id="e1"></div>
     <button class="btn w" id="bGo">Bắt đầu</button>
+    <p class="sub" style="text-align:center;margin-top:14px"><a href="?v=top" style="color:var(--navy);font-weight:600">Xem bảng xếp hạng chung</a></p>
   </section>
 
   <!-- 2. Làm bài -->
@@ -160,6 +179,9 @@
   <!-- màn xếp hạng (TV) -->
   <section id="vBoard" class="hide"></section>
 
+  <!-- bảng xếp hạng chung (?v=top) -->
+  <section id="vTop" class="hide"></section>
+
   <div class="err" id="eG"></div>
 </div>
 
@@ -173,7 +195,7 @@
   var KEY = 'mmh_pq_info';
   var S = { meta: null, tk: '', q: null, n: 10, perQ: 20, score: 0, t0: 0, timer: 0, busy: false };
 
-  function show(id) { ['vIntro', 'vPlay', 'vEnd', 'vBoard'].forEach(function (v) { $(v).classList.toggle('hide', v !== id); }); window.scrollTo(0, 0); }
+  function show(id) { ['vIntro', 'vPlay', 'vEnd', 'vBoard', 'vTop'].forEach(function (v) { $(v).classList.toggle('hide', v !== id); }); window.scrollTo(0, 0); }
 
   function call(action, body, tries) {
     tries = tries == null ? 3 : tries;
@@ -284,7 +306,7 @@
       + '<div class="fbk"><label class="f" for="fFb">Góp ý thêm về sản phẩm MANI <span style="font-weight:400;color:var(--mut)">(không tính điểm)</span></label>'
       + '<textarea id="fFb" maxlength="1500" placeholder="Ví dụ: sản phẩm bác sĩ đang hỏi, cỡ / mã cần thêm, nhận xét khi sử dụng…"></textarea>'
       + '<div class="err" id="eFb"></div><button class="btn sec" id="bFb">Gửi góp ý</button></div>'
-      + '<div class="acts"><button class="btn" id="bAgain">Làm lượt mới</button><button class="btn sec" id="bBoard">Xem bảng xếp hạng</button></div>';
+      + '<div class="acts"><button class="btn" id="bAgain">Làm lượt mới</button><button class="btn sec" id="bBoard">Bảng xếp hạng chung</button></div>';
     show('vEnd');
     $('bFb').onclick = function () {
       var t = $('fFb').value.trim(); if (t.length < 2) { $('eFb').textContent = 'Vui lòng nhập góp ý.'; return; }
@@ -295,7 +317,7 @@
       }).catch(function () { $('bFb').disabled = false; $('bFb').textContent = 'Gửi góp ý'; $('eFb').textContent = 'Mất kết nối, vui lòng bấm lại.'; });
     };
     $('bAgain').onclick = function () { intro(); };
-    $('bBoard').onclick = function () { location.href = '?b=' + encodeURIComponent(B) + '&v=board'; };
+    $('bBoard').onclick = function () { location.href = '?v=top'; };
   }
 
   /* ---------- màn xếp hạng (TV, tự cập nhật 5 giây) ---------- */
@@ -328,7 +350,57 @@
     poll();
   }
 
+  /* ---------- bảng xếp hạng chung: Phần 1 · Phần 2 · tổng điểm (tự cập nhật 10 giây) ---------- */
+  function top() {
+    document.body.classList.add('top');
+    document.title = 'Bảng xếp hạng · Bài kiểm tra đối tác';
+    var tab = 'all';
+    $('vTop').innerHTML = '<h1>Bảng xếp hạng</h1><p class="sub">Bài kiểm tra đối tác · dụng cụ và vật liệu nha khoa MANI</p>'
+      + '<div class="tp-tabs" id="tpTabs"></div><div class="tp-grid" id="tpGrid"><p class="sub">Đang tải…</p></div>'
+      + '<p class="tp-note" id="tpNote"></p><div class="url" id="tpU" style="color:var(--mut);font-size:12px;margin-top:6px"></div>';
+    show('vTop');
+    var rowsPart = function (p) {
+      if (!p.top.length) return '<p class="sub">Chưa có ai làm bài.</p>';
+      return '<table class="lb">' + p.top.map(function (t) {
+        var gift = t.rank <= 3 && t.right >= p.pass ? '<span class="gift">Túi cói MANI</span>' : '';
+        return '<tr class="p' + t.rank + '"><td class="r"><span>' + t.rank + '</span></td><td>' + esc(t.name) + '<small>' + esc(t.dealer) + '</small>' + gift + '</td>'
+          + '<td class="s">' + fmt(t.score) + '<small>' + t.right + '/' + t.n + ' câu</small></td></tr>';
+      }).join('') + '</table>';
+    };
+    var rowsAll = function (r) {
+      if (!r.overall.length) return '<p class="sub">Chưa có ai làm bài.</p>';
+      var names = r.parts.map(function (p) { return String(p.sub || p.b).replace(/^Bài kiểm tra · /, ''); });
+      return '<table class="lb">' + r.overall.slice(0, 10).map(function (t) {
+        var det = t.sc.map(function (v, i) { return names[i] + ': ' + (v == null ? 'chưa làm' : fmt(v)); }).join(' · ');
+        return '<tr class="p' + t.rank + '"><td class="r"><span>' + t.rank + '</span></td><td>' + esc(t.name) + '<small>' + esc(t.dealer) + '</small><small>' + det + '</small></td>'
+          + '<td class="s">' + fmt(t.total) + '<small>tổng điểm</small></td></tr>';
+      }).join('') + '</table>';
+    };
+    var paint = function (r) {
+      var cols = [{ k: 'all', name: 'Tổng các phần', html: rowsAll(r), st: fmt(r.players) + ' người tham gia' }].concat(r.parts.map(function (p) {
+        var nm = String(p.sub || p.b).replace(/^Bài kiểm tra · /, '');
+        return { k: p.b, name: nm + ': ' + p.title, short: nm, html: rowsPart(p), st: fmt(p.players) + ' người · ' + fmt(p.passed) + ' người đạt · ' + fmt(p.attempts) + ' lượt' };
+      }));
+      $('tpTabs').innerHTML = cols.map(function (c) { return '<button data-k="' + c.k + '"' + (c.k === tab ? ' class="on"' : '') + '>' + esc(c.short || c.name) + '</button>'; }).join('');
+      $('tpGrid').innerHTML = cols.map(function (c) {
+        return '<div class="tp-col' + (c.k === tab ? ' on' : '') + '"><h2>' + esc(c.name) + '</h2><div class="st">' + c.st + '</div>' + c.html + '</div>';
+      }).join('');
+      Array.prototype.forEach.call($('tpTabs').querySelectorAll('button'), function (b) { b.onclick = function () { tab = b.getAttribute('data-k'); paint(r); }; });
+      var p0 = r.parts[0] || {};
+      $('tpNote').textContent = 'Mỗi người tính lượt điểm cao nhất của từng phần. Top 3 mỗi phần (đúng từ ' + (p0.pass || 6) + '/' + (p0.n || 10) + ' câu) nhận túi cói MANI.';
+      $('tpU').textContent = 'Cập nhật lúc ' + new Date().toLocaleTimeString('vi-VN');
+    };
+    var last = null;
+    var poll = function () {
+      call('pqBoardAll', {}, 1).then(function (r) { if (r && r.ok) { last = r; paint(r); } else if (!last) $('tpGrid').innerHTML = '<p class="sub">Chưa tải được bảng xếp hạng.</p>'; })
+        .catch(function () { if (!last) $('tpGrid').innerHTML = '<p class="sub">Không kết nối được máy chủ, đang thử lại…</p>'; })
+        .then(function () { setTimeout(poll, 10000); });
+    };
+    poll();
+  }
+
   /* ---------- khởi động ---------- */
+  if (VIEW === 'top') { top(); return; }
   if (!B) { $('eG').textContent = 'Link bài kiểm tra thiếu mã bài. Vui lòng quét lại mã QR.'; return; }
   $('eG').textContent = 'Đang tải…';
   call('pqMeta', { b: B }).then(function (m) {
