@@ -41,6 +41,14 @@
   .err { color:var(--bad); min-height:1.3em; margin-top:8px; font-size:14px; }
   .hide { display:none !important; }
 
+  .prz { display:flex; gap:12px; align-items:center; border:1px solid var(--line); border-radius:12px; padding:10px 14px; margin:0 0 16px; font-size:14.5px; }
+  .prz img { width:54px; height:54px; object-fit:cover; border-radius:8px; flex:none; }
+  .prz b { color:var(--navy); }
+  .fbk { margin-top:22px; border-top:1px solid var(--line); padding-top:4px; }
+  .fbk textarea { width:100%; min-height:96px; padding:12px 13px; border:1px solid var(--fld); border-radius:10px; font:inherit; resize:vertical; color:var(--ink); }
+  .fbk textarea:focus { outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(34,56,79,.12); }
+  .fbk .ok { color:var(--ok); font-weight:600; margin-top:8px; }
+
   /* làm bài */
   .top { display:flex; align-items:center; justify-content:space-between; margin:14px 0 6px; font-weight:600; color:var(--mut); font-size:14px; }
   .top b { color:var(--navy); font-size:18px; font-variant-numeric:tabular-nums; }
@@ -124,6 +132,7 @@
       <div><b>1.000</b><span>điểm tối đa mỗi câu</span></div>
     </div>
     <p class="sub">Trả lời đúng và càng nhanh thì càng được nhiều điểm. Điểm và bảng xếp hạng hiện ngay trên màn hình.</p>
+    <div class="prz hide" id="prz"><img src="tui-coi.jpg" alt="Túi cói MANI"><span id="przT"></span></div>
     <label class="f" for="fName">Họ và tên <i>*</i></label>
     <input type="text" id="fName" autocomplete="name" maxlength="60">
     <label class="f" for="fDealer">Tên đại lý / nhà phân phối <i>*</i></label>
@@ -183,6 +192,7 @@
     document.title = m.title + ' · Bài kiểm tra';
     $('ti').textContent = m.title; $('su').textContent = m.sub;
     $('rN').textContent = m.n; $('rT').textContent = m.perQ + ' giây'; $('rP').textContent = m.pass + '/' + m.n;
+    if (m.prize) { $('przT').innerHTML = 'Đúng từ <b>' + m.pass + '/' + m.n + ' câu</b> là đạt. <b>' + esc(m.prize) + '</b>.'; $('prz').classList.remove('hide'); }
     try { var o = JSON.parse(localStorage.getItem(KEY) || '{}'); if (o.name) $('fName').value = o.name; if (o.dealer) $('fDealer').value = o.dealer; if (o.phone) $('fPhone').value = o.phone; if (o.agree) $('fAgree').checked = true; } catch (x) {}
     show('vIntro');
   }
@@ -270,8 +280,20 @@
       + '<div><b>' + (f.rank || '-') + '<span style="font-size:15px;font-weight:600"> / ' + f.players + '</span></b><span>hạng hiện tại</span></div></div>'
       + (f.best > f.score ? '<p class="sub">Điểm cao nhất của bạn: ' + fmt(f.best) + '. Bảng xếp hạng tính lượt điểm cao nhất.</p>' : '')
       + '<div class="cap">Bảng xếp hạng · top 10</div>' + lbRows(f.top, f.rank)
+      + (S.meta.prize ? '<p class="sub" style="margin-top:10px">' + esc(S.meta.prize) + '. Kết quả chốt khi kết thúc buổi đào tạo.</p>' : '')
+      + '<div class="fbk"><label class="f" for="fFb">Góp ý thêm về sản phẩm MANI <span style="font-weight:400;color:var(--mut)">(không tính điểm)</span></label>'
+      + '<textarea id="fFb" maxlength="1500" placeholder="Ví dụ: sản phẩm bác sĩ đang hỏi, cỡ / mã cần thêm, nhận xét khi sử dụng…"></textarea>'
+      + '<div class="err" id="eFb"></div><button class="btn sec" id="bFb">Gửi góp ý</button></div>'
       + '<div class="acts"><button class="btn" id="bAgain">Làm lượt mới</button><button class="btn sec" id="bBoard">Xem bảng xếp hạng</button></div>';
     show('vEnd');
+    $('bFb').onclick = function () {
+      var t = $('fFb').value.trim(); if (t.length < 2) { $('eFb').textContent = 'Vui lòng nhập góp ý.'; return; }
+      $('eFb').textContent = ''; $('bFb').disabled = true; $('bFb').textContent = 'Đang gửi…';
+      call('pqFeedback', { tk: S.tk, text: t }).then(function (r) {
+        if (!r.ok) { $('bFb').disabled = false; $('bFb').textContent = 'Gửi góp ý'; $('eFb').textContent = r.error || 'Chưa gửi được, vui lòng thử lại.'; return; }
+        $('bFb').outerHTML = '<div class="ok">Cảm ơn anh/chị đã góp ý.</div>'; $('fFb').disabled = true;
+      }).catch(function () { $('bFb').disabled = false; $('bFb').textContent = 'Gửi góp ý'; $('eFb').textContent = 'Mất kết nối, vui lòng bấm lại.'; });
+    };
     $('bAgain').onclick = function () { intro(); };
     $('bBoard').onclick = function () { location.href = '?b=' + encodeURIComponent(B) + '&v=board'; };
   }
@@ -282,6 +304,7 @@
     var link = location.origin + location.pathname + '?b=' + encodeURIComponent(B);
     $('vBoard').innerHTML = '<div class="bd"><div><h1 id="bT">' + esc(S.meta.title) + '</h1><p class="sub">Quét mã để làm bài kiểm tra · ' + S.meta.n + ' câu · ' + S.meta.perQ + ' giây mỗi câu</p>'
       + '<div class="qr" id="qr"></div><div class="url">' + esc(link) + '</div>'
+      + (S.meta.prize ? '<div class="prz" style="margin-top:14px"><img src="tui-coi.jpg" alt=""><span>Đạt từ <b>' + S.meta.pass + '/' + S.meta.n + ' câu</b>. <b>' + esc(S.meta.prize) + '</b>.</span></div>' : '')
       + '<div class="stat"><div><b id="sP">0</b><span>người tham gia</span></div><div><b id="sA">0</b><span>lượt hôm nay</span></div><div><b id="sO">0</b><span>người đạt</span></div></div></div>'
       + '<div><div class="cap">Bảng xếp hạng · top 10</div><div id="bL"></div><div class="url" id="bU"></div></div></div>';
     show('vBoard');
