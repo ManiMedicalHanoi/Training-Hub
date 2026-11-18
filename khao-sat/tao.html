@@ -27,6 +27,7 @@
 /* Dự phòng khi phiên Claude không gọi được máy chủ survey (skill mmh-survey-quiz ▸ survey.py mmh-link). Link: tao.html#k=<khoá>&z=<spec gzip base64url>[&u=<mã cần sửa>].
    Phần sau dấu # không gửi lên máy chủ GitHub. */
 var API = 'https://script.google.com/macros/s/AKfycbx8l7u4j2tFDpfsg8IFsEcuXNrTbrLVRA_SoZ2Iisqprfm1ipL4z2NfDudVKuI1paFQPg/exec';
+var TK = (function () { try { var o = JSON.parse(localStorage.getItem('mmh_tk') || 'null'); return o && o.tk && (!o.exp || Date.now() < o.exp) ? o.tk : ''; } catch (e) { return ''; } })();
 var H = new URLSearchParams(location.hash.replace(/^#/, '')), K = H.get('k') || '', Z = H.get('z') || '', U = H.get('u') || '';
 function $(i) { return document.getElementById(i); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -46,13 +47,15 @@ else unz(Z).then(function (s) {
 $('go').onclick = function () {
   $('go').disabled = true; $('go').textContent = 'Đang tạo…'; $('out').innerHTML = '';
   fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(U ? { action: 'nsUpdate', key: K, s: U, pz: Z } : { action: 'nsCreate', key: K, pz: Z }) })
+    body: JSON.stringify(U ? { action: 'nsUpdate', key: K, s: U, pz: Z } : { action: 'nsCreate', key: K, pz: Z, tk: TK }) })
     .then(function (r) { return r.text(); })
     .then(function (t) { var r; try { r = JSON.parse(t); } catch (e) { throw new Error('Máy chủ bận, vui lòng bấm lại.'); } if (!r.ok) throw new Error(r.error || 'Lỗi máy chủ'); return r; })
     .then(function (r) {
       $('go').textContent = 'Xong';
-      var L = [['Link khảo sát (gửi bác sĩ)', r.url], r.sheetUrl ? ['Kết quả (Google Sheet)', r.sheetUrl] : null, r.folderUrl ? ['Thư mục trong Product Survey', r.folderUrl] : null].filter(Boolean);
+      var L = [['Link khảo sát (gửi bác sĩ)', r.url], r.app ? ['Thống kê, biểu đồ (app MMH Survey)', r.app] : null, r.sheetUrl ? ['Kết quả (Google Sheet)', r.sheetUrl] : null, r.folderUrl ? ['Thư mục trong Product Survey', r.folderUrl] : null].filter(Boolean);
       $('out').innerHTML = '<dl>' + L.map(function (x) { return '<dt>' + x[0] + '</dt><dd><a href="' + esc(x[1]) + '" target="_blank" rel="noopener">' + esc(x[1]) + '</a></dd>'; }).join('') + '</dl>' +
+        (r.task ? '<p>Report Hub: đã tạo task <b>' + esc(r.task.no) + ' · ' + esc(r.task.name) + '</b>' + (r.task.key ? ' trong Key task "' + esc(r.task.key) + '"' : '') + '.</p>' : r.taskErr ? '<p class="err">Chưa tạo được task Report Hub: ' + esc(r.taskErr) + '</p>' : '') +
+        (r.send ? '<p><a class="btn" style="text-decoration:none;display:inline-block" href="' + esc(r.send) + '">Xem QR và gửi email cho Marketing</a></p>' : '') +
         '<p class="mut">Mã khảo sát: <b>' + esc(r.code) + '</b>. Làm thử 1 lần trước khi gửi bác sĩ.</p>';
     })
     .catch(function (e) { $('go').disabled = false; $('go').textContent = U ? 'Cập nhật khảo sát' : 'Tạo khảo sát'; $('out').innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
