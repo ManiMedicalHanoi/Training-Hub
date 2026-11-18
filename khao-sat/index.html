@@ -1,15 +1,470 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Khảo sát MMH (hệ thống riêng, không dùng Google Form). Link: khao-sat/?s=<mã 7 ký tự>. Xem thử không cần máy chủ: ?demo=dental | ?demo=ophthalmic.
+     Máy chủ: web app survey (kho riêng tư mmh-backend ▸ backends/survey/MMH_SurveyNative.gs) — nsMeta / nsSubmit, kết quả ghi vào Google Sheet.
+     Trình tự: Giới thiệu ⇒ Đồng ý xử lý dữ liệu cá nhân ⇒ Họ tên · SĐT · Nơi công tác ⇒ Theo dõi page Facebook (MANI Dental / MANI Ophthalmic) ⇒ câu hỏi từng phần ⇒ Cảm ơn.
+     Câu trả lời lưu trên máy (localStorage) tới khi gửi xong ⇒ mở Facebook rồi quay lại (kể cả khi trình duyệt tải lại trang) vẫn tiếp tục đúng chỗ. -->
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MMH Survey</title>
-<meta http-equiv="refresh" content="0; url=https://manimedicalhanoi.github.io/mmh-library/survey/">
-<link rel="canonical" href="https://manimedicalhanoi.github.io/mmh-library/survey/">
-<style>body{font-family:system-ui,sans-serif;background:#F3F2EE;color:#15171C;display:grid;place-items:center;min-height:100vh;margin:0;padding:16px}a{color:#8A6420}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khảo sát · Mani Medical Hanoi</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="mani.png">
+<style>
+  :root { --ink:#2C4A5E; --steel:#5A84A6; --line:#BCD4E6; --line2:#E3ECF4; --soft:#F3F7FB; --cream:#FBE9B7; --fld:#B9C6D3; --mut:#5E6E7C; --txt:#1E2B36; --bad:#B3261E; --ok:#1F6B45; --fb:#1877F2; }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:#fff; color:var(--txt); font:16px/1.55 Aptos, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .top { position:sticky; top:0; z-index:5; background:#fff; border-bottom:1px solid var(--line2); }
+  .top .in { max-width:720px; margin:0 auto; padding:10px 18px; display:flex; align-items:center; gap:12px; }
+  .top img { height:26px; width:auto; display:block; }
+  .top .co { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); font-weight:600; }
+  .top .st { margin-left:auto; font-size:13px; color:var(--mut); white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .prog { height:3px; background:var(--line2); }
+  .prog b { display:block; height:100%; width:0; background:var(--steel); transition:width .25s; }
+  .wrap { max-width:720px; margin:0 auto; padding:22px 18px 120px; }
+  .eyebrow { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--steel); font-weight:600; margin:0 0 6px; }
+  h1 { font-size:24px; line-height:1.3; color:var(--ink); margin:0 0 12px; font-weight:700; }
+  h2 { font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin:0 0 4px; font-weight:700; }
+  .sub { color:var(--steel); font-size:15px; margin:0 0 16px; }
+  .lead { white-space:pre-line; margin:0 0 16px; }
+  .facts { display:flex; flex-wrap:wrap; gap:8px 22px; padding:12px 0; border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); margin:14px 0 18px; font-size:14px; color:var(--ink); }
+  .facts span b { font-weight:600; }
+  .note { background:var(--cream); border-radius:8px; padding:12px 14px; font-size:14px; margin:16px 0; }
+  .box { border:1px solid var(--line); border-radius:10px; padding:16px; margin:14px 0; }
+  .box .lbl { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--steel); font-weight:600; padding-bottom:8px; margin-bottom:10px; border-bottom:1px solid var(--line2); }
+  .pre { white-space:pre-line; font-size:14px; color:var(--txt); }
+  .q { border:1px solid var(--line); border-radius:10px; padding:16px; margin:14px 0; scroll-margin-top:80px; }
+  .q.miss { border-color:var(--bad); box-shadow:0 0 0 2px rgba(179,38,30,.08); }
+  .q .n { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--steel); font-weight:600; margin-bottom:2px; }
+  .q .t { font-weight:600; color:var(--ink); margin:0 0 4px; }
+  .q .t i { color:var(--bad); font-style:normal; }
+  .q .hp { color:var(--mut); font-size:14px; margin:0 0 8px; white-space:pre-line; }
+  .q .er { color:var(--bad); font-size:13px; margin-top:6px; display:none; }
+  .q.miss .er { display:block; }
+  .hd { padding:14px 0 4px; }
+  .hd .hp { color:var(--mut); font-size:14px; white-space:pre-line; margin:4px 0 0; }
+  .opt { display:flex; gap:12px; align-items:flex-start; padding:11px 12px; border:1px solid var(--line2); border-radius:8px; margin:7px 0; cursor:pointer; background:#fff; }
+  .opt:hover { border-color:var(--fld); }
+  .opt input { margin:3px 0 0; width:18px; height:18px; accent-color:var(--ink); flex:none; }
+  .opt.on { border-color:var(--ink); background:var(--soft); }
+  .opt .ot { flex:1; min-width:0; }
+  .opt .ot input[type=text] { margin-top:8px; }
+  input[type=text], input[type=tel], textarea, select { width:100%; padding:11px 12px; border:1px solid var(--fld); border-radius:8px; font:inherit; color:var(--txt); background:#fff; }
+  textarea { min-height:96px; resize:vertical; }
+  input:focus, textarea:focus, select:focus { outline:none; border-color:var(--ink); box-shadow:0 0 0 3px rgba(44,74,94,.12); }
+  .scale { display:flex; gap:6px; flex-wrap:wrap; }
+  .scale button { flex:1 1 0; min-width:40px; padding:11px 0; border:1px solid var(--fld); border-radius:8px; background:#fff; font:inherit; font-weight:600; color:var(--ink); cursor:pointer; }
+  .scale button.on { background:var(--ink); border-color:var(--ink); color:#fff; }
+  .scl { display:flex; justify-content:space-between; gap:12px; font-size:13px; color:var(--mut); margin-top:6px; }
+  .grow { padding:10px 0; border-top:1px solid var(--line2); }
+  .grow:first-of-type { border-top:0; }
+  .grow .rl { font-size:15px; margin-bottom:6px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { padding:8px 12px; border:1px solid var(--fld); border-radius:999px; background:#fff; font:inherit; font-size:14px; color:var(--txt); cursor:pointer; }
+  .chip.on { background:var(--ink); border-color:var(--ink); color:#fff; }
+  .chk { display:flex; gap:12px; align-items:flex-start; padding:12px; border:1px solid var(--line); border-radius:8px; margin:10px 0; cursor:pointer; }
+  .chk input { width:20px; height:20px; margin:2px 0 0; accent-color:var(--ink); flex:none; }
+  .chk.req { border-color:var(--ink); }
+  .chk.miss { border-color:var(--bad); }
+  .fld { margin:14px 0; }
+  .fld label { display:block; font-weight:600; color:var(--ink); margin-bottom:6px; }
+  .fld label i { color:var(--bad); font-style:normal; }
+  .fld .er { color:var(--bad); font-size:13px; margin-top:4px; min-height:0; }
+  .page { display:flex; gap:14px; align-items:center; border:1px solid var(--line); border-radius:10px; padding:16px; margin:16px 0; }
+  .page .ic { width:52px; height:52px; border-radius:50%; background:var(--fb); flex:none; display:flex; align-items:center; justify-content:center; }
+  .page .nm { font-weight:700; color:var(--ink); font-size:17px; }
+  .page .ln { color:var(--mut); font-size:14px; }
+  ol.steps { margin:6px 0 16px; padding-left:20px; color:var(--txt); }
+  ol.steps li { margin:4px 0; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:8px; padding:13px 22px; font:inherit; font-weight:600; cursor:pointer; background:var(--ink); color:#fff; text-decoration:none; }
+  .btn.fb { background:var(--fb); width:100%; font-size:17px; padding:15px; }
+  .btn.sec { background:#fff; color:var(--ink); border:1px solid var(--ink); }
+  .btn.ghost { background:none; color:var(--ink); padding:13px 6px; }
+  .btn[disabled] { opacity:.5; cursor:default; }
+  .link { background:none; border:0; padding:8px 0; font:inherit; color:var(--steel); text-decoration:underline; cursor:pointer; }
+  .back { margin-top:10px; text-align:center; }
+  .foot { position:fixed; left:0; right:0; bottom:0; z-index:6; background:#fff; border-top:1px solid var(--line2); padding-bottom:env(safe-area-inset-bottom); }
+  .foot .in { max-width:720px; margin:0 auto; padding:10px 18px; display:flex; gap:10px; align-items:center; }
+  .foot .msg { flex:1; color:var(--bad); font-size:14px; min-width:0; }
+  .foot .sp { flex:1; }
+  .ok { text-align:center; padding-top:28px; }
+  .ok .mk { width:64px; height:64px; border-radius:50%; border:2px solid var(--ok); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; }
+  .ok p { color:var(--txt); }
+  .small { font-size:13px; color:var(--mut); }
+  .legal { font-size:12px; color:var(--mut); text-align:center; padding:28px 0 0; }
+  .spin { width:28px; height:28px; border:3px solid var(--line2); border-top-color:var(--ink); border-radius:50%; animation:sp 1s linear infinite; margin:60px auto 12px; }
+  @keyframes sp { to { transform:rotate(360deg); } }
+  .hide { display:none !important; }
+  .hp-f { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  @media (max-width:520px) { h1 { font-size:21px; } .wrap { padding-top:18px; } .top .co { display:none; } }
+</style>
 </head>
 <body>
-<p>Kết quả khảo sát đã chuyển sang <a href="https://manimedicalhanoi.github.io/mmh-library/survey/">MMH Survey</a>.</p>
-<script>location.replace('https://manimedicalhanoi.github.io/mmh-library/survey/'+location.hash);</script>
+<div class="top"><div class="in"><img src="mani.png" alt="MANI"><span class="co">Mani Medical Hanoi</span><span class="st" id="st"></span></div><div class="prog"><b id="pg"></b></div></div>
+<main class="wrap" id="main"><div class="spin"></div><p class="small" style="text-align:center">Đang mở khảo sát…</p></main>
+<div class="foot hide" id="foot"><div class="in"><button class="btn ghost" id="bk" type="button">Quay lại</button><span class="msg" id="msg"></span><button class="btn" id="nx" type="button">Tiếp tục</button></div></div>
+<script>
+(function () {
+  'use strict';
+  var API = 'https://script.google.com/macros/s/AKfycbx8l7u4j2tFDpfsg8IFsEcuXNrTbrLVRA_SoZ2Iisqprfm1ipL4z2NfDudVKuI1paFQPg/exec';
+  var Q = new URLSearchParams(location.search), CODE = (Q.get('s') || '').trim(), DEMO = Q.get('demo') || '';
+  var $ = function (i) { return document.getElementById(i); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var FB_SVG = '<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg>';
+  var OK_SVG = '<svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#1F6B45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.2 4.2L19 7"/></svg>';
+  var SV = null, TOKEN = '', KEY = 'mmh_ks_' + (CODE || 'demo-' + DEMO), S = null, SENDING = false;
+
+  /* ---------- trạng thái lưu trên máy ---------- */
+  function fresh() { return { step: 'cover', hist: [], consent: { agree: false, opt: [] }, info: {}, follow: { st: '', at: 0, back: 0 }, A: {}, at: Date.now() }; }
+  function load() { try { var o = JSON.parse(localStorage.getItem(KEY) || 'null'); if (o && Date.now() - (o.at || 0) < 7 * 864e5) return o; } catch (e) {} return fresh(); }
+  function save() { S.at = Date.now(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function doneInfo() { try { return JSON.parse(localStorage.getItem(KEY + ':done') || 'null'); } catch (e) { return null; } }
+
+  /* ---------- các bước ---------- */
+  function secIdx(id) { for (var i = 0; i < SV.sections.length; i++) if (SV.sections[i].id === id) return i; return -1; }
+  function nextOf(si) {
+    var s = SV.sections[si], nx = null;
+    s.questions.forEach(function (q) {
+      if ((q.t !== 'radio' && q.t !== 'list') || S.A[q.id] == null) return;
+      (q.options || []).forEach(function (o) { if (o.go && o.go !== 'next' && o.v === S.A[q.id]) nx = o.go; });
+    });
+    nx = nx || s.go || 'next';
+    if (nx === 'submit') return 'submit';
+    var k = nx === 'next' ? si + 1 : secIdx(nx);
+    return k >= 0 && k < SV.sections.length ? 's' + k : 'submit';
+  }
+  function pathSecs() {  // các phần sẽ đi qua theo câu trả lời hiện tại (để đếm tiến độ + chỉ gửi câu của các phần này)
+    var out = [], st = 's0', g = 0;
+    while (st !== 'submit' && g++ < 200) { var k = +st.slice(1); if (out.indexOf(k) >= 0) break; out.push(k); st = nextOf(k); }
+    return out;
+  }
+  function stepsAll() { var a = ['consent', 'info']; if (SV.page) a.push('follow'); return a.concat(pathSecs().map(function (k) { return 's' + k; })); }
+  function go(step, push) {
+    if (push !== false && S.step !== step) S.hist.push(S.step);
+    S.step = step; save(); render(); window.scrollTo(0, 0);
+  }
+  function back() { if (!S.hist.length) return; S.step = S.hist.pop(); save(); render(); window.scrollTo(0, 0); }
+
+  /* ---------- vẽ ---------- */
+  function setProg() {
+    var all = stepsAll(), i = all.indexOf(S.step), n = all.length;
+    $('pg').style.width = S.step === 'cover' ? '0' : S.step === 'done' ? '100%' : Math.round(((i < 0 ? 0 : i) + 0.5) / n * 100) + '%';
+    $('st').textContent = S.step === 'cover' || S.step === 'done' || i < 0 ? '' : 'Bước ' + (i + 1) + ' / ' + n;
+  }
+  function foot(show, nextLabel, canBack) {
+    $('foot').classList.toggle('hide', !show); $('msg').textContent = '';
+    if (!show) return;
+    $('nx').classList.remove('hide');
+    $('nx').textContent = nextLabel || 'Tiếp tục'; $('nx').disabled = false;
+    $('bk').style.visibility = canBack === false || !S.hist.length ? 'hidden' : 'visible';
+  }
+  function render() {
+    setProg();
+    var m = $('main'), st = S.step;
+    if (st === 'cover') return cover(m);
+    if (st === 'consent') return consent(m);
+    if (st === 'info') return info(m);
+    if (st === 'follow') return follow(m);
+    if (st === 'done') return done(m);
+    if (/^s\d+$/.test(st)) return section(m, +st.slice(1));
+    S.step = 'cover'; render();
+  }
+  function cover(m) {
+    var nq = SV.nq || 0, ev = SV.event && SV.event.name ? SV.event.name + (SV.event.date ? ' · ' + SV.event.date.split('-').reverse().join('/') : '') : '';
+    m.innerHTML = '<p class="eyebrow">Khảo sát dành cho Quý bác sĩ' + (SV.grp === 'Dental' ? ' nha khoa' : SV.grp === 'Surgical' ? ' nhãn khoa' : '') + '</p>' +
+      '<h1>' + esc(SV.title) + '</h1>' + (SV.intro ? '<p class="lead">' + esc(SV.intro) + '</p>' : '') +
+      '<div class="facts">' + (nq ? '<span><b>' + nq + '</b> câu hỏi</span>' : '') + (SV.minutes ? '<span>Khoảng <b>' + SV.minutes + ' phút</b></span>' : '') +
+      (ev ? '<span>' + esc(ev) + '</span>' : '') + '</div>' +
+      '<p class="small">Trước khi bắt đầu, Quý bác sĩ vui lòng xác nhận đồng ý xử lý dữ liệu cá nhân, điền thông tin liên hệ' + (SV.page ? ' và theo dõi page ' + esc(SV.page.name) + ' trên Facebook' : '') + '.</p>' +
+      (SV.open === false ? '<div class="note">Khảo sát đã đóng. Cảm ơn Quý bác sĩ đã quan tâm.</div>' : '') +
+      '<p class="legal">Công ty TNHH Mani Medical Hà Nội</p>';
+    foot(SV.open !== false, 'Bắt đầu', false);
+  }
+  function consent(m) {
+    var c = SV.consent;
+    m.innerHTML = '<p class="eyebrow">Bước 1</p><h1>' + esc(c.title.charAt(0) + c.title.slice(1).toLowerCase()) + '</h1>' +
+      '<div class="box"><div class="lbl">Thông báo</div><div class="pre">' + esc(c.text) + '</div></div>' +
+      '<label class="chk req" id="c-ag"><input type="checkbox" id="c0"' + (S.consent.agree ? ' checked' : '') + '><span><b>' + esc(c.agree.q) + '</b> <span style="color:var(--bad)">*</span><br>' + esc(c.agree.v) + '</span></label>' +
+      (c.optional || []).map(function (o, i) { return '<label class="chk"><input type="checkbox" data-o="' + i + '"' + (S.consent.opt[i] ? ' checked' : '') + '><span><b>' + esc(o.q) + '</b><br>' + esc(o.v) + '</span></label>'; }).join('');
+    $('c0').onchange = function () { S.consent.agree = this.checked; $('c-ag').classList.remove('miss'); save(); };
+    m.querySelectorAll('[data-o]').forEach(function (x) { x.onchange = function () { S.consent.opt[+x.dataset.o] = x.checked; save(); }; });
+    foot(true, 'Tiếp tục');
+  }
+  function info(m) {
+    m.innerHTML = '<p class="eyebrow">Bước 2</p><h1>Thông tin của Quý bác sĩ</h1><p class="sub">Dùng để tổng hợp kết quả và liên hệ khi cần.</p>' +
+      SV.info.map(function (x) {
+        var v = S.info[x.id] || '', r = x.required ? ' <i>*</i>' : '', inp;
+        if (x.t === 'radio' || x.t === 'list') inp = '<select id="f-' + esc(x.id) + '"><option value="">— Chọn —</option>' + x.options.map(function (o) { return '<option' + (o === v ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select>';
+        else inp = '<input id="f-' + esc(x.id) + '" type="' + (x.t === 'phone' ? 'tel' : 'text') + '" value="' + esc(v) + '"' + (x.t === 'phone' ? ' inputmode="tel" autocomplete="tel" placeholder="Ví dụ 0912 345 678"' : x.id === 'name' ? ' autocomplete="name"' : x.id === 'work' ? ' autocomplete="organization"' : '') + '>';
+        return '<div class="fld"><label for="f-' + esc(x.id) + '">' + esc(x.q) + r + '</label>' + (x.help ? '<div class="small">' + esc(x.help) + '</div>' : '') + inp + '<div class="er" id="e-' + esc(x.id) + '"></div></div>';
+      }).join('') + '<div class="hp-f" aria-hidden="true"><input id="hpf" tabindex="-1" autocomplete="off"></div>';
+    SV.info.forEach(function (x) { var el = $('f-' + x.id); el.oninput = el.onchange = function () { S.info[x.id] = el.value; $('e-' + x.id).textContent = ''; save(); }; });
+    foot(true, 'Tiếp tục');
+  }
+  function phoneOk(v) { var d = String(v || '').replace(/[\s.\-()]/g, ''); if (/^\+?84\d{9}$/.test(d)) d = '0' + d.replace(/^\+?84/, ''); return /^0\d{9}$/.test(d) || /^\+\d{8,15}$/.test(d); }
+
+  /* ---------- theo dõi page Facebook ---------- */
+  function fbHref() {
+    var u = SV.page.url, ua = navigator.userAgent || '';
+    if (/Android/i.test(ua) && /Zalo|Line\/|Instagram|TikTok|; wv\)/i.test(ua) && !/FBAN|FBAV/.test(ua))  // trình duyệt trong app (Zalo…) trên Android ⇒ mở thẳng app Facebook
+      return 'intent://' + u.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.facebook.katana;S.browser_fallback_url=' + encodeURIComponent(u) + ';end';
+    return u;
+  }
+  function follow(m) {
+    var p = SV.page, f = S.follow;
+    if (f.st === 'opened' || f.st === 'before') {
+      m.innerHTML = '<p class="eyebrow">Bước 3</p><h1>Đã theo dõi page ' + esc(p.name) + '</h1><div class="page"><div class="ic">' + FB_SVG + '</div><div><div class="nm">' + esc(p.name) + '</div><div class="ln">' + esc(p.line) + '</div></div></div>' +
+        '<p>Cảm ơn Quý bác sĩ. Mời Quý bác sĩ tiếp tục phần câu hỏi.</p><p><button class="link" id="f-re" type="button">Mở lại page ' + esc(p.name) + '</button></p>';
+      $('f-re').onclick = openFb;
+      foot(true, 'Tiếp tục'); return;
+    }
+    if (f.st === 'wait') {  // đã bấm mở Facebook, quay lại quá nhanh (Facebook chưa mở được)
+      m.innerHTML = '<p class="eyebrow">Bước 3</p><h1>Quý bác sĩ đã theo dõi page ' + esc(p.name) + ' chưa?</h1>' + pageCard(p) +
+        '<p><button class="btn" id="f-yes" type="button" style="width:100%">Đã theo dõi — tiếp tục khảo sát</button></p>' +
+        '<p><a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Mở lại Facebook</a></p>' +
+        '<p class="small">Không mở được Facebook trên máy này? Tìm "' + esc(p.name) + '" trong ứng dụng Facebook, bấm Theo dõi rồi quay lại trang này.</p>';
+      $('f-yes').onclick = function () { S.follow.st = 'opened'; save(); go(firstSec()); };
+      $('f-open').onclick = function () { mark(); };
+      foot(false); return;
+    }
+    m.innerHTML = '<p class="eyebrow">Bước 3</p><h1>Theo dõi page ' + esc(p.name) + '</h1>' +
+      '<p>Để nhận thông tin sản phẩm, hội thảo và tài liệu chuyên môn từ MANI, Quý bác sĩ vui lòng theo dõi page <b>' + esc(p.name) + '</b> trên Facebook trước khi trả lời khảo sát.</p>' + pageCard(p) +
+      '<ol class="steps"><li>Bấm nút bên dưới, Facebook mở page ' + esc(p.name) + '.</li><li>Bấm <b>Theo dõi</b> (Follow) trên page.</li><li>Quay lại trang này, khảo sát tự chuyển sang phần câu hỏi.</li></ol>' +
+      '<a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Mở Facebook và theo dõi page</a>' +
+      '<div class="back"><button class="link" id="f-before" type="button">Tôi đã theo dõi page ' + esc(p.name) + ' từ trước</button></div>' +
+      (SV.followRequired ? '' : '<div class="back"><button class="link" id="f-skip" type="button">Bỏ qua bước này</button></div>');
+    $('f-open').onclick = function () { mark(); };
+    $('f-before').onclick = function () { S.follow.st = 'before'; S.follow.at = Date.now(); save(); go(firstSec()); };
+    if ($('f-skip')) $('f-skip').onclick = function () { go(firstSec()); };
+    foot(true, 'Tiếp tục'); $('nx').classList.add('hide');
+  }
+  function pageCard(p) { return '<div class="page"><div class="ic">' + FB_SVG + '</div><div><div class="nm">' + esc(p.name) + '</div><div class="ln">' + esc(p.line) + '</div></div></div>'; }
+  function openFb() { mark(); window.open(fbHref(), '_blank', 'noopener'); }
+  function mark() { S.follow.clicked = Date.now(); S.follow.back = 0; save(); }
+  function firstSec() { return 's0'; }
+  /* quay lại từ Facebook: ẩn ≥ 3 giây ⇒ coi như đã theo dõi, tự sang phần câu hỏi; quay lại ngay ⇒ hỏi lại */
+  var hiddenAt = 0;
+  function onBack() {
+    if (!S || S.step !== 'follow' || !S.follow.clicked || S.follow.st === 'opened' || S.follow.st === 'before') return;
+    var away = hiddenAt ? Date.now() - hiddenAt : Date.now() - S.follow.clicked;
+    if (away >= 3000) { S.follow.st = 'opened'; S.follow.at = Date.now(); save(); welcomeBack(); }
+    else if (Date.now() - S.follow.clicked > 1500) { S.follow.st = 'wait'; save(); render(); }
+  }
+  function welcomeBack() {
+    var m = $('main'), p = SV.page;
+    m.innerHTML = '<div class="ok"><div class="mk">' + OK_SVG + '</div><h1>Cảm ơn Quý bác sĩ đã theo dõi page ' + esc(p.name) + '</h1><p class="sub">Đang chuyển sang phần câu hỏi…</p></div>';
+    foot(false); setProg();
+    setTimeout(function () { if (S.step === 'follow') go(firstSec()); }, 1400);
+  }
+  document.addEventListener('visibilitychange', function () { if (document.hidden) hiddenAt = Date.now(); else { onBack(); hiddenAt = 0; } });
+  window.addEventListener('blur', function () { if (!hiddenAt) hiddenAt = Date.now(); });
+  window.addEventListener('focus', function () { if (hiddenAt) { onBack(); hiddenAt = 0; } });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) onBack(); });
+
+  /* ---------- câu hỏi ---------- */
+  function qNum() { var n = {}, k = 0; SV.sections.forEach(function (s) { s.questions.forEach(function (q) { if (q.t !== 'header') n[q.id] = ++k; }); }); return n; }
+  var NUM = null;
+  function section(m, si) {
+    var s = SV.sections[si], ps = pathSecs(), pos = ps.indexOf(si);
+    NUM = NUM || qNum();
+    m.innerHTML = '<p class="eyebrow">Phần ' + (pos < 0 ? si + 1 : pos + 1) + '</p>' + (s.title ? '<h1>' + esc(s.title) + '</h1>' : '') + (s.help ? '<p class="sub" style="white-space:pre-line">' + esc(s.help) + '</p>' : '') +
+      s.questions.map(qHtml).join('');
+    s.questions.forEach(wire);
+    var last = nextOf(si) === 'submit';
+    foot(true, last ? 'Gửi khảo sát' : 'Tiếp tục');
+  }
+  function qHtml(q) {
+    if (q.t === 'header') return '<div class="hd"><h2>' + esc(q.q) + '</h2>' + (q.help ? '<p class="hp">' + esc(q.help) + '</p>' : '') + '</div>';
+    var v = S.A[q.id], h = '<div class="q" id="q-' + esc(q.id) + '"><div class="n">Câu ' + NUM[q.id] + '</div><p class="t">' + esc(q.q) + (q.required ? ' <i>*</i>' : '') + '</p>' +
+      (q.help ? '<p class="hp">' + esc(q.help) + '</p>' : '') + (q.t === 'checkbox' && q.max ? '<p class="hp">Chọn tối đa ' + q.max + ' ý.</p>' : '');
+    if (q.t === 'radio' || q.t === 'checkbox' || q.t === 'list') {
+      var multi = q.t === 'checkbox', arr = multi ? (v || []) : [v], oth = othVal(q, v);
+      h += q.options.map(function (o, i) {
+        var on = arr.indexOf(o.v) >= 0;
+        return '<label class="opt' + (on ? ' on' : '') + '"><input type="' + (multi ? 'checkbox' : 'radio') + '" name="r-' + esc(q.id) + '" data-i="' + i + '"' + (on ? ' checked' : '') + '><span class="ot">' + esc(o.v) + '</span></label>';
+      }).join('');
+      if (q.other) h += '<label class="opt' + (oth != null ? ' on' : '') + '"><input type="' + (multi ? 'checkbox' : 'radio') + '" name="r-' + esc(q.id) + '" data-i="o"' + (oth != null ? ' checked' : '') + '><span class="ot">Khác<input type="text" data-oth="1" value="' + esc(oth || '') + '" placeholder="Ghi rõ"></span></label>';
+    } else if (q.t === 'scale') {
+      h += '<div class="scale">'; for (var k = q.low; k <= q.high; k++) h += '<button type="button" data-k="' + k + '" class="' + (String(v) === String(k) ? 'on' : '') + '">' + k + '</button>'; h += '</div>';
+      if (q.lowLabel || q.highLabel) h += '<div class="scl"><span>' + esc(q.lowLabel) + '</span><span>' + esc(q.highLabel) + '</span></div>';
+    } else if (q.t === 'grid' || q.t === 'checkgrid') {
+      var g = v || {};
+      h += q.rows.map(function (r, ri) {
+        var cur = g[ri] == null ? [] : [].concat(g[ri]);
+        return '<div class="grow"><div class="rl">' + esc(r) + '</div><div class="chips">' + q.cols.map(function (c) { return '<button type="button" class="chip' + (cur.indexOf(c) >= 0 ? ' on' : '') + '" data-r="' + ri + '" data-c="' + esc(c) + '">' + esc(c) + '</button>'; }).join('') + '</div></div>';
+      }).join('');
+    } else if (q.t === 'paragraph') h += '<textarea data-t="1">' + esc(v || '') + '</textarea>';
+    else h += '<input type="' + (q.t === 'phone' ? 'tel' : 'text') + '" data-t="1" value="' + esc(v || '') + '"' + (q.t === 'phone' ? ' inputmode="tel"' : '') + '>';
+    return h + '<div class="er">Vui lòng trả lời câu này.</div></div>';
+  }
+  function othVal(q, v) {
+    if (!q.other) return null; var vals = q.options.map(function (o) { return o.v; });
+    var arr = q.t === 'checkbox' ? (v || []) : v == null ? [] : [v];
+    for (var i = 0; i < arr.length; i++) if (vals.indexOf(arr[i]) < 0) return String(arr[i]).replace(/^Khác:\s*/, '');
+    return null;
+  }
+  function wire(q) {
+    if (q.t === 'header') return;
+    var box = $('q-' + q.id); if (!box) return;
+    var clear = function () { box.classList.remove('miss'); $('msg').textContent = ''; };
+    if (q.t === 'radio' || q.t === 'list' || q.t === 'checkbox') {
+      var multi = q.t === 'checkbox', ins = box.querySelectorAll('input[data-i]'), ot = box.querySelector('[data-oth]');
+      var collect = function () {
+        var out = [];
+        ins.forEach(function (x) { x.closest('.opt').classList.toggle('on', x.checked); if (!x.checked) return; if (x.dataset.i === 'o') out.push('Khác: ' + (ot.value.trim())); else out.push(q.options[+x.dataset.i].v); });
+        if (multi && q.max && out.length > q.max) return false;
+        S.A[q.id] = multi ? out : (out[0] == null ? null : out[0]); save(); clear();
+        var st = S.step; if (/^s\d+$/.test(st)) { var last = nextOf(+st.slice(1)) === 'submit'; $('nx').textContent = last ? 'Gửi khảo sát' : 'Tiếp tục'; setProg(); }
+        return true;
+      };
+      ins.forEach(function (x) { x.onchange = function () { if (collect() === false) { x.checked = false; collect(); $('msg').textContent = 'Chọn tối đa ' + q.max + ' ý.'; } if (x.dataset.i === 'o' && x.checked) ot.focus(); }; });
+      if (ot) { ot.oninput = function () { var r = box.querySelector('input[data-i="o"]'); if (!r.checked && ot.value) { r.checked = true; if (!multi) ins.forEach(function (x) { if (x !== r) x.checked = false; }); } collect(); }; ot.onclick = function (e) { e.stopPropagation(); }; }
+    } else if (q.t === 'scale') {
+      box.querySelectorAll('[data-k]').forEach(function (b) { b.onclick = function () { S.A[q.id] = +b.dataset.k; save(); clear(); box.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('on', x === b); }); }; });
+    } else if (q.t === 'grid' || q.t === 'checkgrid') {
+      box.querySelectorAll('.chip').forEach(function (b) { b.onclick = function () {
+        var g = S.A[q.id] || {}, r = b.dataset.r, c = b.dataset.c;
+        if (q.t === 'grid') g[r] = g[r] === c ? null : c;
+        else { var a = [].concat(g[r] || []), k = a.indexOf(c); if (k >= 0) a.splice(k, 1); else a.push(c); g[r] = a.length ? a : null; }
+        S.A[q.id] = g; save(); clear();
+        box.querySelectorAll('.chip[data-r="' + r + '"]').forEach(function (x) { var cur = g[r] == null ? [] : [].concat(g[r]); x.classList.toggle('on', cur.indexOf(x.dataset.c) >= 0); });
+      }; });
+    } else {
+      var t = box.querySelector('[data-t]'); t.oninput = function () { S.A[q.id] = t.value; save(); clear(); };
+    }
+  }
+  function answered(q) {
+    var v = S.A[q.id];
+    if (q.t === 'grid' || q.t === 'checkgrid') { if (!v) return false; for (var i = 0; i < q.rows.length; i++) if (v[i] == null || (Array.isArray(v[i]) && !v[i].length)) return false; return true; }
+    if (q.t === 'checkbox') return !!(v && v.length) && v.every(function (x) { return x !== 'Khác: '; });
+    if (q.t === 'phone') return phoneOk(v);
+    return v != null && String(v).trim() !== '' && v !== 'Khác: ';
+  }
+  function partial(q) { var v = S.A[q.id]; return v != null && v !== '' && !(Array.isArray(v) && !v.length); }
+
+  /* ---------- nút Tiếp tục ---------- */
+  function next() {
+    var st = S.step, msg = $('msg');
+    if (st === 'cover') return go('consent');
+    if (st === 'consent') { if (!S.consent.agree) { $('c-ag').classList.add('miss'); msg.textContent = 'Vui lòng xác nhận đồng ý để tiếp tục.'; return; } return go('info'); }
+    if (st === 'info') {
+      var bad = null;
+      if ($('hpf') && $('hpf').value) S.hp = $('hpf').value;
+      SV.info.forEach(function (x) {
+        var v = String(S.info[x.id] || '').trim(), e = '';
+        if (x.required && !v) e = 'Vui lòng điền ' + x.q.toLowerCase().replace(/\s*\(.*\)$/, '') + '.';
+        else if (v && x.t === 'phone' && !phoneOk(v)) e = 'Số điện thoại chưa đúng (10 số, bắt đầu bằng 0).';
+        $('e-' + x.id).textContent = e; if (e && !bad) bad = x;
+      });
+      if (bad) { $('f-' + bad.id).focus(); msg.textContent = 'Vui lòng kiểm tra lại thông tin.'; return; }
+      return go(SV.page ? 'follow' : firstSec());
+    }
+    if (st === 'follow') { if (S.follow.st === 'opened' || S.follow.st === 'before' || !SV.followRequired) return go(firstSec()); msg.textContent = 'Vui lòng theo dõi page trước khi tiếp tục.'; return; }
+    if (/^s\d+$/.test(st)) {
+      var si = +st.slice(1), miss = null;
+      SV.sections[si].questions.forEach(function (q) {
+        if (q.t === 'header') return;
+        var ok = q.required ? answered(q) : (!partial(q) || q.t !== 'phone' || phoneOk(S.A[q.id]));
+        var box = $('q-' + q.id); if (box) box.classList.toggle('miss', !ok);
+        if (!ok && !miss) miss = box;
+      });
+      if (miss) { msg.textContent = 'Còn câu chưa trả lời.'; miss.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+      var nx = nextOf(si);
+      if (nx === 'submit') return submit();
+      return go(nx);
+    }
+  }
+
+  /* ---------- gửi ---------- */
+  function payload() {
+    var A = {};
+    pathSecs().forEach(function (k) { SV.sections[k].questions.forEach(function (q) { if (q.t !== 'header' && S.A[q.id] != null) A[q.id] = S.A[q.id]; }); });
+    return { action: 'nsSubmit', s: CODE, token: TOKEN, info: S.info, consent: S.consent, follow: { st: S.follow.st, at: S.follow.at }, answers: A, hp: S.hp || '', ua: navigator.userAgent.slice(0, 160) };
+  }
+  function post(body) {
+    return fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.text(); }).then(function (t) { try { return JSON.parse(t); } catch (e) { throw new Error('net'); } });
+  }
+  function submit(tries) {
+    if (SENDING) return; SENDING = true; tries = tries || 0;
+    $('nx').disabled = true; $('nx').textContent = 'Đang gửi…'; $('msg').textContent = '';
+    var p = DEMO ? new Promise(function (ok) { setTimeout(function () { ok({ ok: true, rid: 'DEMO' }); }, 700); }) : post(payload());
+    p.then(function (r) {
+      SENDING = false;
+      if (r.ok) return finish(r.rid);
+      if (r.code === 'TOKEN' && tries < 1) return meta().then(function () { submit(tries + 1); });
+      if (r.code === 'DUP') { finish('', r.error); return; }
+      $('nx').disabled = false; $('nx').textContent = 'Gửi khảo sát'; $('msg').textContent = r.error || 'Chưa gửi được.';
+      if (r.code === 'REQ') {
+        if (r.step === 'consent') go('consent'); else if (r.step === 'info') go('info'); else if (r.step === 'follow') go('follow');
+        else if (r.qid) { var b = $('q-' + r.qid); if (b) { b.classList.add('miss'); b.scrollIntoView({ block: 'start' }); } }
+        $('msg').textContent = r.error;
+      }
+    }).catch(function () {
+      SENDING = false;
+      if (tries < 2) return setTimeout(function () { submit(tries + 1); }, 1500 * (tries + 1));
+      $('nx').disabled = false; $('nx').textContent = 'Gửi lại'; $('msg').textContent = 'Mạng chậm, chưa gửi được. Câu trả lời vẫn được lưu trên máy — bấm Gửi lại.';
+    });
+  }
+  function finish(rid, note) {
+    try { localStorage.setItem(KEY + ':done', JSON.stringify({ rid: rid, at: Date.now(), note: note || '' })); localStorage.removeItem(KEY); } catch (e) {}
+    S = fresh(); S.step = 'done'; render(); window.scrollTo(0, 0);
+  }
+  function done(m) {
+    var d = doneInfo() || {}, p = SV.page;
+    m.innerHTML = '<div class="ok"><div class="mk">' + OK_SVG + '</div><h1>Cảm ơn Quý bác sĩ</h1>' +
+      '<p>' + esc(d.note || SV.confirmation || 'Câu trả lời của Quý bác sĩ đã được ghi nhận. Mani Medical Hanoi trân trọng những ý kiến đóng góp của Quý bác sĩ.') + '</p>' +
+      (p ? '<p class="small">Thông tin sản phẩm và hội thảo mới được cập nhật trên page <a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.name) + '</a>.</p>' : '') +
+      '<div class="back" style="margin-top:28px"><button class="link" id="again" type="button">Một bác sĩ khác trả lời trên máy này</button></div></div>';
+    $('again').onclick = function () { try { localStorage.removeItem(KEY + ':done'); } catch (e) {} S = fresh(); save(); NUM = null; render(); };
+    foot(false);
+  }
+
+  /* ---------- tải khảo sát ---------- */
+  function meta() {
+    if (DEMO) return Promise.resolve(demo(DEMO));
+    return fetch(API + '?action=nsMeta&s=' + encodeURIComponent(CODE), { credentials: 'omit', redirect: 'follow' })
+      .then(function (r) { return r.text(); }).then(function (t) { var r = JSON.parse(t); if (!r.ok) throw new Error(r.error || 'Không mở được khảo sát.'); TOKEN = r.token; return r.survey; });
+  }
+  function fail(t) { $('main').innerHTML = '<div class="ok"><h1>Không mở được khảo sát</h1><p>' + esc(t) + '</p><p><button class="btn sec" type="button" onclick="location.reload()">Thử lại</button></p></div>'; }
+  $('nx').onclick = next; $('bk').onclick = back;
+  if (!CODE && !DEMO) { fail('Link khảo sát chưa đúng. Vui lòng mở lại link được gửi.'); return; }
+  (function boot(n) {
+    meta().then(function (sv) {
+      SV = sv; document.title = sv.title + ' · Mani Medical Hanoi';
+      S = load();
+      if (doneInfo() && S.step === 'cover') S.step = 'done';
+      if (S.step === 'follow' && S.follow.clicked && !S.follow.st) { S.follow.st = 'opened'; S.follow.at = Date.now(); }  // trang được tải lại sau khi mở Facebook
+      render();
+    }).catch(function (e) { if (n < 2) return setTimeout(function () { boot(n + 1); }, 1200); fail(e.message === 'Failed to fetch' ? 'Mạng chậm hoặc mất kết nối. Vui lòng thử lại.' : e.message); });
+  })(0);
+
+  /* ---------- bản xem thử (không cần máy chủ) ---------- */
+  function demo(k) {
+    var dent = k !== 'ophthalmic';
+    var pages = { dental: { key: 'dental', name: 'MANI Dental', url: 'https://www.facebook.com/share/1GQTtanSu9/', line: 'Cập nhật thông tin sản phẩm, hội thảo và kiến thức nha khoa' },
+      ophthalmic: { key: 'ophthalmic', name: 'MANI Ophthalmic', url: 'https://www.facebook.com/share/1KCCXDVW8x/', line: 'Cập nhật thông tin sản phẩm, hội thảo và kỹ thuật phẫu thuật nhãn khoa' } };
+    return { s: 'demo', title: dent ? 'Khảo sát thói quen sử dụng trâm nội nha' : 'Khảo sát dụng cụ phẫu thuật glôcôm', grp: dent ? 'Dental' : 'Surgical', open: true, minutes: 4, nq: 6,
+      intro: 'Kính gửi Quý bác sĩ,\nMani Medical Hanoi trân trọng mời Quý bác sĩ dành ít phút chia sẻ kinh nghiệm thực tế. Ý kiến của Quý bác sĩ giúp chúng tôi hỗ trợ tốt hơn trong đào tạo và cung cấp sản phẩm.',
+      event: { name: dent ? 'Hội thảo nội nha Hà Nội' : 'Hội nghị Nhãn khoa', date: '2026-11-28' }, page: pages[dent ? 'dental' : 'ophthalmic'], followRequired: true,
+      consent: { title: 'QUYỀN RIÊNG TƯ VÀ BẢO VỆ DỮ LIỆU CÁ NHÂN', text: 'Công ty TNHH Mani Medical Hà Nội (MMH) thu thập họ tên, số điện thoại và nơi công tác của Quý bác sĩ để tổng hợp kết quả khảo sát và liên hệ lại khi cần. Thông tin được bảo mật, chỉ dùng trong MMH và xử lý theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15, Nghị định 356/2025/NĐ-CP.\nQuý bác sĩ có thể xem, chỉnh sửa, yêu cầu xoá dữ liệu hoặc rút lại sự đồng ý bất kỳ lúc nào qua hotline 0965 629 853.',
+        agree: { q: 'Xác nhận đồng ý xử lý dữ liệu cá nhân', v: 'Tôi đã đọc và đồng ý cho MMH xử lý dữ liệu cá nhân cho các mục đích nêu trên.' },
+        optional: [{ q: 'Nhận thông tin từ MMH (không bắt buộc)', v: 'Tôi đồng ý nhận thông tin về sản phẩm, đào tạo và sự kiện từ MMH.' }] },
+      info: [{ id: 'name', q: 'Họ và tên', t: 'text', required: true, options: [] }, { id: 'phone', q: 'Số điện thoại', t: 'phone', required: true, options: [] }, { id: 'work', q: 'Nơi công tác (bệnh viện / phòng khám)', t: 'text', required: true, options: [] }],
+      sections: [
+        { id: 's1', title: 'Thực hành hiện tại', help: '', go: '', questions: [
+          { id: 'q1', t: 'radio', q: dent ? 'Quý bác sĩ điều trị nội nha bao nhiêu ca mỗi tháng?' : 'Quý bác sĩ phẫu thuật glôcôm bao nhiêu ca mỗi tháng?', required: true, options: [{ v: 'Dưới 10 ca', go: '' }, { v: '10–30 ca', go: '' }, { v: 'Trên 30 ca', go: '' }, { v: 'Hiện không thực hiện', go: 'submit' }] },
+          { id: 'q2', t: 'checkbox', q: dent ? 'Quý bác sĩ đang dùng loại trâm nào?' : 'Quý bác sĩ đang dùng kỹ thuật nào?', required: true, max: 3, other: true, options: (dent ? ['Trâm tay thép không gỉ', 'Trâm máy NiTi xoay liên tục', 'Trâm máy NiTi chuyển động qua lại'] : ['Cắt bè củng giác mạc', 'Mở vùng bè', 'Đặt van dẫn lưu']).map(function (v) { return { v: v, go: '' }; }) } ] },
+        { id: 's2', title: 'Đánh giá và nhu cầu', help: '', go: '', questions: [
+          { id: 'q3', t: 'scale', q: 'Mức độ hài lòng với dụng cụ hiện tại', required: true, low: 1, high: 5, lowLabel: 'Rất không hài lòng', highLabel: 'Rất hài lòng' },
+          { id: 'q4', t: 'grid', q: 'Mức độ quan trọng của từng tiêu chí khi chọn dụng cụ', required: true, rows: ['Độ bền', 'Độ sắc / hiệu quả cắt', 'Giá thành'], cols: ['Thấp', 'Trung bình', 'Cao'] },
+          { id: 'q5', t: 'radio', q: 'Quý bác sĩ có muốn tham gia buổi đào tạo thực hành của MANI?', required: true, options: [{ v: 'Có', go: '' }, { v: 'Không', go: '' }] },
+          { id: 'q6', t: 'paragraph', q: 'Góp ý khác của Quý bác sĩ', required: false } ] }
+      ] };
+  }
+})();
+</script>
 </body>
 </html>
