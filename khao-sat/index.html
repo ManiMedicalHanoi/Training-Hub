@@ -150,7 +150,7 @@
     while (st !== 'submit' && g++ < 200) { var k = +st.slice(1); if (out.indexOf(k) >= 0) break; out.push(k); st = nextOf(k); }
     return out;
   }
-  function stepsAll() { var a = ['cover', 'info']; if (SV.page) a.push('follow'); return a.concat(pathSecs().map(function (k) { return 's' + k; })); }
+  function stepsAll() { var a = ['cover', 'info']; return a.concat(pathSecs().map(function (k) { return 's' + k; })); }
   function go(step, push) {
     if (push !== false && S.step !== step) S.hist.push(S.step);
     S.step = step; save(); render(); window.scrollTo(0, 0);
@@ -176,7 +176,7 @@
     if (st === 'cover') return cover(m);
     if (st === 'consent') { S.step = 'cover'; return cover(m); }
     if (st === 'info') return info(m);
-    if (st === 'follow') return follow(m);
+    if (st === 'follow') { S.step = 's0'; return render(); }   // bước theo dõi page nay ở trang cảm ơn (người dùng yêu cầu 18/11/2026)
     if (st === 'done') return done(m);
     if (/^s\d+$/.test(st)) return section(m, +st.slice(1));
     S.step = 'cover'; render();
@@ -224,51 +224,27 @@
       return 'intent://' + u.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.facebook.katana;S.browser_fallback_url=' + encodeURIComponent(u) + ';end';
     return u;
   }
-  function follow(m) {
-    var p = SV.page, f = S.follow;
-    if (f.st === 'opened' || f.st === 'before') {
-      m.innerHTML = '<p class="eyebrow">Theo dõi page</p><h1>Đã theo dõi page ' + esc(p.name) + '</h1><div class="page"><div class="ic">' + FB_SVG + '</div><div><div class="nm">' + esc(p.name) + '</div><div class="ln">' + esc(p.line) + '</div></div></div>' +
-        '<p>Cảm ơn Quý bác sĩ. Mời Quý bác sĩ tiếp tục phần câu hỏi.</p><p><button class="link" id="f-re" type="button">Mở lại page ' + esc(p.name) + '</button></p>';
-      $('f-re').onclick = openFb;
-      foot(true, 'Tiếp tục'); return;
-    }
-    if (f.st === 'wait') {  // đã bấm mở Facebook, quay lại quá nhanh (Facebook chưa mở được)
-      m.innerHTML = '<p class="eyebrow">Theo dõi page</p><h1>Quý bác sĩ đã theo dõi page ' + esc(p.name) + ' chưa?</h1>' + pageCard(p) +
-        '<p><button class="btn" id="f-yes" type="button" style="width:100%">Đã theo dõi — tiếp tục khảo sát</button></p>' +
-        '<p><a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Mở lại Facebook</a></p>' +
-        '<p class="small">Không mở được Facebook trên máy này? Tìm "' + esc(p.name) + '" trong ứng dụng Facebook, bấm Theo dõi rồi quay lại trang này.</p>';
-      $('f-yes').onclick = function () { S.follow.st = 'opened'; save(); go(firstSec()); };
-      $('f-open').onclick = function () { mark(); };
-      foot(false); return;
-    }
-    m.innerHTML = '<p class="eyebrow">Theo dõi page</p><h1>Theo dõi page ' + esc(p.name) + '</h1>' +
-      '<p class="sub" style="margin-bottom:14px">' + esc(p.line) + '. Quý bác sĩ vui lòng bấm <b>Theo dõi</b> trên page rồi quay lại trang này.</p>' +
-      '<a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Mở page ' + esc(p.name) + '</a>' +
-      '<div class="back"><button class="link" id="f-before" type="button">Tôi đã theo dõi page từ trước</button></div>' +
-      (SV.followRequired ? '' : '<div class="back"><button class="link" id="f-skip" type="button">Bỏ qua bước này</button></div>') +
-      '<p class="small" style="text-align:center;margin-top:18px">Quay lại trang này sau khi theo dõi, khảo sát tự chuyển sang phần câu hỏi.</p>';
-    $('f-open').onclick = function () { mark(); };
-    $('f-before').onclick = function () { S.follow.st = 'before'; S.follow.at = Date.now(); save(); go(firstSec()); };
-    if ($('f-skip')) $('f-skip').onclick = function () { go(firstSec()); };
-    foot(true, 'Tiếp tục'); $('nx').classList.add('hide');
-  }
   function pageCard(p) { return '<div class="page"><div class="ic">' + FB_SVG + '</div><div><div class="nm">' + esc(p.name) + '</div><div class="ln">' + esc(p.line) + '</div></div></div>'; }
-  function openFb() { mark(); window.open(fbHref(), '_blank', 'noopener'); }
-  function mark() { S.follow.clicked = Date.now(); S.follow.back = 0; save(); }
   function firstSec() { return 's0'; }
-  /* quay lại từ Facebook: ẩn ≥ 3 giây ⇒ coi như đã theo dõi, tự sang phần câu hỏi; quay lại ngay ⇒ hỏi lại */
+  /* ---------- theo dõi page ở trang cảm ơn: bấm mở Facebook ⇒ quay lại (ẩn ≥ 3 giây) ⇒ ghi nhận đã theo dõi (nsFollow) ---------- */
+  function saveDone(d) { try { localStorage.setItem(KEY + ':done', JSON.stringify(d)); } catch (e) {} }
+  function fol() { var d = doneInfo() || {}; d.fol = d.fol || {}; return d; }
+  function folMark(st) {
+    var d = fol(); d.fol.st = st; d.fol.at = Date.now(); saveDone(d); render();
+    if (DEMO || !d.rid) return;
+    (function send(n) {
+      post({ action: 'nsFollow', s: CODE, token: TOKEN, rid: d.rid, st: st, at: d.fol.at }).then(function (r) {
+        if (r && r.ok) { var d2 = fol(); d2.fol.sent = 1; saveDone(d2); }
+        else if (r && r.code === 'TOKEN' && n < 1) meta().then(function () { send(n + 1); });
+      }).catch(function () { if (n < 3) setTimeout(function () { send(n + 1); }, 2000 * (n + 1)); });
+    })(0);
+  }
   var hiddenAt = 0;
   function onBack() {
-    if (!S || S.step !== 'follow' || !S.follow.clicked || S.follow.st === 'opened' || S.follow.st === 'before') return;
-    var away = hiddenAt ? Date.now() - hiddenAt : Date.now() - S.follow.clicked;
-    if (away >= 3000) { S.follow.st = 'opened'; S.follow.at = Date.now(); save(); welcomeBack(); }
-    else if (Date.now() - S.follow.clicked > 1500) { S.follow.st = 'wait'; save(); render(); }
-  }
-  function welcomeBack() {
-    var m = $('main'), p = SV.page;
-    m.innerHTML = '<div class="ok"><div class="mk">' + OK_SVG + '</div><h1>Cảm ơn Quý bác sĩ đã theo dõi page ' + esc(p.name) + '</h1><p class="sub">Đang chuyển sang phần câu hỏi…</p></div>';
-    foot(false); setProg();
-    setTimeout(function () { if (S.step === 'follow') go(firstSec()); }, 1400);
+    if (!S || S.step !== 'done') return;
+    var d = fol(); if (!d.fol.clicked || d.fol.st) return;
+    var away = hiddenAt ? Date.now() - hiddenAt : Date.now() - d.fol.clicked;
+    if (away >= 3000) folMark('opened');
   }
   document.addEventListener('visibilitychange', function () { if (document.hidden) hiddenAt = Date.now(); else { onBack(); hiddenAt = 0; } });
   window.addEventListener('blur', function () { if (!hiddenAt) hiddenAt = Date.now(); });
@@ -391,9 +367,9 @@
         $('e-' + x.id).textContent = e; if (e && !bad) bad = x;
       });
       if (bad) { $('f-' + bad.id).focus(); msg.textContent = 'Vui lòng kiểm tra lại thông tin.'; return; }
-      return go(SV.page ? 'follow' : firstSec());
+      return go(firstSec());
     }
-    if (st === 'follow') { if (S.follow.st === 'opened' || S.follow.st === 'before' || !SV.followRequired) return go(firstSec()); msg.textContent = 'Vui lòng theo dõi page trước khi tiếp tục.'; return; }
+    if (st === 'follow') return go(firstSec());
     if (/^s\d+$/.test(st)) {
       var si = +st.slice(1), miss = null;
       SV.sections[si].questions.forEach(function (q) {
@@ -413,7 +389,7 @@
   function payload() {
     var A = {};
     pathSecs().forEach(function (k) { SV.sections[k].questions.forEach(function (q) { if (q.t !== 'header' && S.A[q.id] != null) A[q.id] = S.A[q.id]; }); });
-    return { action: 'nsSubmit', s: CODE, token: TOKEN, info: S.info, consent: S.consent, follow: { st: S.follow.st, at: S.follow.at }, answers: A, hp: S.hp || '', ua: navigator.userAgent.slice(0, 160) };
+    return { action: 'nsSubmit', s: CODE, token: TOKEN, info: S.info, consent: S.consent, answers: A, hp: S.hp || '', ua: navigator.userAgent.slice(0, 160) };
   }
   function post(body) {
     return fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
@@ -430,7 +406,7 @@
       if (r.code === 'DUP') { finish('', r.error); return; }
       $('nx').disabled = false; $('nx').textContent = 'Gửi khảo sát'; $('msg').textContent = r.error || 'Chưa gửi được.';
       if (r.code === 'REQ') {
-        if (r.step === 'consent') go('cover'); else if (r.step === 'info') go('info'); else if (r.step === 'follow') go('follow');
+        if (r.step === 'consent') go('cover'); else if (r.step === 'info') go('info'); 
         else if (r.qid) { var b = $('q-' + r.qid); if (b) { b.classList.add('miss'); b.scrollIntoView({ block: 'start' }); } }
         $('msg').textContent = r.error;
       }
@@ -445,12 +421,22 @@
     S = fresh(); S.step = 'done'; render(); window.scrollTo(0, 0);
   }
   function done(m) {
-    var d = doneInfo() || {}, p = SV.page;
-    m.innerHTML = '<div class="ok"><div class="mk">' + OK_SVG + '</div><h1>Cảm ơn Quý bác sĩ</h1>' +
-      '<p>' + esc(d.note || SV.confirmation || 'Câu trả lời của Quý bác sĩ đã được ghi nhận. Mani Medical Hanoi trân trọng những ý kiến đóng góp của Quý bác sĩ.') + '</p>' +
-      (p ? '<p class="small">Thông tin sản phẩm và hội thảo mới được cập nhật trên page <a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.name) + '</a>.</p>' : '') +
-      '<div class="back" style="margin-top:28px"><button class="link" id="again" type="button">Một bác sĩ khác trả lời trên máy này</button></div></div>';
-    $('again').onclick = function () { try { localStorage.removeItem(KEY + ':done'); } catch (e) {} S = fresh(); save(); NUM = null; render(); };
+    var d = doneInfo() || {}, p = SV.page, f = d.fol || {};
+    var h = '<div class="ok"><div class="mk">' + OK_SVG + '</div><h1>Cảm ơn Quý bác sĩ đã dành thời gian tham gia khảo sát</h1>' +
+      (d.note ? '<p>' + esc(d.note) + '</p>' : SV.confirmation ? '<p>' + esc(SV.confirmation) + '</p>' : '') + '</div>';
+    if (p) {
+      if (f.st) h += '<div class="box" style="text-align:center"><p style="margin:0"><b>Cảm ơn Quý bác sĩ đã theo dõi page ' + esc(p.name) + '.</b></p></div>';
+      else h += '<div class="box"><p style="margin:0 0 12px">' + (SV.followText ? esc(SV.followText) : 'Vui lòng theo dõi page <b>' + esc(p.name) + '</b> trên Facebook' + (SV.gift !== false ? ' để nhận phần quà từ Mani Medical Hanoi.' : ' để cập nhật thông tin sản phẩm và hội thảo.')) + '</p>' +
+        '<a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Theo dõi page trên Facebook</a>' +
+        (f.clicked ? '<div class="back"><button class="btn sec" id="f-yes" type="button" style="width:100%">Tôi đã bấm Theo dõi</button></div>' : '') +
+        '<div class="back"><button class="link" id="f-before" type="button">Tôi đã theo dõi page từ trước</button></div></div>';
+    }
+    h += '<div class="back" style="margin-top:22px"><button class="link" id="again" type="button">Một bác sĩ khác trả lời trên máy này</button></div>';
+    m.innerHTML = h;
+    if ($('f-open')) $('f-open').onclick = function () { var d2 = fol(); d2.fol.clicked = Date.now(); saveDone(d2); setTimeout(function () { if (!document.hidden && !fol().fol.st) render(); }, 2500); };
+    if ($('f-yes')) $('f-yes').onclick = function () { folMark('opened'); };
+    if ($('f-before')) $('f-before').onclick = function () { folMark('before'); };
+    $('again').onclick = function () { try { localStorage.removeItem(KEY + ':done'); } catch (e) {} S = fresh(); save(); NUM = null; render(); window.scrollTo(0, 0); };
     foot(false);
   }
 
@@ -467,8 +453,8 @@
     meta().then(function (sv) {
       SV = sv; document.title = sv.title + ' · Mani Medical Hanoi';
       S = load();
-      if (doneInfo() && S.step === 'cover') S.step = 'done';
-      if (S.step === 'follow' && S.follow.clicked && !S.follow.st) { S.follow.st = 'opened'; S.follow.at = Date.now(); }  // trang được tải lại sau khi mở Facebook
+      if (doneInfo() && (S.step === 'cover' || S.step === 'done')) S.step = 'done';
+      if (S.step === 'done') { var d0 = fol(); if (d0.fol.clicked && !d0.fol.st && Date.now() - d0.fol.clicked > 3000) setTimeout(function () { folMark('opened'); }, 0); }  // trang được tải lại sau khi mở Facebook
       render();
     }).catch(function (e) { if (n < 2) return setTimeout(function () { boot(n + 1); }, 1200); fail(e.message === 'Failed to fetch' ? 'Mạng chậm hoặc mất kết nối. Vui lòng thử lại.' : e.message); });
   })(0);
