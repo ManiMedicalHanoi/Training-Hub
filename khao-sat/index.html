@@ -58,6 +58,10 @@
   .scale button { flex:1 1 0; min-width:40px; padding:11px 0; border:1px solid var(--fld); border-radius:8px; background:#fff; font:inherit; font-weight:600; color:var(--ink); cursor:pointer; }
   .scale button.on { background:var(--ink); border-color:var(--ink); color:#fff; }
   .scl { display:flex; justify-content:space-between; gap:12px; font-size:13px; color:var(--mut); margin-top:6px; }
+  .stars { display:flex; gap:4px; flex-wrap:wrap; }
+  .stars button { background:none; border:0; padding:4px; cursor:pointer; line-height:0; }
+  .stars svg path { fill:#fff; stroke:var(--fld); stroke-width:1.4; }
+  .stars button.on svg path { fill:#E8B43A; stroke:#C9962A; }
   .grow { padding:10px 0; border-top:1px solid var(--line2); }
   .grow:first-of-type { border-top:0; }
   .grow .rl { font-size:15px; margin-bottom:6px; }
@@ -113,6 +117,7 @@
   var $ = function (i) { return document.getElementById(i); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var FB_SVG = '<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg>';
+  var STAR = '<svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg>';
   var OK_SVG = '<svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#1F6B45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.2 4.2L19 7"/></svg>';
   var SV = null, TOKEN = '', KEY = 'mmh_ks_' + (CODE || 'demo-' + DEMO), S = null, SENDING = false;
 
@@ -295,7 +300,12 @@
         var cur = g[ri] == null ? [] : [].concat(g[ri]);
         return '<div class="grow"><div class="rl">' + esc(r) + '</div><div class="chips">' + q.cols.map(function (c) { return '<button type="button" class="chip' + (cur.indexOf(c) >= 0 ? ' on' : '') + '" data-r="' + ri + '" data-c="' + esc(c) + '">' + esc(c) + '</button>'; }).join('') + '</div></div>';
       }).join('');
-    } else if (q.t === 'paragraph') h += '<textarea data-t="1">' + esc(v || '') + '</textarea>';
+    } else if (q.t === 'rating') {
+      h += '<div class="stars" role="radiogroup">'; for (var r2 = 1; r2 <= q.max; r2++) h += '<button type="button" data-k="' + r2 + '" aria-label="' + r2 + ' sao" class="' + (v >= r2 ? 'on' : '') + '">' + STAR + '</button>'; h += '</div>';
+      h += '<div class="scl"><span>' + esc(q.lowLabel || '') + '</span><span>' + (v ? v + ' / ' + q.max : '') + '</span><span>' + esc(q.highLabel || '') + '</span></div>';
+    } else if (q.t === 'date') h += '<input type="date" data-t="1" value="' + esc(v || '') + '" style="max-width:220px">';
+    else if (q.t === 'number') h += '<input type="text" inputmode="decimal" data-t="1" value="' + esc(v == null ? '' : v) + '" style="max-width:220px"' + (q.unit ? ' placeholder="' + esc(q.unit) + '"' : '') + '>' + (q.min != null || q.max != null ? '<div class="small" style="margin-top:4px">' + (q.min != null && q.max != null ? 'Từ ' + q.min + ' đến ' + q.max : q.min != null ? 'Từ ' + q.min : 'Tối đa ' + q.max) + (q.unit ? ' ' + esc(q.unit) : '') + '</div>' : '');
+    else if (q.t === 'paragraph') h += '<textarea data-t="1">' + esc(v || '') + '</textarea>';
     else h += '<input type="' + (q.t === 'phone' ? 'tel' : 'text') + '" data-t="1" value="' + esc(v || '') + '"' + (q.t === 'phone' ? ' inputmode="tel"' : '') + '>';
     return h + '<div class="er">Vui lòng trả lời câu này.</div></div>';
   }
@@ -323,6 +333,8 @@
       if (ot) { ot.oninput = function () { var r = box.querySelector('input[data-i="o"]'); if (!r.checked && ot.value) { r.checked = true; if (!multi) ins.forEach(function (x) { if (x !== r) x.checked = false; }); } collect(); }; ot.onclick = function (e) { e.stopPropagation(); }; }
     } else if (q.t === 'scale') {
       box.querySelectorAll('[data-k]').forEach(function (b) { b.onclick = function () { S.A[q.id] = +b.dataset.k; save(); clear(); box.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('on', x === b); }); }; });
+    } else if (q.t === 'rating') {
+      box.querySelectorAll('[data-k]').forEach(function (b) { b.onclick = function () { var k = +b.dataset.k; S.A[q.id] = k; save(); clear(); box.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('on', +x.dataset.k <= k); }); box.querySelector('.scl span:nth-child(2)').textContent = k + ' / ' + q.max; }; });
     } else if (q.t === 'grid' || q.t === 'checkgrid') {
       box.querySelectorAll('.chip').forEach(function (b) { b.onclick = function () {
         var g = S.A[q.id] || {}, r = b.dataset.r, c = b.dataset.c;
@@ -340,8 +352,10 @@
     if (q.t === 'grid' || q.t === 'checkgrid') { if (!v) return false; for (var i = 0; i < q.rows.length; i++) if (v[i] == null || (Array.isArray(v[i]) && !v[i].length)) return false; return true; }
     if (q.t === 'checkbox') return !!(v && v.length) && v.every(function (x) { return x !== 'Khác: '; });
     if (q.t === 'phone') return phoneOk(v);
+    if (q.t === 'number') return numOk(q, v);
     return v != null && String(v).trim() !== '' && v !== 'Khác: ';
   }
+  function numOk(q, v) { if (v == null || String(v).trim() === '') return false; var n = Number(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) && (q.min == null || n >= q.min) && (q.max == null || n <= q.max); }
   function partial(q) { var v = S.A[q.id]; return v != null && v !== '' && !(Array.isArray(v) && !v.length); }
 
   /* ---------- nút Tiếp tục ---------- */
@@ -366,7 +380,7 @@
       var si = +st.slice(1), miss = null;
       SV.sections[si].questions.forEach(function (q) {
         if (q.t === 'header') return;
-        var ok = q.required ? answered(q) : (!partial(q) || q.t !== 'phone' || phoneOk(S.A[q.id]));
+        var ok = q.required ? answered(q) : (!partial(q) || (q.t === 'phone' ? phoneOk(S.A[q.id]) : q.t === 'number' ? numOk(q, S.A[q.id]) : true));
         var box = $('q-' + q.id); if (box) box.classList.toggle('miss', !ok);
         if (!ok && !miss) miss = box;
       });
@@ -446,7 +460,7 @@
     var dent = k !== 'ophthalmic';
     var pages = { dental: { key: 'dental', name: 'MANI Dental', url: 'https://www.facebook.com/share/1GQTtanSu9/', line: 'Cập nhật thông tin sản phẩm, hội thảo và kiến thức nha khoa' },
       ophthalmic: { key: 'ophthalmic', name: 'MANI Ophthalmic', url: 'https://www.facebook.com/share/1KCCXDVW8x/', line: 'Cập nhật thông tin sản phẩm, hội thảo và kỹ thuật phẫu thuật nhãn khoa' } };
-    return { s: 'demo', title: dent ? 'Khảo sát thói quen sử dụng trâm nội nha' : 'Khảo sát dụng cụ phẫu thuật glôcôm', grp: dent ? 'Dental' : 'Surgical', open: true, minutes: 4, nq: 6,
+    return { s: 'demo', title: dent ? 'Khảo sát thói quen sử dụng trâm nội nha' : 'Khảo sát dụng cụ phẫu thuật glôcôm', grp: dent ? 'Dental' : 'Surgical', open: true, minutes: 5, nq: 9,
       intro: 'Kính gửi Quý bác sĩ,\nMani Medical Hanoi trân trọng mời Quý bác sĩ dành ít phút chia sẻ kinh nghiệm thực tế. Ý kiến của Quý bác sĩ giúp chúng tôi hỗ trợ tốt hơn trong đào tạo và cung cấp sản phẩm.',
       event: { name: dent ? 'Hội thảo nội nha Hà Nội' : 'Hội nghị Nhãn khoa', date: '2026-11-28' }, page: pages[dent ? 'dental' : 'ophthalmic'], followRequired: true,
       consent: { title: 'QUYỀN RIÊNG TƯ VÀ BẢO VỆ DỮ LIỆU CÁ NHÂN', text: 'Công ty TNHH Mani Medical Hà Nội (MMH) thu thập họ tên, số điện thoại và nơi công tác của Quý bác sĩ để tổng hợp kết quả khảo sát và liên hệ lại khi cần. Thông tin được bảo mật, chỉ dùng trong MMH và xử lý theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15, Nghị định 356/2025/NĐ-CP.\nQuý bác sĩ có thể xem, chỉnh sửa, yêu cầu xoá dữ liệu hoặc rút lại sự đồng ý bất kỳ lúc nào qua hotline 0965 629 853.',
@@ -455,11 +469,15 @@
       info: [{ id: 'name', q: 'Họ và tên', t: 'text', required: true, options: [] }, { id: 'phone', q: 'Số điện thoại', t: 'phone', required: true, options: [] }, { id: 'work', q: 'Nơi công tác (bệnh viện / phòng khám)', t: 'text', required: true, options: [] }],
       sections: [
         { id: 's1', title: 'Thực hành hiện tại', help: '', go: '', questions: [
-          { id: 'q1', t: 'radio', q: dent ? 'Quý bác sĩ điều trị nội nha bao nhiêu ca mỗi tháng?' : 'Quý bác sĩ phẫu thuật glôcôm bao nhiêu ca mỗi tháng?', required: true, options: [{ v: 'Dưới 10 ca', go: '' }, { v: '10–30 ca', go: '' }, { v: 'Trên 30 ca', go: '' }, { v: 'Hiện không thực hiện', go: 'submit' }] },
+          { id: 'q1', t: 'radio', q: dent ? 'Quý bác sĩ điều trị nội nha bao nhiêu ca mỗi tháng?' : 'Quý bác sĩ phẫu thuật glôcôm bao nhiêu ca mỗi tháng?', required: true, options: [{ v: 'Dưới 10 ca', go: '' }, { v: '10–30 ca', go: '' }, { v: 'Trên 30 ca', go: '' }, { v: 'Hiện không thực hiện', go: 'submit' }] } ] },
+        { id: 's1b', title: 'Thực hành hiện tại (tiếp)', help: '', go: '', questions: [
           { id: 'q2', t: 'checkbox', q: dent ? 'Quý bác sĩ đang dùng loại trâm nào?' : 'Quý bác sĩ đang dùng kỹ thuật nào?', required: true, max: 3, other: true, options: (dent ? ['Trâm tay thép không gỉ', 'Trâm máy NiTi xoay liên tục', 'Trâm máy NiTi chuyển động qua lại'] : ['Cắt bè củng giác mạc', 'Mở vùng bè', 'Đặt van dẫn lưu']).map(function (v) { return { v: v, go: '' }; }) } ] },
         { id: 's2', title: 'Đánh giá và nhu cầu', help: '', go: '', questions: [
           { id: 'q3', t: 'scale', q: 'Mức độ hài lòng với dụng cụ hiện tại', required: true, low: 1, high: 5, lowLabel: 'Rất không hài lòng', highLabel: 'Rất hài lòng' },
           { id: 'q4', t: 'grid', q: 'Mức độ quan trọng của từng tiêu chí khi chọn dụng cụ', required: true, rows: ['Độ bền', 'Độ sắc / hiệu quả cắt', 'Giá thành'], cols: ['Thấp', 'Trung bình', 'Cao'] },
+          { id: 'q7', t: 'rating', q: 'Đánh giá chung về độ bền của dụng cụ đang dùng', required: true, max: 5, lowLabel: 'Rất kém', highLabel: 'Rất tốt' },
+          { id: 'q8', t: 'number', q: 'Số năm kinh nghiệm của Quý bác sĩ', required: false, min: 0, max: 60, unit: 'năm' },
+          { id: 'q9', t: 'date', q: 'Thời gian thuận tiện để MANI liên hệ trao đổi thêm', required: false },
           { id: 'q5', t: 'radio', q: 'Quý bác sĩ có muốn tham gia buổi đào tạo thực hành của MANI?', required: true, options: [{ v: 'Có', go: '' }, { v: 'Không', go: '' }] },
           { id: 'q6', t: 'paragraph', q: 'Góp ý khác của Quý bác sĩ', required: false } ] }
       ] };

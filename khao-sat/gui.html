@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!-- Gửi khảo sát MMH cho Team Marketing: gui.html?s=<mã khảo sát>. Nhân sự đăng nhập email công ty (phiên mmh_tk dùng chung Report Hub / CRM / Training Hub).
+     Máy chủ survey (mmh-backend ▸ MMH_SurveyNotify.gs): nsInfo (tóm tắt + bản xem trước email) · nsMailSend (email To Thương, Trang · CC Tuyên, Nguyễn Hà kèm QR,
+     rồi đánh dấu task Report Hub Completed). Email nhân sự không có trong trang này — máy chủ tra theo tên. -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gửi khảo sát cho Marketing · MMH</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="mani.png">
+<style>
+  :root { --ink:#2C4A5E; --steel:#5A84A6; --line:#BCD4E6; --line2:#E3ECF4; --soft:#F3F7FB; --cream:#FBE9B7; --fld:#B9C6D3; --mut:#5E6E7C; --txt:#1E2B36; --bad:#B3261E; --ok:#1F6B45; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#fff; color:var(--txt); font:15px/1.55 Aptos, "Segoe UI", Roboto, Arial, sans-serif; }
+  .top { border-bottom:1px solid var(--line2); }
+  .top .in { max-width:1100px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:12px; }
+  .top img { height:26px; } .top b { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); }
+  .top .me { margin-left:auto; font-size:13px; color:var(--mut); }
+  .wrap { max-width:1100px; margin:0 auto; padding:22px 20px 60px; }
+  .eyebrow { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--steel); font-weight:600; margin:0 0 4px; }
+  h1 { font-size:22px; color:var(--ink); margin:0 0 4px; }
+  .sub { color:var(--steel); margin:0 0 18px; }
+  .grid { display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:20px; align-items:start; }
+  @media (max-width:860px) { .grid { grid-template-columns:1fr; } }
+  .box { border:1px solid var(--line); border-radius:10px; padding:16px; margin:0 0 16px; }
+  .lbl { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--steel); font-weight:600; padding-bottom:8px; margin-bottom:10px; border-bottom:1px solid var(--line2); }
+  dl { margin:0; } dt { font-size:13px; color:var(--mut); margin-top:8px; } dt:first-child { margin-top:0; } dd { margin:2px 0 0; }
+  ul.g { margin:4px 0 0; padding-left:18px; }
+  .qr { text-align:center; } .qr img { width:200px; height:200px; image-rendering:pixelated; border:1px solid var(--line2); }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; justify-content:center; }
+  .btn { display:inline-flex; align-items:center; gap:6px; border:0; border-radius:8px; padding:10px 16px; font:inherit; font-weight:600; cursor:pointer; background:var(--ink); color:#fff; text-decoration:none; }
+  .btn.sec { background:#fff; color:var(--ink); border:1px solid var(--ink); }
+  .btn.sm { padding:7px 12px; font-size:14px; }
+  .btn[disabled] { opacity:.5; cursor:default; }
+  a { color:var(--ink); word-break:break-all; }
+  .lk { display:flex; gap:8px; align-items:center; margin:6px 0; } .lk a { flex:1; min-width:0; font-size:14px; }
+  .mailhd { font-size:14px; } .mailhd div { padding:3px 0; } .mailhd span { display:inline-block; width:74px; color:var(--mut); }
+  .mailbody { border-top:1px solid var(--line2); margin-top:10px; padding-top:12px; }
+  .note { background:var(--cream); border-radius:8px; padding:12px 14px; font-size:14px; margin:0 0 16px; }
+  .ok { color:var(--ok); font-weight:600; } .err { color:var(--bad); }
+  .act { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .ask { border:1px solid var(--ink); border-radius:10px; padding:12px 14px; margin-top:12px; }
+  .mut { color:var(--mut); font-size:14px; }
+  .login { max-width:420px; }
+  .login input { width:100%; padding:10px 12px; border:1px solid var(--fld); border-radius:8px; font:inherit; margin:4px 0 10px; }
+  .hide { display:none !important; }
+</style>
+</head>
+<body>
+<div class="top"><div class="in"><img src="mani.png" alt="MANI"><b>Khảo sát MMH</b><span class="me" id="me"></span></div></div>
+<main class="wrap" id="main"><p class="mut">Đang tải…</p></main>
+<script src="../quiz/doi-tac/qrcode-generator.js"></script>
+<script>
+(function () {
+  'use strict';
+  var API = 'https://script.google.com/macros/s/AKfycbx8l7u4j2tFDpfsg8IFsEcuXNrTbrLVRA_SoZ2Iisqprfm1ipL4z2NfDudVKuI1paFQPg/exec';
+  var HUB = 'https://script.google.com/macros/s/AKfycbwsX4cQEoH4LNlmcNfe8qWIM9K6EiDEXy7PjhP9bHY2citL6xHn5L1unsAlQJHyL9EP/exec';   // Training Hub — đăng nhập
+  var CODE = (new URLSearchParams(location.search).get('s') || '').trim();
+  var $ = function (i) { return document.getElementById(i); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var D = null;
+  function sess() { try { var o = JSON.parse(localStorage.getItem('mmh_tk') || 'null'); if (o && o.tk && (!o.exp || Date.now() < o.exp)) return o; } catch (e) {} return null; }
+  function post(body) {
+    return fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.text(); }).then(function (t) { try { return JSON.parse(t); } catch (e) { throw new Error('Máy chủ bận, vui lòng thử lại.'); } });
+  }
+  function fmt(iso) { var d = new Date(iso); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ' ' + ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear(); }
+
+  /* ---------- đăng nhập (email + mật khẩu, dùng chung phiên mmh_tk) ---------- */
+  function login(msg) {
+    $('main').innerHTML = '<div class="box login"><div class="lbl">Đăng nhập email công ty</div>' + (msg ? '<p class="err">' + esc(msg) + '</p>' : '') +
+      '<label>Email</label><input id="em" type="email" autocomplete="username" value="' + esc(localStorage.getItem('mmh_last_email') || '') + '">' +
+      '<label>Mật khẩu</label><input id="pw" type="password" autocomplete="current-password">' +
+      '<button class="btn" id="go" type="button">Đăng nhập</button><p class="mut">Chưa có mật khẩu: đăng nhập Report Hub hoặc CRM bằng mã gửi qua email, tạo mật khẩu, rồi mở lại trang này.</p><p id="er" class="err"></p></div>';
+    $('go').onclick = function () {
+      $('go').disabled = true; $('er').textContent = '';
+      fetch(HUB, { method: 'POST', body: new URLSearchParams({ action: 'rhAuthPw', email: $('em').value.trim(), pw: $('pw').value }), redirect: 'follow', credentials: 'omit' })
+        .then(function (r) { return r.json(); }).then(function (d) {
+          if (!(d && d.ok && d.token)) throw new Error((d && d.error) || 'Chưa đăng nhập được.');
+          localStorage.setItem('mmh_tk', JSON.stringify({ tk: d.token, exp: d.exp, user: d.user, at: Date.now() }));
+          localStorage.setItem('mmh_last_email', $('em').value.trim()); load();
+        }).catch(function (e) { $('go').disabled = false; $('er').textContent = e.message; });
+    };
+  }
+
+  /* ---------- QR (vẽ trên máy, cùng link với QR trong email) ---------- */
+  function qrMatrix(text) { var q = qrcode(0, 'M'); q.addData(text, 'Byte'); q.make(); var n = q.getModuleCount(), m = []; for (var r = 0; r < n; r++) { m.push([]); for (var c = 0; c < n; c++) m[r].push(q.isDark(r, c)); } return m; }
+  function qrCanvas(text, px) {
+    var m = qrMatrix(text), n = m.length, W0 = n + 8, s = Math.floor(px / W0), cv = document.createElement('canvas'), x = cv.getContext('2d');
+    cv.width = cv.height = W0 * s; x.fillStyle = '#fff'; x.fillRect(0, 0, cv.width, cv.height); x.fillStyle = '#000';
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (m[r][c]) x.fillRect((c + 4) * s, (r + 4) * s, s, s);
+    return cv;
+  }
+  function qrSvg(text) {
+    var m = qrMatrix(text), n = m.length, W = n + 8, d = '';
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (m[r][c]) d += 'M' + (c + 4) + ' ' + (r + 4) + 'h1v1h-1z';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + W + '" width="' + W * 10 + '" height="' + W * 10 + '" shape-rendering="crispEdges"><rect width="' + W + '" height="' + W + '" fill="#fff"/><path d="' + d + '"/></svg>';
+  }
+  function dl(name, blob) { var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  function copy(t, btn) { (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { var o = btn.textContent; btn.textContent = 'Đã chép'; setTimeout(function () { btn.textContent = o; }, 1500); }, function () { prompt('Sao chép link:', t); }); }
+
+  /* ---------- trang ---------- */
+  function render() {
+    var d = D, ev = d.event && d.event.name ? d.event.name + (d.event.date ? ' · ' + d.event.date.split('-').reverse().join('/') : '') : '';
+    var t = d.task, sent = d.mail.sent;
+    var taskTxt = t ? 'Task ' + esc(t.no) + ' · ' + esc(t.name) + (t.key ? '<br><span class="mut">trong Key task: ' + esc(t.key) + '</span>' : '') + '<br>' + (t.status === 'Completed' ? '<span class="ok">Đã hoàn thành</span>' : 'Đang làm') : (d.taskErr ? '<span class="err">Chưa tạo được task: ' + esc(d.taskErr) + '</span><br><span class="mut">Bấm gửi email, hệ thống tạo lại task rồi đánh dấu hoàn thành.</span>' : '<span class="mut">Chưa có task — tạo khi gửi email.</span>');
+    $('main').innerHTML = '<p class="eyebrow">Gửi khảo sát cho Team Marketing</p><h1>' + esc(d.title) + '</h1><p class="sub">' + esc(ev || (d.grp === 'Dental' ? 'Khảo sát bác sĩ nha khoa' : 'Khảo sát bác sĩ nhãn khoa')) + '</p>' +
+      (sent ? '<div class="note"><span class="ok">Đã gửi email</span> lúc ' + esc(fmt(sent.at)) + ' tới ' + esc(sent.to.join(', ')) + ' (CC ' + esc(sent.cc.join(', ')) + ').' + (d.task && d.task.status === 'Completed' ? ' Task Report Hub đã đánh dấu hoàn thành.' : '') + '</div>' : '') +
+      '<div class="grid"><div>' +
+      '<div class="box"><div class="lbl">Tóm tắt</div><dl><dt>Mục tiêu khảo sát</dt><dd>' + esc(d.objective || '(chưa ghi — nhờ Claude bổ sung)') + '</dd>' +
+      '<dt>Số câu hỏi</dt><dd>' + d.nq + ' câu' + (d.minutes ? ' · khoảng ' + d.minutes + ' phút' : '') + '</dd>' +
+      '<dt>Nhóm câu hỏi</dt><dd><ul class="g">' + d.groups.map(function (g) { return '<li>' + esc(g.title) + ' (' + g.n + ')</li>'; }).join('') + '</ul></dd>' +
+      '<dt>Report Hub</dt><dd>' + taskTxt + '</dd></dl></div>' +
+      '<div class="box qr"><div class="lbl" style="text-align:left">Mã QR</div><img id="qr" alt="Mã QR khảo sát"><div class="row"><button class="btn sec sm" id="qp" type="button">Tải PNG</button><button class="btn sec sm" id="qs" type="button">Tải SVG (in ấn)</button></div></div>' +
+      '<div class="box"><div class="lbl">Link</div>' +
+      '<div class="mut">Khảo sát (gửi bác sĩ)</div><div class="lk"><a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.url) + '</a><button class="btn sec sm" id="c1" type="button">Chép</button></div>' +
+      '<div class="mut">Thống kê, biểu đồ (app MMH Survey)</div><div class="lk"><a href="' + esc(d.app) + '" target="_blank" rel="noopener">' + esc(d.app) + '</a><button class="btn sec sm" id="c2" type="button">Chép</button></div>' +
+      '<div class="mut">Dữ liệu chi tiết (Google Sheet)</div><div class="lk"><a href="' + esc(d.sheet) + '" target="_blank" rel="noopener">Mở Google Sheet kết quả</a></div>' +
+      '<p class="mut" style="margin:10px 0 0">Sửa câu hỏi: nhắn Claude "sửa khảo sát mã ' + esc(d.code) + '". Link và mã QR giữ nguyên, không gửi lại email.</p></div>' +
+      '</div><div>' +
+      '<div class="box"><div class="lbl">Email gửi Team Marketing</div><div class="mailhd"><div><span>Đến</span>' + esc(d.mail.to.join(', ')) + '</div><div><span>CC</span>' + esc(d.mail.cc.join(', ')) + '</div>' +
+      '<div><span>Tiêu đề</span>' + esc(d.mail.subject) + '</div><div><span>Đính kèm</span>Mã QR (PNG, SVG)</div></div><div class="mailbody" id="mb"></div></div>' +
+      '<div class="act" id="act"></div></div></div>';
+    $('mb').innerHTML = d.mail.html;   // nội dung do máy chủ dựng (đã thoát ký tự)
+    var cv = qrCanvas(d.url, 1000); $('qr').src = cv.toDataURL('image/png');
+    $('qp').onclick = function () { cv.toBlob(function (b) { dl('QR khao sat ' + d.code + '.png', b); }); };
+    $('qs').onclick = function () { dl('QR khao sat ' + d.code + '.svg', new Blob([qrSvg(d.url)], { type: 'image/svg+xml' })); };
+    $('c1').onclick = function () { copy(d.url, this); }; $('c2').onclick = function () { copy(d.app, this); };
+    actions();
+  }
+  function actions(msg) {
+    var d = D, a = $('act');
+    if (!d.canSend) { a.innerHTML = '<p class="mut">Chỉ người tạo khảo sát (' + esc(d.owner || '?') + ') hoặc Admin / Giám đốc / Trưởng bộ phận gửi được email này.</p>'; return; }
+    if (d.mail.sent) { a.innerHTML = '<button class="btn sec" id="re" type="button">Gửi lại email</button><span class="mut">Chỉ dùng khi email lần trước bị thất lạc.</span>'; $('re').onclick = function () { ask(true); }; return; }
+    a.innerHTML = '<button class="btn" id="sd" type="button">Xác nhận hoàn thành &amp; gửi email</button>' + (msg ? '<span class="err">' + esc(msg) + '</span>' : '');
+    $('sd').onclick = function () { ask(false); };
+  }
+  function ask(force) {
+    var a = $('act');
+    a.innerHTML = '<div class="ask">Gửi email tới <b>' + esc(D.mail.to.join(', ')) + '</b> (CC ' + esc(D.mail.cc.join(', ')) + ') và đánh dấu task Report Hub <b>hoàn thành</b>?' +
+      '<div class="act" style="margin-top:10px"><button class="btn" id="y" type="button">Gửi email</button><button class="btn sec" id="n" type="button">Huỷ</button></div></div>';
+    $('n').onclick = function () { actions(); };
+    $('y').onclick = function () {
+      $('y').disabled = true; $('y').textContent = 'Đang gửi…';
+      post({ action: 'nsMailSend', s: CODE, tk: sess().tk, force: force ? 1 : 0 }).then(function (r) {
+        if (!r.ok && r.code === 'AUTH') return login(r.error);
+        if (!r.ok) return actions(r.error);
+        D.mail.sent = r.sent; D.task = r.task; render();
+        if ((r.notes || []).length || (r.miss || []).length) $('act').insertAdjacentHTML('beforeend', '<p class="mut">' + esc((r.notes || []).concat((r.miss || []).length ? ['Không tìm thấy email: ' + r.miss.join(', ')] : []).join(' · ')) + '</p>');
+      }).catch(function (e) { actions(e.message); });
+    };
+  }
+  function load() {
+    var s = sess();
+    if (!CODE) { $('main').innerHTML = '<p class="err">Link thiếu mã khảo sát.</p>'; return; }
+    if (!s) return login('');
+    $('me').textContent = (s.user && s.user.pic) || '';
+    $('main').innerHTML = '<p class="mut">Đang tải…</p>';
+    post({ action: 'nsInfo', s: CODE, tk: s.tk }).then(function (r) {
+      if (!r.ok && r.code === 'AUTH') return login(r.error);
+      if (!r.ok) throw new Error(r.error || 'Không đọc được khảo sát.');
+      D = r; render();
+    }).catch(function (e) { $('main').innerHTML = '<p class="err">' + esc(e.message) + '</p><button class="btn sec" type="button" onclick="location.reload()">Thử lại</button>'; });
+  }
+  load();
+})();
+</script>
+</body>
+</html>
