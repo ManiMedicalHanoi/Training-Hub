@@ -13,7 +13,7 @@
 <link rel="icon" href="mani.png">
 <style>
   :root { --ink:#2C4A5E; --steel:#5A84A6; --line:#BCD4E6; --line2:#E3ECF4; --soft:#F3F7FB; --cream:#FBE9B7; --fld:#B9C6D3; --mut:#5E6E7C; --txt:#1E2B36; --bad:#B3261E; --ok:#1F6B45; --fb:#1877F2; }
-  * { box-sizing:border-box; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html { -webkit-text-size-adjust:100%; }
   body { margin:0; background:#fff; color:var(--txt); font:16px/1.55 Aptos, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
   .top { position:sticky; top:0; z-index:5; background:#fff; border-bottom:1px solid var(--line2); }
@@ -68,6 +68,10 @@
   .chips { display:flex; flex-wrap:wrap; gap:6px; }
   .chip { padding:8px 12px; border:1px solid var(--fld); border-radius:999px; background:#fff; font:inherit; font-size:14px; color:var(--txt); cursor:pointer; }
   .chip.on { background:var(--ink); border-color:var(--ink); color:#fff; }
+  details.pv { border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:14px 0 4px; font-size:14px; }
+  details.pv summary { cursor:pointer; color:var(--ink); font-weight:600; }
+  details.pv .pre { margin-top:8px; color:var(--mut); }
+  .chk span { font-size:15px; }
   .chk { display:flex; gap:12px; align-items:flex-start; padding:12px; border:1px solid var(--line); border-radius:8px; margin:10px 0; cursor:pointer; }
   .chk input { width:20px; height:20px; margin:2px 0 0; accent-color:var(--ink); flex:none; }
   .chk.req { border-color:var(--ink); }
@@ -102,7 +106,8 @@
   @keyframes sp { to { transform:rotate(360deg); } }
   .hide { display:none !important; }
   .hp-f { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-  @media (max-width:520px) { h1 { font-size:21px; } .wrap { padding-top:18px; } .top .co { display:none; } }
+  @media (max-width:520px) { h1 { font-size:21px; } .wrap { padding-top:16px; } .top .co { display:none; } .lead { font-size:15px; line-height:1.5; } .facts { margin:10px 0 12px; } }
+  @media (max-width:380px) { body { font-size:15px; } h1 { font-size:20px; } .wrap { padding-left:14px; padding-right:14px; } .opt { padding:10px; } }
 </style>
 </head>
 <body>
@@ -145,7 +150,7 @@
     while (st !== 'submit' && g++ < 200) { var k = +st.slice(1); if (out.indexOf(k) >= 0) break; out.push(k); st = nextOf(k); }
     return out;
   }
-  function stepsAll() { var a = ['consent', 'info']; if (SV.page) a.push('follow'); return a.concat(pathSecs().map(function (k) { return 's' + k; })); }
+  function stepsAll() { var a = ['cover', 'info']; if (SV.page) a.push('follow'); return a.concat(pathSecs().map(function (k) { return 's' + k; })); }
   function go(step, push) {
     if (push !== false && S.step !== step) S.hist.push(S.step);
     S.step = step; save(); render(); window.scrollTo(0, 0);
@@ -169,7 +174,7 @@
     setProg();
     var m = $('main'), st = S.step;
     if (st === 'cover') return cover(m);
-    if (st === 'consent') return consent(m);
+    if (st === 'consent') { S.step = 'cover'; return cover(m); }
     if (st === 'info') return info(m);
     if (st === 'follow') return follow(m);
     if (st === 'done') return done(m);
@@ -177,35 +182,37 @@
     S.step = 'cover'; render();
   }
   function cover(m) {
-    var nq = SV.nq || 0, ev = SV.event && SV.event.name ? SV.event.name + (SV.event.date ? ' · ' + SV.event.date.split('-').reverse().join('/') : '') : '';
+    var nq = SV.nq || 0, ev = SV.event && SV.event.name ? SV.event.name + (SV.event.date ? ' · ' + SV.event.date.split('-').reverse().join('/') : '') : '', c = SV.consent;
+    if (SV.open === false) {
+      m.innerHTML = '<h1>' + esc(SV.title) + '</h1><div class="note">Khảo sát đã đóng. Cảm ơn Quý bác sĩ đã quan tâm.</div>'; foot(false); return;
+    }
     m.innerHTML = '<p class="eyebrow">Khảo sát dành cho Quý bác sĩ' + (SV.grp === 'Dental' ? ' nha khoa' : SV.grp === 'Surgical' ? ' nhãn khoa' : '') + '</p>' +
       '<h1>' + esc(SV.title) + '</h1>' + (SV.intro ? '<p class="lead">' + esc(SV.intro) + '</p>' : '') +
       '<div class="facts">' + (nq ? '<span><b>' + nq + '</b> câu hỏi</span>' : '') + (SV.minutes ? '<span>Khoảng <b>' + SV.minutes + ' phút</b></span>' : '') +
       (ev ? '<span>' + esc(ev) + '</span>' : '') + '</div>' +
-      '<p class="small">Trước khi bắt đầu, Quý bác sĩ vui lòng xác nhận đồng ý xử lý dữ liệu cá nhân, điền thông tin liên hệ' + (SV.page ? ' và theo dõi page ' + esc(SV.page.name) + ' trên Facebook' : '') + '.</p>' +
-      (SV.open === false ? '<div class="note">Khảo sát đã đóng. Cảm ơn Quý bác sĩ đã quan tâm.</div>' : '') +
+      '<details class="pv"><summary>' + esc(c.title.charAt(0) + c.title.slice(1).toLowerCase()) + '</summary><div class="pre">' + esc(c.text) + '</div></details>' +
+      '<label class="chk req" id="c-ag"><input type="checkbox" id="c0"' + (S.consent.agree ? ' checked' : '') + '><span>' + esc(c.agree.v) + ' <span style="color:var(--bad)">*</span></span></label>' +
+      (c.optional || []).map(function (o, i) { return '<label class="chk"><input type="checkbox" data-o="' + i + '"' + (S.consent.opt[i] ? ' checked' : '') + '><span>' + esc(o.v) + '</span></label>'; }).join('') +
       '<p class="legal">Công ty TNHH Mani Medical Hà Nội</p>';
-    foot(SV.open !== false, 'Bắt đầu', false);
-  }
-  function consent(m) {
-    var c = SV.consent;
-    m.innerHTML = '<p class="eyebrow">Bước 1</p><h1>' + esc(c.title.charAt(0) + c.title.slice(1).toLowerCase()) + '</h1>' +
-      '<div class="box"><div class="lbl">Thông báo</div><div class="pre">' + esc(c.text) + '</div></div>' +
-      '<label class="chk req" id="c-ag"><input type="checkbox" id="c0"' + (S.consent.agree ? ' checked' : '') + '><span><b>' + esc(c.agree.q) + '</b> <span style="color:var(--bad)">*</span><br>' + esc(c.agree.v) + '</span></label>' +
-      (c.optional || []).map(function (o, i) { return '<label class="chk"><input type="checkbox" data-o="' + i + '"' + (S.consent.opt[i] ? ' checked' : '') + '><span><b>' + esc(o.q) + '</b><br>' + esc(o.v) + '</span></label>'; }).join('');
-    $('c0').onchange = function () { S.consent.agree = this.checked; $('c-ag').classList.remove('miss'); save(); };
+    $('c0').onchange = function () { S.consent.agree = this.checked; $('c-ag').classList.remove('miss'); $('msg').textContent = ''; save(); };
     m.querySelectorAll('[data-o]').forEach(function (x) { x.onchange = function () { S.consent.opt[+x.dataset.o] = x.checked; save(); }; });
-    foot(true, 'Tiếp tục');
+    foot(true, 'Bắt đầu', false);
   }
   function info(m) {
-    m.innerHTML = '<p class="eyebrow">Bước 2</p><h1>Thông tin của Quý bác sĩ</h1><p class="sub">Dùng để tổng hợp kết quả và liên hệ khi cần.</p>' +
+    m.innerHTML = '<p class="eyebrow">Thông tin liên hệ</p><h1>Thông tin của Quý bác sĩ</h1><p class="sub">Dùng để tổng hợp kết quả và liên hệ khi cần.</p>' +
       SV.info.map(function (x) {
         var v = S.info[x.id] || '', r = x.required ? ' <i>*</i>' : '', inp;
         if (x.t === 'radio' || x.t === 'list') inp = '<select id="f-' + esc(x.id) + '"><option value="">— Chọn —</option>' + x.options.map(function (o) { return '<option' + (o === v ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select>';
         else inp = '<input id="f-' + esc(x.id) + '" type="' + (x.t === 'phone' ? 'tel' : 'text') + '" value="' + esc(v) + '"' + (x.t === 'phone' ? ' inputmode="tel" autocomplete="tel" placeholder="Ví dụ 0912 345 678"' : x.id === 'name' ? ' autocomplete="name"' : x.id === 'work' ? ' autocomplete="organization"' : '') + '>';
         return '<div class="fld"><label for="f-' + esc(x.id) + '">' + esc(x.q) + r + '</label>' + (x.help ? '<div class="small">' + esc(x.help) + '</div>' : '') + inp + '<div class="er" id="e-' + esc(x.id) + '"></div></div>';
       }).join('') + '<div class="hp-f" aria-hidden="true"><input id="hpf" tabindex="-1" autocomplete="off"></div>';
-    SV.info.forEach(function (x) { var el = $('f-' + x.id); el.oninput = el.onchange = function () { S.info[x.id] = el.value; $('e-' + x.id).textContent = ''; save(); }; });
+    SV.info.forEach(function (x, i) {
+      var el = $('f-' + x.id); el.oninput = el.onchange = function () { S.info[x.id] = el.value; $('e-' + x.id).textContent = ''; save(); };
+      if (el.tagName === 'INPUT') {
+        el.setAttribute('enterkeyhint', i < SV.info.length - 1 ? 'next' : 'done');
+        el.onkeydown = function (e) { if (e.key !== 'Enter') return; e.preventDefault(); var nx = SV.info[i + 1] && $('f-' + SV.info[i + 1].id); if (nx) nx.focus(); else { el.blur(); next(); } };
+      }
+    });
     foot(true, 'Tiếp tục');
   }
   function phoneOk(v) { var d = String(v || '').replace(/[\s.\-()]/g, ''); if (/^\+?84\d{9}$/.test(d)) d = '0' + d.replace(/^\+?84/, ''); return /^0\d{9}$/.test(d) || /^\+\d{8,15}$/.test(d); }
@@ -220,13 +227,13 @@
   function follow(m) {
     var p = SV.page, f = S.follow;
     if (f.st === 'opened' || f.st === 'before') {
-      m.innerHTML = '<p class="eyebrow">Bước 3</p><h1>Đã theo dõi page ' + esc(p.name) + '</h1><div class="page"><div class="ic">' + FB_SVG + '</div><div><div class="nm">' + esc(p.name) + '</div><div class="ln">' + esc(p.line) + '</div></div></div>' +
+      m.innerHTML = '<p class="eyebrow">Theo dõi page</p><h1>Đã theo dõi page ' + esc(p.name) + '</h1><div class="page"><div class="ic">' + FB_SVG + '</div><div><div class="nm">' + esc(p.name) + '</div><div class="ln">' + esc(p.line) + '</div></div></div>' +
         '<p>Cảm ơn Quý bác sĩ. Mời Quý bác sĩ tiếp tục phần câu hỏi.</p><p><button class="link" id="f-re" type="button">Mở lại page ' + esc(p.name) + '</button></p>';
       $('f-re').onclick = openFb;
       foot(true, 'Tiếp tục'); return;
     }
     if (f.st === 'wait') {  // đã bấm mở Facebook, quay lại quá nhanh (Facebook chưa mở được)
-      m.innerHTML = '<p class="eyebrow">Bước 3</p><h1>Quý bác sĩ đã theo dõi page ' + esc(p.name) + ' chưa?</h1>' + pageCard(p) +
+      m.innerHTML = '<p class="eyebrow">Theo dõi page</p><h1>Quý bác sĩ đã theo dõi page ' + esc(p.name) + ' chưa?</h1>' + pageCard(p) +
         '<p><button class="btn" id="f-yes" type="button" style="width:100%">Đã theo dõi — tiếp tục khảo sát</button></p>' +
         '<p><a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Mở lại Facebook</a></p>' +
         '<p class="small">Không mở được Facebook trên máy này? Tìm "' + esc(p.name) + '" trong ứng dụng Facebook, bấm Theo dõi rồi quay lại trang này.</p>';
@@ -234,12 +241,12 @@
       $('f-open').onclick = function () { mark(); };
       foot(false); return;
     }
-    m.innerHTML = '<p class="eyebrow">Bước 3</p><h1>Theo dõi page ' + esc(p.name) + '</h1>' +
-      '<p>Để nhận thông tin sản phẩm, hội thảo và tài liệu chuyên môn từ MANI, Quý bác sĩ vui lòng theo dõi page <b>' + esc(p.name) + '</b> trên Facebook trước khi trả lời khảo sát.</p>' + pageCard(p) +
-      '<ol class="steps"><li>Bấm nút bên dưới, Facebook mở page ' + esc(p.name) + '.</li><li>Bấm <b>Theo dõi</b> (Follow) trên page.</li><li>Quay lại trang này, khảo sát tự chuyển sang phần câu hỏi.</li></ol>' +
-      '<a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Mở Facebook và theo dõi page</a>' +
-      '<div class="back"><button class="link" id="f-before" type="button">Tôi đã theo dõi page ' + esc(p.name) + ' từ trước</button></div>' +
-      (SV.followRequired ? '' : '<div class="back"><button class="link" id="f-skip" type="button">Bỏ qua bước này</button></div>');
+    m.innerHTML = '<p class="eyebrow">Theo dõi page</p><h1>Theo dõi page ' + esc(p.name) + '</h1>' +
+      '<p class="sub" style="margin-bottom:14px">' + esc(p.line) + '. Quý bác sĩ vui lòng bấm <b>Theo dõi</b> trên page rồi quay lại trang này.</p>' +
+      '<a class="btn fb" id="f-open" href="' + esc(fbHref()) + '" target="_blank" rel="noopener">' + FB_SVG + ' Mở page ' + esc(p.name) + '</a>' +
+      '<div class="back"><button class="link" id="f-before" type="button">Tôi đã theo dõi page từ trước</button></div>' +
+      (SV.followRequired ? '' : '<div class="back"><button class="link" id="f-skip" type="button">Bỏ qua bước này</button></div>') +
+      '<p class="small" style="text-align:center;margin-top:18px">Quay lại trang này sau khi theo dõi, khảo sát tự chuyển sang phần câu hỏi.</p>';
     $('f-open').onclick = function () { mark(); };
     $('f-before').onclick = function () { S.follow.st = 'before'; S.follow.at = Date.now(); save(); go(firstSec()); };
     if ($('f-skip')) $('f-skip').onclick = function () { go(firstSec()); };
@@ -326,15 +333,16 @@
         ins.forEach(function (x) { x.closest('.opt').classList.toggle('on', x.checked); if (!x.checked) return; if (x.dataset.i === 'o') out.push('Khác: ' + (ot.value.trim())); else out.push(q.options[+x.dataset.i].v); });
         if (multi && q.max && out.length > q.max) return false;
         S.A[q.id] = multi ? out : (out[0] == null ? null : out[0]); save(); clear();
+        if (!multi && out[0] != null && !/^Khác: /.test(out[0])) advance(q);
         var st = S.step; if (/^s\d+$/.test(st)) { var last = nextOf(+st.slice(1)) === 'submit'; $('nx').textContent = last ? 'Gửi khảo sát' : 'Tiếp tục'; setProg(); }
         return true;
       };
       ins.forEach(function (x) { x.onchange = function () { if (collect() === false) { x.checked = false; collect(); $('msg').textContent = 'Chọn tối đa ' + q.max + ' ý.'; } if (x.dataset.i === 'o' && x.checked) ot.focus(); }; });
       if (ot) { ot.oninput = function () { var r = box.querySelector('input[data-i="o"]'); if (!r.checked && ot.value) { r.checked = true; if (!multi) ins.forEach(function (x) { if (x !== r) x.checked = false; }); } collect(); }; ot.onclick = function (e) { e.stopPropagation(); }; }
     } else if (q.t === 'scale') {
-      box.querySelectorAll('[data-k]').forEach(function (b) { b.onclick = function () { S.A[q.id] = +b.dataset.k; save(); clear(); box.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('on', x === b); }); }; });
+      box.querySelectorAll('[data-k]').forEach(function (b) { b.onclick = function () { S.A[q.id] = +b.dataset.k; save(); clear(); box.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('on', x === b); }); advance(q); }; });
     } else if (q.t === 'rating') {
-      box.querySelectorAll('[data-k]').forEach(function (b) { b.onclick = function () { var k = +b.dataset.k; S.A[q.id] = k; save(); clear(); box.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('on', +x.dataset.k <= k); }); box.querySelector('.scl span:nth-child(2)').textContent = k + ' / ' + q.max; }; });
+      box.querySelectorAll('[data-k]').forEach(function (b) { b.onclick = function () { var k = +b.dataset.k; S.A[q.id] = k; save(); clear(); box.querySelectorAll('[data-k]').forEach(function (x) { x.classList.toggle('on', +x.dataset.k <= k); }); box.querySelector('.scl span:nth-child(2)').textContent = k + ' / ' + q.max; advance(q); }; });
     } else if (q.t === 'grid' || q.t === 'checkgrid') {
       box.querySelectorAll('.chip').forEach(function (b) { b.onclick = function () {
         var g = S.A[q.id] || {}, r = b.dataset.r, c = b.dataset.c;
@@ -342,10 +350,21 @@
         else { var a = [].concat(g[r] || []), k = a.indexOf(c); if (k >= 0) a.splice(k, 1); else a.push(c); g[r] = a.length ? a : null; }
         S.A[q.id] = g; save(); clear();
         box.querySelectorAll('.chip[data-r="' + r + '"]').forEach(function (x) { var cur = g[r] == null ? [] : [].concat(g[r]); x.classList.toggle('on', cur.indexOf(x.dataset.c) >= 0); });
+        if (q.t === 'grid' && answered(q)) advance(q);
       }; });
     } else {
       var t = box.querySelector('[data-t]'); t.oninput = function () { S.A[q.id] = t.value; save(); clear(); };
     }
+  }
+  var ADV = null;
+  function advance(q) {
+    clearTimeout(ADV);
+    ADV = setTimeout(function () {
+      var st = S.step; if (!/^s\d+$/.test(st)) return;
+      var qs = SV.sections[+st.slice(1)].questions.filter(function (x) { return x.t !== 'header'; }), k = qs.indexOf(q);
+      for (var i = k + 1; i < qs.length; i++) if (!answered(qs[i])) { var b = $('q-' + qs[i].id); if (b) { var r = b.getBoundingClientRect(); if (r.top > window.innerHeight * 0.55 || r.top < 60) b.scrollIntoView({ behavior: 'smooth', block: 'start' }); } return; }
+      var r2 = $('nx').getBoundingClientRect(); if (r2.top > window.innerHeight) window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, 350);
   }
   function answered(q) {
     var v = S.A[q.id];
@@ -361,8 +380,7 @@
   /* ---------- nút Tiếp tục ---------- */
   function next() {
     var st = S.step, msg = $('msg');
-    if (st === 'cover') return go('consent');
-    if (st === 'consent') { if (!S.consent.agree) { $('c-ag').classList.add('miss'); msg.textContent = 'Vui lòng xác nhận đồng ý để tiếp tục.'; return; } return go('info'); }
+    if (st === 'cover' || st === 'consent') { if (!S.consent.agree) { $('c-ag').classList.add('miss'); msg.textContent = 'Vui lòng tích đồng ý để bắt đầu.'; $('c-ag').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; } return go('info'); }
     if (st === 'info') {
       var bad = null;
       if ($('hpf') && $('hpf').value) S.hp = $('hpf').value;
@@ -412,7 +430,7 @@
       if (r.code === 'DUP') { finish('', r.error); return; }
       $('nx').disabled = false; $('nx').textContent = 'Gửi khảo sát'; $('msg').textContent = r.error || 'Chưa gửi được.';
       if (r.code === 'REQ') {
-        if (r.step === 'consent') go('consent'); else if (r.step === 'info') go('info'); else if (r.step === 'follow') go('follow');
+        if (r.step === 'consent') go('cover'); else if (r.step === 'info') go('info'); else if (r.step === 'follow') go('follow');
         else if (r.qid) { var b = $('q-' + r.qid); if (b) { b.classList.add('miss'); b.scrollIntoView({ block: 'start' }); } }
         $('msg').textContent = r.error;
       }
